@@ -23,14 +23,14 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
 ];
 
-// const MEDICOS: Medico[] = [
-//   { nombre: 'Pepito Marranos', imagen: 'FOTO', matricula: 12345, especialidades: [ Especialidad.General, Especialidad.General], disponibilidad: 'Mañana', consultorio: 1},
-//   { nombre: 'Maria de los Cascabeles', imagen: 'FOTO', matricula: 54321, especialidad: 'General', disponibilidad: 'Mañana', consultorio: 2},
-//   { nombre: 'Juan Perez', imagen: 'FOTO', matricula: 543523, especialidad: 'Dermatología', disponibilidad: 'Tarde', consultorio: 1},
-//   { nombre: 'Manuel Paredes', imagen: 'FOTO', matricula: 432154, especialidad: 'Traumatología', disponibilidad: 'Mañana', consultorio: 3},
-//   { nombre: 'Josefina Strauckbeer', imagen: 'FOTO', matricula: 546643, especialidad: 'General', disponibilidad: 'Tarde', consultorio: 2},
-//   { nombre: 'Ana Maria Angeles', imagen: 'FOTO', matricula: 585483, especialidad: 'Pediatría', disponibilidad: 'Tarde', consultorio: 1}
-// ]
+const MEDICOS: any[] = [
+  { nombre: 'Pepito Marranos', imagen: 'FOTO', matricula: 12345, especialidad: Especialidad.General, disponibilidad: 'Mañana', consultorio: 1},
+  { nombre: 'Maria de los Cascabeles', imagen: 'FOTO', matricula: 54321, especialidad: Especialidad.Dermatología, disponibilidad: 'Mañana', consultorio: 2},
+  { nombre: 'Juan Perez', imagen: 'FOTO', matricula: 543523, especialidad: Especialidad.Traumatología, disponibilidad: 'Tarde', consultorio: 1},
+  { nombre: 'Manuel Paredes', imagen: 'FOTO', matricula: 432154, especialidad: Especialidad.Cardiología, disponibilidad: 'Mañana', consultorio: 3},
+  { nombre: 'Josefina Strauckbeer', imagen: 'FOTO', matricula: 546643, especialidad: Especialidad.General, disponibilidad: 'Tarde', consultorio: 2},
+  { nombre: 'Ana Maria Angeles', imagen: 'FOTO', matricula: 585483, especialidad: Especialidad.Pediatría, disponibilidad: 'Tarde', consultorio: 1}
+]
 
 @Component({
   selector: 'app-listado-medicos',
@@ -38,11 +38,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./listado-medicos.component.css']
 })
 export class ListadoMedicosComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  // dataSource = new MatTableDataSource(ELEMENT_DATA);
   
-  // displayedColumns: string[] = ['nombre', 'imagen', 'matricula', 'especialidad', 'disponibilidad', 'consultorio'];
-  // dataSource = new MatTableDataSource(MEDICOS);
+  displayedColumns: string[] = ['nombre', 'imagen', 'matricula', 'especialidad', 'disponibilidad', 'consultorio'];
+  dataSource = new MatTableDataSource(MEDICOS);
   
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   

@@ -5,20 +5,21 @@ export class Medico extends Usuario
     private _matricula: number;
     private _consultorio: number;
     private _disponibilidad: string;
-    private _especialidades: Especialidad[];    
+    private _especialidad: Especialidad;    
+   
     private _autorizado: boolean;
 
     constructor(nombre: string, clave: string, dni: number,
                 email: string, telefono: number,imagen: any,
                 matricula: number, consultorio: number,
                 disponibilidad: string,
-                especialidades: Especialidad[])
+                especialidad: Especialidad)
     {
         super(nombre,clave, dni, email, telefono, imagen);
         this.matricula = matricula;
         this.consultorio = consultorio;
         this.disponibilidad = disponibilidad;
-        this.especialidades = especialidades;
+        this.especialidad = especialidad;
     }
     
     public get matricula(): number {
@@ -41,13 +42,14 @@ export class Medico extends Usuario
     public set disponibilidad(value: string) {
         this._disponibilidad = value;
     }
-    
-    public get especialidades(): Especialidad[] {
-        return this._especialidades;
+  
+    public get especialidad(): Especialidad {
+        return this._especialidad;
     }
-    public set especialidades(value: Especialidad[]) {
-        this._especialidades = value;
+    public set especialidad(value: Especialidad) {
+        this._especialidad = value;
     }
+   
 
     public get autorizado(): boolean {
         return this._autorizado;

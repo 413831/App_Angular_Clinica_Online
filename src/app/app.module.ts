@@ -18,6 +18,9 @@ import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 // Componentes
 import { AppComponent } from './app.component';
@@ -69,7 +72,10 @@ import { ListadoPacientesComponent } from './componentes/listado-pacientes/lista
     MatListModule,
     MatIconModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    MatGridListModule,
+    MatCardModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
