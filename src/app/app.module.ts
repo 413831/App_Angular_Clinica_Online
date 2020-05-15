@@ -1,9 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Routing
 import { AppRoutingModule } from './app-routing.module';
+
+// Material
+import { MatSliderModule } from '@angular/material/slider';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSortModule} from '@angular/material/sort';
+import {MatTableModule} from '@angular/material/table';
 
 // Componentes
 import { AppComponent } from './app.component';
@@ -15,16 +29,12 @@ import { HomeComponent } from './pages/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DetalleTurnoComponent } from './componentes/detalle-turno/detalle-turno.component';
 import { FooterComponent } from './componentes/shared/footer/footer.component';
-
-// Material
-import { MatSliderModule } from '@angular/material/slider';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatButtonModule } from '@angular/material/button';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { TurnosComponent } from './pages/turnos/turnos.component';
 import { CartillaComponent } from './pages/cartilla/cartilla.component';
 import { ListadoMedicosComponent } from './componentes/listado-medicos/listado-medicos.component';
 import { ListadoPacientesComponent } from './componentes/listado-pacientes/listado-pacientes.component';
+
 
 @NgModule({
   declarations: [
@@ -47,9 +57,19 @@ import { ListadoPacientesComponent } from './componentes/listado-pacientes/lista
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     MatSliderModule,
     MatTabsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatListModule,
+    MatIconModule,
+    MatSortModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
