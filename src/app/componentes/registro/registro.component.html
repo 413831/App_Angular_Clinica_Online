@@ -1,1 +1,13 @@
 <p>registro works!</p>
+<mat-tab-group mat-stretch-tabs class="container" [style.background]="'#F8F8FF'">
+    <mat-tab label="Paciente" >
+      <div class="example-large-box mat-elevation-z4" [style.background]="'#FFFFFF'">
+        <app-alta-paciente></app-alta-paciente>
+      </div>
+    </mat-tab>
+    <mat-tab label="Profesionales">
+        <div class="example-large-box mat-elevation-z4" [style.background]="'#FFFFFF'">
+          <app-alta-medico></app-alta-medico>
+        </div>
+      </mat-tab>
+  </mat-tab-group>

@@ -6,7 +6,7 @@
 
     </mat-grid-tile>
 </mat-grid-list>
-
+<!-- Background : ghostwhite -->
 <mat-grid-list cols="4" rowHeight="300px">
     <mat-grid-tile [colspan]=4 [rowspan]=1 [style.background]="'#F0F8FF'">
         <img  src="../../../assets/img/hospital1.jpg" alt="">
@@ -25,7 +25,7 @@
 
 <h3>Stroked Buttons</h3>
 <div class="example-button-row">
-    <a mat-stroked-button routerLink=".">Pedir Turno</a>
+    <a mat-stroked-button [routerLink]="'registro'">Registro</a>
     <a mat-stroked-button routerLink=".">Consultar Turnos</a>
     <a mat-stroked-button routerLink=".">Cartilla médica</a>
 </div>

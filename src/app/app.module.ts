@@ -21,6 +21,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatStepperModule} from '@angular/material/stepper';
 
 // Componentes
 import { AppComponent } from './app.component';
@@ -37,6 +38,9 @@ import { TurnosComponent } from './pages/turnos/turnos.component';
 import { CartillaComponent } from './pages/cartilla/cartilla.component';
 import { ListadoMedicosComponent } from './componentes/listado-medicos/listado-medicos.component';
 import { ListadoPacientesComponent } from './componentes/listado-pacientes/listado-pacientes.component';
+import { AltaMedicoComponent } from './componentes/alta-medico/alta-medico.component';
+import { AltaPacienteComponent } from './componentes/alta-paciente/alta-paciente.component';
+import { AltaTurnoComponent } from './componentes/alta-turno/alta-turno.component';
 
 
 @NgModule({
@@ -53,7 +57,10 @@ import { ListadoPacientesComponent } from './componentes/listado-pacientes/lista
     TurnosComponent,
     CartillaComponent,
     ListadoMedicosComponent,
-    ListadoPacientesComponent
+    ListadoPacientesComponent,
+    AltaMedicoComponent,
+    AltaPacienteComponent,
+    AltaTurnoComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +82,8 @@ import { ListadoPacientesComponent } from './componentes/listado-pacientes/lista
     MatTableModule,
     MatGridListModule,
     MatCardModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

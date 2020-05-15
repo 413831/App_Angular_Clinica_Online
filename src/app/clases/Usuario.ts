@@ -1,8 +1,16 @@
 export class Usuario
 {
+    private _id;
+    
     constructor(private _nombre: string, private _clave: string, private _dni: number,
         private _email: string, private _telefono: number, private _imagen: any){};
 
+    public get id() {
+        return this._id;
+    }
+    public set id(value) {
+        this._id = value;
+    }
     public get imagen(): any {
         return this._imagen;
     }
