@@ -1,0 +1,10 @@
+import { OnDestroy, ApplicationRef } from '@angular/core';
+import * as ɵngcc0 from '@angular/core';
+export declare class PerformanceMonitoringService implements OnDestroy {
+    private disposable;
+    constructor(appRef: ApplicationRef);
+    ngOnDestroy(): void;
+    static ɵfac: ɵngcc0.ɵɵFactoryDef<PerformanceMonitoringService, never>;
+}
+
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicGVyZm9ybWFuY2Uuc2VydmljZS5kLnRzIiwic291cmNlcyI6WyJwZXJmb3JtYW5jZS5zZXJ2aWNlLmQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7O0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBPbkRlc3Ryb3ksIEFwcGxpY2F0aW9uUmVmIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5leHBvcnQgZGVjbGFyZSBjbGFzcyBQZXJmb3JtYW5jZU1vbml0b3JpbmdTZXJ2aWNlIGltcGxlbWVudHMgT25EZXN0cm95IHtcbiAgICBwcml2YXRlIGRpc3Bvc2FibGU7XG4gICAgY29uc3RydWN0b3IoYXBwUmVmOiBBcHBsaWNhdGlvblJlZik7XG4gICAgbmdPbkRlc3Ryb3koKTogdm9pZDtcbn1cbiJdfQ==

@@ -1,0 +1,8 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+export { AUTOMATICALLY_TRACE_CORE_NG_METRICS, INSTRUMENTATION_ENABLED, DATA_COLLECTION_ENABLED, AngularFirePerformance, traceUntil, traceWhile, traceUntilComplete, traceUntilFirst, trace } from './performance';
+export { AngularFirePerformanceModule } from './performance.module';
+export { PerformanceMonitoringService } from './performance.service';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljX2FwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL0Bhbmd1bGFyL2ZpcmUvcGVyZm9ybWFuY2UvIiwic291cmNlcyI6WyJwdWJsaWNfYXBpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7QUFBQSxrTUFBYyxlQUFlLENBQUM7QUFDOUIsNkNBQWMsc0JBQXNCLENBQUM7QUFDckMsNkNBQWMsdUJBQXVCLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgKiBmcm9tICcuL3BlcmZvcm1hbmNlJztcbmV4cG9ydCAqIGZyb20gJy4vcGVyZm9ybWFuY2UubW9kdWxlJztcbmV4cG9ydCAqIGZyb20gJy4vcGVyZm9ybWFuY2Uuc2VydmljZSc7XG4iXX0=

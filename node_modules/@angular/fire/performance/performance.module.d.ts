@@ -1,0 +1,10 @@
+import { AngularFirePerformance } from './performance';
+import { PerformanceMonitoringService } from './performance.service';
+import * as ɵngcc0 from '@angular/core';
+export declare class AngularFirePerformanceModule {
+    constructor(perf: AngularFirePerformance, _: PerformanceMonitoringService);
+    static ɵmod: ɵngcc0.ɵɵNgModuleDefWithMeta<AngularFirePerformanceModule, never, never, never>;
+    static ɵinj: ɵngcc0.ɵɵInjectorDef<AngularFirePerformanceModule>;
+}
+
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicGVyZm9ybWFuY2UubW9kdWxlLmQudHMiLCJzb3VyY2VzIjpbInBlcmZvcm1hbmNlLm1vZHVsZS5kLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7O0FBQ0E7QUFDQTs7O0FBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBBbmd1bGFyRmlyZVBlcmZvcm1hbmNlIH0gZnJvbSAnLi9wZXJmb3JtYW5jZSc7XG5pbXBvcnQgeyBQZXJmb3JtYW5jZU1vbml0b3JpbmdTZXJ2aWNlIH0gZnJvbSAnLi9wZXJmb3JtYW5jZS5zZXJ2aWNlJztcbmV4cG9ydCBkZWNsYXJlIGNsYXNzIEFuZ3VsYXJGaXJlUGVyZm9ybWFuY2VNb2R1bGUge1xuICAgIGNvbnN0cnVjdG9yKHBlcmY6IEFuZ3VsYXJGaXJlUGVyZm9ybWFuY2UsIF86IFBlcmZvcm1hbmNlTW9uaXRvcmluZ1NlcnZpY2UpO1xufVxuIl19

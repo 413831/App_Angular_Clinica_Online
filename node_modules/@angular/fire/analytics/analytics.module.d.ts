@@ -1,0 +1,10 @@
+import { UserTrackingService, ScreenTrackingService } from './analytics.service';
+import { AngularFireAnalytics } from './analytics';
+import * as ɵngcc0 from '@angular/core';
+export declare class AngularFireAnalyticsModule {
+    constructor(analytics: AngularFireAnalytics, screenTracking: ScreenTrackingService, userTracking: UserTrackingService);
+    static ɵmod: ɵngcc0.ɵɵNgModuleDefWithMeta<AngularFireAnalyticsModule, never, never, never>;
+    static ɵinj: ɵngcc0.ɵɵInjectorDef<AngularFireAnalyticsModule>;
+}
+
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYW5hbHl0aWNzLm1vZHVsZS5kLnRzIiwic291cmNlcyI6WyJhbmFseXRpY3MubW9kdWxlLmQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTs7QUFDQTtBQUNBOzs7QUFDQSIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFVzZXJUcmFja2luZ1NlcnZpY2UsIFNjcmVlblRyYWNraW5nU2VydmljZSB9IGZyb20gJy4vYW5hbHl0aWNzLnNlcnZpY2UnO1xuaW1wb3J0IHsgQW5ndWxhckZpcmVBbmFseXRpY3MgfSBmcm9tICcuL2FuYWx5dGljcyc7XG5leHBvcnQgZGVjbGFyZSBjbGFzcyBBbmd1bGFyRmlyZUFuYWx5dGljc01vZHVsZSB7XG4gICAgY29uc3RydWN0b3IoYW5hbHl0aWNzOiBBbmd1bGFyRmlyZUFuYWx5dGljcywgc2NyZWVuVHJhY2tpbmc6IFNjcmVlblRyYWNraW5nU2VydmljZSwgdXNlclRyYWNraW5nOiBVc2VyVHJhY2tpbmdTZXJ2aWNlKTtcbn1cbiJdfQ==

@@ -1,0 +1,32 @@
+CLINICA ON-LINE
+///////////////
+6 consultorios
+2 laboratorios
+1 sala de espera
+----------------
+Usuario
+	nombre
+	clave
+	dni
+	email
+	telefono
+	imagen
+Profesionales (Medicos)
+	matricula
+	consultorio
+	disponibilidad
+	especialidades
+Pacientes
+	obra social
+	turnos
+Turno
+	paciente
+	medico
+	fecha
+	duracion
+-----------------
+ABM
+Se requiere perfiles de usuarios
+JWT
+
+
