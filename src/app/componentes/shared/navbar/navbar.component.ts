@@ -6,6 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+ public links = [
+  { path: 'home', label: "Home", title: "Principal"},
+  { path: 'login', label: "Iniciar Sesión" , title: "Iniciar sesión"},
+  { path: 'cartilla', label: "Cartilla", title: "Listado de médicos"},
+  { path: 'turnos', label: "Turnos", title: "Turnos"},
+  { path: 'contacto', label: "Contacto", title: "Sobre nosotros"},
+  
+ ];
 
   constructor() { }
 

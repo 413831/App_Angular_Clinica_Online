@@ -6,7 +6,8 @@ export class Medico extends Usuario
     private _consultorio: number;
     private _disponibilidad: string;
     private _especialidades: Especialidad[];    
-    
+    private _autorizado: boolean;
+
     constructor(nombre: string, clave: string, dni: number,
                 email: string, telefono: number,imagen: any,
                 matricula: number, consultorio: number,
@@ -47,6 +48,14 @@ export class Medico extends Usuario
     public set especialidades(value: Especialidad[]) {
         this._especialidades = value;
     }
+
+    public get autorizado(): boolean {
+        return this._autorizado;
+    }
+    public set autorizado(value: boolean) {
+        this._autorizado = value;
+    }
+    
 }
 
 export enum Especialidad{

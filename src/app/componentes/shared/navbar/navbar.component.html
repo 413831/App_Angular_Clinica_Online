@@ -1,8 +1,9 @@
 <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
-    <mat-tab label="Home"> Home </mat-tab>
-    <mat-tab label="Iniciar sesion"> Iniciar sesion </mat-tab>
-    <mat-tab label="Cartilla"> Cartilla </mat-tab>
-    <mat-tab label="Turnos"> Turnos </mat-tab>
-    <mat-tab label="Contacto"> Contacto </mat-tab>
-  </mat-tab-group>
-  <mat-tab-group>
+  <div *ngFor="let link of links">
+    <a [routerLink]="link.path" routerLinkActive="router-link-active">
+      <mat-tab label="{{link.label}}">
+        <h1>{{link.title}}</h1>
+      </mat-tab>
+    </a>
+  </div>
+</mat-tab-group>
