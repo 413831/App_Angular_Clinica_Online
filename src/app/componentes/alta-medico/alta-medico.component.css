@@ -1,0 +1,11 @@
+.mat-stepper-horizontal {    
+    margin-top: 8px;
+    padding: 0 3px 5px 5px;
+    background-color: #F8F8FF;
+  }
+  
+  .mat-form-field {
+    margin-top: 16px;
+    padding-right: 18px;
+    background-color: #F8F8FF;
+  }

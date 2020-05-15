@@ -1,13 +1,14 @@
+<div class="page">
 <div class="example-container">
     <h1>Iniciar sesión</h1>
     <mat-form-field appearance="fill">
-        <mat-label>Ingresa tu email</mat-label>
+        <mat-label>Ingrese su email</mat-label>
         <input matInput placeholder="pat@example.com" [formControl]="email" required>
         <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
-        <mat-label>Enter your password</mat-label>
+        <mat-label>Ingrese su contraseña</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'">
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -16,3 +17,4 @@
     <br>
     <button mat-raised-button color="primary">Entrar</button>
   </div>
+</div>

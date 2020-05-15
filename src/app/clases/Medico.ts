@@ -9,13 +9,13 @@ export class Medico extends Usuario
    
     private _autorizado: boolean;
 
-    constructor(nombre: string, clave: string, dni: number,
+    constructor(nombre: string, clave: string, dni: number, direccion: string,
                 email: string, telefono: number,imagen: any,
                 matricula: number, consultorio: number,
                 disponibilidad: string,
                 especialidad: Especialidad)
     {
-        super(nombre,clave, dni, email, telefono, imagen);
+        super(nombre,clave, dni, direccion ,email, telefono,imagen);
         this.matricula = matricula;
         this.consultorio = consultorio;
         this.disponibilidad = disponibilidad;

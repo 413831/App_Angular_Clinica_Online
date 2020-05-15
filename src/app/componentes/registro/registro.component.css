@@ -1,7 +1,7 @@
 .example-small-box, .example-large-box {
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: left;
     margin: 16px;
     padding: 16px;
     border-radius: 8px;
@@ -9,12 +9,15 @@
   
   
   .example-large-box {
-    height: 800px;
-    width: 300px;
+    display: flex;
+    margin: auto;    
+    height: 400px;
+    width: max-content;
   }
 
   .container{
     display: flex;
     justify-content: center;
     margin: auto;
+    
   }

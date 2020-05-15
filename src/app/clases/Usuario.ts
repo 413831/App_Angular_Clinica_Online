@@ -1,9 +1,11 @@
 export class Usuario
 {
+    
     private _id;
     
     constructor(private _nombre: string, private _clave: string, private _dni: number,
-        private _email: string, private _telefono: number, private _imagen: any){};
+                private _direccion: string, private _email: string, private _telefono: number,
+                private _imagen: any){};
 
     public get id() {
         return this._id;
@@ -22,6 +24,13 @@ export class Usuario
     }
     public set telefono(value: number) {
         this._telefono = value;
+    }
+
+    public get direccion(): string {
+        return this._direccion;
+    }
+    public set direccion(value: string) {
+        this._direccion = value;
     }
     public get email(): string {
         return this._email;

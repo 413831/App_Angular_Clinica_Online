@@ -1,37 +1,78 @@
-<p>alta-paciente works!</p>
-  <mat-vertical-stepper [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Fill out your name</ng-template>
-        <mat-form-field>
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Fill out your address</ng-template>
-        <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                 required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
+<h2><p>Ingrese sus datos</p></h2>
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Datos personales</ng-template>
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Ingrese su nombre y apellido" formControlName="primerControl" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>DNI</mat-label>
+        <input matInput placeholder="Ingrese su número de DNI"  required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Direccion</mat-label>
+        <input matInput placeholder="Ingrese su dirección completa" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Teléfono</mat-label>
+        <input matInput placeholder="Ingrese su número de contacto" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Imagen</mat-label>
+        <input matInput placeholder="Aca falta control para file"  required>
+      </mat-form-field>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button matStepperNext>Siguiente</button>
       </div>
-    </mat-step>
-  </mat-vertical-stepper>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Datos de afiliado</ng-template>
+      <mat-form-field>
+        <mat-label>Obra Social o Prepaga</mat-label>
+        <input matInput placeholder="Ingrese su obra social o prepaga" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Número de afiliado</mat-label>
+        <input matInput  placeholder="Ingrese su numero de afiliado" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Datos para usuario</ng-template>
+      <p>Estos datos se utilizarán para su inicio se sesión.</p>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput  placeholder="Ingrese su direccion de correo electrónico" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Clave</mat-label>
+        <input matInput  placeholder="Ingrese su contraseña" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Avatar</mat-label>
+        <input matInput  placeholder="Ingrese imagen para perfil" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Finalizar</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Atrás</button>
+      <button mat-button (click)="stepper.reset()">Limpiar todo</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
