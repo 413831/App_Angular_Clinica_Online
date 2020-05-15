@@ -1,11 +1,17 @@
-.mat-stepper-horizontal {    
-    margin-top: 8px;
-    padding: 0 3px 5px 5px;
-    background-color: #F8F8FF;
-  }
-  
-  .mat-form-field {
-    margin-top: 16px;
-    padding-right: 18px;
-    background-color: #F8F8FF;
-  }
+.mat-stepper-vertical {    
+  margin-top: 8px;
+  padding: 0 2px 2px 5px;
+  background-color: #F8F8FF;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+  padding-right: 10px;
+  background-color: #F8F8FF;
+}
+
+.page{
+  background-color: #F8F8FF;
+  padding-top: 3px;
+  margin-left: 25px;
+}

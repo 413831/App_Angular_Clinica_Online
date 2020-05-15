@@ -1,5 +1,6 @@
-<h2><p>Ingrese sus datos</p></h2>
-<mat-horizontal-stepper [linear]="isLinear" #stepper>
+<h2><p class="page">Ingrese sus datos</p></h2>
+<hr>
+<mat-vertical-stepper #stepper>
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Datos personales</ng-template>
@@ -23,9 +24,6 @@
         <mat-label>Imagen</mat-label>
         <input matInput placeholder="Aca falta control para file"  required>
       </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Siguiente</button>
-      </div>
     </form>
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
@@ -39,10 +37,6 @@
         <mat-label>Número de afiliado</mat-label>
         <input matInput  placeholder="Ingrese su numero de afiliado" required>
       </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button matStepperNext>Siguiente</button>
-      </div>
     </form>
   </mat-step>
   <mat-step [stepControl]="thirdFormGroup">
@@ -61,18 +55,14 @@
         <mat-label>Avatar</mat-label>
         <input matInput  placeholder="Ingrese imagen para perfil" required>
       </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button matStepperNext>Siguiente</button>
-      </div>
     </form>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Finalizar</ng-template>
-    <p>You are now done.</p>
+    <h3><p>Si está seguro de que sus datos sean correctos presione confirmar</p></h3>
     <div>
-      <button mat-button matStepperPrevious>Atrás</button>
+      <button mat-button matStepperPrevious>Confirmar</button>
       <button mat-button (click)="stepper.reset()">Limpiar todo</button>
     </div>
   </mat-step>
-</mat-horizontal-stepper>
+</mat-vertical-stepper>
