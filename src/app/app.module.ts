@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
+import { environment } from '../environments/environment';
 
 // Routing
 import { AppRoutingModule } from './app-routing.module';
@@ -68,6 +70,9 @@ import { AltaTurnoComponent } from './componentes/alta-turno/alta-turno.componen
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: environment.agmKey
+    }),
     MatSliderModule,
     MatTabsModule,
     MatButtonModule,

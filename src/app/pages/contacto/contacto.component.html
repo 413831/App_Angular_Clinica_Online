@@ -1,17 +1,27 @@
 <div class="page">
-<p>contacto works!</p>
-<mat-accordion >
-    <mat-expansion-panel (opened)="panelOpenState = true"
-                         (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Self aware panel
-        </mat-panel-title>
-        <mat-panel-description>
-          Currently I am {{panelOpenState ? 'open' : 'closed'}}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>I'm visible because I am open</p>
-    </mat-expansion-panel>
-  </mat-accordion>
+  <h1><p class="titulos">Sobre nosotros</p></h1>
+  <mat-tab-group mat-stretch-tabs class=" mat-elevation-z5" headerPosition="below">
+    <mat-tab label="Contacto"> 
+    <ul>
+      <li>Teléfono: 4-111-111</li>
+      <li>Correo electrónico: lasalitadesalud@mail.com</li>
+      <li>Redes sociales: ...</li>
+    </ul>   
+    </mat-tab>
+    <mat-tab label="Ubicacion"> 
+      <p class="titulos">Dirección: Calle Siemprevivas 1234 </p> 
+      <agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng">
+        <agm-marker  [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>  
+    </mat-tab>
+    <mat-tab label="Historia">
+      <div class="parrafo">
+    <p>La Clinica Señor Gago de los Soles ha surgido como una comunión de tres ideas fundamentales, el servicio, la salud y el profesionalismo.</p>  
+    <p>En el año 2001 el Señor Ernesto "Gago" de la Fuente, médico neurólogo consagrado en el Congreso XIV de la Organización Mundial de la Salud, reunió un equipo de 13 médicos</p>
+    <p>Junto con sus colegas creó el Instituto Gago para la Enfermedad de la Pierna Corta en la ciudad de La Plata donde recibió el Premio Delfín Azul por su labor</p>
+    <p>A finales del año 2009 se construye la clínica con multiples especialidades y un centro de investigación integrado con colaboración de la Universidad de Chubut.</p>
+  </div>  
+  </mat-tab>
+  </mat-tab-group>
+  <app-about></app-about>
 </div>

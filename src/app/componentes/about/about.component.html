@@ -1,1 +1,39 @@
-<p>about works!</p>
+<mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Calidad
+        </mat-panel-title>
+        <mat-panel-description>
+          La calidad es clave para mantener la calidad
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>Somos un equipo que mantiene el alto profesionalismo como uno de sus principales pilares.</p>
+      <p>Certificaciones nacionales, internacionales e interestelares que avalan le eficiencia de nuestro servicio
+        de salud</p>
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Compromiso
+        </mat-panel-title>
+        <mat-panel-description>
+          Nuestra meta es estar con la gente
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>Entendemos la responsabilidad como excelencia en nuestro servicio tanto en aspecto profesional como humano</p>
+      <p>La atención al paciente es nuestra mayor prioridad complementando el conocimiento profesional de los profesionales</p>
+    </mat-expansion-panel>
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Innovación
+          </mat-panel-title>
+          <mat-panel-description>
+            La tecnología a servicio de una mejor salud
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Tenemos muchos aparatitos nuevos y caros que pueden curarte para hacerte mejor ser humano mundial</p>
+        <p>Somos uno de los centros de vanguardia en área de innovación e investigación con su propio centro de desarrollo de tecnologías para la industria de la salud</p>        
+      </mat-expansion-panel>
+  </mat-accordion>
