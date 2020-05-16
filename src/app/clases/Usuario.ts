@@ -1,11 +1,13 @@
-export class Usuario
+export abstract class Usuario
 {
-    
     private _id;
-    
-    constructor(private _nombre: string, private _clave: string, private _dni: number,
-                private _direccion: string, private _email: string, private _telefono: number,
-                private _imagen: any){};
+    private _nombre: string;
+    private _clave: string;
+    private _dni: number;
+    private _direccion: string;
+    private _email: string;
+    private _telefono: number;
+    private _imagen: any
 
     public get id() {
         return this._id;

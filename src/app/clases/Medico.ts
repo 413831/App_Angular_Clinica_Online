@@ -9,17 +9,26 @@ export class Medico extends Usuario
    
     private _autorizado: boolean;
 
-    constructor(nombre: string, clave: string, dni: number, direccion: string,
+    public static CrearMedico(nombre: string, clave: string, dni: number, direccion: string,
                 email: string, telefono: number,imagen: any,
                 matricula: number, consultorio: number,
                 disponibilidad: string,
-                especialidad: Especialidad)
+                especialidad: Especialidad): Medico
     {
-        super(nombre,clave, dni, direccion ,email, telefono,imagen);
-        this.matricula = matricula;
-        this.consultorio = consultorio;
-        this.disponibilidad = disponibilidad;
-        this.especialidad = especialidad;
+        let medico = new Medico();
+        medico.nombre = nombre;
+        medico.clave = clave;
+        medico.dni = dni;
+        medico.direccion = direccion;
+        medico.email = email;
+        medico.telefono = telefono;
+        medico.imagen = imagen;
+        medico.matricula = matricula;
+        medico.consultorio = consultorio;
+        medico.disponibilidad = disponibilidad;
+        medico.especialidad = especialidad;
+
+        return medico;
     }
     
     public get matricula(): number {
@@ -61,9 +70,9 @@ export class Medico extends Usuario
 }
 
 export enum Especialidad{
-    General,
-    Pediatría,
-    Dermatología,
-    Traumatología,
-    Cardiología
+    General = 'General',
+    Pediatría = 'Pediatría',
+    Dermatología = 'Dermatología',
+    Traumatología = 'Traumatología',
+    Cardiología = 'Cardiología'
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Paciente } from 'src/app/clases/Paciente';
 
 @Component({
   selector: 'app-alta-paciente',
@@ -7,6 +8,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./alta-paciente.component.css']
 })
 export class AltaPacienteComponent implements OnInit {
+  paciente: Paciente;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
@@ -14,6 +16,7 @@ export class AltaPacienteComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
+    this.paciente = new Paciente();
     this.firstFormGroup = this._formBuilder.group({
       primerControl: ['', Validators.required],
       segundoControl: ['', Validators.required],
@@ -26,5 +29,10 @@ export class AltaPacienteComponent implements OnInit {
     this.thirdFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+  }
+
+  alta()
+  {
+    
   }
 }

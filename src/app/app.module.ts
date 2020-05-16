@@ -24,6 +24,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 // Componentes
 import { AppComponent } from './app.component';
@@ -43,6 +44,11 @@ import { ListadoPacientesComponent } from './componentes/listado-pacientes/lista
 import { AltaMedicoComponent } from './componentes/alta-medico/alta-medico.component';
 import { AltaPacienteComponent } from './componentes/alta-paciente/alta-paciente.component';
 import { AltaTurnoComponent } from './componentes/alta-turno/alta-turno.component';
+import { MenuPacienteComponent } from './componentes/menu-paciente/menu-paciente.component';
+import { MenuMedicoComponent } from './componentes/menu-medico/menu-medico.component';
+import { MenuAdministradorComponent } from './componentes/menu-administrador/menu-administrador.component';
+import { DetalleMedicoComponent } from './componentes/detalle-medico/detalle-medico.component';
+import { DetallePacienteComponent } from './componentes/detalle-paciente/detalle-paciente.component';
 
 
 @NgModule({
@@ -62,7 +68,12 @@ import { AltaTurnoComponent } from './componentes/alta-turno/alta-turno.componen
     ListadoPacientesComponent,
     AltaMedicoComponent,
     AltaPacienteComponent,
-    AltaTurnoComponent
+    AltaTurnoComponent,
+    MenuPacienteComponent,
+    MenuMedicoComponent,
+    MenuAdministradorComponent,
+    DetalleMedicoComponent,
+    DetallePacienteComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +99,8 @@ import { AltaTurnoComponent } from './componentes/alta-turno/alta-turno.componen
     MatGridListModule,
     MatCardModule,
     MatExpansionModule,
-    MatStepperModule
+    MatStepperModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

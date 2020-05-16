@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {SelectionModel} from '@angular/cdk/collections';
+import { Especialidad, Medico } from 'src/app/clases/Medico';
 
 @Component({
   selector: 'app-alta-medico',
@@ -7,14 +9,23 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./alta-medico.component.css']
 })
 export class AltaMedicoComponent implements OnInit {
+  medico: Medico;
   isLinear = false;
+  seleccion = new SelectionModel<Especialidad>(true, []);
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
+  especialidades: Especialidad[] = [Especialidad.Cardiología,Especialidad.Dermatología,
+                                    Especialidad.General, Especialidad.Pediatría, Especialidad.Traumatología];
+  // public especialidades: Especialidad[];
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder) {    
+    // Se pueden traer las especialidades creadas
+    // this.especialidades = servicio.traerEspecialidades();
+  }
 
   ngOnInit() {
+    this.medico = new Medico();
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
@@ -24,5 +35,10 @@ export class AltaMedicoComponent implements OnInit {
     this.thirdFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+  }
+
+  alta()
+  {
+    
   }
 }

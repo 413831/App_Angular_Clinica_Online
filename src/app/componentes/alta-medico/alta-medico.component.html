@@ -4,23 +4,23 @@
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Datos personales</ng-template>
-      <mat-form-field>
+      <mat-form-field appearance="fill">
         <mat-label>Nombre</mat-label>
-        <input matInput placeholder="Ingrese su nombre y apellido" formControlName="primerControl" required>
+        <input matInput [(ngModel)]='medico.nombre' placeholder="Ingrese su nombre y apellido" formControlName="primerControl" required>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field appearance="fill">
         <mat-label>DNI</mat-label>
-        <input matInput placeholder="Ingrese su número de DNI"  required>
+        <input matInput type="number" placeholder="Ingrese su número de DNI"  required>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field appearance="fill">
         <mat-label>Direccion</mat-label>
         <input matInput placeholder="Ingrese su dirección completa" required>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field appearance="fill">
         <mat-label>Teléfono</mat-label>
-        <input matInput placeholder="Ingrese su número de contacto" required>
+        <input matInput type="tel" placeholder="Ingrese su número de contacto" required>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field appearance="fill">
         <mat-label>Imagen</mat-label>
         <input matInput placeholder="Aca falta control para file"  required>
       </mat-form-field>
@@ -28,30 +28,39 @@
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Datos de afiliado</ng-template>
-      <mat-form-field>
-        <mat-label>Obra Social o Prepaga</mat-label>
+      <ng-template matStepLabel>Datos laborales</ng-template>
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Número de matricula</mat-label>
+        <input matInput  placeholder="Ingrese su numero de matrícula" required>
+      </mat-form-field>
+      <!-- Select -->
+      <mat-form-field appearance="fill">
+        <mat-label>Especialidades</mat-label>
         <input matInput placeholder="Ingrese su obra social o prepaga" required>
       </mat-form-field>
-      <mat-form-field>
-        <mat-label>Número de afiliado</mat-label>
-        <input matInput  placeholder="Ingrese su numero de afiliado" required>
-      </mat-form-field>
+      
+      <section class="especialidades" *ngFor="let especialidad of especialidades">
+        <<mat-checkbox (click)="$event.stopPropagation()"
+        (change)="$event ? seleccion.toggle(especialidad) : null"
+        [checked]="seleccion.isSelected(especialidad)">{{especialidad}}</mat-checkbox>
+      </section>
+
     </form>
   </mat-step>
   <mat-step [stepControl]="thirdFormGroup">
     <form [formGroup]="thirdFormGroup">
       <ng-template matStepLabel>Datos para usuario</ng-template>
       <p>Estos datos se utilizarán para su inicio se sesión.</p>
-      <mat-form-field>
+      <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
-        <input matInput  placeholder="Ingrese su direccion de correo electrónico" required>
+        <input matInput type="email" placeholder="Ingrese su direccion de correo electrónico" required>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field appearance="fill">
         <mat-label>Clave</mat-label>
-        <input matInput  placeholder="Ingrese su contraseña" required>
+        <input matInput type="password" placeholder="Ingrese su contraseña" required>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field appearance="fill">
         <mat-label>Avatar</mat-label>
         <input matInput  placeholder="Ingrese imagen para perfil" required>
       </mat-form-field>
@@ -61,7 +70,7 @@
     <ng-template matStepLabel>Finalizar</ng-template>
     <h3><p>Si está seguro de que sus datos sean correctos presione confirmar</p></h3>
     <div>
-      <button mat-button matStepperPrevious>Confirmar</button>
+      <button mat-button matStepperPrevious (click)="alta()">Confirmar</button>
       <button mat-button (click)="stepper.reset()">Limpiar todo</button>
     </div>
   </mat-step>
