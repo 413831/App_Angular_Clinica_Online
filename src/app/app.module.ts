@@ -81,9 +81,6 @@ import { DetallePacienteComponent } from './componentes/detalle-paciente/detalle
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    AgmCoreModule.forRoot({
-      apiKey: environment.agmKey
-    }),
     MatSliderModule,
     MatTabsModule,
     MatButtonModule,
@@ -100,7 +97,11 @@ import { DetallePacienteComponent } from './componentes/detalle-paciente/detalle
     MatCardModule,
     MatExpansionModule,
     MatStepperModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    AgmCoreModule.forRoot({
+      apiKey: environment.agmKey
+    }),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

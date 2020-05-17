@@ -5,7 +5,7 @@ import { Medico } from '../clases/Medico';
 @Injectable({
   providedIn: 'root'
 })
-export class ServicioMedicosService extends MiservicioService{
+export class MedicosService extends MiservicioService{
 
   constructor() { 
     super();
@@ -19,7 +19,7 @@ export class ServicioMedicosService extends MiservicioService{
                   .catch(() => console.info("No se pudo realizar alta"));
   }
 
-  public leer(): Medico
+  public leer(): Medico[]
   {
 
     return null;

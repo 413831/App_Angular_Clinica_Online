@@ -37,6 +37,10 @@ export class AltaMedicoComponent implements OnInit {
     });
   }
 
+  toggle(especialidad: Especialidad){
+
+  }
+
   alta()
   {
     

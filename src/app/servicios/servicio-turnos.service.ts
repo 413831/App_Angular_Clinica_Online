@@ -5,7 +5,7 @@ import { Turno } from '../clases/Turno';
 @Injectable({
   providedIn: 'root'
 })
-export class ServicioTurnosService extends MiservicioService{
+export class TurnosService extends MiservicioService{
 
   constructor() 
   { 
@@ -20,7 +20,7 @@ export class ServicioTurnosService extends MiservicioService{
                   .catch(() => console.info("No se pudo realizar alta"));
   }
 
-  public leer(): Turno
+  public leer(): Turno[]
   {
 
     return null;

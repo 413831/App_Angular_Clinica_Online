@@ -40,10 +40,15 @@
         <input matInput placeholder="Ingrese su obra social o prepaga" required>
       </mat-form-field>
       
-      <section class="especialidades" *ngFor="let especialidad of especialidades">
+      <!-- <section class="especialidades" *ngFor="let especialidad of especialidades">
         <<mat-checkbox (click)="$event.stopPropagation()"
         (change)="$event ? seleccion.toggle(especialidad) : null"
         [checked]="seleccion.isSelected(especialidad)">{{especialidad}}</mat-checkbox>
+      </section> -->
+
+      <section *ngFor="let especialidad of especialidades">
+        <mat-checkbox [checked]="seleccion.isSelected(especialidad)" 
+        (change)="toggle($event)">{{especialidad}}</mat-checkbox>
       </section>
 
     </form>
