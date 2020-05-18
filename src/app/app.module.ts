@@ -27,6 +27,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRippleModule} from '@angular/material/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 // Componentes
 import { AppComponent } from './app.component';
@@ -51,6 +53,7 @@ import { MenuMedicoComponent } from './componentes/menu-medico/menu-medico.compo
 import { MenuAdministradorComponent } from './componentes/menu-administrador/menu-administrador.component';
 import { DetalleMedicoComponent } from './componentes/detalle-medico/detalle-medico.component';
 import { DetallePacienteComponent } from './componentes/detalle-paciente/detalle-paciente.component';
+import { BuscadorMedicoComponent } from './componentes/buscador-medico/buscador-medico.component';
 
 
 @NgModule({
@@ -75,7 +78,8 @@ import { DetallePacienteComponent } from './componentes/detalle-paciente/detalle
     MenuMedicoComponent,
     MenuAdministradorComponent,
     DetalleMedicoComponent,
-    DetallePacienteComponent
+    DetallePacienteComponent,
+    BuscadorMedicoComponent
   ],
   imports: [
     BrowserModule,
@@ -102,6 +106,7 @@ import { DetallePacienteComponent } from './componentes/detalle-paciente/detalle
     MatCheckboxModule,
     MatRippleModule,
     MatToolbarModule,
+    MatDialogModule,
     AgmCoreModule.forRoot({
       apiKey: environment.agmKey
     }),

@@ -1,0 +1,21 @@
+
+  
+  .example-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    min-width: 300px;
+  }
+ 
+  .filter__form{
+     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .filter__form .form-group{
+    margin: 0 10px;
+  }
+  .primary{
+    background: orange;
+    color: white;
+  }

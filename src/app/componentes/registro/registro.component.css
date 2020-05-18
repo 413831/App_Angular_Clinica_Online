@@ -11,7 +11,7 @@
   .example-large-box {
     display: flex;
     margin: auto;    
-    height: 600px;
+    height: 700px;
     width: max-content;
   }
 

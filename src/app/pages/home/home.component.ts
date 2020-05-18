@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MiservicioService } from 'src/app/servicios/miservicio.service';
 
 export interface Tile {
   color: string;
@@ -25,7 +26,9 @@ export class HomeComponent implements OnInit {
     {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
     {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
   ];
-  constructor() { }
+  constructor(private servicio: MiservicioService) 
+  {
+  }
 
   ngOnInit(): void {
   }

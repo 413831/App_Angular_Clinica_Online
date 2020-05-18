@@ -5,8 +5,7 @@ export class Medico extends Usuario
     private _matricula: number;
     private _consultorio: number;
     private _disponibilidad: string;
-    private _especialidad: Especialidad;    
-   
+    private _especialidad: Especialidad;      
     private _autorizado: boolean;
 
     public static CrearMedico(nombre: string, clave: string, dni: number, direccion: string,

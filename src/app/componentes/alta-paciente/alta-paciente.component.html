@@ -1,63 +1,69 @@
 <h2><p class="page">Ingrese sus datos</p></h2>
 <hr>
-<mat-vertical-stepper #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
+<mat-vertical-stepper #stepper >
+  <mat-step [stepControl]="datosPaciente">
+    <form [formGroup]="datosPaciente">
       <ng-template matStepLabel>Datos personales</ng-template>
       <mat-form-field appearance="fill">
         <mat-label>Nombre</mat-label>
-        <input matInput placeholder="Ingrese su nombre y apellido" formControlName="primerControl" required>
+        <input formControlName="nombre" matInput placeholder="Ingrese su nombre y apellido" required>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>DNI</mat-label>
-        <input matInput type="number" placeholder="Ingrese su número de DNI"  required>
+        <input formControlName="dni" matInput type="number" placeholder="Ingrese su número de DNI"  required>
       </mat-form-field>
       <br>
       <mat-form-field appearance="fill">
         <mat-label>Direccion</mat-label>
-        <input matInput placeholder="Ingrese su dirección completa" required>
+        <input formControlName="direccion" matInput placeholder="Ingrese su dirección completa" required>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Teléfono</mat-label>
-        <input matInput type="tel" placeholder="Ingrese su número de contacto" required>
+        <input formControlName="telefono" matInput type="tel" placeholder="Ingrese su número de contacto" required>
       </mat-form-field>
       <br>
       <mat-form-field appearance="fill">
         <mat-label>Imagen</mat-label>
-        <input matInput  placeholder="Aca falta control para file"  required>
+        <input formControlName="imagen" matInput  placeholder="Aca falta control para file"  required>
       </mat-form-field>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
+  <mat-step [stepControl]="datosPaciente">
+    <form [formGroup]="datosPaciente">
       <ng-template matStepLabel>Datos de afiliado</ng-template>
       <mat-form-field appearance="fill">
         <mat-label>Obra Social o Prepaga</mat-label>
-        <input matInput placeholder="Ingrese su obra social o prepaga" required>
+        <!-- <input [(ngModel)]='paciente.obraSocial' matInput placeholder="Ingrese su obra social o prepaga" required> -->
+        <mat-select formControlName="obraSocial">
+          <mat-option *ngFor="let cobertura of obrasSociales" [value]="cobertura" 
+              placeholder="Ingrese su obra social o prepaga" required>
+            {{cobertura}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Número de afiliado</mat-label>
-        <input matInput  placeholder="Ingrese su numero de afiliado" required>
+        <input formControlName="numeroAfiliado" matInput placeholder="Ingrese su numero de afiliado" required>
       </mat-form-field>
     </form>
   </mat-step>
-  <mat-step [stepControl]="thirdFormGroup">
-    <form [formGroup]="thirdFormGroup">
+  <mat-step [stepControl]="datosPaciente">
+    <form [formGroup]="datosPaciente">
       <ng-template matStepLabel>Datos para usuario</ng-template>
       <p>Estos datos se utilizarán para su inicio se sesión.</p>
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
-        <input matInput type="email" placeholder="Ingrese su direccion de correo electrónico" required>
+        <input formControlName="email" matInput type="email" placeholder="Ingrese su direccion de correo electrónico" required>
       </mat-form-field>
       <br>
       <mat-form-field appearance="fill">
         <mat-label>Clave</mat-label>
-        <input matInput type="password" placeholder="Ingrese su contraseña" required>
+        <input formControlName="clave" matInput type="password" placeholder="Ingrese su contraseña" required>
       </mat-form-field>
       <br>
       <mat-form-field appearance="fill">
         <mat-label>Avatar</mat-label>
-        <input matInput  placeholder="Ingrese imagen para perfil" required>
+        <input formControlName="imagenDos" matInput placeholder="Ingrese imagen para perfil" required>
       </mat-form-field>
     </form>
   </mat-step>
@@ -65,8 +71,8 @@
     <ng-template matStepLabel>Finalizar</ng-template>
     <h4><p>Si está seguro de que sus datos sean correctos presione confirmar</p></h4>
     <div>
-      <button mat-button matStepperPrevious (click)="alta()">Confirmar</button>
-      <button mat-button (click)="stepper.reset()">Limpiar todo</button>
+      <button mat-raised-button color="primary" (click)="alta()">Confirmar</button>
+      <button mat-raised-button (click)="stepper.reset()">Limpiar todo</button>
     </div>
   </mat-step>
 </mat-vertical-stepper>

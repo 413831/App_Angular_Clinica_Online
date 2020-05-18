@@ -3,7 +3,12 @@
 html, body { height: 100%; }
 body { 
     margin: 0; 
-    font-family: Roboto, "Helvetica Neue", sans-serif;     
+    font-family: Roboto, "Helvetica Neue", sans-serif;    
+}
+
+* > body::-webkit-scrollbar  {
+    display: none;
+
 }
 
 .titulos{
@@ -14,10 +19,10 @@ body {
     margin: 35px;
 }
 
-.footer{
+/* .footer{
     margin-top: 60px;
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
     background-color: lightblue;
-}
+} */

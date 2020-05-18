@@ -1,0 +1,29 @@
+<p>buscador-medico works!</p>
+<form [formGroup]="filterForm">
+    <div mat-dialog-content class="filter__form">
+      <div class="form-group">
+        <mat-form-field>
+        <mat-label>Especialidad</mat-label>
+        <mat-select formControlName="especialidad" multiple>
+          <mat-option *ngFor="let especialidad of especialidades" [value]="especialidad">{{especialidad}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="nombre" placeholder="Ingrese nombre">
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+        <mat-label>Disponibilidad</mat-label>
+        <mat-select formControlName="horario" multiple>
+          <mat-option *ngFor="let horario of franjaHoraria" [value]="horario">{{horario}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
+      <div class="modal-inforce__footer">
+        <button type="submit" (click)="buscar()" mat-button class="primary">Filtrar</button>
+      </div>
+    </div>
+  </form>

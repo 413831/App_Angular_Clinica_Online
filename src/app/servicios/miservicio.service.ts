@@ -8,10 +8,14 @@ import { Usuario } from '../clases/Usuario';
 })
 export class MiservicioService {
   protected database;
+  protected inicializado: boolean = false;
 
   constructor() 
   {
-    this.init();
+    if(!firebase.app)
+    {
+      this.init();      
+    }
   }
 
   private init()
@@ -27,9 +31,11 @@ export class MiservicioService {
     //   measurementId: "G-YGGBT9VCC2"
     // };
     // Initialize Firebase
+    console.log("Se inicializa servicio para Firebase Database");
     firebase.initializeApp(environment.firebaseConfig);
     firebase.analytics();
     this.database = firebase.database();
+    this.inicializado = true;
   }
 
   public iniciarSesion(usuario: Usuario) {
