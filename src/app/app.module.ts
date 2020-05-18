@@ -25,6 +25,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRippleModule} from '@angular/material/core';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 // Componentes
 import { AppComponent } from './app.component';
@@ -98,6 +100,8 @@ import { DetallePacienteComponent } from './componentes/detalle-paciente/detalle
     MatExpansionModule,
     MatStepperModule,
     MatCheckboxModule,
+    MatRippleModule,
+    MatToolbarModule,
     AgmCoreModule.forRoot({
       apiKey: environment.agmKey
     }),

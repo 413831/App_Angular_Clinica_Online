@@ -13,3 +13,11 @@ body {
 .parrafo{
     margin: 35px;
 }
+
+.footer{
+    margin-top: 60px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    background-color: lightblue;
+}

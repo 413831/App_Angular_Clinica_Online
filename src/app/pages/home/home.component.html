@@ -1,32 +1,67 @@
+<mat-toolbar>Clínica Señor Gago de los Soles</mat-toolbar>
 <div class="container">
-<mat-grid-list cols="4" rowHeight="100px" gutterSize="0px">
-    <mat-grid-tile [colspan]=4 [rowspan]=1 [style.background]="'#F0F8FF'">
-       
-        <h1><p>Clínica Señor Gago de los Soles</p></h1>
+    <!-- <mat-grid-list cols="4" rowHeight="100px" gutterSize="0px">
+        <mat-grid-tile [colspan]=4 [rowspan]=1 [style.background]="'#F0F8FF'">
+            <h1>
+                <p>Clínica Señor Gago de los Soles</p>
+            </h1>
+        </mat-grid-tile>
+    </mat-grid-list> -->
 
-    </mat-grid-tile>
-</mat-grid-list>
-<!-- Background : ghostwhite -->
-<mat-grid-list cols="4" rowHeight="300px">
-    <mat-grid-tile [colspan]=4 [rowspan]=1 [style.background]="'#F0F8FF'">
-        <img  src="../../../assets/img/hospital1.jpg" alt="">
-    </mat-grid-tile>
-</mat-grid-list>
+    <!-- Background : ghostwhite -->
+    <mat-grid-list cols="4" rowHeight="300px">
+        <mat-grid-tile [colspan]=4 [rowspan]=1 [style.background]="'#F0F8FF'">
+            <img src="../../../assets/img/hospital1.jpg" alt="">
+        </mat-grid-tile>
+    </mat-grid-list>
 
-<mat-grid-list cols="4" rowHeight="300px">
-    <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
-        [style.background]="tile.color">
+    <mat-grid-list cols="3" rowHeight="400px" [style.background]="'#E6E6FA'">
+        <mat-grid-tile [colspan]=1 [rowspan]=1 [style.background]="'#F0F8FF'">
+            <h2>
+                <div class="example-ripple-container mat-elevation-z4"
+                matRipple 
+                [matRippleCentered]="centered"
+                [matRippleDisabled]="disabled"
+                [matRippleUnbounded]="unbounded"
+                [matRippleRadius]="radius"
+                [matRippleColor]="color"
+                [routerLink]="'/registro'">
+                Registro
+                </div>
+            </h2>
+        </mat-grid-tile>
 
-        {{tile.text}}
-        <mat-grid-tile-footer>Principal</mat-grid-tile-footer>
-    </mat-grid-tile>
-</mat-grid-list>
+        <mat-grid-tile [colspan]=1 [rowspan]=1 [style.background]="'#F0F8FF'">
+            <h2>
+                <div class="example-ripple-container mat-elevation-z4"
+                matRipple 
+                [matRippleCentered]="centered"
+                [matRippleDisabled]="disabled"
+                [matRippleUnbounded]="unbounded"
+                [matRippleRadius]="radius"
+                [matRippleColor]="color"
+                [routerLink]="'/turnos'">
+                Turnos
+                </div>
+            </h2>
+        </mat-grid-tile>
+    </mat-grid-list>
 
+    <!-- <div>
+       <mat-grid-list cols="4" rowHeight="300px">
+            <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
+                [style.background]="tile.color">
 
-<h3>Stroked Buttons</h3>
-<div class="example-button-row">
-    <a mat-stroked-button [routerLink]="'/registro'">Registro</a>
-    <a mat-stroked-button routerLink=".">Consultar Turnos</a>
-    <a mat-stroked-button routerLink=".">Cartilla médica</a>
-</div>
+                {{tile.text}}
+                <mat-grid-tile-footer>Principal</mat-grid-tile-footer>
+            </mat-grid-tile>
+        </mat-grid-list>
+
+        <h3>Stroked Buttons</h3>
+        <div class="example-button-row">
+            <a mat-stroked-button [routerLink]="'/registro'">Registro</a>
+            <a mat-stroked-button routerLink=".">Consultar Turnos</a>
+            <a mat-stroked-button routerLink=".">Cartilla médica</a>
+        </div>
+    </div> -->
 </div>

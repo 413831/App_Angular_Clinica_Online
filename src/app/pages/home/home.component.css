@@ -5,10 +5,38 @@ img {
     width: 80rem;
   }
   
-  img:hover {
-    box-shadow: 1px 1px 1px 1px rgba(0, 140, 186, 0.5);
-  }
-  
-  .container{
-      padding-top: 5px;
-  }
+img:hover {
+  box-shadow: 1px 1px 1px 1px rgba(0, 140, 186, 0.5);
+}
+
+.container{
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.example-ripple-container {
+  cursor: pointer;
+  text-align: center;
+
+  width: 300px;
+  height: 300px;
+  line-height: 300px;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/** Styles to make the demo look better. */
+.example-ripple-checkbox {
+  margin: 6px 12px 6px 0;
+}
+
+.example-ripple-form-field {
+  margin: 0 12px 0 0;
+}

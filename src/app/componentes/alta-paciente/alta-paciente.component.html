@@ -12,6 +12,7 @@
         <mat-label>DNI</mat-label>
         <input matInput type="number" placeholder="Ingrese su número de DNI"  required>
       </mat-form-field>
+      <br>
       <mat-form-field appearance="fill">
         <mat-label>Direccion</mat-label>
         <input matInput placeholder="Ingrese su dirección completa" required>
@@ -20,6 +21,7 @@
         <mat-label>Teléfono</mat-label>
         <input matInput type="tel" placeholder="Ingrese su número de contacto" required>
       </mat-form-field>
+      <br>
       <mat-form-field appearance="fill">
         <mat-label>Imagen</mat-label>
         <input matInput  placeholder="Aca falta control para file"  required>
@@ -47,10 +49,12 @@
         <mat-label>Email</mat-label>
         <input matInput type="email" placeholder="Ingrese su direccion de correo electrónico" required>
       </mat-form-field>
+      <br>
       <mat-form-field appearance="fill">
         <mat-label>Clave</mat-label>
         <input matInput type="password" placeholder="Ingrese su contraseña" required>
       </mat-form-field>
+      <br>
       <mat-form-field appearance="fill">
         <mat-label>Avatar</mat-label>
         <input matInput  placeholder="Ingrese imagen para perfil" required>
@@ -59,7 +63,7 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Finalizar</ng-template>
-    <h3><p>Si está seguro de que sus datos sean correctos presione confirmar</p></h3>
+    <h4><p>Si está seguro de que sus datos sean correctos presione confirmar</p></h4>
     <div>
       <button mat-button matStepperPrevious (click)="alta()">Confirmar</button>
       <button mat-button (click)="stepper.reset()">Limpiar todo</button>

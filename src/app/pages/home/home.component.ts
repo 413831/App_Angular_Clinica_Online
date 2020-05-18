@@ -13,6 +13,12 @@ export interface Tile {
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  centered = true;
+  disabled = false;
+  unbounded = false;
+
+  radius: number;
+  color: string;
   tiles: Tile[] = [
     {text: 'One', cols: 4, rows: 1, color: 'lightblue'},
     {text: 'Two', cols: 2, rows: 1, color: 'lightgreen'},
@@ -24,4 +30,5 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
 }
