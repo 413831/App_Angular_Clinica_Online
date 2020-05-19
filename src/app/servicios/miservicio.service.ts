@@ -18,7 +18,7 @@ export class MiservicioService {
     }
   }
 
-  private init()
+  public init()
   {
     // var firebaseConfig = {
     //   apiKey: "AIzaSyCS42LNdtLkC3whUk1CcDIp07XDH7xYTMo",
@@ -45,4 +45,13 @@ export class MiservicioService {
   public cerrarSesion() {
     localStorage.removeItem("usuario-logueado");
   }
+
+  public guardarImagen(imagen: File)
+  {
+    let formData = new FormData();
+
+    formData.append('image',imagen,imagen.name);
+    console.log(formData.get('image'));
+    console.log(formData);
+     //firebase.storage().ref().child('imagen').putString
 }

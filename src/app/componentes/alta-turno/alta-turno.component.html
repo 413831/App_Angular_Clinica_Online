@@ -1,1 +1,29 @@
 <p>alta-turno works!</p>
+<div class="example-container">
+    <h3></h3>
+    <mat-form-field appearance="fill">
+        <mat-label>Consultorio</mat-label>
+        <input matInput #input maxlength="10" placeholder="{{medico.consultorio}}" disabled>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Profesional</mat-label>
+        <input matInput #input maxlength="10" placeholder="{{medico.nombre}}" disabled>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Fecha de turno</mat-label>
+        <input matInput [matDatepicker]="picker"
+               (dateInput)="addEvent('input', $event)">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Select me</mat-label>
+      <mat-select>
+        <mat-option value="option">Option</mat-option>
+      </mat-select>
+      <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+    </mat-form-field>
+  </div>

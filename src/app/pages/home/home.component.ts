@@ -14,6 +14,9 @@ export interface Tile {
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  fileName: string;
+  reader: FileReader;
+  selectedFile: File;
   centered = true;
   disabled = false;
   unbounded = false;
@@ -31,7 +34,28 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.servicio.init();
   }
 
-  
+  onFileSelected(event)
+  {
+    let formData = new FormData();
+
+    // let reader = new FileReader();
+    // reader.readAsDataURL(event.target.files[0]);
+    this.selectedFile = <File>event.target.files[0];
+    
+    // this.selectedFile = btoa(event.target.files[0]);
+    console.log(this.selectedFile);
+    
+  }
+
+  onUpload()
+  {
+    
+    
+    this.servicio.guardarImagen(this.selectedFile);
+  }
 }
+
+  

@@ -5,14 +5,14 @@ export class Medico extends Usuario
     private _matricula: number;
     private _consultorio: number;
     private _disponibilidad: string;
-    private _especialidad: Especialidad;      
+    private _especialidad: Especialidad[];      
     private _autorizado: boolean;
 
     public static CrearMedico(nombre: string, clave: string, dni: number, direccion: string,
                 email: string, telefono: number,imagen: any,
                 matricula: number, consultorio: number,
                 disponibilidad: string,
-                especialidad: Especialidad): Medico
+                especialidad: Especialidad[]): Medico
     {
         let medico = new Medico();
         medico.nombre = nombre;
@@ -51,10 +51,10 @@ export class Medico extends Usuario
         this._disponibilidad = value;
     }
   
-    public get especialidad(): Especialidad {
+    public get especialidad(): Especialidad[] {
         return this._especialidad;
     }
-    public set especialidad(value: Especialidad) {
+    public set especialidad(value: Especialidad[]) {
         this._especialidad = value;
     }
    
