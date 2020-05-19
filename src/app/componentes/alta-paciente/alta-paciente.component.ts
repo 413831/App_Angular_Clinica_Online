@@ -9,6 +9,10 @@ import { PacientesService } from 'src/app/servicios/servicio-pacientes.service';
   styleUrls: ['./alta-paciente.component.css']
 })
 export class AltaPacienteComponent implements OnInit {     
+  base64textString: string;
+  reader: FileReader;
+  selectedFile: File;
+  imgUrl: string;
   datosPaciente: FormGroup;
   obrasSociales: string[] = ['Galeno', 'OSPERYH', 'OSPSA', 'Medicus','Hospital Italiano'];
 
@@ -40,12 +44,42 @@ export class AltaPacienteComponent implements OnInit {
 
   alta()
   {
+    this.servicio.guardarImagen(this.selectedFile, this.base64textString);
     let paciente = Paciente.CrearPaciente(this.nombre.value, this.clave.value, this.dni.value,
                                           this.direccion.value,this.email.value, this.telefono.value,
-                                          this.imagen.value, this.obraSocial.value, 
+                                          `imagen/${this.selectedFile.name}`, this.obraSocial.value, 
                                           this.numeroAfiliado.value, this.imagenDos.value);
+    this.servicio.descargarImagen(paciente.imagen);
     console.log(paciente);
     //this.servicio.crear(this.paciente);
+  }
+
+  onFileSelected(event)
+  {
+    this.selectedFile = <File>event.target.files[0];
+    
+    this.reader = new FileReader();
+    // Se asocia un mmanejador de evento para el onLoad 
+    this.reader.onload = this.parseToBase64.bind(this);
+    // Se dispara el evento onLoad guardando el archivo en el reader
+    this.reader.readAsBinaryString(this.selectedFile);
+    console.log(this.selectedFile);
+  }
+
+  parseToBase64(readerEvt) 
+  {
+    let binaryString = readerEvt.target.result;
+    this.base64textString= btoa(binaryString);
+  }
+
+  // Solo para test
+  upLoad()
+  {
+    this.servicio.guardarImagen(this.selectedFile, this.base64textString)
+                .then(() => this.servicio.descargarImagen(`/imagen/${this.selectedFile.name}`)
+                             .then(()=> this.imgUrl = this.servicio.imgSrc))
+                .catch( error => console.error(error));
+    
   }
 
   get nombre() { return this.datosPaciente.get('nombre'); }

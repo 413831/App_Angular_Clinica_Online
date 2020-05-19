@@ -26,3 +26,8 @@ body {
     justify-content: flex-start;
     background-color: lightblue;
 } */
+
+.thumbnail
+{
+    max-width: 100px;
+}

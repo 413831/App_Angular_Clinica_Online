@@ -7,6 +7,7 @@ import { Usuario } from '../clases/Usuario';
   providedIn: 'root'
 })
 export class MiservicioService {
+  public imgSrc;
   protected database;
   protected inicializado: boolean = false;
 
@@ -46,12 +47,23 @@ export class MiservicioService {
     localStorage.removeItem("usuario-logueado");
   }
 
-  public guardarImagen(imagen: File)
+  public guardarImagen(imagen: File, base64string: string)
   {
-    let formData = new FormData();
+    // let formData = new FormData();
+    // formData.append('image',imagen,imagen.name);
+    let metadata = {
+      contentType: 'image/jpeg'
+    };
+    console.log("Guardando imagen");
+    return firebase.storage().ref().child('imagen/'+imagen.name)
+                    .putString( base64string, 'base64', metadata );            
+  }
 
-    formData.append('image',imagen,imagen.name);
-    console.log(formData.get('image'));
-    console.log(formData);
-     //firebase.storage().ref().child('imagen').putString
+  public descargarImagen(url: string)
+  {
+    console.log("Descargando imagen");
+    return firebase.storage().ref().child(`/${url}`).getDownloadURL()
+                            .then((url)=> this.imgSrc = url)
+                            .catch(error => console.error(error));
+  }
 }

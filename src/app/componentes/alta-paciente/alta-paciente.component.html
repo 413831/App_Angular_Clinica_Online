@@ -1,5 +1,6 @@
 <h2><p class="page">Ingrese sus datos</p></h2>
 <hr>
+
 <mat-vertical-stepper #stepper >
   <mat-step [stepControl]="datosPaciente">
     <form [formGroup]="datosPaciente">
@@ -22,10 +23,16 @@
         <input formControlName="telefono" matInput type="tel" placeholder="Ingrese su número de contacto" required>
       </mat-form-field>
       <br>
-      <mat-form-field appearance="fill">
-        <mat-label>Imagen</mat-label>
-        <input formControlName="imagen" matInput  placeholder="Aca falta control para file"  required>
-      </mat-form-field>
+      
+        <mat-label for="singleFile">Imagen</mat-label>
+       
+        <img class="thumbnail" [src]="imgUrl" alt="foto-de-perfil">
+
+<!--         
+        <input formControlName="imagen" type="file" placeholder="Seleccione su imagen" (change)="onFileSelected($event)">        
+        <button (click)='upLoad()'>Subir imagen</button> -->
+
+
     </form>
   </mat-step>
   <mat-step [stepControl]="datosPaciente">

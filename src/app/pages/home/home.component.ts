@@ -14,7 +14,7 @@ export interface Tile {
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  fileName: string;
+  base64textString: string;
   reader: FileReader;
   selectedFile: File;
   centered = true;
@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
     {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
     {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
   ];
+
   constructor(private servicio: MiservicioService) 
   {
   }
@@ -37,25 +38,7 @@ export class HomeComponent implements OnInit {
     this.servicio.init();
   }
 
-  onFileSelected(event)
-  {
-    let formData = new FormData();
 
-    // let reader = new FileReader();
-    // reader.readAsDataURL(event.target.files[0]);
-    this.selectedFile = <File>event.target.files[0];
-    
-    // this.selectedFile = btoa(event.target.files[0]);
-    console.log(this.selectedFile);
-    
-  }
-
-  onUpload()
-  {
-    
-    
-    this.servicio.guardarImagen(this.selectedFile);
-  }
 }
 
   
