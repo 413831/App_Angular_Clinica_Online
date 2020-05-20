@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Paciente } from 'src/app/clases/Paciente';
 import { PacientesService } from 'src/app/servicios/servicio-pacientes.service';
+import { Imagen } from '../registro/registro.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
-export class Imagen{
-  nombre:string;
-  base64: string;
-}
+
 
 @Component({
   selector: 'app-alta-paciente',
@@ -25,7 +24,9 @@ export class AltaPacienteComponent implements OnInit {
   obrasSociales: string[] = ['Galeno', 'OSPERYH', 'OSPSA', 'Medicus','Hospital Italiano'];
 
   constructor(private _formBuilder: FormBuilder,
-              private servicio: PacientesService) 
+              private servicio: PacientesService,
+              private route: ActivatedRoute,
+              private router: Router) 
   {    
     this.datosPaciente = new FormGroup({
       nombre: new FormControl(),
@@ -47,14 +48,17 @@ export class AltaPacienteComponent implements OnInit {
 
   alta()
   {
-    this.servicio.guardarImagen(this.imagen1.nombre, this.imagen1.base64);
-    this.servicio.guardarImagen(this.imagen2.nombre, this.imagen2.base64);
+    
     let paciente = Paciente.CrearPaciente(this.nombre.value, this.clave.value, this.dni.value,
                                           this.direccion.value,this.email.value, this.telefono.value,
-                                          'imagenes/'+this.imagen1.nombre, this.obraSocial.value, 
-                                          this.numeroAfiliado.value, `imagenes/${this.imagen2.nombre}`);
+                                          `imagenes/${this.imagen1.nombre}`, this.obraSocial.value, 
+                                          this.numeroAfiliado.value, `imagenes/${this.imagen2.nombre}`,'');
+    this.servicio.guardarImagen(this.imagen1.nombre, this.imagen1.base64);
+    this.servicio.guardarImagen(this.imagen2.nombre, this.imagen2.base64);
+
     console.log(paciente);
     this.servicio.crear(paciente);
+    this.router.navigate(["/home"]);
   }
 
   onFileSelected(event)

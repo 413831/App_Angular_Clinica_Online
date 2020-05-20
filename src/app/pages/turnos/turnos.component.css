@@ -7,3 +7,10 @@ mat-grid-tile {
     margin-bottom: 70px;
     padding-bottom: 25px;
   }
+
+.page
+{
+    background-color: #F8F8FF;
+    height: 90%;
+    padding-top: 3px;
+}

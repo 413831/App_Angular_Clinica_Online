@@ -19,12 +19,7 @@ export class TurnosComponent implements OnInit {
   ngOnInit(): void {
     // Reemplazar con Local Storage
     // this.turnos = this.servicioTurnos.leer();
-    this.turnos = [
-      {id: 'test', nombrePaciente: 'Pepito',nombreMedico: 'Maria Angeles Sarasa', fecha: new Date(),
-        duracion: 30, especialidad: Especialidad.General, consultorio: 1, detalle: 'Ayuno', estado: Estado.Pendiente},
-      {id: 'test', nombrePaciente: 'Manuela',nombreMedico: 'Christian Sanchez', fecha: new Date(),
-      duracion: 30, especialidad: Especialidad.Traumatología, consultorio: 1, detalle: 'Ayuno', estado : Estado.Pendiente},
-    ]
+    
   }
 
   buscar()

@@ -7,7 +7,7 @@ export class Paciente extends Usuario{
   
     public static CrearPaciente(nombre: string, clave: string, dni: number, direccion: string,
                     email: string, telefono: number,imagen: string, obraSocial: string,
-                    numeroAfiliado: number, avatar: string, id?: any ): Paciente
+                    numeroAfiliado: number, avatar: string, id: string ): Paciente
     {
         let paciente = new Paciente();
 

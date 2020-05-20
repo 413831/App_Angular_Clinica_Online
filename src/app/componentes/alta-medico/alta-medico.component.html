@@ -22,10 +22,14 @@
         <input formControlName="telefono" matInput type="tel" placeholder="Ingrese su número de contacto" required>
       </mat-form-field>
       <br>
-      <mat-form-field appearance="fill">
-        <mat-label>Imagen</mat-label>
-        <input formControlName="imagen" matInput  placeholder="Aca falta control para file"  required>
-      </mat-form-field>
+      
+      <mat-label>Imagen</mat-label>
+      <hr>
+      <div class="panel">
+        <input formControlName="imagen"  class="botonFile" id="imagenUno" type="file" placeholder="Seleccione su imagen" (change)="onFileSelected($event)">        
+        <img *ngIf='imgUrl1' class="thumbnail" [src]="imgUrl1" alt="foto-de-perfil">
+        <!-- <button mat-raised-button color="primary" (click)='upLoad()'>Subir imagen</button> -->
+      </div>
     </form>
   </mat-step>
   <mat-step [stepControl]="datosMedico">
@@ -44,9 +48,7 @@
         </mat-select>
       </mat-form-field>
       <!-- Select -->
-      <!-- <mat-form-field appearance="fill">
-        <input matInput placeholder="Ingrese su obra social o prepaga" required>
-      </mat-form-field> -->
+    
       <br>
       <mat-label>Especialidades</mat-label>
       <mat-divider></mat-divider>
@@ -54,19 +56,7 @@
         <mat-list-option *ngFor="let especialidad of especialidades" [value]='especialidad' role="option">
           {{especialidad}}
         </mat-list-option>
-      </mat-selection-list>
-
-     
-      <!-- <section class="especialidades" *ngFor="let especialidad of especialidades">
-        <<mat-checkbox (click)="$event.stopPropagation()"
-        (change)="$event ? seleccion.toggle(especialidad) : null"
-        [checked]="seleccion.isSelected(especialidad)">{{especialidad}}</mat-checkbox>
-      </section> -->
-
-      <!-- <section *ngFor="let especialidad of especialidades">
-        <mat-checkbox [checked]="seleccion.isSelected(especialidad)" 
-        (change)="toggle($event)">{{especialidad}}</mat-checkbox>
-      </section> -->
+      </mat-selection-list>     
 
     </form>
   </mat-step>
@@ -84,10 +74,14 @@
         <input formControlName="clave" matInput type="password" placeholder="Ingrese su contraseña" required>
       </mat-form-field>
       <br>
-      <mat-form-field appearance="fill">
-        <mat-label>Avatar</mat-label>
-        <input formControlName="imagenDos" matInput placeholder="Ingrese imagen para perfil" required>
-      </mat-form-field>
+      <mat-label>Avatar</mat-label>
+        <hr>
+        <div class="panel">
+          <input formControlName="avatar" class="botonFile" id="imagenDos" type="file" placeholder="Seleccione su imagen" (change)="onFileSelected($event)">        
+          <img *ngIf='imgUrl2' class="thumbnail" [src]="imgUrl2" alt="foto-de-perfil">
+          <!-- <button mat-raised-button color="primary" (click)='upLoad()'>Vista previa</button> -->
+        </div>
+
     </form>
   </mat-step>
   <mat-step>

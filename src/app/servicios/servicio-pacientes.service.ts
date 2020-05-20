@@ -9,7 +9,11 @@ import { database } from 'firebase';
 export class PacientesService extends MiservicioService{
 
   constructor() { 
-    super();    
+    super();
+    if(!database())    
+    {
+      super.init(); 
+    }
   }
 
   public crear(paciente: Paciente)

@@ -55,38 +55,7 @@
 
             </mat-expansion-panel>
         </mat-accordion>
-<!-- 
-        <mat-list dense>
-            <mat-list-item><b>Especialidades:</b></mat-list-item>
-            <mat-list-item *ngFor='let especialidad of medico.especialidad'>-{{especialidad}}</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item><b>Disponibilidad:&nbsp;</b> {{medico.disponibilidad}}</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item><b>Consultorio:&nbsp;</b> {{medico.consultorio}}</mat-list-item>
-            <mat-divider></mat-divider>
-        </mat-list> -->
 
-        <!-- <div *ngIf='datosCompletos'>
-            <mat-list dense>
-                <h4>Datos personales: </h4>
-                <mat-divider></mat-divider> 
-                <mat-list-item><b>Dni:&nbsp;</b> {{medico.dni}}</mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item><b>Dirección:&nbsp;</b> {{medico.direccion}}</mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item><b>Teléfono:&nbsp;</b> {{medico.telefono}}</mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item><b>E-mail:&nbsp;</b> {{medico.email}}</mat-list-item>
-                <mat-divider></mat-divider>
-            </mat-list>
-            <!-- <h3>Datos personales</h3>
-            <ul>
-                <li>Dni: {{medico.dni}}</li>
-                <li>Direccion: {{medico.direccion}}</li>
-                <li>Teléfono: {{medico.telefono}}</li>
-                <li>E-mail: {{medico.email}}</li>
-            </ul> 
-        </div>-->
     </mat-card-content>
     <mat-card-actions *ngIf='datosCompletos'>
         <button mat-stroked-button>Autorizar</button>
@@ -95,7 +64,7 @@
     </mat-card-actions>
     <mat-card-actions>
 
-        <button mat-stroked-button>Pedir turno</button>
-        <button mat-stroked-button>Volver</button>
+        <button mat-stroked-button (click)='pedirTurno()'>Pedir turno</button>
+        <button mat-stroked-button (click)='this.dialogRef.close()'>Volver</button>
     </mat-card-actions>
   </mat-card>

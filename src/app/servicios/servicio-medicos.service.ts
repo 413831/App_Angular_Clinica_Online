@@ -10,6 +10,10 @@ export class MedicosService extends MiservicioService{
 
   constructor() { 
     super();
+    if(!database())    
+    {
+      super.init(); 
+    }
   }
 
   public crear(medico: Medico)
@@ -32,7 +36,7 @@ export class MedicosService extends MiservicioService{
                                           data._dni, data._direccion, data._email,
                                           data._telefono, data._imagen, data._matricula,
                                           data._consultorio, data._disponibilidad ,
-                                          data._especialidad, child.key ));
+                                          data._especialidad, data._avatar, child.key ));
         });
         console.log(medicos);         
     })
