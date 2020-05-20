@@ -32,10 +32,13 @@ export class HomeComponent implements OnInit {
 
   constructor(private servicio: MiservicioService) 
   {
+    if(!this.servicio.inicializado)
+    {
+      this.servicio.init();
+    }
   }
 
   ngOnInit(): void {
-    this.servicio.init();
   }
 
 

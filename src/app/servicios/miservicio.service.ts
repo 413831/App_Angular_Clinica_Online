@@ -9,14 +9,11 @@ import { Usuario } from '../clases/Usuario';
 export class MiservicioService {
   public imgSrc;
   protected database;
-  protected inicializado: boolean = false;
+  public inicializado: boolean = false;
 
   constructor() 
   {
-    if(!firebase.app)
-    {
-      this.init();      
-    }
+    
   }
 
   public init()
@@ -47,7 +44,7 @@ export class MiservicioService {
     localStorage.removeItem("usuario-logueado");
   }
 
-  public guardarImagen(imagen: File, base64string: string)
+  public guardarImagen(imagen: string, base64string: string)
   {
     // let formData = new FormData();
     // formData.append('image',imagen,imagen.name);
@@ -55,7 +52,7 @@ export class MiservicioService {
       contentType: 'image/jpeg'
     };
     console.log("Guardando imagen");
-    return firebase.storage().ref().child('imagen/'+imagen.name)
+    return firebase.storage().ref().child('imagenes/'+imagen)
                     .putString( base64string, 'base64', metadata );            
   }
 

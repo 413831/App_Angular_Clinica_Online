@@ -3,11 +3,11 @@ import { Usuario } from './Usuario';
 export class Paciente extends Usuario{
     private _obraSocial: string;
     private _numeroAfiliado: number;
-    private _imagenDos: any;
+    private _imagenDos: string;
   
     public static CrearPaciente(nombre: string, clave: string, dni: number, direccion: string,
-                    email: string, telefono: number,imagen: any, obraSocial: string,
-                    numeroAfiliado: number, avatar: any): Paciente
+                    email: string, telefono: number,imagen: string, obraSocial: string,
+                    numeroAfiliado: number, avatar: string, id?: any ): Paciente
     {
         let paciente = new Paciente();
 
@@ -21,6 +21,7 @@ export class Paciente extends Usuario{
         paciente.obraSocial = obraSocial;
         paciente.numeroAfiliado = numeroAfiliado;
         paciente.imagenDos = avatar;
+        paciente.id = id;
 
         return paciente;
     }

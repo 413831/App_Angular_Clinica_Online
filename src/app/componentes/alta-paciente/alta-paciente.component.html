@@ -24,13 +24,14 @@
       </mat-form-field>
       <br>
       
-        <mat-label for="singleFile">Imagen</mat-label>
-       
-        <img class="thumbnail" [src]="imgUrl" alt="foto-de-perfil">
-
-<!--         
-        <input formControlName="imagen" type="file" placeholder="Seleccione su imagen" (change)="onFileSelected($event)">        
-        <button (click)='upLoad()'>Subir imagen</button> -->
+        <mat-label>Imagen</mat-label>
+        <hr>
+        <div class="panel">
+          <input formControlName="imagen"  class="botonFile" id="imagenUno" type="file" placeholder="Seleccione su imagen" (change)="onFileSelected($event)">        
+          <img *ngIf='imgUrl1' class="thumbnail" [src]="imgUrl1" alt="foto-de-perfil">
+          <!-- <button mat-raised-button color="primary" (click)='upLoad()'>Subir imagen</button> -->
+        </div>
+        
 
 
     </form>
@@ -68,10 +69,20 @@
         <input formControlName="clave" matInput type="password" placeholder="Ingrese su contraseña" required>
       </mat-form-field>
       <br>
-      <mat-form-field appearance="fill">
+      <!-- <mat-form-field appearance="fill">
         <mat-label>Avatar</mat-label>
         <input formControlName="imagenDos" matInput placeholder="Ingrese imagen para perfil" required>
-      </mat-form-field>
+      </mat-form-field> -->
+
+      <mat-label>Avatar</mat-label>
+        <hr>
+        <div class="panel">
+          <input formControlName="avatar" class="botonFile" id="imagenDos" type="file" placeholder="Seleccione su imagen" (change)="onFileSelected($event)">        
+          <img *ngIf='imgUrl2' class="thumbnail" [src]="imgUrl2" alt="foto-de-perfil">
+          <!-- <button mat-raised-button color="primary" (click)='upLoad()'>Vista previa</button> -->
+        </div>
+
+
     </form>
   </mat-step>
   <mat-step>

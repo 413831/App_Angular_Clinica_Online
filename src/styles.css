@@ -29,5 +29,16 @@ body {
 
 .thumbnail
 {
-    max-width: 100px;
+    max-width: 150px;
+    max-height: 200px;
+    border-radius: 15px;
+    border-style: groove;
+    border-width: 2px;
+    padding: 10px;
+    margin: auto;
+}
+
+.panel{
+    display: flex;
+    flex-direction: column;
 }
