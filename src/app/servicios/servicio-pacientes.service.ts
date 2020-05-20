@@ -9,9 +9,7 @@ import { database } from 'firebase';
 export class PacientesService extends MiservicioService{
 
   constructor() { 
-    super();
-    
-    console.log(super.database);
+    super();    
   }
 
   public crear(paciente: Paciente)
@@ -27,17 +25,16 @@ export class PacientesService extends MiservicioService{
     let pacientes = [];
     console.info("Fetch de todos los pacientes");
 
-    database().ref('pacientes').on('value',(snapshot) => {  
+    database().ref('pacientes').on('value',(snapshot) => {          
         snapshot.forEach((child) =>{
           var data = child.val();
-          pacientes.push(Paciente.CrearPaciente(data.nombre, data.clave,
-                                                  data.dni, data.direccion, data.email,
-                                                  data.telefono, data.imagen, data.obraSocial,
-                                                  data.numeroAfiliado, data.avatar, child.key ));
-                                                }); 
-        console.info("Jugadores: " + pacientes);
-    })
-    
+          pacientes.push(Paciente.CrearPaciente(data._nombre, data.clave,
+                                                data._dni, data._direccion, data._email,
+                                                data._telefono, data._imagen, data._obraSocial,
+                                                data._numeroAfiliado, data._avatar, child.key ));
+        });
+        console.log(pacientes);         
+    })    
     return pacientes;
   }
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MiservicioService } from './miservicio.service';
 import { Medico } from '../clases/Medico';
+import { database } from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class MedicosService extends MiservicioService{
 
   public crear(medico: Medico)
   {
-    this.database.ref('medicos')
+    database().ref('medicos')
                   .push(medico)
                   .then(() => console.info("Alta exitosa"))
                   .catch(() => console.info("No se pudo realizar alta"));
@@ -21,13 +22,26 @@ export class MedicosService extends MiservicioService{
 
   public leer(): Medico[]
   {
+    let medicos = [];
+    console.info("Fetch de todos los medicos");
 
-    return null;
+    database().ref('medicos').on('value',(snapshot) => {         
+        snapshot.forEach((child) =>{
+          var data = child.val();
+          medicos.push(Medico.CrearMedico(data._nombre, data.clave,
+                                          data._dni, data._direccion, data._email,
+                                          data._telefono, data._imagen, data._matricula,
+                                          data._consultorio, data._disponibilidad ,
+                                          data._especialidad, child.key ));
+        });
+        console.log(medicos);         
+    })
+    return medicos;
   }
 
   public actualizar(medico: Medico)
   {
-    this.database.ref('medicos/' + medico.id)
+    database().ref('medicos/' + medico.id)
                   .update(medico)
                   .then(() => console.info("Actualizacion exitosa"))
                   .catch(() => console.info("No se pudo actualizar"));
@@ -35,7 +49,7 @@ export class MedicosService extends MiservicioService{
 
   public borrar(id: number)
   {
-    this.database.ref('medicos/' + id)
+    database().ref('medicos/' + id)
                   .remove()
                   .then(() => console.info("Medico eliminado"))
                   .catch(() => console.info("No se pudo realizar la baja."));

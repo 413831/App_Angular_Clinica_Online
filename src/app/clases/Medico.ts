@@ -12,7 +12,7 @@ export class Medico extends Usuario
                 email: string, telefono: number,imagen: any,
                 matricula: number, consultorio: number,
                 disponibilidad: string,
-                especialidad: Especialidad[]): Medico
+                especialidad: Especialidad[], id?: string): Medico
     {
         let medico = new Medico();
         medico.nombre = nombre;
@@ -26,6 +26,7 @@ export class Medico extends Usuario
         medico.consultorio = consultorio;
         medico.disponibilidad = disponibilidad;
         medico.especialidad = especialidad;
+        medico.id = id;
 
         return medico;
     }
