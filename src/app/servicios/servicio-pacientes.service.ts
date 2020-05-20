@@ -24,7 +24,7 @@ export class PacientesService extends MiservicioService{
 
   public leer(): Paciente[]
   {
-    let pacientes = Paciente[];
+    let pacientes = [];
     console.info("Fetch de todos los pacientes");
 
     database().ref('pacientes').on('value',(snapshot) => {  
