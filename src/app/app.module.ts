@@ -25,7 +25,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatRippleModule} from '@angular/material/core';
+import {MatRippleModule, MatNativeDateModule} from '@angular/material/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDialogModule} from '@angular/material/dialog';
 
@@ -54,6 +54,10 @@ import { MenuAdministradorComponent } from './componentes/menu-administrador/men
 import { DetalleMedicoComponent } from './componentes/detalle-medico/detalle-medico.component';
 import { DetallePacienteComponent } from './componentes/detalle-paciente/detalle-paciente.component';
 import { BuscadorMedicoComponent } from './componentes/buscador-medico/buscador-medico.component';
+import { MenuComponent } from './pages/menu/menu.component';
+import { DialogComponent } from './componentes/dialog/dialog.component';
+import { ModificarPacienteComponent } from './componentes/modificar-paciente/modificar-paciente.component';
+import { ModificarMedicoComponent } from './componentes/modificar-medico/modificar-medico.component';
 
 
 @NgModule({
@@ -79,7 +83,11 @@ import { BuscadorMedicoComponent } from './componentes/buscador-medico/buscador-
     MenuAdministradorComponent,
     DetalleMedicoComponent,
     DetallePacienteComponent,
-    BuscadorMedicoComponent
+    BuscadorMedicoComponent,
+    MenuComponent,
+    DialogComponent,
+    ModificarPacienteComponent,
+    ModificarMedicoComponent
   ],
   imports: [
     BrowserModule,
@@ -107,12 +115,13 @@ import { BuscadorMedicoComponent } from './componentes/buscador-medico/buscador-
     MatRippleModule,
     MatToolbarModule,
     MatDialogModule,
+    MatNativeDateModule,
     AgmCoreModule.forRoot({
       apiKey: environment.agmKey
     }),
     
   ],
-  providers: [],
+  providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,3 +7,12 @@
     {{link.label}}
   </a>
 </nav>
+<div *ngIf='usuario'>
+  <mat-grid-list cols="4" rowHeight="30px" gutterSize='30px'>
+    <mat-grid-tile 
+        [colspan]="4"
+        [rowspan]="1">
+      Nombre y dni de usuario, matricula o numero de afiliado
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

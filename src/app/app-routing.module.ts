@@ -8,6 +8,7 @@ import { CartillaComponent } from './pages/cartilla/cartilla.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { TurnosComponent } from './pages/turnos/turnos.component';
 import { AltaTurnoComponent } from './componentes/alta-turno/alta-turno.component';
+import { MenuComponent } from './pages/menu/menu.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'cartilla', component: CartillaComponent},
   { path: 'contacto', component: ContactoComponent},
+  { path: 'menu', component: MenuComponent},
   { path: 'turnos', component: TurnosComponent},
   { path: 'alta-turno', component: AltaTurnoComponent},
 ];

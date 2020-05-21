@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MiservicioService } from './servicios/miservicio.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'clinica-online';
+  
+  constructor(private servicio: MiservicioService) 
+  {
+    if(!this.servicio.inicializado)
+    {
+      this.servicio.init();
+    }
+  }
 }

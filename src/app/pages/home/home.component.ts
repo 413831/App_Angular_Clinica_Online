@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MiservicioService } from 'src/app/servicios/miservicio.service';
+import { MedicosService } from 'src/app/servicios/servicio-medicos.service';
+import { TurnosService } from 'src/app/servicios/servicio-turnos.service';
+import { PacientesService } from 'src/app/servicios/servicio-pacientes.service';
 
 export interface Tile {
   color: string;
@@ -30,15 +32,24 @@ export class HomeComponent implements OnInit {
     {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
   ];
 
-  constructor(private servicio: MiservicioService) 
+  constructor(private servicioMedicos: MedicosService,
+              private servicioPacientes: PacientesService,
+              private servicioTurnos: TurnosService) 
   {
-    if(!this.servicio.inicializado)
-    {
-      this.servicio.init();
-    }
+    this.activarServicios();
   }
 
   ngOnInit(): void {
+  }
+
+  activarServicios(){
+    // Se leen todos los datos para guardar en Local Storage
+    // Se activa una suscripcion a la base de datos
+    console.info("Se leen datos de la base de datos");
+
+    this.servicioMedicos.leer();
+    this.servicioPacientes.leer();
+    this.servicioTurnos.leer();  
   }
 
 

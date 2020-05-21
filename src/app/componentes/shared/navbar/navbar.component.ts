@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from 'src/app/clases/Usuario';
 
 @Component({
   selector: 'app-navbar',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  usuario: Usuario;
  public links = [
   { path: 'home', label: "Home", title: "Principal"},
   { path: 'login', label: "Iniciar Sesión" , title: "Iniciar sesión"},
@@ -15,9 +17,17 @@ export class NavbarComponent implements OnInit {
   
  ];
 
-  constructor() { }
+  constructor() {
+    
+   }
 
   ngOnInit(): void {
+    let usuario = JSON.parse(localStorage.getItem('usuario-logueado'));
+    console.log(usuario);
+    if(!usuario)
+    {
+      this.usuario = usuario;
+    }
   }
 
 }

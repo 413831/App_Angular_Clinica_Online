@@ -32,13 +32,15 @@ export class PacientesService extends MiservicioService{
     database().ref('pacientes').on('value',(snapshot) => {          
         snapshot.forEach((child) =>{
           var data = child.val();
-          pacientes.push(Paciente.CrearPaciente(data._nombre, data.clave,
-                                                data._dni, data._direccion, data._email,
-                                                data._telefono, data._imagen, data._obraSocial,
-                                                data._numeroAfiliado, data._avatar, child.key ));
+          pacientes.push(Paciente.CrearPaciente(data.nombre, data.clave,
+                                                data.dni, data.direccion, data.email,
+                                                data.telefono, data.imagen, data.obraSocial,
+                                                data.numeroAfiliado, data.avatar, child.key ));
         });
-        console.log(pacientes);         
-    })    
+        console.info("Fetch pacientes");
+        console.log(pacientes);
+        localStorage.setItem('pacientes', JSON.stringify(pacientes));
+    })
     return pacientes;
   }
 

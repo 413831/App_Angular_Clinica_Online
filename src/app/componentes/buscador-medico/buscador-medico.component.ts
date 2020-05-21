@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Medico } from 'src/app/clases/Medico';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -9,6 +9,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class BuscadorMedicoComponent implements OnInit {
   @Output() enviarListado: EventEmitter<any>= new EventEmitter<any>();
+  @Input() listado: Medico[];
   franjaHoraria: string[] = ['mañana', 'tarde'];
   especialidades: string[] = ['pediatría', 'general', 'traumatología'];
   // form group
@@ -19,7 +20,9 @@ export class BuscadorMedicoComponent implements OnInit {
     nombre: new FormControl(),
   });
   
-  constructor() { }
+  constructor() { 
+    this.listado = JSON.parse(localStorage.getItem('medicos'));
+  }
   
   ngOnInit(): void {
   }

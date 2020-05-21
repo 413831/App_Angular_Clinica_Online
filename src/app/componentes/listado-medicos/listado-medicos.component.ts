@@ -8,7 +8,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 
 
 const MEDICOS: any[] = [
-  { nombre: 'Pepito Marranos', imagen: 'FOTO', matricula: 12345, especialidad: [Especialidad.General , Especialidad.General], disponibilidad: 'Mañana', consultorio: 1},
+  { nombre: 'Pepito Marranos', imagen: '/imagenes/corona-4944191_1280.png', matricula: 12345, especialidad: [Especialidad.General , Especialidad.General], disponibilidad: 'Mañana', consultorio: 1},
   { nombre: 'Maria de los Cascabeles', imagen: 'FOTO', matricula: 54321, especialidad: Especialidad.Dermatología, disponibilidad: 'Mañana', consultorio: 2},
   { nombre: 'Juan Perez', imagen: 'FOTO', matricula: 543523, especialidad: Especialidad.Traumatología, disponibilidad: 'Tarde', consultorio: 1},
   { nombre: 'Manuel Paredes', imagen: 'FOTO', matricula: 432154, especialidad: Especialidad.Cardiología, disponibilidad: 'Mañana', consultorio: 3},
@@ -27,12 +27,17 @@ export class ListadoMedicosComponent implements OnInit {
   // dataSource = new MatTableDataSource(ELEMENT_DATA);
   selection = new SelectionModel<Medico>(true, []);
   displayedColumns: string[] = ['nombre', 'especialidad', 'disponibilidad'];
-  dataSource = new MatTableDataSource(MEDICOS);
+  dataSource: MatTableDataSource<Medico>;
   
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   
-  constructor(public dialog: MatDialog) { }
-
+  constructor(public dialog: MatDialog) 
+  {
+    this.listado = JSON.parse(localStorage.getItem('medicos'));
+    console.log(this.listado);
+    this.dataSource = new MatTableDataSource(this.listado);
+  }
+   
   ngOnInit() {
     this.dataSource.sort = this.sort;
   }

@@ -2,12 +2,12 @@ import { Usuario } from './Usuario';
 
 export class Medico extends Usuario
 {
-    private _matricula: number;
-    private _consultorio: number;
-    private _disponibilidad: string;
-    private _especialidad: Especialidad[];      
-    private _autorizado: boolean;
-    private _avatar: string; 
+    public matricula: number;
+    public consultorio: number;
+    public disponibilidad: string;
+    public especialidad: Especialidad[];      
+    public autorizado: boolean;
+    public avatar: string; 
     
     public static CrearMedico(nombre: string, clave: string, dni: number, direccion: string,
                 email: string, telefono: number,imagen: any,
@@ -31,48 +31,7 @@ export class Medico extends Usuario
         medico.id = id;
 
         return medico;
-    }
-    
-    public get matricula(): number {
-        return this._matricula;
-    }
-    public set matricula(value: number) {
-        this._matricula = value;
-    }
-
-    public get consultorio(): number {
-        return this._consultorio;
-    }
-    public set consultorio(value: number) {
-        this._consultorio = value;
-    }
-
-    public get disponibilidad(): string {
-        return this._disponibilidad;
-    }
-    public set disponibilidad(value: string) {
-        this._disponibilidad = value;
-    }
-  
-    public get especialidad(): Especialidad[] {
-        return this._especialidad;
-    }
-    public set especialidad(value: Especialidad[]) {
-        this._especialidad = value;
-    }
-    public get avatar(): string {
-        return this._avatar;
-    }
-    public set avatar(value: string) {
-        this._avatar = value;
-    }
-
-    public get autorizado(): boolean {
-        return this._autorizado;
-    }
-    public set autorizado(value: boolean) {
-        this._autorizado = value;
-    }
+    }    
     
 }
 

@@ -36,11 +36,11 @@ export class MiservicioService {
     this.inicializado = true;
   }
 
-  public iniciarSesion(usuario: Usuario) {
+  public static iniciarSesion(usuario: Usuario) {
     localStorage.setItem("usuario-logueado", JSON.stringify(usuario));
   }
 
-  public cerrarSesion() {
+  public static cerrarSesion() {
     localStorage.removeItem("usuario-logueado");
   }
 
