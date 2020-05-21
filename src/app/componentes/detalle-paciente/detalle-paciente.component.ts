@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Paciente } from 'src/app/clases/Paciente';
 
 @Component({
   selector: 'app-detalle-paciente',
@@ -6,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detalle-paciente.component.css']
 })
 export class DetallePacienteComponent implements OnInit {
+  imgSrc: string;
 
-  constructor() { }
+  constructor(public paciente: Paciente) { }
 
   ngOnInit(): void {
   }

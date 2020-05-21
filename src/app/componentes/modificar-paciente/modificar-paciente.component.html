@@ -1,1 +1,21 @@
-<p>modificar-paciente works!</p>
+<form [formGroup]="datosPaciente" class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Direccion</mat-label>
+      <input formControlName="direccion" matInput placeholder="Ingrese su nueva direccion">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Telefono</mat-label>
+        <input formControlName="telefono" matInput placeholder="Ingrese su nuevo telefono">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Obra Social</mat-label>
+        <input formControlName="obraSocial" matInput placeholder="Ingrese su nueva cobertura">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>N° Afiliado</mat-label>
+        <input formControlName="numeroAfiliado" matInput placeholder="Ingrese su numero de afiliado">
+    </mat-form-field>
+</form>

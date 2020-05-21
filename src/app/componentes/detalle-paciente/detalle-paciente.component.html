@@ -1,1 +1,15 @@
-<p>detalle-paciente works!</p>
+<mat-card>
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{paciente.nombre}}</mat-card-title>
+      <mat-card-subtitle>N° Afiliado: {{paciente.numeroAfiliado}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]='imgSrc' alt="Foto del paciente">
+    <mat-card-content >
+        <mat-label>Obra Social: {{paciente.obraSocial}}</mat-label><br>
+        <mat-label>Dni: {{paciente.dni}}</mat-label><br>
+        <mat-label>Dirección: {{paciente.direccion}}</mat-label><br>
+        <mat-label>Telefono: {{paciente.telefono}}</mat-label><br>
+        <mat-label>E-mail: {{paciente.email}}</mat-label><br>
+    </mat-card-content>
+  </mat-card>

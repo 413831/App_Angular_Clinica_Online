@@ -35,7 +35,6 @@ export class AltaPacienteComponent implements OnInit {
       telefono: new FormControl(),
       obraSocial: new FormControl(),
       numeroAfiliado: new FormControl(),
-      disponibilidad: new FormControl(),
       imagen: new FormControl(),
       avatar: new FormControl(),
       email: new FormControl(),

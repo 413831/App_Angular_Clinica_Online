@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { PacientesService } from 'src/app/servicios/servicio-pacientes.service';
 import { MedicosService } from 'src/app/servicios/servicio-medicos.service';
 import { Usuario } from 'src/app/clases/Usuario';
@@ -13,8 +13,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {  
   public usuario: Usuario;
+  public datosLogin: FormGroup;
   hide = true;
-  email = new FormControl('', [Validators.required, Validators.email]);
   medicos: Array<Usuario>;
   pacientes: Array<Usuario>;
 
@@ -23,6 +23,10 @@ export class LoginComponent implements OnInit {
               private route: ActivatedRoute, private router: Router) 
   {
     this.usuario = new Usuario();  
+    this.datosLogin = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      clave: new FormControl('', [Validators.required])
+   });
   }
 
   ngOnInit(): void {
@@ -44,10 +48,17 @@ export class LoginComponent implements OnInit {
     let usuarios: Array<Usuario> = new Array<Usuario>();
     usuarios = usuarios.concat(this.medicos).concat(this.pacientes);
     
-    this.usuario = usuarios.find((usuario)=> this.usuario.email === usuario.email && 
-                              this.usuario.clave === usuario.clave);
-    console.log(`Nombre de usuario: ${this.usuario.nombre}`);
-    MiservicioService.iniciarSesion(this.usuario);
-    this.router.navigate(["home"]);
+    this.usuario = usuarios.find((usuario)=> usuario.email === this.email.value && 
+                              usuario.clave === this.clave.value);
+    if(this.usuario)
+    {
+      console.info("Login");
+      console.log(`Nombre de usuario: ${this.usuario.nombre}`);
+      MiservicioService.iniciarSesion(this.usuario);
+      this.router.navigate(["home"]);
+    }
   }
+
+  get email() { return this.datosLogin.get('email'); }
+  get clave() { return this.datosLogin.get('clave'); }
 }

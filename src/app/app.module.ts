@@ -58,6 +58,7 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { DialogComponent } from './componentes/dialog/dialog.component';
 import { ModificarPacienteComponent } from './componentes/modificar-paciente/modificar-paciente.component';
 import { ModificarMedicoComponent } from './componentes/modificar-medico/modificar-medico.component';
+import { DetalleAdministradorComponent } from './componentes/detalle-administrador/detalle-administrador.component';
 
 
 @NgModule({
@@ -87,7 +88,8 @@ import { ModificarMedicoComponent } from './componentes/modificar-medico/modific
     MenuComponent,
     DialogComponent,
     ModificarPacienteComponent,
-    ModificarMedicoComponent
+    ModificarMedicoComponent,
+    DetalleAdministradorComponent
   ],
   imports: [
     BrowserModule,

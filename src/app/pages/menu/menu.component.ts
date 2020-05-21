@@ -3,6 +3,9 @@ import { Turno } from 'src/app/clases/Turno';
 import { Usuario } from 'src/app/clases/Usuario';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DetalleMedicoComponent } from 'src/app/componentes/detalle-medico/detalle-medico.component';
+import { Medico } from 'src/app/clases/Medico';
+import { Paciente } from 'src/app/clases/Paciente';
+import { Administrador } from 'src/app/clases/Administrador';
 
 @Component({
   selector: 'app-menu',
@@ -10,19 +13,26 @@ import { DetalleMedicoComponent } from 'src/app/componentes/detalle-medico/detal
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {  
-  private confirmacion: boolean = false;
-  private usuario: Usuario;
-  private turnos: Turno[];
+  public confirmacion: boolean = false;
+  public usuario: any;
+  public medico: Medico;
+  public paciente: Paciente
+  public administrador: Administrador;
+  public turnos: Turno[];
 
-  constructor(public modificarDialog: MatDialog, public borrarDialog: MatDialog) { }
+  constructor(public modificarDialog: MatDialog, public borrarDialog: MatDialog) { 
+    this.usuario = JSON.parse(localStorage.getItem('usuario-logueado'));
+    // this.getPerfil(this.usuario);
+
+    // this.turnos = JSON.parse(localStorage.getItem('turnos'));
+    // console.log(this.usuario);
+    // // Mejorar todo esto
+    // this.turnos = this.turnos.filter( turno => turno.nombrePaciente === this.usuario.nombre);
+  }
 
   ngOnInit(): void 
   {
-    this.usuario = JSON.parse(localStorage.getItem('usuario-logueado'));
-    this.turnos = JSON.parse(localStorage.getItem('turnos'));
-    console.log("Perfil de usuario: "+ typeof this.usuario);
-    // Mejorar todo esto
-    this.turnos = this.turnos.filter( turno => turno.nombrePaciente === this.usuario.nombre);
+    
 
   }
 
@@ -39,10 +49,25 @@ export class MenuComponent implements OnInit {
       console.log('The dialog was closed');
       console.log(result);
     });
-
   }
 
-  baja()
+  getPerfil(usuario: any){
+    if(usuario.numeroAfiliado)
+    { 
+      this.paciente = usuario;
+    }
+    else if(usuario.matricula)
+    {
+      this.medico = usuario
+    }
+    else
+    {
+      this.administrador = usuario;
+    }
+  }
+
+
+  borrar()
   {
     // Modal confirmando la accion
     let dialogConfig = new MatDialogConfig();
@@ -56,12 +81,7 @@ export class MenuComponent implements OnInit {
       console.log('Baja realizada.');
       console.log(result);
     });
-    /*
-      if(confirmacion)
-      {
-        this.servicio.borrar(this.usuario);
-      }
-    */
+    
   }
 
 }

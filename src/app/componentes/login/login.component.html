@@ -1,20 +1,24 @@
 <div class="page">
-<div class="example-container">
+  <div class="example-container">
     <h1>Iniciar sesión</h1>
-    <mat-form-field appearance="fill">
+    <form [formGroup]='datosLogin'>
+      <mat-form-field appearance="fill">
         <mat-label>Ingrese su email</mat-label>
-        <input [(ngModel)]='usuario.email' matInput placeholder="pat@example.com" [formControl]="email" required>
+        <input formControlName='email' matInput placeholder="pat@example.com" required>
         <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
+      <br>
+      <mat-form-field appearance="fill">
         <mat-label>Ingrese su contraseña</mat-label>
-        <input [(ngModel)]='usuario.clave' matInput [type]="hide ? 'password' : 'text'">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <input formControlName='clave' matInput [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>
-    <br>
-    <button mat-raised-button color="primary" (click)='login()'>Entrar</button>
+      <br>
+      <button mat-raised-button color="primary" (click)='login()'>Entrar</button>
+    </form>
   </div>
+
 </div>

@@ -1,40 +1,75 @@
 <div class="page">
     <h1 class="titulos">Menú de usuario</h1>
     <hr>
-    <div class="container">
+    <div *ngIf='usuario'>
 
-        <mat-grid-list cols="4" rowHeight="600px" [style.background]="'#E6E6FA'">
-            <mat-grid-tile [colspan]=1 [rowspan]=1 [style.background]="'#F0F8FF'">
-
-                
-                Aca van los detalles del usuario
-
-
-
-                <div class="example-button-row">
-                    <a mat-stroked-button (click)="modificar()">Modificar datos</a>
-                    <a mat-stroked-button (click)="borrar()">Baja de usuario</a>
+        <mat-grid-list cols="4" rowHeight="100px" >
+            <mat-grid-tile [colspan]=3 [rowspan]=3 [style.background]="'blue'">
+                Aca van los detalles del usuario        
+                <div *ngIf='paciente'>
+                    <app-detalle-paciente></app-detalle-paciente>
                 </div>
-            </mat-grid-tile>
+                <div *ngIf='medico'>
+                    <app-detalle-medico></app-detalle-medico>
+                </div>
+                <div *ngIf='administrador'>
+                    <app-detalle-administrador></app-detalle-administrador>
+                </div>
+            </mat-grid-tile>    
 
-            <mat-grid-tile [colspan]=1 [rowspan]=2 [style.background]="'#F0F8FF'">
-                <mat-table *ngFor='let turno of turnos' class="mat-elevation-z8">
-                    <!-- Position Column -->
+            <mat-grid-tile [colspan]=1 [rowspan]=4 [style.background]="'green'">
+                Aca va listado de turnos para medicos o pacientes
+                <!-- <mat-table *ngFor='let turno of turnos' class="mat-elevation-z8">
+
+
                     <ng-container>
                         <mat-header-cell *matHeaderCellDef> Especialidad </mat-header-cell>
                         <mat-cell> {{turno.especialidad}} </mat-cell>
                     </ng-container>
 
-                    <!-- Name Column -->
                     <ng-container>
                         <mat-header-cell> Fecha </mat-header-cell>
                         <mat-cell> {{turno.fecha}} </mat-cell>
                     </ng-container>
 
-                </mat-table>
+                </mat-table> -->
             </mat-grid-tile>
 
+            <mat-grid-tile *ngIf='administrador' [colspan]=1 [rowspan]=4 [style.background]="'purple'">
+                Aca va listado de medicos para administradores
+                <!-- <mat-table *ngFor='let turno of turnos' class="mat-elevation-z8">
 
+
+                    <ng-container>
+                        <mat-header-cell *matHeaderCellDef> Especialidad </mat-header-cell>
+                        <mat-cell> {{turno.especialidad}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container>
+                        <mat-header-cell> Fecha </mat-header-cell>
+                        <mat-cell> {{turno.fecha}} </mat-cell>
+                    </ng-container>
+
+                </mat-table> -->
+            </mat-grid-tile>
+            
+
+            <mat-grid-tile [colspan]=3 [rowspan]=1 [style.background]="'orange'">
+                Aca van los botones de opciones
+                <div class="example-button-row">
+                    <a mat-stroked-button (click)="modificar()">Modificar datos</a>
+                    <a mat-stroked-button (click)="borrar()">Baja de usuario</a>
+                    <div *ngIf='administrador'>
+                        <a mat-stroked-button (click)="modificar()">Modificar datos</a>
+                        <a mat-stroked-button (click)="borrar()">Baja de usuario</a>
+                    </div>
+                </div>
+            </mat-grid-tile>
+
+          
         </mat-grid-list>
+    </div>
+    <div *ngIf='!usuario'>
+        <p>Usted no ha iniciado sesión</p>
     </div>
 </div>
