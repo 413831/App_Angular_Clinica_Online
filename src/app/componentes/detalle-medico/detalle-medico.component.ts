@@ -8,6 +8,8 @@ import { Medico } from 'src/app/clases/Medico';
 })
 export class DetalleMedicoComponent implements OnInit {
   @Input() medico: Medico;
+  imgSrc: string;
+
   constructor() { }
 
   ngOnInit(): void {

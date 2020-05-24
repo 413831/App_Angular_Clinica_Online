@@ -5,6 +5,7 @@ import { MedicosService } from 'src/app/servicios/servicio-medicos.service';
 import { Usuario } from 'src/app/clases/Usuario';
 import { MiservicioService } from 'src/app/servicios/miservicio.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AdministradoresService } from 'src/app/servicios/servicio-administradores.service';
 
 @Component({
   selector: 'app-login',
@@ -17,9 +18,11 @@ export class LoginComponent implements OnInit {
   hide = true;
   medicos: Array<Usuario>;
   pacientes: Array<Usuario>;
+  admin : Array<Usuario>;
 
   constructor(private servicioPacientes: PacientesService,
               private servicioMedicos: MedicosService,
+              private servicioAdmin: AdministradoresService,
               private route: ActivatedRoute, private router: Router) 
   {
     this.usuario = new Usuario();  
@@ -33,6 +36,7 @@ export class LoginComponent implements OnInit {
     // Traer al administrador tambien
     this.medicos  = this.servicioPacientes.leer();
     this.pacientes = this.servicioMedicos.leer();
+    this.admin = this.servicioAdmin.leer();
   }
 
   getErrorMessage() {
@@ -46,14 +50,14 @@ export class LoginComponent implements OnInit {
   login(){
     // Implementar JWT
     let usuarios: Array<Usuario> = new Array<Usuario>();
-    usuarios = usuarios.concat(this.medicos).concat(this.pacientes);
+    usuarios = usuarios.concat(this.medicos).concat(this.pacientes).concat(this.admin);
     
     this.usuario = usuarios.find((usuario)=> usuario.email === this.email.value && 
-                              usuario.clave === this.clave.value);
+                              usuario.clave === this.clave.value);                              
     if(this.usuario)
     {
       console.info("Login");
-      console.log(`Nombre de usuario: ${this.usuario.nombre}`);
+      console.log(typeof this.usuario);
       MiservicioService.iniciarSesion(this.usuario);
       this.router.navigate(["home"]);
     }

@@ -8,6 +8,7 @@ import { Administrador } from 'src/app/clases/Administrador';
 })
 export class DetalleAdministradorComponent implements OnInit {
   @Input() administrador: Administrador;
+  imgSrc: string;
   constructor() { }
 
   ngOnInit(): void {

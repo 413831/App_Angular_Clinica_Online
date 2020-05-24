@@ -10,10 +10,10 @@ export class Turno
     public estado: Estado;
     public fecha: Date;
     public consultorio: number;
-    public especialidad: Especialidad[]; 
+    public especialidad: Especialidad; 
 
     public static CrearTurno(nombrePaciente: string, nombreMedico: string, fecha: Date,
-                                duracion: number, especialidad: Especialidad[], consultorio: number,
+                                duracion: number, especialidad: Especialidad, consultorio: number,
                                 detalle: string, estado: Estado, id?: string ): Turno
     {
         let turno = new Turno();

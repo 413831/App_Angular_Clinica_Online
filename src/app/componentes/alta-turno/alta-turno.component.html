@@ -1,50 +1,40 @@
+<div class="page">
+  <h1 class="titulos">Alta turno</h1>
+  <hr>
 
-<div class="example-container">
+<form [formGroup]='datosTurnos' class="example-container">
     <h3></h3>
-    <mat-form-field appearance="fill">
-      <mat-label>Especialidad</mat-label>
-      <input formControlName="especialidad" matInput #input maxlength="10" placeholder="{{turno.especialidad}}" disabled>
+    <mat-form-field appearance="outline" class="employee-search-field">
+        <mat-label>Especialidad</mat-label>
+        <input formControlName="especialidad" matInput #input maxlength="10" placeholder='turno.especialidad' disabled>
     </mat-form-field>
 
-    <section class="example-section">
-      <label class="example-margin">Align:</label>
-      <mat-radio-group *ngFor='let especialidad of turno.especialidad'>
-        <mat-radio-button formControlName='especialidad' class="example-margin" value="especialidad">
-          {{especialidad}}
-        </mat-radio-button>
-      </mat-radio-group>
-    </section>
-
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline" class="employee-search-field">
         <mat-label>Profesional</mat-label>
-        <input formControlName="nombreMedico" matInput #input maxlength="10" placeholder="{{turno.nombreMedico}}" disabled>
+        <input formControlName="nombreMedico" matInput #input maxlength="10"  disabled>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline" class="employee-search-field">
         <mat-label>Consultorio</mat-label>
-        <input formControlName="consultorio" matInput #input maxlength="10" placeholder="{{turno.consultorio}}" disabled>
+        <input formControlName="consultorio" matInput #input maxlength="10"  disabled>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Paciente</mat-label>
-      <input formControlName="nombrePaciente" matInput #input maxlength="10" placeholder="{{turno.nombrePaciente}}" disabled>
+    <mat-form-field appearance="outline" class="employee-search-field">
+      <mat-label>Paciente</mat-label> 
+      <input formControlName="nombrePaciente" matInput #input maxlength="10" disabled>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field class="employee-search-field">
         <mat-label>Fecha de turno</mat-label>
         <input formControlName="fecha" matInput [matDatepicker]="picker"
                (dateInput)="addEvent('input', $event)">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-  
-    <mat-form-field appearance="fill">
-      <mat-label>Select me</mat-label>
-      <mat-select>
-        <mat-option value="option">Option</mat-option>
-      </mat-select>
-      <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
-    </mat-form-field>
+
   <hr>
-    <button mat-raised-button (click)='altaTurno()'>Pedir Turno</button>
+    <div class="botones">
+      <button mat-raised-button color="primary" (click)='altaTurno()'>Pedir Turno</button>
+    </div>
+    </form>
   </div>

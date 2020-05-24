@@ -35,18 +35,18 @@ export class DialogMedicoComponent implements OnInit {
   pedirTurno()
   {
     // Traer paciente para el turno
-    let paciente = <Paciente>JSON.parse(localStorage.getItem('pacienteLogueado'));
+    let paciente = <Paciente>JSON.parse(localStorage.getItem('usuario-logueado'));
     
     // turno.nombrePaciente = paciente.nombre;
-    this.turno.nombrePaciente = 'test';
+    this.turno.nombrePaciente = paciente.nombre;
     this.turno.nombreMedico = this.medico.nombre;
     // Ver solo especialidad seleccionada
-    this.turno.especialidad = this.medico.especialidad;
-    this.turno.consultorio = this.medico.consultorio;    
-  
-    // La fecha se selecciona en menu de alta de turno
-    localStorage.setItem('nuevoTurno',JSON.stringify(this.turno));
+    this.turno.consultorio = this.medico.consultorio;   
 
+    localStorage.setItem('nuevoTurno',JSON.stringify(this.turno));
+    // Se cierra el modal
+    this.dialogRef.close();
+    // Se navega al alta de Turno
     this.router.navigate(['alta-turno']);
   }
 
@@ -58,7 +58,8 @@ export class DialogMedicoComponent implements OnInit {
 
   seleccionar(especialidades)
   {
-    especialidades.map( especialidad => this.turno = especialidad.value);
+    // Se elecciona solo la especialidad seleccionada
+    especialidades.map( especialidad => this.turno.especialidad = especialidad.value);
   }
 
 }
