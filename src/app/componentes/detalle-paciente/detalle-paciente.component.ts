@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Paciente } from 'src/app/clases/Paciente';
 
 @Component({
@@ -8,8 +8,9 @@ import { Paciente } from 'src/app/clases/Paciente';
 })
 export class DetallePacienteComponent implements OnInit {
   imgSrc: string;
+  @Input() public paciente: Paciente;
 
-  constructor(public paciente: Paciente) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

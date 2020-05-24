@@ -6,10 +6,16 @@
     </mat-card-header>
     <img mat-card-image [src]='imgSrc' alt="Foto del paciente">
     <mat-card-content >
-        <mat-label>Obra Social: {{paciente.obraSocial}}</mat-label><br>
-        <mat-label>Dni: {{paciente.dni}}</mat-label><br>
-        <mat-label>Dirección: {{paciente.direccion}}</mat-label><br>
-        <mat-label>Telefono: {{paciente.telefono}}</mat-label><br>
-        <mat-label>E-mail: {{paciente.email}}</mat-label><br>
+      <mat-list dense>
+        <mat-list-item>Obra Social: {{paciente.obraSocial}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Dni: {{paciente.dni}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Dirección: {{paciente.direccion}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Dirección: {{paciente.direccion}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>E-mail: {{paciente.email}}</mat-list-item>
+      </mat-list>
     </mat-card-content>
   </mat-card>

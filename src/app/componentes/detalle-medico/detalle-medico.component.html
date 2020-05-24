@@ -1,21 +1,26 @@
 <mat-card>
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>{{medico.nombre}}</mat-card-title>
       <mat-card-subtitle>Matricula N°: {{medico.matricula}}</mat-card-subtitle>
+       
     </mat-card-header>
-    <img mat-card-image [src]='imgSrc' alt="Foto del medico">
-    <mat-card-content >
-        <mat-accordion >
+    <mat-card-content>
+        <div class="panel">
+          <img class="thumbnail" mat-card-image [src]='imgSrc' alt="Foto del medico">
+        </div>  
+        <mat-accordion>
             <mat-expansion-panel>
-                <mat-expansion-panel-header>
+                <mat-expansion-panel-header color="primary">
                     <mat-panel-title>
                         Especialidades
                     </mat-panel-title>                    
                   </mat-expansion-panel-header>
-                  <div *ngFor='let especialidad of medico.especialidad'>
-                    <mat-label>-{{especialidad}}</mat-label>
-                  </div>
+                  <mat-selection-list #especialidades [multiple]="false" 
+                  (selectionChange)='seleccionar(especialidades.selectedOptions.selected)' >
+                    <mat-list-option *ngFor='let especialidad of medico.especialidad' [value]="especialidad" >
+                      {{especialidad}}
+                    </mat-list-option>
+                  </mat-selection-list>
             </mat-expansion-panel>
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
@@ -60,7 +65,6 @@
     <mat-card-actions *ngIf='datosCompletos'>
         <button mat-stroked-button>Autorizar</button>
         <button mat-stroked-button>Deshabilitar</button>
-        
     </mat-card-actions>
     <mat-card-actions>
         <button mat-stroked-button (click)='pedirTurno()'>Pedir turno</button>

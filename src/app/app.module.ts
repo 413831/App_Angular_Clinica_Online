@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from '../environments/environment';
+import {ApplicationModule } from '@angular/core'; 
 
 // Routing
 import { AppRoutingModule } from './app-routing.module';
@@ -51,7 +52,7 @@ import { AltaTurnoComponent } from './componentes/alta-turno/alta-turno.componen
 import { MenuPacienteComponent } from './componentes/menu-paciente/menu-paciente.component';
 import { MenuMedicoComponent } from './componentes/menu-medico/menu-medico.component';
 import { MenuAdministradorComponent } from './componentes/menu-administrador/menu-administrador.component';
-import { DetalleMedicoComponent } from './componentes/detalle-medico/detalle-medico.component';
+import { DialogMedicoComponent } from './componentes/detalle-medico/detalle-medico.component';
 import { DetallePacienteComponent } from './componentes/detalle-paciente/detalle-paciente.component';
 import { BuscadorMedicoComponent } from './componentes/buscador-medico/buscador-medico.component';
 import { MenuComponent } from './pages/menu/menu.component';
@@ -82,7 +83,7 @@ import { DetalleAdministradorComponent } from './componentes/detalle-administrad
     MenuPacienteComponent,
     MenuMedicoComponent,
     MenuAdministradorComponent,
-    DetalleMedicoComponent,
+    DialogMedicoComponent,
     DetallePacienteComponent,
     BuscadorMedicoComponent,
     MenuComponent,
@@ -92,6 +93,7 @@ import { DetalleAdministradorComponent } from './componentes/detalle-administrad
     DetalleAdministradorComponent
   ],
   imports: [
+    ApplicationModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

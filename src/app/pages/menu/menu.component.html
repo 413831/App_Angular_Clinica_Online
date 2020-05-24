@@ -2,20 +2,20 @@
     <h1 class="titulos">Menú de usuario</h1>
     <hr>
     <div *ngIf='usuario'>
-
-        <mat-grid-list cols="4" rowHeight="100px" >
-            <mat-grid-tile [colspan]=3 [rowspan]=3 [style.background]="'blue'">
-                Aca van los detalles del usuario        
+       
+        <mat-grid-list cols="4" rowHeight="90px">
+            <mat-grid-tile [colspan]=3 [rowspan]=4 [style.background]="'blue'">
+                
                 <div *ngIf='paciente'>
-                    <app-detalle-paciente></app-detalle-paciente>
+                    <app-detalle-paciente [paciente]='paciente'></app-detalle-paciente>
                 </div>
                 <div *ngIf='medico'>
-                    <app-detalle-medico></app-detalle-medico>
+                    <app-dialog-medico []></app-dialog-medico>
                 </div>
                 <div *ngIf='administrador'>
                     <app-detalle-administrador></app-detalle-administrador>
                 </div>
-            </mat-grid-tile>    
+            </mat-grid-tile>
 
             <mat-grid-tile [colspan]=1 [rowspan]=4 [style.background]="'green'">
                 Aca va listado de turnos para medicos o pacientes
@@ -52,9 +52,9 @@
 
                 </mat-table> -->
             </mat-grid-tile>
-            
 
-            <mat-grid-tile [colspan]=3 [rowspan]=1 [style.background]="'orange'">
+
+            <!-- <mat-grid-tile [colspan]=3 [rowspan]=1 [style.background]="'orange'">
                 Aca van los botones de opciones
                 <div class="example-button-row">
                     <a mat-stroked-button (click)="modificar()">Modificar datos</a>
@@ -64,10 +64,19 @@
                         <a mat-stroked-button (click)="borrar()">Baja de usuario</a>
                     </div>
                 </div>
-            </mat-grid-tile>
+            </mat-grid-tile> -->
 
-          
         </mat-grid-list>
+        <mat-toolbar>
+            <div class="example-button-row">
+                <a mat-raised-button  (click)="modificar()">Modificar datos</a>
+                <a mat-raised-button color="warn" (click)="borrar()">Baja de usuario</a>
+                <div *ngIf='administrador'>
+                    <a mat-raised-button color="primary" (click)="modificar()">Modificar datos</a>
+                    <a mat-raised-button color="primary" (click)="borrar()">Baja de usuario</a>
+                </div>
+            </div>
+        </mat-toolbar>
     </div>
     <div *ngIf='!usuario'>
         <p>Usted no ha iniciado sesión</p>

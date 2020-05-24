@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Turno } from 'src/app/clases/Turno';
 import { Usuario } from 'src/app/clases/Usuario';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DetalleMedicoComponent } from 'src/app/componentes/detalle-medico/detalle-medico.component';
+import { DialogMedicoComponent } from 'src/app/componentes/detalle-medico/detalle-medico.component';
 import { Medico } from 'src/app/clases/Medico';
 import { Paciente } from 'src/app/clases/Paciente';
 import { Administrador } from 'src/app/clases/Administrador';
@@ -15,15 +15,15 @@ import { Administrador } from 'src/app/clases/Administrador';
 export class MenuComponent implements OnInit {  
   public confirmacion: boolean = false;
   public usuario: any;
-  public medico: Medico;
-  public paciente: Paciente
-  public administrador: Administrador;
+  public medico: Medico | null;
+  public paciente: Paciente | null;
+  public administrador: Administrador | null;
   public turnos: Turno[];
 
   constructor(public modificarDialog: MatDialog, public borrarDialog: MatDialog) { 
     this.usuario = JSON.parse(localStorage.getItem('usuario-logueado'));
-    // this.getPerfil(this.usuario);
-
+    
+    this.getPerfil(this.usuario);
     // this.turnos = JSON.parse(localStorage.getItem('turnos'));
     // console.log(this.usuario);
     // // Mejorar todo esto
@@ -32,8 +32,6 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void 
   {
-    
-
   }
 
   modificar(){

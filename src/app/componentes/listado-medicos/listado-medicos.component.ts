@@ -3,7 +3,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { Medico, Especialidad } from 'src/app/clases/Medico';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig} from '@angular/material/dialog';
-import { DetalleMedicoComponent } from '../detalle-medico/detalle-medico.component';
+import { DialogMedicoComponent } from '../detalle-medico/detalle-medico.component';
 import { SelectionModel } from '@angular/cdk/collections';
 
 
@@ -49,7 +49,7 @@ export class ListadoMedicosComponent implements OnInit {
     dialogConfig.width = '400px';
     dialogConfig.height = '700px';
            
-    const dialogRef = this.dialog.open(DetalleMedicoComponent, dialogConfig);
+    const dialogRef = this.dialog.open(DialogMedicoComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

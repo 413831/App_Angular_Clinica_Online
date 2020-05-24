@@ -7,42 +7,45 @@ import { Paciente } from 'src/app/clases/Paciente';
 import { MedicosService } from 'src/app/servicios/servicio-medicos.service';
 
 @Component({
-  selector: 'app-detalle-medico',
+  selector: 'app-dialog-medico',
   templateUrl: './detalle-medico.component.html',
   styleUrls: ['./detalle-medico.component.css']
 })
-export class DetalleMedicoComponent implements OnInit {
+export class DialogMedicoComponent implements OnInit {
+  private turno: Turno;
   imgSrc: string;
   datosCompletos: Boolean = false;
 
-  constructor( public dialogRef: MatDialogRef<DetalleMedicoComponent>,
+  constructor( public dialogRef: MatDialogRef<DialogMedicoComponent>,
                 @Inject(MAT_DIALOG_DATA) public medico: Medico,
                 private route: ActivatedRoute, private router: Router,
                 private servicio: MedicosService) 
   {
-    console.log("DATA MODAL ");
     console.log(medico);
   }
 
   ngOnInit(): void 
   {
-    this.servicio.descargarImagen(this.medico.imagen).then( this.imgSrc = this.servicio.imgSrc);
+    console.log(`URL Imagen: ${this.medico.imagen}`);
+    this.servicio.descargarImagen(this.medico.imagen).then( ()=> this.imgSrc = this.servicio.imgSrc);
+    
+    this.turno = new Turno();
   }
 
   pedirTurno()
   {
     // Traer paciente para el turno
     let paciente = <Paciente>JSON.parse(localStorage.getItem('pacienteLogueado'));
-    let turno = new Turno();
+    
     // turno.nombrePaciente = paciente.nombre;
-    turno.nombrePaciente = 'test';
-    turno.nombreMedico = this.medico.nombre;
+    this.turno.nombrePaciente = 'test';
+    this.turno.nombreMedico = this.medico.nombre;
     // Ver solo especialidad seleccionada
-    turno.especialidad = this.medico.especialidad;
-    turno.consultorio = this.medico.consultorio;    
+    this.turno.especialidad = this.medico.especialidad;
+    this.turno.consultorio = this.medico.consultorio;    
   
     // La fecha se selecciona en menu de alta de turno
-    localStorage.setItem('nuevoTurno',JSON.stringify(turno));
+    localStorage.setItem('nuevoTurno',JSON.stringify(this.turno));
 
     this.router.navigate(['alta-turno']);
   }
@@ -53,5 +56,9 @@ export class DetalleMedicoComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  seleccionar(especialidades)
+  {
+    especialidades.map( especialidad => this.turno = especialidad.value);
+  }
 
 }
