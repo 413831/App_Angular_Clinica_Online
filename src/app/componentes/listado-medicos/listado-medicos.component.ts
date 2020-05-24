@@ -3,7 +3,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { Medico, Especialidad } from 'src/app/clases/Medico';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig} from '@angular/material/dialog';
-import { DialogMedicoComponent } from '../detalle-medico/detalle-medico.component';
+import { DialogMedicoComponent } from '../dialog-medico/dialog-medico.component';
 import { SelectionModel } from '@angular/cdk/collections';
 
 

@@ -1,1 +1,17 @@
-<p>detalle-administrador works!</p>
+<mat-card>
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{administrador.nombre}}</mat-card-title>
+      <mat-card-subtitle>Administrador</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]='imgSrc' alt="Foto del administrador">
+    <mat-card-content >
+      <mat-list dense>
+        <mat-list-item>Dni: {{administrador.dni}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Dirección: {{administrador.direccion}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>E-mail: {{administrador.email}}</mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>

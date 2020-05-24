@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Turno } from 'src/app/clases/Turno';
 import { Usuario } from 'src/app/clases/Usuario';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogMedicoComponent } from 'src/app/componentes/detalle-medico/detalle-medico.component';
+import { DialogMedicoComponent } from 'src/app/componentes/dialog-medico/dialog-medico.component';
 import { Medico } from 'src/app/clases/Medico';
 import { Paciente } from 'src/app/clases/Paciente';
 import { Administrador } from 'src/app/clases/Administrador';

@@ -52,7 +52,7 @@ import { AltaTurnoComponent } from './componentes/alta-turno/alta-turno.componen
 import { MenuPacienteComponent } from './componentes/menu-paciente/menu-paciente.component';
 import { MenuMedicoComponent } from './componentes/menu-medico/menu-medico.component';
 import { MenuAdministradorComponent } from './componentes/menu-administrador/menu-administrador.component';
-import { DialogMedicoComponent } from './componentes/detalle-medico/detalle-medico.component';
+import { DialogMedicoComponent } from './componentes/dialog-medico/dialog-medico.component';
 import { DetallePacienteComponent } from './componentes/detalle-paciente/detalle-paciente.component';
 import { BuscadorMedicoComponent } from './componentes/buscador-medico/buscador-medico.component';
 import { MenuComponent } from './pages/menu/menu.component';
@@ -60,6 +60,7 @@ import { DialogComponent } from './componentes/dialog/dialog.component';
 import { ModificarPacienteComponent } from './componentes/modificar-paciente/modificar-paciente.component';
 import { ModificarMedicoComponent } from './componentes/modificar-medico/modificar-medico.component';
 import { DetalleAdministradorComponent } from './componentes/detalle-administrador/detalle-administrador.component';
+import { DetalleMedicoComponent } from './componentes/detalle-medico/detalle-medico.component';
 
 
 @NgModule({
@@ -90,7 +91,8 @@ import { DetalleAdministradorComponent } from './componentes/detalle-administrad
     DialogComponent,
     ModificarPacienteComponent,
     ModificarMedicoComponent,
-    DetalleAdministradorComponent
+    DetalleAdministradorComponent,
+    DetalleMedicoComponent
   ],
   imports: [
     ApplicationModule,

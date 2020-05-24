@@ -1,0 +1,73 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>{{medico.nombre}}</mat-card-title>
+      <mat-card-subtitle>Matricula N°: {{medico.matricula}}</mat-card-subtitle>
+       
+    </mat-card-header>
+    <mat-card-content>
+        <div class="panel">
+          <img class="thumbnail" mat-card-image [src]='imgSrc' alt="Foto del medico">
+        </div>  
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header color="primary">
+                    <mat-panel-title>
+                        Especialidades
+                    </mat-panel-title>                    
+                  </mat-expansion-panel-header>
+                  <mat-selection-list #especialidades [multiple]="false" 
+                  (selectionChange)='seleccionar(especialidades.selectedOptions.selected)' >
+                    <mat-list-option *ngFor='let especialidad of medico.especialidad' [value]="especialidad" >
+                      {{especialidad}}
+                    </mat-list-option>
+                  </mat-selection-list>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Disponibilidad
+                    </mat-panel-title>                    
+                  </mat-expansion-panel-header>
+                  <div>
+                    <mat-label>{{medico.disponibilidad}}</mat-label>
+                  </div>
+
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Consultorio
+                    </mat-panel-title>                                        
+                  </mat-expansion-panel-header>
+                  <div>
+                    <mat-label>{{medico.consultorio}}</mat-label>
+                  </div>
+
+            </mat-expansion-panel>
+            <mat-expansion-panel *ngIf='datosCompletos'>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Datos personales
+                    </mat-panel-title>                                        
+                  </mat-expansion-panel-header>
+                  <div>
+                    <mat-label>Dni: {{medico.dni}}</mat-label><br>
+                    <mat-label>Dirección: {{medico.direccion}}</mat-label><br>
+                    <mat-label>Telefono: {{medico.telefono}}</mat-label><br>
+                    <mat-label>E-mail: {{medico.email}}</mat-label><br>
+                    <mat-label>Autorizado: {{medico.autorizado}}</mat-label><br>
+                  </div>
+
+            </mat-expansion-panel>
+        </mat-accordion>
+
+    </mat-card-content>
+    <mat-card-actions *ngIf='datosCompletos'>
+        <button mat-stroked-button>Autorizar</button>
+        <button mat-stroked-button>Deshabilitar</button>
+    </mat-card-actions>
+    <mat-card-actions>
+        <button mat-stroked-button (click)='pedirTurno()'>Pedir turno</button>
+        <button mat-stroked-button (click)='this.dialogRef.close()'>Volver</button>
+    </mat-card-actions>
+  </mat-card>
