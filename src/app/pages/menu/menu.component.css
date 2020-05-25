@@ -1,0 +1,17 @@
+.botones button{
+    margin-right: 25px;
+    margin-left: 25px;
+}
+
+.warning{
+    background-color: rgb(253, 106, 106);
+}
+
+.default{
+    background-color: rgb(144, 180, 247);
+}
+
+.detalle
+{
+    background-color: #F8F8FF;
+}

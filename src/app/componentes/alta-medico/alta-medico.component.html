@@ -43,7 +43,7 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Disponibilidad</mat-label>
-        <mat-select formControlName="disponibilidad" multiple>
+        <mat-select formControlName="disponibilidad" multiple required>
           <mat-option *ngFor="let horario of franjaHoraria" [value]="horario">{{horario}}</mat-option>
         </mat-select>
       </mat-form-field>

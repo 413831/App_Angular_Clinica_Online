@@ -1,23 +1,35 @@
-<form [formGroup]="datosMedico" class="example-container">
-    <mat-form-field appearance="fill">
-      <mat-label>Direccion</mat-label>
-      <input formControlName="direccion" matInput placeholder="Ingrese su nueva direccion">
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-        <mat-label>Telefono</mat-label>
-        <input formControlName="telefono" matInput placeholder="Ingrese su nuevo telefono">
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-        <mat-label>Disponibilidad</mat-label>
-        <input formControlName="obraSocial" matInput placeholder="Ingrese su nueva cobertura">
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-        <mat-label>Disponibilidad</mat-label>
-        <mat-select formControlName="disponibilidad" multiple>
-          <mat-option *ngFor="let horario of franjaHoraria" [value]="horario">{{horario}}</mat-option>
-        </mat-select>
-    </mat-form-field>
+<p>Modificar Datos</p>
+<form [formGroup]="datosMedico" >
+  <mat-form-field appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input formControlName="nombre" matInput>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>DNI</mat-label>
+    <input formControlName="dni" matInput>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Matricula</mat-label>
+    <input formControlName="matricula" matInput >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Direccion</mat-label>
+    <input formControlName="direccion" matInput >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Telefono</mat-label>
+    <input formControlName="telefono" matInput >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Consultorio</mat-label>
+    <input formControlName="consultorio" matInput >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Disponibilidad</mat-label>
+    <mat-select formControlName="disponibilidad" multiple>
+      <mat-option *ngFor="let horario of franjaHoraria" [value]="horario">{{horario}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <button mat-raised-button color="primary" (click)="modificar()">Modificar Datos</button>
 </form>

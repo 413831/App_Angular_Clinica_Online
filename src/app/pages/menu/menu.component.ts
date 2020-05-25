@@ -2,10 +2,17 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Turno } from 'src/app/clases/Turno';
 import { Usuario } from 'src/app/clases/Usuario';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogMedicoComponent } from 'src/app/componentes/dialog-medico/dialog-medico.component';
 import { Medico } from 'src/app/clases/Medico';
 import { Paciente } from 'src/app/clases/Paciente';
 import { Administrador } from 'src/app/clases/Administrador';
+import { DialogComponent } from 'src/app/componentes/dialog/dialog.component';
+import { ModificarMedicoComponent } from 'src/app/componentes/modificar-medico/modificar-medico.component';
+import { ModificarPacienteComponent } from 'src/app/componentes/modificar-paciente/modificar-paciente.component';
+import { MedicosService } from 'src/app/servicios/servicio-medicos.service';
+import { PacientesService } from 'src/app/servicios/servicio-pacientes.service';
+import { AdministradoresService } from 'src/app/servicios/servicio-administradores.service';
+import { MiservicioService } from 'src/app/servicios/miservicio.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -19,8 +26,13 @@ export class MenuComponent implements OnInit {
   public paciente: Paciente | null;
   public administrador: Administrador | null;
   public turnos: Turno[];
+  public rol: Rol;
 
-  constructor(public modificarDialog: MatDialog, public borrarDialog: MatDialog) { 
+  constructor(public modificarDialog: MatDialog, public borrarDialog: MatDialog,
+              public medicosService: MedicosService, public pacienteService: PacientesService,
+              public adminService: AdministradoresService,
+              public route: ActivatedRoute, public router: Router) 
+  { 
     this.usuario = JSON.parse(localStorage.getItem('usuario-logueado'));
     
     this.getPerfil(this.usuario);
@@ -34,63 +46,117 @@ export class MenuComponent implements OnInit {
   {
   }
 
-  modificar(){
+  getPerfil(usuario: any)
+  {
+    if(usuario.numeroAfiliado)
+    { 
+      this.paciente = usuario;
+      this.rol = Rol.Paciente;
+    }
+    else if(usuario.matricula)
+    {
+      this.medico = usuario;
+      this.rol = Rol.Medico;
+    }
+    else
+    {
+      this.administrador = usuario;
+      this.rol = Rol.Administrador;
+    }
+  }
+
+  modificar()
+  {
     // Modal para modificar todos los datos
     // El modal tiene que tener datos precargados
     let dialogConfig = new MatDialogConfig();
+    let dialogRef;
     dialogConfig.data = this.usuario;
-    dialogConfig.width = '250px';
-           
-    const dialogRef = this.modificarDialog.open(DialogOverviewExampleDialog, dialogConfig);
+    dialogConfig.width = '800px';
+    dialogConfig.height = '400px';
 
-    dialogRef.afterClosed().subscribe(result => {
+    if(this.medico)
+    {
+      const dialogRef = this.modificarDialog.open(ModificarMedicoComponent, dialogConfig);
+    }
+    else if(this.paciente)
+    {
+      const dialogRef = this.modificarDialog.open(ModificarPacienteComponent, dialogConfig);
+    }      
+
+    dialogRef.afterClosed().subscribe(result => 
+    {
       console.log('The dialog was closed');
       console.log(result);
     });
   }
 
-  getPerfil(usuario: any){
-    if(usuario.numeroAfiliado)
-    { 
-      this.paciente = usuario;
-    }
-    else if(usuario.matricula)
-    {
-      this.medico = usuario
-    }
-    else
-    {
-      this.administrador = usuario;
-    }
-  }
-
-
   borrar()
   {
     // Modal confirmando la accion
-    let dialogConfig = new MatDialogConfig();
-    dialogConfig.data = this.usuario;
-    dialogConfig.width = '250px';
-           
-    const dialogRef = this.borrarDialog.open(DialogOverviewExampleDialog, dialogConfig);
+    const dialogRef = this.borrarDialog.open(DialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       // Cerrar sesion y navegar al home
-      console.log('Baja realizada.');
-      console.log(result);
+      if(result)
+      {
+        switch(this.rol)
+        {
+          case Rol.Administrador:
+            //this.adminService.borrar(this.administrador.id);
+            break;
+          case Rol.Medico:
+            //this.medicosService.borrar(this.medico.id);
+            break;
+          case Rol.Paciente:
+            //this.pacienteService.borrar(this.paciente.id);
+            break;
+        }
+        console.log('Baja realizada.');
+        console.log(result);   
+      }
     });
+  }
+
+  logout()
+  {
+    MiservicioService.cerrarSesion();
+    this.router.navigate(["home"]);
+  }
+
+  listarPacientes()
+  {
+
+  }
+
+  listarTurnos(){
+
+  }
+
+  altaAdmin(){
+
+  }
+
+  autorizar(){
     
   }
 
+
 }
 
-export class DialogOverviewExampleDialog {
+export class DialogModificar {
 
-  constructor(public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+  constructor(public dialogRef: MatDialogRef<DialogModificar>,
               @Inject(MAT_DIALOG_DATA) public data: Usuario) {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
+}
+
+export enum Rol{
+  Administrador = 1,
+  Medico = 2,
+  Paciente = 3
 }

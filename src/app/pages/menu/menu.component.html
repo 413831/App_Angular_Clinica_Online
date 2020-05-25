@@ -7,13 +7,13 @@
             <mat-grid-tile [colspan]=3 [rowspan]=4 [style.background]="'blue'">
                 
                 <div *ngIf='paciente'>
-                    <app-detalle-paciente [paciente]='paciente'></app-detalle-paciente>
+                    <app-detalle-paciente class="detalle" [paciente]='paciente'></app-detalle-paciente>
                 </div>
                 <div *ngIf='medico'>
-                    <app-detalle-medico [medico]='medico'></app-detalle-medico>
+                    <app-detalle-medico class="detalle" [medico]='medico'></app-detalle-medico>
                 </div>
                 <div *ngIf='administrador'>
-                    <app-detalle-administrador></app-detalle-administrador>
+                    <app-detalle-administrador class="detalle" [administrador]="administrador"></app-detalle-administrador>
                 </div>
             </mat-grid-tile>
 
@@ -68,13 +68,14 @@
 
         </mat-grid-list>
         <mat-toolbar>
-            <div class="example-button-row">
-                <a mat-raised-button  (click)="modificar()">Modificar datos</a>
-                <a mat-raised-button color="warn" (click)="borrar()">Baja de usuario</a>
+            <div class="botones">
                 <div *ngIf='administrador'>
-                    <a mat-raised-button color="primary" (click)="modificar()">Modificar datos</a>
-                    <a mat-raised-button color="primary" (click)="borrar()">Baja de usuario</a>
+                    <button mat-raised-button color="primary" (click)="altaAdmin()">Alta de Admin</button>
+                    <button mat-raised-button color="primary" (click)="autorizar()">Autorizar</button>
                 </div>
+                <button mat-raised-button class="default" (click)="modificar()">Modificar datos</button>
+                <button mat-raised-button class="default" (click)="logout()">Cerrar Sesion</button>
+                <button mat-raised-button class="warning" (click)="borrar()">Baja de usuario</button>
             </div>
         </mat-toolbar>
     </div>
