@@ -30,7 +30,7 @@ export class TurnosService extends MiservicioService{
         snapshot.forEach((child) =>{
           var data = child.val();
           turnos.push(Turno.CrearTurno(data.nombrePaciente, data.nombreMedico,
-                                          data.fecha, data.duracion, data.especialidad,
+                                          data.fecha, data.horario ,data.duracion, data.especialidad,
                                           data.consultorio, data._detalle, data.estado,child.key ));
         });
         console.info("Turnos");

@@ -20,4 +20,5 @@ export class Administrador extends Usuario{
         return administrador;
     }   
 
+   
 }

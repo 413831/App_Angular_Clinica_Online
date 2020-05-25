@@ -19,13 +19,15 @@ body {
     margin: 35px;
 }
 
-/* .footer{
-    margin-top: 60px;
+.footer{
     display: flex;
-    flex-flow: row wrap;
+    position: fixed;
+    bottom: 0;
     justify-content: flex-start;
-    background-color: lightblue;
-} */
+    background-color: #d6e2f0;
+    opacity: 0.5;
+    font-size: small;
+}
 
 .thumbnail
 {
@@ -42,4 +44,5 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }

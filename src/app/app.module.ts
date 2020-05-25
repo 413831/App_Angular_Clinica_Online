@@ -29,6 +29,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRippleModule, MatNativeDateModule} from '@angular/material/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 // Componentes
@@ -61,6 +62,7 @@ import { ModificarPacienteComponent } from './componentes/modificar-paciente/mod
 import { ModificarMedicoComponent } from './componentes/modificar-medico/modificar-medico.component';
 import { DetalleAdministradorComponent } from './componentes/detalle-administrador/detalle-administrador.component';
 import { DetalleMedicoComponent } from './componentes/detalle-medico/detalle-medico.component';
+import { AltaAdminComponent } from './componentes/alta-admin/alta-admin.component';
 
 
 @NgModule({
@@ -92,7 +94,8 @@ import { DetalleMedicoComponent } from './componentes/detalle-medico/detalle-med
     ModificarPacienteComponent,
     ModificarMedicoComponent,
     DetalleAdministradorComponent,
-    DetalleMedicoComponent
+    DetalleMedicoComponent,
+    AltaAdminComponent
   ],
   imports: [
     ApplicationModule,
@@ -122,6 +125,7 @@ import { DetalleMedicoComponent } from './componentes/detalle-medico/detalle-med
     MatToolbarModule,
     MatDialogModule,
     MatNativeDateModule,
+    MatButtonToggleModule,
     AgmCoreModule.forRoot({
       apiKey: environment.agmKey
     }),

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MedicosService } from 'src/app/servicios/servicio-medicos.service';
 import { TurnosService } from 'src/app/servicios/servicio-turnos.service';
 import { PacientesService } from 'src/app/servicios/servicio-pacientes.service';
+import { Especialidad } from 'src/app/clases/Medico';
 
 export interface Tile {
   color: string;
@@ -22,15 +23,11 @@ export class HomeComponent implements OnInit {
   centered = true;
   disabled = false;
   unbounded = false;
-
   radius: number;
   color: string;
-  tiles: Tile[] = [
-    {text: 'One', cols: 4, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 2, rows: 1, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-  ];
+  especialidades: Especialidad[] = [Especialidad.Cardiología,Especialidad.Dermatología,
+                                  Especialidad.General, Especialidad.Pediatría,
+                                  Especialidad.Traumatología];
 
   constructor(private servicioMedicos: MedicosService,
               private servicioPacientes: PacientesService,

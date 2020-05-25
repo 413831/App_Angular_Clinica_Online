@@ -1,8 +1,16 @@
+.page
+{
+    background-color: #F8F8FF;
+    height: 90%;
+    padding-top: 3px;
+}
+
+
 img {
     border: 1px solid #ddd;
     border-radius: 4px;
-    padding: 5px;
-    width: 80rem;
+    padding: 10px;
+    max-width: 80rem;
   }
   
 img:hover {
@@ -39,4 +47,8 @@ img:hover {
 
 .example-ripple-form-field {
   margin: 0 12px 0 0;
+}
+
+.list{
+  text-align: left;
 }

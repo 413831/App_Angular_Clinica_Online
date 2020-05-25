@@ -25,16 +25,27 @@
     </mat-form-field>
 
     <mat-form-field class="employee-search-field">
+      <mat-label>Seleccione horario</mat-label>
+      <mat-select [(value)]='turno.horario' >
+        <mat-option  *ngFor="let horario of franjaHoraria" [value]="horario">
+          {{horario}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="employee-search-field">
         <mat-label>Fecha de turno</mat-label>
         <input formControlName="fecha" matInput [matDatepicker]="picker"
                (dateInput)="addEvent('input', $event)">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-
   <hr>
-    <div class="botones">
-      <button mat-raised-button color="primary" (click)='altaTurno()'>Pedir Turno</button>
-    </div>
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle (click)='altaTurno()'>Pedir Turno</mat-button-toggle>
+      <mat-button-toggle [routerLink]='["cartilla"]'>Volver</mat-button-toggle>
+    </mat-button-toggle-group>
+
+
     </form>
   </div>

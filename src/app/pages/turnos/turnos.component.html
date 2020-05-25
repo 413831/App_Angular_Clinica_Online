@@ -11,7 +11,7 @@
   <!-- Condicionar si hay usuario logueado -->
   <div>
     <p>Se listan todos los turnos pendientes y cerrados</p>
-    <mat-grid-list cols="3" rowHeight="600px">
+    <mat-grid-list cols="3" rowHeight="300px">
         <mat-grid-tile *ngFor="let turno of turnos">        
           <app-detalle-turno [turno]='turno'></app-detalle-turno>
         </mat-grid-tile>

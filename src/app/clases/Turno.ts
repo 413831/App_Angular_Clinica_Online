@@ -9,10 +9,11 @@ export class Turno
     public duracion: number;
     public estado: Estado;
     public fecha: Date;
+    public horario: string;
     public consultorio: number;
     public especialidad: Especialidad; 
 
-    public static CrearTurno(nombrePaciente: string, nombreMedico: string, fecha: Date,
+    public static CrearTurno(nombrePaciente: string, nombreMedico: string, fecha: Date, horario: string,
                                 duracion: number, especialidad: Especialidad, consultorio: number,
                                 detalle: string, estado: Estado, id?: string ): Turno
     {
@@ -26,6 +27,7 @@ export class Turno
         turno.consultorio = consultorio;
         turno.detalle = detalle;
         turno.estado = estado;
+        turno.horario = horario;
         turno.id = id;
 
         return turno;
