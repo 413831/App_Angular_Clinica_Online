@@ -7,6 +7,8 @@ import { Medico } from 'src/app/clases/Medico';
   styleUrls: ['./detalle-medico.component.css']
 })
 export class DetalleMedicoComponent implements OnInit {
+  @Input() imgPerfil: string;
+  @Input() imgAvatar: string;
   @Input() medico: Medico;
   imgSrc: string;
 

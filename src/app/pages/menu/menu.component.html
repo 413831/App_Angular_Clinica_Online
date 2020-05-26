@@ -5,12 +5,12 @@
        
         <mat-grid-list cols="4" rowHeight="90px">
             <mat-grid-tile [colspan]=3 [rowspan]=4 [style.background]="'blue'">
-                
+                <mat-grid-tile-header>Datos personales</mat-grid-tile-header>
                 <div *ngIf='paciente'>
-                    <app-detalle-paciente class="detalle" [paciente]='paciente'></app-detalle-paciente>
+                    <app-detalle-paciente  *ngIf='paciente' class="detalle" [imgPerfil]='imgPerfil' [paciente]='paciente'></app-detalle-paciente>
                 </div>
                 <div *ngIf='medico'>
-                    <app-detalle-medico class="detalle" [medico]='medico'></app-detalle-medico>
+                    <app-detalle-medico class="detalle" [imgPerfil]='imgPerfil' [medico]='medico'></app-detalle-medico>
                 </div>
                 <div *ngIf='administrador'>
                     <app-detalle-administrador class="detalle" [administrador]="administrador"></app-detalle-administrador>
@@ -19,8 +19,7 @@
 
             <mat-grid-tile [colspan]=1 [rowspan]=4 [style.background]="'green'">
                 Aca va listado de turnos para medicos o pacientes
-                <!-- <mat-table *ngFor='let turno of turnos' class="mat-elevation-z8">
-
+                 <mat-table *ngFor='let turno of turnos' class="mat-elevation-z8">
 
                     <ng-container>
                         <mat-header-cell *matHeaderCellDef> Especialidad </mat-header-cell>
@@ -32,7 +31,7 @@
                         <mat-cell> {{turno.fecha}} </mat-cell>
                     </ng-container>
 
-                </mat-table> -->
+                </mat-table>
             </mat-grid-tile>
 
             <mat-grid-tile *ngIf='administrador' [colspan]=1 [rowspan]=4 [style.background]="'purple'">
@@ -51,7 +50,7 @@
                     </ng-container>
 
                 </mat-table> -->
-            </mat-grid-tile>
+            </mat-grid-tile> -->
 
 
             <!-- <mat-grid-tile [colspan]=3 [rowspan]=1 [style.background]="'orange'">

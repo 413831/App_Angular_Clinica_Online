@@ -1,10 +1,10 @@
-<mat-card>
+<!-- <mat-card class="example-card">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
+      <div mat-card-avatar ></div>
       <mat-card-title>{{paciente.nombre}}</mat-card-title>
       <mat-card-subtitle>N° Afiliado: {{paciente.numeroAfiliado}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image [src]='imgSrc' alt="Foto del paciente">
+    <img mat-card-image class='thumbnail' [src]='imgPerfil' alt="Foto del paciente">
     <mat-card-content >
       <mat-list dense>
         <mat-list-item>Obra Social: {{paciente.obraSocial}}</mat-list-item>
@@ -16,4 +16,31 @@
         <mat-list-item>E-mail: {{paciente.email}}</mat-list-item>
       </mat-list>
     </mat-card-content>
-  </mat-card>
+  </mat-card> -->
+<div class="flex-container">
+  <div class="img-container">
+  <img class='thumbnail' [src]="imgPerfil" alt="Foto de perfil">
+  </div>
+  <div>   
+    <h4>Nombre:</h4>
+    <p>{{paciente.nombre}}</p>
+    <h4>Dni:</h4>
+    <p>{{paciente.dni}}</p>
+    <h4>Dirección:</h4>
+    <p>{{paciente.direccion}}</p>
+  </div>
+  <div>
+    <h4>Telefono:</h4>
+    <p>{{paciente.telefono}}</p>
+    
+    <h4>E-mail:</h4>
+    <p>{{paciente.email}}</p>
+  </div>
+  <div>
+    <h4>N° Afiliado:</h4>
+    <p>{{paciente.numeroAfiliado}}</p>
+    <h4>Obra Social:</h4>
+    <p>{{paciente.obraSocial}}</p>
+    
+  </div>
+</div>

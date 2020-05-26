@@ -27,6 +27,8 @@ export class MenuComponent implements OnInit {
   public administrador: Administrador | null;
   public turnos: Turno[];
   public rol: Rol;
+  public imgPerfil: string;
+  public imgAvatar: string;
 
   constructor(public modificarDialog: MatDialog, public borrarDialog: MatDialog,
               public medicosService: MedicosService, public pacienteService: PacientesService,
@@ -34,8 +36,11 @@ export class MenuComponent implements OnInit {
               public route: ActivatedRoute, public router: Router) 
   { 
     this.usuario = JSON.parse(localStorage.getItem('usuario-logueado'));
-    
-    this.getPerfil(this.usuario);
+
+    if(this.usuario)
+    {
+      this.getPerfil(this.usuario);
+    }
     // this.turnos = JSON.parse(localStorage.getItem('turnos'));
     // console.log(this.usuario);
     // // Mejorar todo esto
@@ -52,11 +57,19 @@ export class MenuComponent implements OnInit {
     { 
       this.paciente = usuario;
       this.rol = Rol.Paciente;
+      this.pacienteService.descargarImagen(this.paciente.imagen)
+                          .then(()=>  this.imgPerfil = this.pacienteService.imgSrc);
+      this.pacienteService.descargarImagen(this.paciente.avatar)
+                          .then(()=>  this.imgAvatar = this.pacienteService.imgSrc);
     }
     else if(usuario.matricula)
     {
       this.medico = usuario;
       this.rol = Rol.Medico;
+      this.medicosService.descargarImagen(this.medico.imagen)
+                          .then(()=>  this.imgPerfil = this.medicosService.imgSrc);
+      this.medicosService.descargarImagen(this.medico.avatar)
+                          .then(()=>  this.imgAvatar = this.medicosService.imgSrc);
     }
     else
     {
@@ -72,8 +85,9 @@ export class MenuComponent implements OnInit {
     let dialogConfig = new MatDialogConfig();
     let dialogRef;
     dialogConfig.data = this.usuario;
-    dialogConfig.width = '800px';
-    dialogConfig.height = '400px';
+    dialogConfig.width = '700px';
+    dialogConfig.height = '350px';
+    dialogConfig.panelClass = "dialog";
 
     if(this.medico)
     {

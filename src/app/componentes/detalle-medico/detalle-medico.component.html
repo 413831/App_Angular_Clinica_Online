@@ -1,10 +1,10 @@
 <mat-card>
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
+      <div mat-card-avatar ></div>
       <mat-card-title>{{medico.nombre}}</mat-card-title>
       <mat-card-subtitle>N° Matricula: {{medico.matricula}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image [src]='imgSrc' alt="Foto del medico">
+    <img mat-card-image [src]='imgPerfil' alt="Foto del medico">
     <mat-card-content >
       <mat-list dense>
         <mat-list-item *ngFor='let especialidad of medico.especialidad'>Especialidad: {{especialidad}}</mat-list-item>

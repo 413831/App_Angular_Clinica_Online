@@ -1,0 +1,18 @@
+.example-card {
+    box-sizing: border-box;
+}
+  
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(226, 220, 241);
+  justify-content: space-evenly;
+  border-radius: 15px;
+  width: 600px;
+}
+  
+.img-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

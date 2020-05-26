@@ -15,7 +15,7 @@ export class ModificarPacienteComponent implements OnInit {
   @Input() paciente: Paciente;
   datosPaciente: FormGroup;
   
-  constructor(public dialogRef: MatDialogRef<ModificarPacienteComponent>,
+  constructor(public mainDialog: MatDialogRef<ModificarPacienteComponent>,
               @Inject(MAT_DIALOG_DATA) public usuario: Paciente,
               private route: ActivatedRoute, private router: Router,
               private servicio: PacientesService,
@@ -24,10 +24,10 @@ export class ModificarPacienteComponent implements OnInit {
     this.datosPaciente = new FormGroup({
       nombre: new FormControl({value: this.usuario.nombre, disabled: true}),
       dni: new FormControl({value: this.usuario.dni, disabled: true}),
-      numeroAfiliado: new FormControl({value: this.usuario.numeroAfiliado}),
-      obraSocial: new FormControl({value: this.usuario.telefono}),
-      direccion: new FormControl({value: this.usuario.direccion}),
-      telefono: new FormControl({value: this.usuario.telefono}),
+      numeroAfiliado: new FormControl({value: this.usuario.numeroAfiliado, disabled: false}),
+      obraSocial: new FormControl({value: this.usuario.telefono, disabled: false}),
+      direccion: new FormControl({value: this.usuario.direccion, disabled: false}),
+      telefono: new FormControl({value: this.usuario.telefono, disabled: false}),
     });
   }
 
@@ -46,8 +46,17 @@ export class ModificarPacienteComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
-      //this.servicio.actualizar(this.usuario);
+      if(result)
+      {
+        this.mainDialog.close();
+        //this.servicio.actualizar(this.usuario);
+      }
     });   
+  }
+
+  cerrar()
+  {
+    this.mainDialog.close();
   }
 
   get nombre() { return this.datosPaciente.get('nombre'); }

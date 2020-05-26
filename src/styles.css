@@ -46,3 +46,11 @@ body {
     align-items: center;
     
 }
+
+.dialog{
+    display: flexbox;
+    align-content: center;
+    margin: auto;
+    padding: 0;
+    background-color: rgb(233, 233, 245);
+}

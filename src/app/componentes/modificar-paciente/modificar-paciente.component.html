@@ -1,22 +1,37 @@
-<form [formGroup]="datosPaciente" class="example-container">
-    <mat-form-field appearance="fill">
-      <mat-label>Direccion</mat-label>
-      <input formControlName="direccion" matInput placeholder="Ingrese su nueva direccion">
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-        <mat-label>Telefono</mat-label>
-        <input formControlName="telefono" matInput placeholder="Ingrese su nuevo telefono">
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-        <mat-label>Obra Social</mat-label>
-        <input formControlName="obraSocial" matInput placeholder="Ingrese su nueva cobertura">
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-        <mat-label>N° Afiliado</mat-label>
-        <input formControlName="numeroAfiliado" matInput placeholder="Ingrese su numero de afiliado">
-    </mat-form-field>
+<div class="header">
+    <h2 mat-dialog-title>Modificar datos</h2>
+    <mat-icon class="close-icon" aria-hidden="false" aria-label="Example home icon" (click)='cerrar()'>close</mat-icon>
+</div>
+<hr>
+<mat-dialog-content class="cuerpo">
+    <form [formGroup]="datosPaciente">
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input formControlName="nombre" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>DNI</mat-label>
+            <input formControlName="dni" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Direccion</mat-label>
+            <input formControlName="direccion" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Telefono</mat-label>
+            <input formControlName="telefono" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Obra Social</mat-label>
+            <input formControlName="obraSocial" matInput >
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>N° Afiliado</mat-label>
+            <input formControlName="numeroAfiliado" matInput >
+        </mat-form-field>
+        <br>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions class="cuerpo">
     <button mat-raised-button color="primary" (click)="modificar()">Modificar Datos</button>
-</form>
+</mat-dialog-actions>

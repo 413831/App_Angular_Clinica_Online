@@ -7,7 +7,8 @@ import { Paciente } from 'src/app/clases/Paciente';
   styleUrls: ['./detalle-paciente.component.css']
 })
 export class DetallePacienteComponent implements OnInit {
-  imgSrc: string;
+  @Input() imgPerfil: string;
+  @Input() imgAvatar: string;
   @Input() public paciente: Paciente;
 
   constructor() { }

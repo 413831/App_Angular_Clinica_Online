@@ -1,0 +1,18 @@
+.close-icon{
+    margin-left: 50px;
+    cursor: pointer;
+    background-color: rgb(247, 109, 109);
+    border-radius: 5px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.cuerpo{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+}
