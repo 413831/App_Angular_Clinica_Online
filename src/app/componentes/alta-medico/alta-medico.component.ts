@@ -5,6 +5,7 @@ import { Especialidad, Medico } from 'src/app/clases/Medico';
 import { MedicosService } from 'src/app/servicios/servicio-medicos.service';
 import { Imagen } from '../registro/registro.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MiservicioService } from 'src/app/servicios/miservicio.service';
 
 @Component({
   selector: 'app-alta-medico',
@@ -66,8 +67,8 @@ export class AltaMedicoComponent implements OnInit {
                                     `imagenes/${this.imagen1.nombre}`, this.matricula.value, 0,
                                     this.disponibilidad.value, this.especialidad.value, 
                                     `imagenes/${this.imagen1.nombre}`,'');
-    this.servicio.guardarImagen(this.imagen1.nombre, this.imagen1.base64);
-    this.servicio.guardarImagen(this.imagen2.nombre, this.imagen2.base64);
+    MiservicioService.guardarImagen(this.imagen1.nombre, this.imagen1.base64);
+    MiservicioService.guardarImagen(this.imagen2.nombre, this.imagen2.base64);
     
     console.log(medico);
     this.servicio.crear(medico);

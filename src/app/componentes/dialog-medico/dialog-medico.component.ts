@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Turno } from 'src/app/clases/Turno';
 import { Paciente } from 'src/app/clases/Paciente';
 import { MedicosService } from 'src/app/servicios/servicio-medicos.service';
+import { MiservicioService } from 'src/app/servicios/miservicio.service';
 
 @Component({
   selector: 'app-dialog-medico',
@@ -27,7 +28,7 @@ export class DialogMedicoComponent implements OnInit {
   ngOnInit(): void 
   {
     console.log(`URL Imagen: ${this.medico.imagen}`);
-    this.servicio.descargarImagen(this.medico.imagen).then( ()=> this.imgSrc = this.servicio.imgSrc);
+    MiservicioService.descargarImagen(this.medico.imagen).then( ()=> this.imgSrc = MiservicioService.imgSrc);
     
     this.turno = new Turno();
   }

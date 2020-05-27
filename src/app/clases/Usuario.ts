@@ -1,5 +1,3 @@
-
-
 export class Usuario
 {
     public id;
@@ -9,6 +7,15 @@ export class Usuario
     public direccion: string;
     public email: string;
     public telefono: number;
-    public imagen: any
+    public imagen: string;
+    public avatar: string;
+    public rol: Rol;
 
 }
+
+
+export enum Rol{
+    Administrador = 1,
+    Medico = 2,
+    Paciente = 3
+  }

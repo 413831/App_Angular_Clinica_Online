@@ -4,6 +4,7 @@ import { Paciente } from 'src/app/clases/Paciente';
 import { PacientesService } from 'src/app/servicios/servicio-pacientes.service';
 import { Imagen } from '../registro/registro.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MiservicioService } from 'src/app/servicios/miservicio.service';
 
 
 
@@ -52,8 +53,8 @@ export class AltaPacienteComponent implements OnInit {
                                           this.direccion.value,this.email.value, this.telefono.value,
                                           `imagenes/${this.imagen1.nombre}`, this.obraSocial.value, 
                                           this.numeroAfiliado.value, `imagenes/${this.imagen2.nombre}`,'');
-    this.servicio.guardarImagen(this.imagen1.nombre, this.imagen1.base64);
-    this.servicio.guardarImagen(this.imagen2.nombre, this.imagen2.base64);
+    MiservicioService.guardarImagen(this.imagen1.nombre, this.imagen1.base64);
+    MiservicioService.guardarImagen(this.imagen2.nombre, this.imagen2.base64);
 
     console.log(paciente);
     this.servicio.crear(paciente);

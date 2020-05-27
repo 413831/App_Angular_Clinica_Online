@@ -7,7 +7,7 @@ import { Usuario } from '../clases/Usuario';
   providedIn: 'root'
 })
 export class MiservicioService {
-  public imgSrc;
+  public static imgSrc;
   protected database;
   public inicializado: boolean = false;
 
@@ -44,7 +44,7 @@ export class MiservicioService {
     localStorage.removeItem("usuario-logueado");
   }
 
-  public guardarImagen(imagen: string, base64string: string)
+  public static guardarImagen(imagen: string, base64string: string)
   {
     // let formData = new FormData();
     // formData.append('image',imagen,imagen.name);
@@ -56,7 +56,7 @@ export class MiservicioService {
                     .putString( base64string, 'base64', metadata );            
   }
 
-  public descargarImagen(url: string)
+  public static descargarImagen(url: string)
   {
     console.log("Descargando imagen");
     return firebase.storage().ref().child(`${url}`).getDownloadURL()

@@ -1,4 +1,4 @@
-import { Usuario } from './Usuario';
+import { Usuario, Rol } from './Usuario';
 
 export class Medico extends Usuario
 {
@@ -7,7 +7,6 @@ export class Medico extends Usuario
     public disponibilidad: string;
     public especialidad: Especialidad[];      
     public autorizado: boolean;
-    public avatar: string; 
     
     public static CrearMedico(nombre: string, clave: string, dni: number, direccion: string,
                 email: string, telefono: number,imagen: any,
@@ -29,6 +28,7 @@ export class Medico extends Usuario
         medico.especialidad = especialidad;
         medico.avatar = avatar;
         medico.id = id;
+        medico.rol = Rol.Medico;
 
         return medico;
     }    

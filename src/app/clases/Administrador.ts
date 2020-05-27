@@ -1,7 +1,6 @@
-import { Usuario } from './Usuario';
+import { Usuario, Rol } from './Usuario';
 
 export class Administrador extends Usuario{
-    private avatar: string;
 
     public static CrearAdministrador(nombre: string, clave: string, dni: number, direccion: string,
         email: string, telefono: number,imagen: any, avatar: string,id: string): Administrador
@@ -16,6 +15,7 @@ export class Administrador extends Usuario{
         administrador.imagen = imagen;
         administrador.avatar = avatar;
         administrador.id = id;
+        administrador.rol = Rol.Administrador;
 
         return administrador;
     }   

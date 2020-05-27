@@ -1,9 +1,8 @@
-import { Usuario } from './Usuario';
+import { Usuario, Rol } from './Usuario';
 
 export class Paciente extends Usuario{
     public obraSocial: string;
     public numeroAfiliado: number;
-    public avatar: string;
   
     public static CrearPaciente(nombre: string, clave: string, dni: number, direccion: string,
                     email: string, telefono: number,imagen: string, obraSocial: string,
@@ -22,7 +21,8 @@ export class Paciente extends Usuario{
         paciente.numeroAfiliado = numeroAfiliado;
         paciente.avatar = avatar;
         paciente.id = id;
-
+        paciente.rol = Rol.Paciente;
+        
         return paciente;
     }
 }

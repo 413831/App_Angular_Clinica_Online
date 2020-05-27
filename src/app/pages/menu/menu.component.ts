@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Turno } from 'src/app/clases/Turno';
-import { Usuario } from 'src/app/clases/Usuario';
+import { Usuario, Rol } from 'src/app/clases/Usuario';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Medico } from 'src/app/clases/Medico';
 import { Paciente } from 'src/app/clases/Paciente';
@@ -51,31 +51,26 @@ export class MenuComponent implements OnInit {
   {
   }
 
-  getPerfil(usuario: any)
+  getPerfil(usuario: Usuario)
   {
-    if(usuario.numeroAfiliado)
-    { 
-      this.paciente = usuario;
-      this.rol = Rol.Paciente;
-      this.pacienteService.descargarImagen(this.paciente.imagen)
-                          .then(()=>  this.imgPerfil = this.pacienteService.imgSrc);
-      this.pacienteService.descargarImagen(this.paciente.avatar)
-                          .then(()=>  this.imgAvatar = this.pacienteService.imgSrc);
-    }
-    else if(usuario.matricula)
+
+    switch(usuario.rol)
     {
-      this.medico = usuario;
-      this.rol = Rol.Medico;
-      this.medicosService.descargarImagen(this.medico.imagen)
-                          .then(()=>  this.imgPerfil = this.medicosService.imgSrc);
-      this.medicosService.descargarImagen(this.medico.avatar)
-                          .then(()=>  this.imgAvatar = this.medicosService.imgSrc);
+      case Rol.Administrador:
+        this.administrador = <Administrador>usuario;
+        break;
+      case Rol.Medico:
+        this.medico = <Medico>usuario;
+        break;
+      case Rol.Paciente:
+        this.paciente = <Paciente>usuario;
+        break;                 
     }
-    else
-    {
-      this.administrador = usuario;
-      this.rol = Rol.Administrador;
-    }
+
+    MiservicioService.descargarImagen(this.usuario.imagen)
+                      .then(()=>  this.imgPerfil = MiservicioService.imgSrc);
+    MiservicioService.descargarImagen(this.usuario.avatar)
+                      .then(()=>  this.imgAvatar = MiservicioService.imgSrc);
   }
 
   modificar()
@@ -89,14 +84,18 @@ export class MenuComponent implements OnInit {
     dialogConfig.height = '350px';
     dialogConfig.panelClass = "dialog";
 
-    if(this.medico)
+    switch(this.usuario.rol)
     {
-      const dialogRef = this.modificarDialog.open(ModificarMedicoComponent, dialogConfig);
+      // case Rol.Administrador:
+      //   this.administrador = <Administrador>usuario;
+      //   break;
+      case Rol.Medico:
+        dialogRef = this.modificarDialog.open(ModificarMedicoComponent, dialogConfig);
+        break;
+      case Rol.Paciente:
+        dialogRef = this.modificarDialog.open(ModificarPacienteComponent, dialogConfig);
+        break; 
     }
-    else if(this.paciente)
-    {
-      const dialogRef = this.modificarDialog.open(ModificarPacienteComponent, dialogConfig);
-    }      
 
     dialogRef.afterClosed().subscribe(result => 
     {
@@ -114,20 +113,22 @@ export class MenuComponent implements OnInit {
       // Cerrar sesion y navegar al home
       if(result)
       {
-        switch(this.rol)
+        // Mejorar todo esto y conectar servicio correspondiente segun Rol
+        switch(this.usuario.rol)
         {
           case Rol.Administrador:
-            //this.adminService.borrar(this.administrador.id);
+            this.adminService.borrar(this.administrador.id);
             break;
           case Rol.Medico:
-            //this.medicosService.borrar(this.medico.id);
+            this.medicosService.borrar(this.medico.id);
             break;
           case Rol.Paciente:
-            //this.pacienteService.borrar(this.paciente.id);
-            break;
+            this.pacienteService.borrar(this.paciente.id);
+            break;                   
         }
         console.log('Baja realizada.');
-        console.log(result);   
+        console.log(result); 
+        this.logout();
       }
     });
   }
@@ -167,10 +168,4 @@ export class DialogModificar {
     this.dialogRef.close();
   }
 
-}
-
-export enum Rol{
-  Administrador = 1,
-  Medico = 2,
-  Paciente = 3
 }

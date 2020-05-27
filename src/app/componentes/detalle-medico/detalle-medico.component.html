@@ -1,19 +1,33 @@
-<mat-card>
-    <mat-card-header>
-      <div mat-card-avatar ></div>
-      <mat-card-title>{{medico.nombre}}</mat-card-title>
-      <mat-card-subtitle>N° Matricula: {{medico.matricula}}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image [src]='imgPerfil' alt="Foto del medico">
-    <mat-card-content >
-      <mat-list dense>
-        <mat-list-item *ngFor='let especialidad of medico.especialidad'>Especialidad: {{especialidad}}</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>Dni: {{medico.dni}}</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>Dirección: {{medico.direccion}}</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>E-mail: {{medico.email}}</mat-list-item>
-      </mat-list>
-    </mat-card-content>
-  </mat-card>
+
+
+
+<div class="flex-container">
+  <div class="img-container">
+  <img class='thumbnail' [src]="imgPerfil" alt="Foto de perfil">
+  </div>
+  <div>   
+    <h4>Nombre:</h4>
+    <p>{{medico.nombre}}</p>
+    <h4>Dni:</h4>
+    <p>{{medico.dni}}</p>
+    <h4>Dirección:</h4>
+    <p>{{medico.direccion}}</p>
+  </div>
+  <div>
+    <h4>Telefono:</h4>
+    <p>{{medico.telefono}}</p>   
+    <h4>E-mail:</h4>
+    <p>{{medico.email}}</p>
+    <h4>N° Matricula:</h4>
+    <p>{{medico.matricula}}</p>
+  </div>
+  <div>
+    <h4>Disponibilidad</h4>
+    <p>{{medico.disponibilidad}}</p>
+    <h4>Consultorio</h4>
+    <p>{{medico.consultorio}}</p>
+    <h4>Especialidades</h4>
+    <p *ngFor='let especialidad of medico.especialidad'>- {{especialidad}}</p>
+    
+  </div>
+</div>

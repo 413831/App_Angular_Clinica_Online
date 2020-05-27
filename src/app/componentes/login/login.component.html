@@ -1,7 +1,6 @@
 <div class="page">
-  <div class="example-container">
-    <h1>Iniciar sesión</h1>
-    <form [formGroup]='datosLogin'>
+    <form [formGroup]='datosLogin'  class="example-container">
+      <h1>Iniciar sesión</h1>
       <mat-form-field appearance="fill">
         <mat-label>Ingrese su email</mat-label>
         <input formControlName='email' matInput placeholder="pat@example.com" required>
@@ -19,6 +18,4 @@
       <br>
       <button mat-raised-button color="primary" (click)='login()'>Entrar</button>
     </form>
-  </div>
-
 </div>

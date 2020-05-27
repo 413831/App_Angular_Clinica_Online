@@ -49,7 +49,7 @@ export class ModificarPacienteComponent implements OnInit {
       if(result)
       {
         this.mainDialog.close();
-        //this.servicio.actualizar(this.usuario);
+        this.servicio.actualizar(this.usuario);
       }
     });   
   }
