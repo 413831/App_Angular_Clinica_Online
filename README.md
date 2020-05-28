@@ -2,7 +2,7 @@
 
 Aplicacion web para gestion de un sistema de salud.
 
-## Link de ejemplo
+## :information_source: Link de ejemplo
 
 https://clinica-online-aplanes.herokuapp.com/
 
