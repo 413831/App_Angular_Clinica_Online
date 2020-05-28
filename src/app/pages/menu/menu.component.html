@@ -20,6 +20,7 @@
             </mat-grid-tile>
 
             <mat-grid-tile class="tabla" *ngIf='paciente || medico' [colspan]=2 [rowspan]=4 >
+                <mat-grid-tile-header>Turnos</mat-grid-tile-header>
                 <mat-table [dataSource]="dataTurnos" class="mat-elevation-z8 frame">
 
                     <ng-container matColumnDef="especialidad">
@@ -39,6 +40,7 @@
 
             <mat-grid-tile *ngIf='administrador' [colspan]=2 [rowspan]=4 class="table">
                 <!-- <app-listado-medicos (enviarMedico)='seleccionarMedico($event)'></app-listado-medicos> -->
+                <mat-grid-tile-header *ngIf="mostrarMedicos">Listado de medicos</mat-grid-tile-header>
                 <mat-table *ngIf="mostrarMedicos" [dataSource]="dataMedicos" class="mat-elevation-z8 frame">
 
                     <ng-container matColumnDef="nombre">
@@ -55,6 +57,7 @@
                     <mat-row (click)="seleccionarMedico(row)" class="example-element-row"
                         *matRowDef="let row; columns: columnasMedicos;"></mat-row>
                 </mat-table>
+                <mat-grid-tile-header *ngIf="mostrarPacientes">Listado de pacientes</mat-grid-tile-header>
                 <mat-table *ngIf="mostrarPacientes" [dataSource]="dataPacientes" class="mat-elevation-z8 frame">
 
                     <ng-container matColumnDef="nombre">
