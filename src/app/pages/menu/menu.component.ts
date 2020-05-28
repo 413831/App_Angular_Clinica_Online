@@ -13,6 +13,7 @@ import { PacientesService } from 'src/app/servicios/servicio-pacientes.service';
 import { AdministradoresService } from 'src/app/servicios/servicio-administradores.service';
 import { MiservicioService } from 'src/app/servicios/miservicio.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-menu',
@@ -20,9 +21,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {  
+  public dataMedicos;
+  public dataPacientes;
+  public dataTurnos;
+  columnasMedicos: string[] = ['nombre', 'matricula'];
+  columnasPacientes: string[] = ['nombre', 'afiliado'];
+  columnasTurnos: string[] = ['especialidad', 'fecha'];
   public confirmacion: boolean = false;
   public usuario: any;
   public medico: Medico | null;
+  public medicoAutorizar: Medico;
   public paciente: Paciente | null;
   public administrador: Administrador | null;
   public rol: Rol;
@@ -36,7 +44,7 @@ export class MenuComponent implements OnInit {
 
   constructor(public modificarDialog: MatDialog, public borrarDialog: MatDialog,
               public medicosService: MedicosService, public pacienteService: PacientesService,
-              public adminService: AdministradoresService,
+              public adminService: AdministradoresService,              
               public route: ActivatedRoute, public router: Router) 
   { 
     this.usuario = JSON.parse(localStorage.getItem('usuario-logueado'));
@@ -61,7 +69,11 @@ export class MenuComponent implements OnInit {
         this.administrador = <Administrador>this.usuario;
         this.listadoMedicos = JSON.parse(localStorage.getItem('medicos'))
                                   .filter( medico => !medico.autorizado );
+        this.dataMedicos = new MatTableDataSource(this.listadoMedicos);
+        this.dataMedicos = new MatTableDataSource(this.listadoMedicos);
         this.listadoPacientes = JSON.parse(localStorage.getItem('pacientes'));
+        this.dataPacientes = new MatTableDataSource(this.listadoPacientes);       
+        
         break;
       case Rol.Medico:
         this.medico = <Medico>this.usuario;
@@ -91,6 +103,7 @@ export class MenuComponent implements OnInit {
                       .filter( turno => this.paciente.nombre == turno.nombrePaciente);
         break;                 
     }
+    this.dataTurnos  = new MatTableDataSource(this.turnos);
   }
 
   modificar()
@@ -161,7 +174,14 @@ export class MenuComponent implements OnInit {
 
   listarPacientes()
   {
+    this.mostrarPacientes = true;
+    this.mostrarMedicos = false;
+  }
 
+  listarMedicos()
+  {
+    this.mostrarMedicos = true;
+    this.mostrarPacientes = false;
   }
 
   listarTurnos()
@@ -176,14 +196,16 @@ export class MenuComponent implements OnInit {
 
   autorizar()
   {
-    this.medico.autorizado = true;
+    this.medicoAutorizar.autorizado = true;
     //Aca se tiene que mostrar los datos del medico
     //Tambien un boton para cambiar el estado de autorizado
+    this.medicosService.actualizar(this.medicoAutorizar);
   }
 
   seleccionarMedico(medico: Medico)
   {
-    this.medico = medico; 
+    this.medicoAutorizar = medico; 
+    console.log(this.medicoAutorizar);
   }
 
 }

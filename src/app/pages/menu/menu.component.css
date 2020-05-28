@@ -5,6 +5,41 @@
     padding-top: 3px;
 }
 
+mat-toolbar {
+    width: 100%;
+    background-color: rgb(225, 224, 228);
+}
+
+mat-table {
+    width: 100%;
+    background-color: rgb(234, 234, 248);
+  }
+
+  mat-row:hover{
+background-color: lightsteelblue;
+color: black;
+}
+
+tr{
+transition: 0.1s;
+}
+
+.tabla{
+    display: flex;
+    flex-direction: column;
+}
+
+
+th{
+font-size: medium;
+}
+
+.frame
+{
+    height: 100%;;
+    width: 100%;
+}
+
 .botones button{
     margin-right: 25px;
     margin-left: 25px;
@@ -20,6 +55,6 @@
 
 .detalle
 {
-    background-color: rgb(230, 221, 241);
+    background-color: rgb(234, 234, 248);
 }
 
