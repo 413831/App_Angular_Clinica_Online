@@ -1,6 +1,6 @@
 # Clinica Online
 
-Aplicacion web para gestion de un sistema de salud.
+Sistema de gestión web para clinicas con el que podrás brindar un servicio moderno y seguro para los pacientes, profesionales y administrativos del equipo de trabajo. 
 
 ## :information_source: Link de ejemplo
 
