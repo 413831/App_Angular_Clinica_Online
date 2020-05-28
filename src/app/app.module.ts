@@ -63,6 +63,7 @@ import { ModificarMedicoComponent } from './componentes/modificar-medico/modific
 import { DetalleAdministradorComponent } from './componentes/detalle-administrador/detalle-administrador.component';
 import { DetalleMedicoComponent } from './componentes/detalle-medico/detalle-medico.component';
 import { AltaAdminComponent } from './componentes/alta-admin/alta-admin.component';
+import { DialogPacienteComponent } from './componentes/dialog-paciente/dialog-paciente.component';
 
 
 @NgModule({
@@ -95,7 +96,8 @@ import { AltaAdminComponent } from './componentes/alta-admin/alta-admin.componen
     ModificarMedicoComponent,
     DetalleAdministradorComponent,
     DetalleMedicoComponent,
-    AltaAdminComponent
+    AltaAdminComponent,
+    DialogPacienteComponent
   ],
   imports: [
     ApplicationModule,

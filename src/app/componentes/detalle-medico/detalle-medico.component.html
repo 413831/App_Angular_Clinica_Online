@@ -1,11 +1,8 @@
-
-
-
 <div class="flex-container">
   <div class="img-container">
-  <img class='thumbnail' [src]="imgPerfil" alt="Foto de perfil">
+    <img class='thumbnail' [src]="imgPerfil" alt="Foto de perfil">
   </div>
-  <div>   
+  <div>
     <h4>Nombre:</h4>
     <p>{{medico.nombre}}</p>
     <h4>Dni:</h4>
@@ -15,7 +12,7 @@
   </div>
   <div>
     <h4>Telefono:</h4>
-    <p>{{medico.telefono}}</p>   
+    <p>{{medico.telefono}}</p>
     <h4>E-mail:</h4>
     <p>{{medico.email}}</p>
     <h4>N° Matricula:</h4>
@@ -28,6 +25,6 @@
     <p>{{medico.consultorio}}</p>
     <h4>Especialidades</h4>
     <p *ngFor='let especialidad of medico.especialidad'>- {{especialidad}}</p>
-    
+
   </div>
 </div>

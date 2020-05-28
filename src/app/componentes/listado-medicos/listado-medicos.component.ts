@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Inject, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject, Input, Output, EventEmitter } from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { Medico, Especialidad } from 'src/app/clases/Medico';
@@ -7,15 +7,6 @@ import { DialogMedicoComponent } from '../dialog-medico/dialog-medico.component'
 import { SelectionModel } from '@angular/cdk/collections';
 
 
-const MEDICOS: any[] = [
-  { nombre: 'Pepito Marranos', imagen: '/imagenes/corona-4944191_1280.png', matricula: 12345, especialidad: [Especialidad.General , Especialidad.General], disponibilidad: 'Mañana', consultorio: 1},
-  { nombre: 'Maria de los Cascabeles', imagen: 'FOTO', matricula: 54321, especialidad: Especialidad.Dermatología, disponibilidad: 'Mañana', consultorio: 2},
-  { nombre: 'Juan Perez', imagen: 'FOTO', matricula: 543523, especialidad: Especialidad.Traumatología, disponibilidad: 'Tarde', consultorio: 1},
-  { nombre: 'Manuel Paredes', imagen: 'FOTO', matricula: 432154, especialidad: Especialidad.Cardiología, disponibilidad: 'Mañana', consultorio: 3},
-  { nombre: 'Josefina Strauckbeer', imagen: 'FOTO', matricula: 546643, especialidad: Especialidad.General, disponibilidad: 'Tarde', consultorio: 2},
-  { nombre: 'Ana Maria Angeles', imagen: 'FOTO', matricula: 585483, especialidad: Especialidad.Pediatría, disponibilidad: 'Tarde', consultorio: 1}
-]
-
 @Component({
   selector: 'app-listado-medicos',
   templateUrl: './listado-medicos.component.html',
@@ -23,8 +14,7 @@ const MEDICOS: any[] = [
 })
 export class ListadoMedicosComponent implements OnInit {
   @Input() listado: Medico[];
-  // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  // dataSource = new MatTableDataSource(ELEMENT_DATA);
+  @Output() enviarMedico: EventEmitter<any> = new EventEmitter<any>();
   selection = new SelectionModel<Medico>(true, []);
   displayedColumns: string[] = ['nombre', 'especialidad', 'disponibilidad'];
   dataSource: MatTableDataSource<Medico>;
@@ -38,14 +28,15 @@ export class ListadoMedicosComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.listado);
   }
    
-  ngOnInit() {
+  ngOnInit()
+  {
     this.dataSource.sort = this.sort;
   }
 
-  seleccionar(element: any)
+  seleccionar(medico: Medico)
   {
     let dialogConfig = new MatDialogConfig();
-    dialogConfig.data = element;
+    dialogConfig.data = medico;
     dialogConfig.width = '400px';
     dialogConfig.height = '700px';
            
@@ -55,6 +46,7 @@ export class ListadoMedicosComponent implements OnInit {
       console.log('The dialog was closed');
       console.log(result);
     });
+    this.enviarMedico.emit(medico);
   }
 
   filtrar(event: Event) {

@@ -29,6 +29,7 @@ export class Medico extends Usuario
         medico.avatar = avatar;
         medico.id = id;
         medico.rol = Rol.Medico;
+        medico.autorizado = false;
 
         return medico;
     }    

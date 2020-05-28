@@ -25,10 +25,14 @@ export class MenuComponent implements OnInit {
   public medico: Medico | null;
   public paciente: Paciente | null;
   public administrador: Administrador | null;
-  public turnos: Turno[];
   public rol: Rol;
   public imgPerfil: string;
   public imgAvatar: string;
+  public turnos: Turno[];
+  public listadoMedicos: Medico[];
+  public listadoPacientes: Paciente[];
+  public mostrarPacientes: boolean = false;
+  public mostrarMedicos: boolean = true;
 
   constructor(public modificarDialog: MatDialog, public borrarDialog: MatDialog,
               public medicosService: MedicosService, public pacienteService: PacientesService,
@@ -39,31 +43,32 @@ export class MenuComponent implements OnInit {
 
     if(this.usuario)
     {
-      this.getPerfil(this.usuario);
+      this.obtenerPerfil();
+      this.obtenerTurnos();
     }
-    // this.turnos = JSON.parse(localStorage.getItem('turnos'));
-    // console.log(this.usuario);
-    // // Mejorar todo esto
-    // this.turnos = this.turnos.filter( turno => turno.nombrePaciente === this.usuario.nombre);
   }
 
   ngOnInit(): void 
   {
   }
 
-  getPerfil(usuario: Usuario)
+  obtenerPerfil()
   {
 
-    switch(usuario.rol)
+    switch(this.usuario.rol)
     {
       case Rol.Administrador:
-        this.administrador = <Administrador>usuario;
+        this.administrador = <Administrador>this.usuario;
+        this.listadoMedicos = JSON.parse(localStorage.getItem('medicos'))
+                                  .filter( medico => !medico.autorizado );
+        this.listadoPacientes = JSON.parse(localStorage.getItem('pacientes'));
         break;
       case Rol.Medico:
-        this.medico = <Medico>usuario;
+        this.medico = <Medico>this.usuario;
+        
         break;
       case Rol.Paciente:
-        this.paciente = <Paciente>usuario;
+        this.paciente = <Paciente>this.usuario;
         break;                 
     }
 
@@ -71,6 +76,21 @@ export class MenuComponent implements OnInit {
                       .then(()=>  this.imgPerfil = MiservicioService.imgSrc);
     MiservicioService.descargarImagen(this.usuario.avatar)
                       .then(()=>  this.imgAvatar = MiservicioService.imgSrc);
+  }
+
+  obtenerTurnos()
+  {
+    switch(this.usuario.rol)
+    {     
+      case Rol.Medico: 
+        this.turnos = JSON.parse(localStorage.getItem('turnos'))
+                      .filter( turno => this.medico.nombre == turno.nombreMedico);
+        break;
+      case Rol.Paciente:
+        this.turnos = JSON.parse(localStorage.getItem('turnos'))
+                      .filter( turno => this.paciente.nombre == turno.nombrePaciente);
+        break;                 
+    }
   }
 
   modificar()
@@ -152,8 +172,10 @@ export class MenuComponent implements OnInit {
 
   }
 
-  autorizar(){
-    
+  autorizar(medico: Medico)
+  {
+    //Aca se tiene que mostrar los datos del medico
+    //Tambien un boton para cambiar el estado de autorizado
   }
 
 

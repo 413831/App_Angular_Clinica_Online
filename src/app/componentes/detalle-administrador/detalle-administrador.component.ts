@@ -7,8 +7,11 @@ import { Administrador } from 'src/app/clases/Administrador';
   styleUrls: ['./detalle-administrador.component.css']
 })
 export class DetalleAdministradorComponent implements OnInit {
+  @Input() imgPerfil: string;
+  @Input() imgAvatar: string;
   @Input() administrador: Administrador;
   imgSrc: string;
+  
   constructor() { }
 
   ngOnInit(): void {

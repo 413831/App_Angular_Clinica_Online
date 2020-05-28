@@ -36,33 +36,7 @@
 
             <mat-grid-tile *ngIf='administrador' [colspan]=1 [rowspan]=4 [style.background]="'purple'">
                 Aca va listado de medicos para administradores
-                <!-- <mat-table *ngFor='let turno of turnos' class="mat-elevation-z8">
-
-
-                    <ng-container>
-                        <mat-header-cell *matHeaderCellDef> Especialidad </mat-header-cell>
-                        <mat-cell> {{turno.especialidad}} </mat-cell>
-                    </ng-container>
-
-                    <ng-container>
-                        <mat-header-cell> Fecha </mat-header-cell>
-                        <mat-cell> {{turno.fecha}} </mat-cell>
-                    </ng-container>
-
-                </mat-table> -->
-            </mat-grid-tile> -->
-
-
-            <!-- <mat-grid-tile [colspan]=3 [rowspan]=1 [style.background]="'orange'">
-                Aca van los botones de opciones
-                <div class="example-button-row">
-                    <a mat-stroked-button (click)="modificar()">Modificar datos</a>
-                    <a mat-stroked-button (click)="borrar()">Baja de usuario</a>
-                    <div *ngIf='administrador'>
-                        <a mat-stroked-button (click)="modificar()">Modificar datos</a>
-                        <a mat-stroked-button (click)="borrar()">Baja de usuario</a>
-                    </div>
-                </div>
+                <app-listado-medicos (enviarMedico)='autorizar($event)'></app-listado-medicos>
             </mat-grid-tile> -->
 
         </mat-grid-list>

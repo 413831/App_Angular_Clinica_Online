@@ -28,7 +28,8 @@ export class DialogMedicoComponent implements OnInit {
   ngOnInit(): void 
   {
     console.log(`URL Imagen: ${this.medico.imagen}`);
-    MiservicioService.descargarImagen(this.medico.imagen).then( ()=> this.imgSrc = MiservicioService.imgSrc);
+    MiservicioService.descargarImagen(this.medico.imagen)
+                      .then( ()=> this.imgSrc = MiservicioService.imgSrc);
     
     this.turno = new Turno();
   }
