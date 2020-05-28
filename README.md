@@ -18,7 +18,7 @@ Cada perfil tendrá acceso a opciones que enriqueceran al sistema y a su vez fac
 
 ## :information_source: Link de ejemplo
 
-Clickeando en el siguiente link podrá ver una demostración del a aplicación y explorar las funcionalidades que ofrece el sistema.
+Clickeando en el siguiente link podrá ver una demostración de la aplicación y explorar las funcionalidades que ofrece el sistema.
 
 https://clinica-online-aplanes.herokuapp.com/
 
