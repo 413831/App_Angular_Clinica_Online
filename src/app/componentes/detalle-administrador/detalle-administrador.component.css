@@ -3,9 +3,10 @@
 }
   
 .flex-container {
+  margin-top: 50px;
   display: flex;
   flex-direction: row;
-  background-color: rgb(226, 220, 241);
+  background-color: rgb(217, 205, 233);
   justify-content: space-evenly;
   border-radius: 15px;
   width: 650px;

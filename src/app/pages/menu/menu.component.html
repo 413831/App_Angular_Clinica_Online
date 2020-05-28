@@ -3,8 +3,8 @@
     <hr>
     <div *ngIf='usuario'>
        
-        <mat-grid-list cols="4" rowHeight="90px">
-            <mat-grid-tile [colspan]=3 [rowspan]=4 [style.background]="'blue'">
+        <mat-grid-list cols="4" rowHeight="90px" >
+            <mat-grid-tile [colspan]=3 [rowspan]=4 class="detalle">
                 <mat-grid-tile-header>Datos personales</mat-grid-tile-header>
                 <div *ngIf='paciente'>
                     <app-detalle-paciente  *ngIf='paciente' class="detalle" [imgPerfil]='imgPerfil' [paciente]='paciente'></app-detalle-paciente>
@@ -36,7 +36,7 @@
 
             <mat-grid-tile *ngIf='administrador' [colspan]=1 [rowspan]=4 [style.background]="'purple'">
                 Aca va listado de medicos para administradores
-                <app-listado-medicos (enviarMedico)='autorizar($event)'></app-listado-medicos>
+                <app-listado-medicos (enviarMedico)='seleccionarMedico($event)'></app-listado-medicos>
             </mat-grid-tile> -->
 
         </mat-grid-list>

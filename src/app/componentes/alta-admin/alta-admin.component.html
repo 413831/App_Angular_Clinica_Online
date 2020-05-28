@@ -1,51 +1,57 @@
 <div class="page">
-    <h1 class="titulos">Alta Admin</h1>
+    <h1 class="titulos example-center-align">Alta Admin</h1>
     <hr>
-    <p>
-        <mat-form-field appearance="legacy">
-            <mat-label>Nombre</mat-label>
-            <input matInput placeholder="Placeholder">
-            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <mat-hint>Ingrese nombre y apellido</mat-hint>
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="standard">
-            <mat-label>DNI: </mat-label>
-            <input matInput placeholder="Placeholder">
-            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <mat-hint>Ingrese numero sin puntos</mat-hint>
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="fill">
-            <mat-label>Direccion</mat-label>
-            <input matInput placeholder="Placeholder">
-            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <mat-hint>Ingrese dirección completa</mat-hint>
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="outline">
-            <mat-label>Telefono</mat-label>
-            <input matInput placeholder="Placeholder">
-            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <mat-hint>Ingrese numero de telefono completo</mat-hint>
-        </mat-form-field>
-    </p>
-    <div class="example-container">
-        <mat-form-field appearance="fill">
-            <mat-label>Enter your email</mat-label>
-            <input matInput placeholder="pat@example.com" [formControl]="email" required>
-            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field>
+    <form class="panel form-alta" *ngIf="mostrarForm" [formGroup]="datosAdmin">
+        <p>
+            <mat-form-field appearance="standard">
+                <mat-label>Nombre</mat-label>
+                <input formControlName="nombre" matInput placeholder="Ingrese el nombre">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Ingrese nombre y apellido</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="standard">
+                <mat-label>DNI: </mat-label>
+                <input formControlName="dni" matInput placeholder="Ingrese el numero de DNI">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Ingrese numero sin puntos</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="standard">
+                <mat-label>Direccion</mat-label>
+                <input formControlName="direccion" matInput placeholder="Ingrese la direccion">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Ingrese dirección completa</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="standard">
+                <mat-label>Telefono</mat-label>
+                <input formControlName="telefono" matInput placeholder="Ingrese el numero de telefono">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Ingrese numero de telefono completo</mat-hint>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Ingrese su mail</mat-label>
+                <input matInput placeholder="mail@mail.com" formControlName="email" required>
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Ingrese su password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="clave">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        </p>
+        <button mat-flat-button color="primary" (click)='alta()'>Nuevo admin</button>
+    </form>
+    <div *ngIf="!mostrarForm">
+        <h4>
+            <p>No se encuentra ningún administrador logueado.
+                Si usted tiene los permisos necesarios debe iniciar sesión.</p>
+        </h4>
     </div>
-    <mat-form-field appearance="fill">
-        <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-    </mat-form-field>
 </div>

@@ -74,7 +74,7 @@ export class AltaTurnoComponent implements OnInit {
     this.turno.estado = Estado.Pendiente;
 
     console.log(this.turno);
-    // this.servicio.crear(this.turno);
+    this.servicio.crear(this.turno);
 
   }
 

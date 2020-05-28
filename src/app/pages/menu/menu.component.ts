@@ -164,20 +164,27 @@ export class MenuComponent implements OnInit {
 
   }
 
-  listarTurnos(){
-
-  }
-
-  altaAdmin(){
-
-  }
-
-  autorizar(medico: Medico)
+  listarTurnos()
   {
+
+  }
+
+  altaAdmin()
+  {
+
+  }
+
+  autorizar()
+  {
+    this.medico.autorizado = true;
     //Aca se tiene que mostrar los datos del medico
     //Tambien un boton para cambiar el estado de autorizado
   }
 
+  seleccionarMedico(medico: Medico)
+  {
+    this.medico = medico; 
+  }
 
 }
 
