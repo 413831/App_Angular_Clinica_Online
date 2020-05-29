@@ -47,7 +47,7 @@ export class AltaMedicoComponent implements OnInit {
       imagen: new FormControl(),
       avatar: new FormControl(),
       diasAtencion: new FormControl(),
-      horaAtencion: new FormControl(),
+      horasAtencion: new FormControl(),
       email: new FormControl(),
       clave: new FormControl(),
       matricula: new FormControl(),
@@ -72,7 +72,7 @@ export class AltaMedicoComponent implements OnInit {
     MiservicioService.guardarImagen(this.imagen2.nombre, this.imagen2.base64);
     
     console.log(medico);
-    //this.servicio.crear(medico);
+    this.servicio.crear(medico);
     this.router.navigate(["/home"]);
   }
 
