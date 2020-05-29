@@ -67,6 +67,7 @@ import { DetalleMedicoComponent } from './componentes/detalle-medico/detalle-med
 import { AltaAdminComponent } from './componentes/alta-admin/alta-admin.component';
 import { DialogPacienteComponent } from './componentes/dialog-paciente/dialog-paciente.component';
 import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
+import { DiaAtencionPipe } from './pipes/dia-atencion.pipe';
 
 
 @NgModule({
@@ -101,7 +102,8 @@ import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
     DetalleMedicoComponent,
     AltaAdminComponent,
     DialogPacienteComponent,
-    EncuestaComponent
+    EncuestaComponent,
+    DiaAtencionPipe
   ],
   imports: [
     ApplicationModule,

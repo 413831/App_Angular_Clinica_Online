@@ -25,6 +25,7 @@ export class Medico extends Usuario
         medico.telefono = telefono;
         medico.imagen = imagen;
         medico.matricula = matricula;
+        medico.especialidad = especialidad;
         medico.consultorio = consultorio;
         medico.diasAtencion = diasAtencion;
         medico.horasAtencion = horasAtencion;
