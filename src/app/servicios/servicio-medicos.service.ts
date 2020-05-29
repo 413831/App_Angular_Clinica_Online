@@ -35,7 +35,7 @@ export class MedicosService extends MiservicioService{
           medicos.push(Medico.CrearMedico(data.nombre, data.clave,
                                           data.dni, data.direccion, data.email,
                                           data.telefono, data.imagen, data.matricula,
-                                          data.consultorio, data.disponibilidad ,
+                                          data.consultorio, data.diasAtencion , data.horasAtencion,
                                           data.especialidad, data.avatar, child.key ));
         });
         console.info("Fetch medicos");

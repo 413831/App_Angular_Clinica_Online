@@ -44,7 +44,6 @@ export class DialogMedicoComponent implements OnInit {
     this.turno.nombreMedico = this.medico.nombre;
     // Ver solo especialidad seleccionada
     this.turno.consultorio = this.medico.consultorio;   
-    this.turno.horario = this.medico.disponibilidad;
     localStorage.setItem('nuevoTurno',JSON.stringify(this.turno));
     // Se cierra el modal
     // Se navega al alta de Turno

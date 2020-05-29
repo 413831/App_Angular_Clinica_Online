@@ -9,6 +9,7 @@ import { AdministradoresService } from 'src/app/servicios/servicio-administrador
 import { Administrador } from 'src/app/clases/Administrador';
 import { Medico, Especialidad } from 'src/app/clases/Medico';
 import { Paciente } from 'src/app/clases/Paciente';
+import { Dia } from 'src/app/clases/Turno';
 
 @Component({
   selector: 'app-login',
@@ -90,13 +91,15 @@ export class LoginComponent implements OnInit {
                                                     11111111111, 'unafoto', 'otrafoto', '0');
     this.pacienteTest_1 = Paciente.CrearPaciente('Paciente_0', 'paciente0', 888888888, 'Direccion 1234', 'paciente0@mail.com',
                                                   1112341234, 'unafoto', 'Cobertura', 12345, 'otrafoto', '0');
-    this.pacienteTest_1 = Paciente.CrearPaciente('Paciente_1', 'paciente1', 77777777,'Direccion 4321', 'paciente1@mail.com',
+    this.pacienteTest_2 = Paciente.CrearPaciente('Paciente_1', 'paciente1', 77777777,'Direccion 4321', 'paciente1@mail.com',
                                                   119876544, 'unafoto', 'Cobertura', 12346, 'otrafoto', '0');
     this.medicoTest_1 = Medico.CrearMedico('Medico_1', 'medico1', 777777777, 'Direccion 222', 'medico1@mail.com',
-                                            111426351, 'unafoto', 1010101010, 0, 'tarde', [Especialidad.Cardiología, Especialidad.General],
+                                            111426351, 'unafoto', 1010101010, 0, [Dia.Viernes, Dia.Miercoles], ["11:30", "15:00"] ,
+                                            [Especialidad.Cardiología, Especialidad.General],
                                             'fotodos', '0');
     this.medicoTest_2 = Medico.CrearMedico('Medico_2', 'medico2', 666666666, 'Direccion 333', 'medico2@mail.com',
-                                            1155557776, 'unafoto', 202020202, 0, 'tarde', [Especialidad.Pediatría, Especialidad.Traumatología],
+                                            1155557776, 'unafoto', 202020202, 0, [Dia.Lunes, Dia.Martes, Dia.Miercoles],
+                                            ["11:30", "12:00", "13:00","15:00" ] ,[Especialidad.Pediatría, Especialidad.Traumatología],
                                             'fotodos', '0');
   }
 

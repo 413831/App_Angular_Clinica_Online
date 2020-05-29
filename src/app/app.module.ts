@@ -31,6 +31,7 @@ import {MatRippleModule, MatNativeDateModule} from '@angular/material/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 // Componentes
@@ -131,6 +132,7 @@ import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
     MatDialogModule,
     MatNativeDateModule,
     MatButtonToggleModule,
+    MatSidenavModule,
     AgmCoreModule.forRoot({
       apiKey: environment.agmKey
     }),

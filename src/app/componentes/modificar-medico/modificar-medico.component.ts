@@ -6,6 +6,7 @@ import { DialogMedicoComponent } from '../dialog-medico/dialog-medico.component'
 import { ActivatedRoute, Router } from '@angular/router';
 import { MedicosService } from 'src/app/servicios/servicio-medicos.service';
 import { DialogComponent } from '../dialog/dialog.component';
+import { Turno, Dia } from 'src/app/clases/Turno';
 
 @Component({
   selector: 'app-modificar-medico',
@@ -15,7 +16,8 @@ import { DialogComponent } from '../dialog/dialog.component';
 export class ModificarMedicoComponent implements OnInit {
   @Input() medico: Medico;
   datosMedico: FormGroup;
-  franjaHoraria: string[] = ['mañana', 'tarde'];
+  public horarios: string[] = Turno.horarios;
+  public dias: Dia[] = Turno.dias;
 
   constructor( public dialogRef: MatDialogRef<ModificarMedicoComponent>,
                 @Inject(MAT_DIALOG_DATA) public usuario: Medico,
@@ -28,7 +30,8 @@ export class ModificarMedicoComponent implements OnInit {
       matricula: new FormControl({value: this.usuario.matricula, disabled: true}),
       direccion: new FormControl({value: this.usuario.direccion, disabled: false}),
       telefono: new FormControl({value: this.usuario.telefono, disabled: false}),
-      disponibilidad: new FormControl({value: this.usuario.disponibilidad, disabled: false}),
+      diasAtencion: new FormControl({value: this.usuario.diasAtencion, disabled: false}),
+      horasAtencion: new FormControl({value: this.usuario.horasAtencion, disabled: false}),
       consultorio: new FormControl({value: this.usuario.consultorio, disabled: false})
     });
   }
@@ -39,7 +42,8 @@ export class ModificarMedicoComponent implements OnInit {
   { 
     this.usuario.direccion = this.direccion.value;
     this.usuario.telefono = this.telefono.value;
-    this.usuario.disponibilidad = this.disponibilidad.value;
+    this.usuario.diasAtencion = this.diasAtencion.value;
+    this.usuario.horasAtencion = this.horasAtencion.value;
     this.usuario.consultorio = this.consultorio.value;
 
     console.log(`Usuario modificado ${this.usuario}`)
@@ -57,6 +61,7 @@ export class ModificarMedicoComponent implements OnInit {
   get matricula() { return this.datosMedico.get('matricula'); }
   get direccion() { return this.datosMedico.get('direccion'); }
   get telefono() { return this.datosMedico.get('telefono'); }
-  get disponibilidad() { return this.datosMedico.get('disponibilidad'); }
+  get diasAtencion() { return this.datosMedico.get('diasAtencion'); }
+  get horasAtencion() { return this.datosMedico.get('horasAtencion'); }
   get consultorio() { return this.datosMedico.get('consultorio'); }
 }

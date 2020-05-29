@@ -6,6 +6,7 @@ import { MedicosService } from 'src/app/servicios/servicio-medicos.service';
 import { Imagen } from '../registro/registro.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MiservicioService } from 'src/app/servicios/miservicio.service';
+import { Dia, Turno } from 'src/app/clases/Turno';
 
 @Component({
   selector: 'app-alta-medico',
@@ -25,9 +26,11 @@ export class AltaMedicoComponent implements OnInit {
   isLinear = false;
   seleccion = new SelectionModel<Especialidad>(true, []);
   franjaHoraria: string[] = ['mañana', 'tarde'];
-  especialidades: Especialidad[] = [Especialidad.Cardiología,Especialidad.Dermatología,
-                                    Especialidad.General, Especialidad.Pediatría,
-                                     Especialidad.Traumatología];
+  public horarios: string[] = Turno.horarios;
+  public dias: Dia[] = Turno.dias;
+  especialidades = [Especialidad.Cardiología,Especialidad.Dermatología,
+                    Especialidad.General, Especialidad.Pediatría,
+                    Especialidad.Traumatología];
   // public especialidades: Especialidad[];
 
   constructor(private _formBuilder: FormBuilder,
@@ -43,11 +46,13 @@ export class AltaMedicoComponent implements OnInit {
       telefono: new FormControl(),
       imagen: new FormControl(),
       avatar: new FormControl(),
-      disponibilidad: new FormControl(),
+      diasAtencion: new FormControl(),
+      horaAtencion: new FormControl(),
       email: new FormControl(),
       clave: new FormControl(),
       matricula: new FormControl(),
       especialidad: new FormControl(),
+      nuevaEspecialidad: new FormControl(),
    });
   }
 
@@ -56,22 +61,18 @@ export class AltaMedicoComponent implements OnInit {
     
   }
 
-  toggle(especialidad: Especialidad){
-
-  }
-
   alta()
   {
     let medico = Medico.CrearMedico(this.nombre.value, this.clave.value, this.dni.value,
                                     this.direccion.value,this.email.value, this.telefono.value,
-                                    `imagenes/${this.imagen1.nombre}`, this.matricula.value, 0,
-                                    this.disponibilidad.value, this.especialidad.value, 
-                                    `imagenes/${this.imagen1.nombre}`,'');
+                                    `imagenes/${this.imagen1.nombre}`, this.matricula.value, 0, 
+                                    this.diasAtencion.value, this.horasAtencion.value,
+                                     this.especialidad.value, `imagenes/${this.imagen1.nombre}`,'');
     MiservicioService.guardarImagen(this.imagen1.nombre, this.imagen1.base64);
     MiservicioService.guardarImagen(this.imagen2.nombre, this.imagen2.base64);
     
     console.log(medico);
-    this.servicio.crear(medico);
+    //this.servicio.crear(medico);
     this.router.navigate(["/home"]);
   }
 
@@ -116,6 +117,11 @@ export class AltaMedicoComponent implements OnInit {
     console.log(this.imagen1.nombre );
   }
 
+  agregarEspecialidad()
+  {
+    this.especialidades.push(this.nuevaEspecialidad.value);
+  }
+
   get nombre() { return this.datosMedico.get('nombre'); }
   get dni() { return this.datosMedico.get('dni'); }
   get direccion() { return this.datosMedico.get('direccion'); }
@@ -123,8 +129,10 @@ export class AltaMedicoComponent implements OnInit {
   get imagen() { return this.datosMedico.get('imagen'); }
   get email() { return this.datosMedico.get('email'); }
   get clave() { return this.datosMedico.get('clave'); }
-  get disponibilidad() { return this.datosMedico.get('disponibilidad'); }
+  get horasAtencion() { return this.datosMedico.get('horasAtencion'); }
+  get diasAtencion() { return this.datosMedico.get('diasAtencion'); }
   get avatar() { return this.datosMedico.get('avatar'); }
   get matricula() { return this.datosMedico.get('matricula'); }
   get especialidad() { return this.datosMedico.get('especialidad'); }
+  get nuevaEspecialidad() { return this.datosMedico.get('nuevaEspecialidad'); }
 }

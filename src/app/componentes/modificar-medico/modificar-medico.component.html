@@ -1,6 +1,6 @@
 <h2>Modificar datos</h2>
 <hr>
-<form [formGroup]="datosMedico" >
+<form [formGroup]="datosMedico">
   <mat-form-field appearance="fill">
     <mat-label>Nombre</mat-label>
     <input formControlName="nombre" matInput>
@@ -11,24 +11,31 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Matricula</mat-label>
-    <input formControlName="matricula" matInput >
+    <input formControlName="matricula" matInput>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Direccion</mat-label>
-    <input formControlName="direccion" matInput >
+    <input formControlName="direccion" matInput>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Telefono</mat-label>
-    <input formControlName="telefono" matInput >
+    <input formControlName="telefono" matInput>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Consultorio</mat-label>
-    <input formControlName="consultorio" matInput >
+    <input formControlName="consultorio" matInput>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Dias de atención</mat-label>
+    <mat-select formControlName="diasAtencion" multiple>
+      <mat-option *ngFor="let dia of dias" [value]="dia">{{dia}}</mat-option>
+    </mat-select>
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Disponibilidad</mat-label>
-    <mat-select formControlName="disponibilidad" multiple>
-      <mat-option *ngFor="let horario of franjaHoraria" [value]="horario">{{horario}}</mat-option>
+    <mat-label>Horarios de atención</mat-label>
+    <mat-select formControlName="horaAtencion" multiple>
+      <mat-option *ngFor="let hora of horarios" [value]="hora">{{hora}}</mat-option>
     </mat-select>
   </mat-form-field>
   <br>

@@ -16,6 +16,15 @@
 }
   
 .botones button{
-  margin-right: 25px;
-  margin-left: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 25px;
+  padding: 10px;
+}
+
+.botones button:hover{
+  box-shadow: 2px 2px 2px 2px rgba(95, 66, 241, 0.5);
+  transition: ease-in-out;
+  transition-delay: 10ms;
 }
