@@ -17,5 +17,18 @@
       </mat-form-field>
       <br>
       <button mat-raised-button color="primary" (click)='login()'>Entrar</button>
+      <br>
+      <recaptcha
+          [formControl]="myRecaptcha"
+          (scriptLoad)="onScriptLoad()"
+          (scriptError)="onScriptError()"
+        ></recaptcha>
     </form>
+    <mat-toolbar>
+      <button mat-raised-button (click)='autocomplete(adminTest)' color="accent">Perfil Admin</button>
+      <button mat-raised-button (click)='autocomplete(medicoTest_1)'>Perfil Medico 1</button>
+      <button mat-raised-button (click)='autocomplete(medicoTest_2)'>Perfil Medico 2</button>
+      <button mat-raised-button (click)='autocomplete(pacienteTest_1)' color="accent">Perfil Paciente 1</button>
+      <button mat-raised-button (click)='autocomplete(pacienteTest_2)' color="accent">Perfil Paciente 2</button>
+    </mat-toolbar>
 </div>

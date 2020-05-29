@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from '../environments/environment';
 import {ApplicationModule } from '@angular/core'; 
+import { RecaptchaModule } from 'angular-google-recaptcha';
 
 // Routing
 import { AppRoutingModule } from './app-routing.module';
@@ -64,6 +65,7 @@ import { DetalleAdministradorComponent } from './componentes/detalle-administrad
 import { DetalleMedicoComponent } from './componentes/detalle-medico/detalle-medico.component';
 import { AltaAdminComponent } from './componentes/alta-admin/alta-admin.component';
 import { DialogPacienteComponent } from './componentes/dialog-paciente/dialog-paciente.component';
+import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
 
 
 @NgModule({
@@ -97,7 +99,8 @@ import { DialogPacienteComponent } from './componentes/dialog-paciente/dialog-pa
     DetalleAdministradorComponent,
     DetalleMedicoComponent,
     AltaAdminComponent,
-    DialogPacienteComponent
+    DialogPacienteComponent,
+    EncuestaComponent
   ],
   imports: [
     ApplicationModule,
@@ -131,6 +134,9 @@ import { DialogPacienteComponent } from './componentes/dialog-paciente/dialog-pa
     AgmCoreModule.forRoot({
       apiKey: environment.agmKey
     }),
+    RecaptchaModule.forRoot({
+      siteKey: environment.captchaKey,
+  }),
     
   ],
   providers: [MatDatepickerModule],
