@@ -6,10 +6,10 @@
   margin-top: 50px;
   display: flex;
   flex-direction: row;
-  background-color: rgb(235, 234, 238);
+  background-color: rgb(234, 226, 243);
   justify-content: space-evenly;
   border-radius: 15px;
-  width: 650px;
+  width: 600px;
 }
   
 .img-container{

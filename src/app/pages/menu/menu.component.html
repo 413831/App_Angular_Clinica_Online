@@ -23,9 +23,15 @@
                 <mat-grid-tile-header>Turnos</mat-grid-tile-header>
                 <mat-table [dataSource]="dataTurnos" class="mat-elevation-z8 frame">
 
+                
                     <ng-container matColumnDef="especialidad">
                         <mat-header-cell *matHeaderCellDef> Especialidad </mat-header-cell>
                         <mat-cell *matCellDef="let turno"> {{turno.especialidad}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="estado">
+                        <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+                        <mat-cell *matCellDef="let turno"> {{turno.estado}} </mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="fecha">
@@ -34,7 +40,7 @@
                     </ng-container>
 
                     <mat-header-row *matHeaderRowDef="columnasTurnos"></mat-header-row>
-                    <mat-row class="example-element-row" *matRowDef="let row; columns: columnasTurnos;"></mat-row>
+                    <mat-row (click)="seleccionarTurno(row)" class="example-element-row" *matRowDef="let row; columns: columnasTurnos;"></mat-row>
                 </mat-table>
             </mat-grid-tile>
 
@@ -83,8 +89,12 @@
                 <button mat-raised-button color="primary" (click)="listarPacientes()">Ver Pacientes</button>
                 <button mat-raised-button color="primary" (click)="listarMedicos()">Ver Medicos</button>
             </div>
+            <div *ngIf="turno">
+                <button mat-raised-button class="default" [routerLink]="['/alta-turno']" routerLinkActive="router-link-active" >Cargar Turno</button>
+                <button mat-raised-button class="default">Modificar Turno</button>
+            </div>
             <div class="botones">
-                <button mat-raised-button class="default" (click)="modificar()">Modificar datos</button>
+                <button mat-raised-button class="default" (click)="modificar()">Modificar datos</button>                
                 <button mat-raised-button class="default" (click)="logout()">Cerrar Sesion</button>
                 <button mat-raised-button class="warning" (click)="borrar()">Baja de usuario</button>
             </div>

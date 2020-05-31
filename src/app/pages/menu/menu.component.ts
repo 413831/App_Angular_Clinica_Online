@@ -14,6 +14,7 @@ import { AdministradoresService } from 'src/app/servicios/servicio-administrador
 import { MiservicioService } from 'src/app/servicios/miservicio.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
+import { ListadoMedicosComponent } from 'src/app/componentes/listado-medicos/listado-medicos.component';
 
 @Component({
   selector: 'app-menu',
@@ -26,13 +27,14 @@ export class MenuComponent implements OnInit {
   public dataTurnos;
   columnasMedicos: string[] = ['nombre', 'matricula'];
   columnasPacientes: string[] = ['nombre', 'afiliado'];
-  columnasTurnos: string[] = ['especialidad', 'fecha'];
+  columnasTurnos: string[] = ['especialidad', 'estado' ,'fecha'];
   public confirmacion: boolean = false;
   public usuario: any;
   public medico: Medico | null;
   public medicoAutorizar: Medico;
   public paciente: Paciente | null;
   public administrador: Administrador | null;
+  public turno: Turno | null;
   public rol: Rol;
   public imgPerfil: string;
   public imgAvatar: string;
@@ -42,7 +44,7 @@ export class MenuComponent implements OnInit {
   public mostrarPacientes: boolean = false;
   public mostrarMedicos: boolean = true;
 
-  constructor(public modificarDialog: MatDialog, public borrarDialog: MatDialog,
+  constructor(public modificarDialog: MatDialog, public borrarDialog: MatDialog,public altaTurno: MatDialog,
               public medicosService: MedicosService, public pacienteService: PacientesService,
               public adminService: AdministradoresService,              
               public route: ActivatedRoute, public router: Router) 
@@ -103,7 +105,37 @@ export class MenuComponent implements OnInit {
                       .filter( turno => this.paciente.nombre == turno.nombrePaciente);
         break;                 
     }
-    this.dataTurnos  = new MatTableDataSource(this.turnos);
+    this.dataTurnos = new MatTableDataSource(this.turnos);
+  }
+
+  seleccionarTurno(turno: Turno)
+  {
+    // Seleccionar turno para modificar
+    this.turno = turno;
+
+    localStorage.setItem('nuevoTurno',JSON.stringify(this.turno));
+  }
+
+  cargarTurno()
+  {
+    // Se muestra listado de medicos para el turno
+
+    let dialogConfig = new MatDialogConfig();
+    let dialogRef;
+    dialogConfig.data = this.dataMedicos;
+    dialogConfig.width = '700px';
+    dialogConfig.height = '500px';
+    dialogConfig.panelClass = "dialog";
+
+    dialogRef = this.altaTurno.open(ListadoMedicosComponent, dialogConfig);
+
+    dialogRef.close();
+
+    dialogRef.afterClosed().subscribe(result => 
+    {
+      console.log('Se guardo el turno.');
+      console.log(result);
+    });
   }
 
   modificar()

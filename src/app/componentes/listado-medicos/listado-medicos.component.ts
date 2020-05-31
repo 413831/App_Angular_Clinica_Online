@@ -21,7 +21,9 @@ export class ListadoMedicosComponent implements OnInit {
   
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   
-  constructor(public dialog: MatDialog) 
+  constructor(public dialogRef: MatDialogRef<DialogMedicoComponent>,
+              @Inject(MAT_DIALOG_DATA) public medico: Medico,
+              public dialog: MatDialog) 
   {
     this.listado = JSON.parse(localStorage.getItem('medicos'));
     console.log(this.listado);

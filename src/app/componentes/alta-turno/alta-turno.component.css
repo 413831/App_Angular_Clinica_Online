@@ -1,7 +1,12 @@
-.example-container .mat-form-field + .mat-form-field {
-    margin-left: 8px;
-    
+.example-container .mat-form-field + .mat-form-field {    
+    margin-left: 8px;    
   }
+
+.example-container{
+  display: flexbox;
+  margin-left: 50px;
+  
+}
 
   .example-section {
     display: flex;
@@ -12,20 +17,26 @@
 
   .botones{
     display: flex;
-    align-items: center;
+    justify-content: center;
+    align-items: center;    
   }
+
+  .botones mat-button-toggle{
+    background-color: lightsteelblue;
+  }
+
 
   .example-margin {
     margin: 0 10px;
   }
 
-  .employee-search-field .mat-input-element {
+  .turno-field .mat-input-element {
     color: black;
     /* add input text color here */
   }
 
 
-  .employee-search-field mat-label {
+  .turno-field mat-label {
     color: black;
     /* add label text color here */
   }
@@ -41,4 +52,5 @@
     background-color: #F8F8FF;
     height: 90%;
     padding-top: 3px;
+    width: 100%;
 }
