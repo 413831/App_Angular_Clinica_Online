@@ -27,7 +27,7 @@
     <mat-form-field class="turno-field">
       <mat-label>Seleccione horario</mat-label>
       <mat-select [(value)]='turno.horario' >
-        <mat-option  *ngFor="let horario of franjaHoraria" [value]="horario">
+        <mat-option  *ngFor="let horario of horarios" [value]="horario">
           {{horario}}
         </mat-option>
       </mat-select>

@@ -11,12 +11,12 @@ export enum Estado
 
 export enum Dia
 {
-    Lunes = 'lunes',
-    Martes = 'martes',
-    Miercoles = 'miercoles',
-    Jueves = 'jueves',
-    Viernes = 'viernes',
-    Sabado = 'sabado'
+    Lunes,
+    Martes,
+    Miercoles,
+    Jueves,
+    Viernes,
+    Sabado
 }
 
 export class Turno

@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'contacto', component: ContactoComponent},
   { path: 'menu', component: MenuComponent},
   { path: 'turnos', component: TurnosComponent},
-  { path: 'alta-turno', component: AltaTurnoComponent},
+  { path: 'alta-turno/:horarios/:dias', component: AltaTurnoComponent},
   { path: 'alta-admin', component: AltaAdminComponent}
 ];
 

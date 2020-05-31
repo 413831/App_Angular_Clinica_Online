@@ -58,7 +58,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Dias de atención</mat-label>
         <mat-select formControlName="diasAtencion" multiple required>
-          <mat-option *ngFor="let dia of dias" [value]="dia">{{dia}}</mat-option>
+          <mat-option *ngFor="let dia of dias" [value]="dia">{{dia | diaAtencion}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="fill">

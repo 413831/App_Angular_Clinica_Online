@@ -47,7 +47,7 @@ export class DialogMedicoComponent implements OnInit {
     localStorage.setItem('nuevoTurno',JSON.stringify(this.turno));
     // Se cierra el modal
     // Se navega al alta de Turno
-    this.router.navigate(['alta-turno']);
+    this.router.navigate([`alta-turno/${this.medico.horasAtencion}/${this.medico.diasAtencion}`]);
     this.dialogRef.close();
   }
 

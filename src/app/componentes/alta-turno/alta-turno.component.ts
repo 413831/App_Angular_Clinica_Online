@@ -2,9 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Medico } from 'src/app/clases/Medico';
 import { Paciente } from 'src/app/clases/Paciente';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
-import { Turno, Estado } from 'src/app/clases/Turno';
+import { Turno, Estado, Dia } from 'src/app/clases/Turno';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { TurnosService } from 'src/app/servicios/servicio-turnos.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-alta-turno',
@@ -13,26 +14,31 @@ import { TurnosService } from 'src/app/servicios/servicio-turnos.service';
 })
 export class AltaTurnoComponent implements OnInit {
   public turno: Turno;
-  public franjaHoraria: string[];
-  public setMañana: string[] = ["8:00", "8:30" , "9:00", "9:30", "10:00", "10:30", "11:00", "11:30"];
-  public setTarde: string[] = [ "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30",
-                              "16:00", "16:30", "17:00", "17:30", "18:00", "18:30"];
+  public horarios: string[];
+  public dias: Dia[];
   events: string[] = [];
   datosTurnos: FormGroup;
+  filtroFecha;
   // Crear set de horarios de atención
   
-  constructor(private _formBuilder: FormBuilder,private servicio: TurnosService) { 
+  constructor(private _formBuilder: FormBuilder,private servicio: TurnosService,
+              private route : ActivatedRoute) { 
     this.turno = JSON.parse(localStorage.getItem('nuevoTurno'));
-
-    if(this.turno.horario == "mañana")
+    this.route.params.subscribe( params => 
     {
-      this.franjaHoraria = this.setMañana;
-    }
-    else if(this.turno.horario == "tarde")
-    {
-      this.franjaHoraria = this.setTarde;
-    }
+      this.horarios = params['horarios'].split(",");
+      this.dias = params['dias'].split(",");
+    });
 
+    this.filtroFecha = (fecha: Date | null): boolean => 
+    {
+      const day = (fecha || new Date()).getDay();
+      // Prevent Saturday and Sunday from being selected.
+    
+
+      return day !== 0 && day !== 6;
+    }
+    
     console.log(this.turno);
     this.datosTurnos = new FormGroup({
       nombrePaciente: new FormControl({value: this.turno.nombrePaciente, disabled: true},
