@@ -6,9 +6,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class DiaAtencionPipe implements PipeTransform {
 
   transform(value: string, ...args: unknown[]): string {
-    let diaAbbr = value.toLocaleUpperCase().substring(0,2);
+    let arrayString: string[] = value.split(",");
+    arrayString = arrayString.map( value => value.concat(" - "));
 
-    return diaAbbr;
+    return arrayString.join(" - ");
   }
 
 }

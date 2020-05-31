@@ -57,10 +57,11 @@ export class DialogMedicoComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  seleccionar(especialidades)
+  public especialidad(value){value.map( especialidad => this.turno.especialidad = especialidad.value)}
+  public fecha(value)
   {
-    // Se elecciona solo la especialidad seleccionada
-    especialidades.map( especialidad => this.turno.especialidad = especialidad.value);
+    value.map( fecha => this.turno.fecha = fecha.value)
   }
+  public horario(value){value.map( horario => this.turno.horario = horario.value)}
 
 }

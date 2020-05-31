@@ -90,11 +90,11 @@
                 <button mat-raised-button color="primary" (click)="listarMedicos()">Ver Medicos</button>
             </div>
             <div *ngIf="turno">
-                <button mat-raised-button class="default" [routerLink]="['/alta-turno']" routerLinkActive="router-link-active" >Cargar Turno</button>
                 <button mat-raised-button class="default">Modificar Turno</button>
             </div>
             <div class="botones">
                 <button mat-raised-button class="default" (click)="modificar()">Modificar datos</button>                
+                <button mat-raised-button class="default" [routerLink]="['/alta-turno']" routerLinkActive="router-link-active" >Cargar Turno</button>
                 <button mat-raised-button class="default" (click)="logout()">Cerrar Sesion</button>
                 <button mat-raised-button class="warning" (click)="borrar()">Baja de usuario</button>
             </div>

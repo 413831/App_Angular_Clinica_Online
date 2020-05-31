@@ -16,14 +16,12 @@ export class ListadoMedicosComponent implements OnInit {
   @Input() listado: Medico[];
   @Output() enviarMedico: EventEmitter<any> = new EventEmitter<any>();
   selection = new SelectionModel<Medico>(true, []);
-  displayedColumns: string[] = ['nombre', 'especialidad', 'disponibilidad'];
+  displayedColumns: string[] = ['nombre', 'especialidad', 'diasAtencion'];
   dataSource: MatTableDataSource<Medico>;
   
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   
-  constructor(public dialogRef: MatDialogRef<DialogMedicoComponent>,
-              @Inject(MAT_DIALOG_DATA) public medico: Medico,
-              public dialog: MatDialog) 
+  constructor( public dialog: MatDialog) 
   {
     this.listado = JSON.parse(localStorage.getItem('medicos'));
     console.log(this.listado);

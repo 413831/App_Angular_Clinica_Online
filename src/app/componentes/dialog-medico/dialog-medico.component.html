@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="panel">
     <mat-card-header>
       <mat-card-title>{{medico.nombre}}</mat-card-title>
       <mat-card-subtitle>Matricula N°: {{medico.matricula}}</mat-card-subtitle>
@@ -16,7 +16,7 @@
                     </mat-panel-title>                    
                   </mat-expansion-panel-header>
                   <mat-selection-list #especialidades [multiple]="false" 
-                  (selectionChange)='seleccionar(especialidades.selectedOptions.selected)' >
+                  (selectionChange)='especialidad(especialidades.selectedOptions.selected)' >
                     <mat-list-option *ngFor='let especialidad of medico.especialidad' [value]="especialidad" >
                       {{especialidad}}
                     </mat-list-option>
@@ -25,11 +25,23 @@
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        Disponibilidad
+                        Día de atención
                     </mat-panel-title>                    
                   </mat-expansion-panel-header>
-              
+                  <mat-list *ngFor='let dia of medico.diasAtencion'>
+                    <mat-list-item> {{dia}} </mat-list-item>
+                  </mat-list>
             </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                  <mat-panel-title>
+                      Horario de atención
+                  </mat-panel-title>                    
+                </mat-expansion-panel-header>
+                <mat-list *ngFor='let horario of medico.horasAtencion'>
+                  <mat-list> {{horario}} </mat-list>
+                </mat-list>
+          </mat-expansion-panel>
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
@@ -41,21 +53,7 @@
                   </div>
 
             </mat-expansion-panel>
-            <mat-expansion-panel *ngIf='datosCompletos'>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Datos personales
-                    </mat-panel-title>                                        
-                  </mat-expansion-panel-header>
-                  <div>
-                    <mat-label>Dni: {{medico.dni}}</mat-label><br>
-                    <mat-label>Dirección: {{medico.direccion}}</mat-label><br>
-                    <mat-label>Telefono: {{medico.telefono}}</mat-label><br>
-                    <mat-label>E-mail: {{medico.email}}</mat-label><br>
-                    <mat-label>Autorizado: {{medico.autorizado}}</mat-label><br>
-                  </div>
-
-            </mat-expansion-panel>
+          
         </mat-accordion>
 
     </mat-card-content>
