@@ -22,8 +22,7 @@
             <mat-grid-tile class="tabla" *ngIf='paciente || medico' [colspan]=2 [rowspan]=4 >
                 <mat-grid-tile-header>Turnos</mat-grid-tile-header>
                 <mat-table [dataSource]="dataTurnos" class="mat-elevation-z8 frame">
-
-                
+             
                     <ng-container matColumnDef="especialidad">
                         <mat-header-cell *matHeaderCellDef> Especialidad </mat-header-cell>
                         <mat-cell *matCellDef="let turno"> {{turno.especialidad}} </mat-cell>
@@ -81,11 +80,11 @@
                 </mat-table>
             </mat-grid-tile>
 
-
         </mat-grid-list>
         <mat-toolbar>
             <div class="botones" *ngIf='administrador'>
                 <button mat-raised-button color="primary" (click)="autorizar()">Autorizar</button>
+                <button mat-raised-button color="primary" (click)="listarMedicos()">Ver Medicos</button>
                 <button mat-raised-button color="primary" (click)="listarPacientes()">Ver Pacientes</button>
                 <button mat-raised-button color="primary" (click)="listarMedicos()">Ver Medicos</button>
             </div>

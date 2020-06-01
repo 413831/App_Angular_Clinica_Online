@@ -1,4 +1,9 @@
 
+.titulos{
+    margin-left: 22px;
+    font-weight: bold;
+    font-size: larger;
+}
 
 mat-toolbar {
     width: 100%;
