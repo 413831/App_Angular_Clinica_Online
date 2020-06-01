@@ -71,6 +71,7 @@ import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
 import { DiaAtencionPipe } from './pipes/dia-atencion.pipe';
 import { ToolbarComponent } from './componentes/shared/toolbar/toolbar.component';
 import { DiasPipe } from './pipes/dias.pipe';
+import { ModificarTurnoComponent } from './componentes/modificar-turno/modificar-turno.component';
 
 
 @NgModule({
@@ -108,7 +109,8 @@ import { DiasPipe } from './pipes/dias.pipe';
     EncuestaComponent,
     DiaAtencionPipe,
     ToolbarComponent,
-    DiasPipe
+    DiasPipe,
+    ModificarTurnoComponent
   ],
   imports: [
     ApplicationModule,
