@@ -13,6 +13,8 @@ body {
 
 .titulos{
     margin-left: 22px;
+    font-weight: bold;
+    font-size: larger;
 }
 
 .parrafo{
@@ -44,7 +46,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     background-color: #F8F8FF;
 }
 

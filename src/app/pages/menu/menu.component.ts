@@ -44,8 +44,10 @@ export class MenuComponent implements OnInit {
   public mostrarPacientes: boolean = false;
   public mostrarMedicos: boolean = true;
 
-  constructor(public modificarDialog: MatDialog, public borrarDialog: MatDialog,public altaTurno: MatDialog,
-              public medicosService: MedicosService, public pacienteService: PacientesService,
+  constructor(public modificarDialog: MatDialog, public borrarDialog: MatDialog,
+              public altaTurno: MatDialog,
+              public medicosService: MedicosService,
+              public pacienteService: PacientesService,
               public adminService: AdministradoresService,              
               public route: ActivatedRoute, public router: Router) 
   { 
@@ -125,11 +127,10 @@ export class MenuComponent implements OnInit {
     dialogConfig.data = this.dataMedicos;
     dialogConfig.width = '700px';
     dialogConfig.height = '500px';
-    dialogConfig.panelClass = "dialog";
+    dialogConfig.panelClass = "detalle";
 
     dialogRef = this.altaTurno.open(ListadoMedicosComponent, dialogConfig);
 
-    dialogRef.close();
 
     dialogRef.afterClosed().subscribe(result => 
     {
@@ -229,6 +230,7 @@ export class MenuComponent implements OnInit {
   autorizar()
   {
     this.medicoAutorizar.autorizado = true;
+    this.medicoAutorizar.consultorio = Math.floor(Math.random() * 6) + 1; 
     //Aca se tiene que mostrar los datos del medico
     //Tambien un boton para cambiar el estado de autorizado
     this.medicosService.actualizar(this.medicoAutorizar);
