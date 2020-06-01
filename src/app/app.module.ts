@@ -70,6 +70,7 @@ import { DialogPacienteComponent } from './componentes/dialog-paciente/dialog-pa
 import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
 import { DiaAtencionPipe } from './pipes/dia-atencion.pipe';
 import { ToolbarComponent } from './componentes/shared/toolbar/toolbar.component';
+import { DiasPipe } from './pipes/dias.pipe';
 
 
 @NgModule({
@@ -106,7 +107,8 @@ import { ToolbarComponent } from './componentes/shared/toolbar/toolbar.component
     DialogPacienteComponent,
     EncuestaComponent,
     DiaAtencionPipe,
-    ToolbarComponent
+    ToolbarComponent,
+    DiasPipe
   ],
   imports: [
     ApplicationModule,

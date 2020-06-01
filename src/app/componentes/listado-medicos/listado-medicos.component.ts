@@ -20,7 +20,7 @@ export class ListadoMedicosComponent implements OnInit {
   dataSource: MatTableDataSource<Medico>;
   
   @ViewChild(MatSort, {static: true}) sort: MatSort;
-  
+    
   constructor( public dialog: MatDialog) 
   {
     this.listado = JSON.parse(localStorage.getItem('medicos'));

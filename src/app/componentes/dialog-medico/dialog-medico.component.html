@@ -29,7 +29,7 @@
                     </mat-panel-title>                    
                   </mat-expansion-panel-header>
                   <mat-list *ngFor='let dia of medico.diasAtencion'>
-                    <mat-list-item> {{dia}} </mat-list-item>
+                    <mat-list-item> {{dia | diaAtencion}} </mat-list-item>
                   </mat-list>
             </mat-expansion-panel>
             <mat-expansion-panel>

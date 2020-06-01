@@ -15,7 +15,7 @@
 
     <ng-container matColumnDef="diasAtencion">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Dias de atención </th>
-        <td mat-cell *matCellDef="let element"> {{element.diasAtencion | diaAtencion}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.diasAtencion | dias}} </td>
       </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
