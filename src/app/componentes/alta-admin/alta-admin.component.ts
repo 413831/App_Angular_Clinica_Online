@@ -27,7 +27,7 @@ export class AltaAdminComponent implements OnInit {
   {
     this.usuario = JSON.parse(localStorage.getItem('usuario-logueado'));
 
-    if(this.usuario.rol == Rol.Administrador)
+    if(this.usuario != null && this.usuario.rol == Rol.Administrador)
     {
       this.mostrarForm = true;      
     }

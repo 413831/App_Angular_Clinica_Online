@@ -32,6 +32,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 // Componentes
@@ -68,6 +69,7 @@ import { AltaAdminComponent } from './componentes/alta-admin/alta-admin.componen
 import { DialogPacienteComponent } from './componentes/dialog-paciente/dialog-paciente.component';
 import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
 import { DiaAtencionPipe } from './pipes/dia-atencion.pipe';
+import { ToolbarComponent } from './componentes/shared/toolbar/toolbar.component';
 
 
 @NgModule({
@@ -103,7 +105,8 @@ import { DiaAtencionPipe } from './pipes/dia-atencion.pipe';
     AltaAdminComponent,
     DialogPacienteComponent,
     EncuestaComponent,
-    DiaAtencionPipe
+    DiaAtencionPipe,
+    ToolbarComponent
   ],
   imports: [
     ApplicationModule,
@@ -135,6 +138,7 @@ import { DiaAtencionPipe } from './pipes/dia-atencion.pipe';
     MatNativeDateModule,
     MatButtonToggleModule,
     MatSidenavModule,
+    MatTooltipModule,
     AgmCoreModule.forRoot({
       apiKey: environment.agmKey
     }),

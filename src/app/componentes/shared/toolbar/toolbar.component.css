@@ -1,0 +1,23 @@
+.toolbar-text{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    
+    background-color: rgb(224, 212, 236);
+    max-height: 30px;
+}
+
+button
+{
+    margin-right: 10px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.icon
+{
+    padding: 0 14px;    
+    font-size: 12px;
+}

@@ -1,0 +1,12 @@
+<mat-toolbar class="toolbar-text mat-elevation-z2" *ngIf="usuario">
+    <button mat-icon-button matTooltip="Menu de usuario" >
+        <mat-icon  aria-hidden="false" aria-label="menu">menu</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Cerrar sesion" >
+        <mat-icon  aria-hidden="false" aria-label="logout">logout</mat-icon>
+    </button>
+    <span class="spacer"></span>
+    <span class="icon">Usuario : {{usuario.nombre}}</span>
+    <span class="icon">D.N.I. : {{usuario.dni}}</span>
+   
+</mat-toolbar>
