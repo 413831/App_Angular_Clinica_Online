@@ -15,6 +15,8 @@ import { MiservicioService } from 'src/app/servicios/miservicio.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { ListadoMedicosComponent } from 'src/app/componentes/listado-medicos/listado-medicos.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AutorizadoSnackbarComponent } from 'src/app/componentes/autorizado-snackbar/autorizado-snackbar.component';
 
 @Component({
   selector: 'app-menu',
@@ -22,6 +24,7 @@ import { ListadoMedicosComponent } from 'src/app/componentes/listado-medicos/lis
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {  
+  durationInSeconds = 5;
   public dataMedicos;
   public dataPacientes;
   public dataTurnos;
@@ -45,6 +48,7 @@ export class MenuComponent implements OnInit {
   public mostrarMedicos: boolean = true;
 
   constructor(public modificarDialog: MatDialog, public borrarDialog: MatDialog,
+              private _snackBar: MatSnackBar,
               public altaTurno: MatDialog,
               public medicosService: MedicosService,
               public pacienteService: PacientesService,
@@ -114,8 +118,6 @@ export class MenuComponent implements OnInit {
   {
     // Seleccionar turno para modificar
     this.turno = turno;
-
-    
   }
 
   cargarTurno()
@@ -130,7 +132,6 @@ export class MenuComponent implements OnInit {
     dialogConfig.panelClass = "detalle";
 
     dialogRef = this.altaTurno.open(ListadoMedicosComponent, dialogConfig);
-
 
     dialogRef.afterClosed().subscribe(result => 
     {
@@ -240,6 +241,10 @@ export class MenuComponent implements OnInit {
     //Aca se tiene que mostrar los datos del medico
     //Tambien un boton para cambiar el estado de autorizado
     this.medicosService.actualizar(this.medicoAutorizar);
+    this._snackBar.openFromComponent(AutorizadoSnackbarComponent, {
+      duration: this.durationInSeconds * 1000,
+    });
+    
   }
 
   seleccionarMedico(medico: Medico)

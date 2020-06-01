@@ -33,6 +33,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 // Componentes
@@ -72,6 +73,7 @@ import { DiaAtencionPipe } from './pipes/dia-atencion.pipe';
 import { ToolbarComponent } from './componentes/shared/toolbar/toolbar.component';
 import { DiasPipe } from './pipes/dias.pipe';
 import { ModificarTurnoComponent } from './componentes/modificar-turno/modificar-turno.component';
+import { AutorizadoSnackbarComponent } from './componentes/autorizado-snackbar/autorizado-snackbar.component';
 
 
 @NgModule({
@@ -110,7 +112,8 @@ import { ModificarTurnoComponent } from './componentes/modificar-turno/modificar
     DiaAtencionPipe,
     ToolbarComponent,
     DiasPipe,
-    ModificarTurnoComponent
+    ModificarTurnoComponent,
+    AutorizadoSnackbarComponent
   ],
   imports: [
     ApplicationModule,
@@ -143,6 +146,7 @@ import { ModificarTurnoComponent } from './componentes/modificar-turno/modificar
     MatButtonToggleModule,
     MatSidenavModule,
     MatTooltipModule,
+    MatSnackBarModule,
     AgmCoreModule.forRoot({
       apiKey: environment.agmKey
     }),
