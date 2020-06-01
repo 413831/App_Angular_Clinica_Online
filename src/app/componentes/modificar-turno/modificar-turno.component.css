@@ -5,6 +5,7 @@
     min-width: 150px;
     max-width: 500px;
     width: 100%;
+    height: 100%;
     margin: auto;
   }
   
@@ -14,4 +15,8 @@
   
   td {
     padding-right: 8px;
+  }
+
+  mat-chip {
+    max-width: 200px;
   }

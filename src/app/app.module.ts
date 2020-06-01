@@ -34,6 +34,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatChipsModule} from '@angular/material/chips';
 
 
 // Componentes
@@ -147,6 +148,7 @@ import { AutorizadoSnackbarComponent } from './componentes/autorizado-snackbar/a
     MatSidenavModule,
     MatTooltipModule,
     MatSnackBarModule,
+    MatChipsModule,
     AgmCoreModule.forRoot({
       apiKey: environment.agmKey
     }),

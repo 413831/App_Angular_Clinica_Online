@@ -1,65 +1,91 @@
 <div class="page">
-  <div class="titulos">
-    <h1>Modificar turno</h1>
-  </div>
-<form class="example-form">
-    <mat-form-field class="example-full-width">
-      <mat-label>Especialidad (Deshabilitado)</mat-label>
-      <input matInput disabled>
-    </mat-form-field>
-  
-    <table class="example-full-width" cellspacing="0">
-      <tr>
-        <td>
-          <mat-form-field class="example-full-width">
-          <mat-label>Nombre Paciente</mat-label>
-          <input matInput>
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field class="example-full-width">
-          <mat-label>Nombre Profesional</mat-label>
-          <input matInput>
-          </mat-form-field>
-        </td>
-      </tr>
-    </table>
-  
-    <table class="example-full-width" cellspacing="0">
-      <tr>
-        <td>
-          <mat-form-field class="example-full-width">
-          <mat-label>Consultorio</mat-label>
-          <input matInput disabled>
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field class="example-full-width">
-          <mat-label>Fecha</mat-label>
-          <input matInput>
-         </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field class="example-full-width">
-          <mat-label>Horario</mat-label>
-          <input matInput>
-          </mat-form-field>
-        </td>
-      </tr>
-    </table>
+  <h2>
+    <p class="titulos">Modificar turno</p>
+  </h2>
+  <mat-divider></mat-divider>
+  <br>
 
-    <p>
-      <mat-label><h3>Estado del turno</h3></mat-label>
-      <mat-label><h5>{{turno.estado}}</h5></mat-label>
-      <br>
-     
-      <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-        <mat-button-toggle value="Aceptado">Aceptar</mat-button-toggle>
-        <mat-button-toggle value="Rechazado">Rechazar</mat-button-toggle>
-        <mat-button-toggle value="Confirmado">Confirmar</mat-button-toggle>
-        <mat-button-toggle value="Cancelado">Cancelar</mat-button-toggle>
+  <mat-grid-list cols="2" rowHeight="110px">
+    <mat-grid-tile [colspan]=1 [rowspan]=3> 
+
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Especialidad</mat-label>
+          <input matInput disabled>
+        </mat-form-field>
+    
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <mat-label>Nombre Paciente</mat-label>
+                <input matInput disabled>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width">
+                <mat-label>Nombre Profesional</mat-label>
+                <input matInput disabled>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+    
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <mat-label>Consultorio</mat-label>
+                <input matInput disabled>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width">
+                <mat-label>Fecha</mat-label>
+                <input matInput>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width">
+                <mat-label>Horario</mat-label>
+                <input matInput>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+    
+      <mat-form-field class="example-full-width">
+        <mat-label>Detalle del turno</mat-label>
+        <textarea matInput  cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"
+         #message maxlength="256" placeholder="Detalles y comentarios..."></textarea>
+        <mat-hint align="start"><strong>Ingresar detalles del turno</strong> </mat-hint>
+        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+      </mat-form-field>
+      </form>
+    </mat-grid-tile>
+
+ 
+    <mat-grid-tile [colspan]=1 [rowspan]=1 >     
+      <mat-chip-list class="mat-chip-list-stacked" aria-label="Estado turno">
+        <mat-chip>Estado turno</mat-chip>
+        <br>
+        <mat-chip color="primary" selected>{{turno.estado}}</mat-chip>
+      </mat-chip-list>        
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]=1 [rowspan]=1 >            
+      <mat-button-toggle-group #group="matButtonToggleGroup" name="fontStyle" aria-label="Font Style">
+        <mat-button-toggle (click)="cambiarEstado(group.value)" value="Aceptado">Aceptar</mat-button-toggle>
+        <mat-button-toggle (click)="cambiarEstado(group.value)" value="Rechazado">Rechazar</mat-button-toggle>
+        <mat-button-toggle (click)="cambiarEstado(group.value)" value="Confirmado">Confirmar</mat-button-toggle>
+        <mat-button-toggle (click)="cambiarEstado(group.value)" value="Cancelado">Cancelar</mat-button-toggle>
       </mat-button-toggle-group>
-   </p>
-  
-  </form>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]=1 [rowspan]=1 >            
+      <mat-button-toggle-group  name="fontStyle" aria-label="Font Style">
+        <mat-button-toggle>Guardar cambios</mat-button-toggle>
+        <mat-button-toggle>Volver</mat-button-toggle>      
+      </mat-button-toggle-group>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>
