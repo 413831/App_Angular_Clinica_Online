@@ -14,8 +14,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AltaTurnoComponent implements OnInit {
   public turno: Turno;
-  public horarios: string[];
-  public dias: Dia[];
+  public horarios: string[] = new Array<string>();
+  public dias: number[] = new Array<number>();
+  public minDate: Date;
+  public maxDate: Date;
   events: string[] = [];
   datosTurnos: FormGroup;
   filtroFecha;
@@ -24,19 +26,27 @@ export class AltaTurnoComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder,private servicio: TurnosService,
               private route : ActivatedRoute) { 
     this.turno = JSON.parse(localStorage.getItem('nuevoTurno'));
+
+    // Obtengo los datos por parametros de la ruta
     this.route.params.subscribe( params => 
     {
       this.horarios = params['horarios'].split(",");
-      this.dias = params['dias'].split(",");
+      params['dias'].split(",").map( dia => this.dias.push(parseInt(dia)));
     });
 
-    this.filtroFecha = (fecha: Date | null): boolean => 
-    {
-      const day = (fecha || new Date()).getDay();
-      // Prevent Saturday and Sunday from being selected.
+    this.minDate = new Date();
+    this.maxDate = new Date();
+    this.maxDate.setDate(this.minDate.getDay() + 15);
+    console.log(this.dias);
     
 
-      return day !== 0 && day !== 6;
+    // Filtros segun datos del medico
+    this.filtroFecha = (fecha: Date | null): boolean => 
+    {
+      const diaSeleccionado = (fecha || new Date()).getDay();
+      let validate = this.dias.includes(diaSeleccionado);  
+     
+      return validate;
     }
     
     console.log(this.turno);

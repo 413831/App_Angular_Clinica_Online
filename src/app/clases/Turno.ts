@@ -11,6 +11,7 @@ export enum Estado
 
 export enum Dia
 {
+    Domingo,
     Lunes,
     Martes,
     Miercoles,
