@@ -1,5 +1,5 @@
 <div class="page">
-    <h1 class="titulos">Menú de usuario</h1>
+    <h1><p class="titulos">Menú de usuario</p></h1>
     <hr>
     <div *ngIf='usuario'>
 
@@ -89,7 +89,7 @@
                 <button mat-raised-button color="primary" (click)="listarMedicos()">Ver Medicos</button>
             </div>
             <div *ngIf="turno">
-                <button mat-raised-button class="default">Modificar Turno</button>
+                <button mat-raised-button class="default" (click)="modificarTurno()">Modificar Turno</button>
             </div>
             <div class="botones">
                 <button mat-raised-button class="default" (click)="modificar()">Modificar datos</button>                

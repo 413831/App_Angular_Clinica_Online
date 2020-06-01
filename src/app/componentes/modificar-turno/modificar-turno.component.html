@@ -1,44 +1,65 @@
+<div class="page">
+  <div class="titulos">
+    <h1>Modificar turno</h1>
+  </div>
 <form class="example-form">
     <mat-form-field class="example-full-width">
-      <mat-label>Company (disabled)</mat-label>
-      <input matInput disabled value="Google">
+      <mat-label>Especialidad (Deshabilitado)</mat-label>
+      <input matInput disabled>
     </mat-form-field>
   
-    <table class="example-full-width" cellspacing="0"><tr>
-      <td><mat-form-field class="example-full-width">
-        <mat-label>First name</mat-label>
-        <input matInput>
-      </mat-form-field></td>
-      <td><mat-form-field class="example-full-width">
-        <mat-label>Long Last Name That Will Be Truncated</mat-label>
-        <input matInput>
-      </mat-form-field></td>
-    </tr></table>
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+          <mat-label>Nombre Paciente</mat-label>
+          <input matInput>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+          <mat-label>Nombre Profesional</mat-label>
+          <input matInput>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
   
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+          <mat-label>Consultorio</mat-label>
+          <input matInput disabled>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+          <mat-label>Fecha</mat-label>
+          <input matInput>
+         </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+          <mat-label>Horario</mat-label>
+          <input matInput>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
     <p>
-      <mat-form-field class="example-full-width">
-        <mat-label>Address</mat-label>
-        <textarea matInput placeholder="Ex. 100 Main St">1600 Amphitheatre Pkwy</textarea>
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>Address 2</mat-label>
-        <textarea matInput></textarea>
-      </mat-form-field>
-    </p>
+      <mat-label><h3>Estado del turno</h3></mat-label>
+      <mat-label><h5>{{turno.estado}}</h5></mat-label>
+      <br>
+     
+      <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+        <mat-button-toggle value="Aceptado">Aceptar</mat-button-toggle>
+        <mat-button-toggle value="Rechazado">Rechazar</mat-button-toggle>
+        <mat-button-toggle value="Confirmado">Confirmar</mat-button-toggle>
+        <mat-button-toggle value="Cancelado">Cancelar</mat-button-toggle>
+      </mat-button-toggle-group>
+   </p>
   
-    <table class="example-full-width" cellspacing="0"><tr>
-      <td><mat-form-field class="example-full-width">
-        <mat-label>City</mat-label>
-        <input matInput placeholder="Ex. San Francisco">
-      </mat-form-field></td>
-      <td><mat-form-field class="example-full-width">
-        <mat-label>State</mat-label>
-        <input matInput placeholder="Ex. California">
-      </mat-form-field></td>
-      <td><mat-form-field class="example-full-width">
-        <mat-label>Postal Code</mat-label>
-        <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="94043">
-        <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-      </mat-form-field></td>
-    </tr></table>
   </form>
+</div>

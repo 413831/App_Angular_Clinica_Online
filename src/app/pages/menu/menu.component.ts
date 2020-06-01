@@ -115,7 +115,7 @@ export class MenuComponent implements OnInit {
     // Seleccionar turno para modificar
     this.turno = turno;
 
-    localStorage.setItem('nuevoTurno',JSON.stringify(this.turno));
+    
   }
 
   cargarTurno()
@@ -137,6 +137,12 @@ export class MenuComponent implements OnInit {
       console.log('Se guardo el turno.');
       console.log(result);
     });
+  }
+
+  modificarTurno()
+  {
+    localStorage.setItem('nuevoTurno',JSON.stringify(this.turno));
+    this.router.navigate(["/modificar-turno"]);
   }
 
   modificar()

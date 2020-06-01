@@ -3,10 +3,10 @@ import { Especialidad } from './Medico';
 export enum Estado
 {
     Pendiente = "Pendiente", // Estado por default para alta de turno
-    Cancelado = "Cancelado", // Estado definido por el paciente al cancelar turno
-    Sobreturno = "Sobreturno", // Estado definido por el medico para turnos urgentes
-    Cambiado = "Cambiado", // Estado definido por el paciente para cambiar turno existente
-    Terminado = "Terminado" // Estaod definido por el medico al atender un paciente
+    Cancelado = "Cancelado", // Estado definido por el medico o el pacientepara cancelar turno
+    Rechazado = "Rechazado", // Estado definido por el medico para rechazar turno pendiente
+    Aceptado = "Aceptado", // Estado definido por el medico para confirmar turno pendiente
+    Confirmado = "Confirmado" // Estado definido por el medico al dar presente del turno
 }
 
 export enum Dia

@@ -10,6 +10,7 @@ import { TurnosComponent } from './pages/turnos/turnos.component';
 import { AltaTurnoComponent } from './componentes/alta-turno/alta-turno.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { AltaAdminComponent } from './componentes/alta-admin/alta-admin.component';
+import { ModificarTurnoComponent } from './componentes/modificar-turno/modificar-turno.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'menu', component: MenuComponent},
   { path: 'turnos', component: TurnosComponent},
   { path: 'alta-turno/:horarios/:dias', component: AltaTurnoComponent},
-  { path: 'alta-admin', component: AltaAdminComponent}
+  { path: 'alta-admin', component: AltaAdminComponent},
+  { path: 'modificar-turno', component: ModificarTurnoComponent}
 ];
 
 @NgModule({
