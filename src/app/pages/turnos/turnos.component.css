@@ -1,3 +1,4 @@
+
 .container{
     padding-top: 5px;
 }
@@ -11,6 +12,7 @@ mat-grid-tile {
 .page
 {
     background-color: #F8F8FF;
-    height: 90%;
+    height: 100%;
     padding-top: 3px;
+    padding-bottom: 5px;
 }

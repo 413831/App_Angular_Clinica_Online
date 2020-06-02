@@ -9,12 +9,15 @@ import { Especialidad } from 'src/app/clases/Medico';
   templateUrl: './turnos.component.html',
   styleUrls: ['./turnos.component.css']
 })
-export class TurnosComponent implements OnInit {
-  @Input() usuario: Usuario;
+export class TurnosComponent implements OnInit {  
+  public usuario: Usuario;
   public turnos: Turno[];
 
-  constructor(private servicioTurnos: TurnosService) 
-  { }
+  constructor() 
+  { 
+    this.usuario = JSON.parse(localStorage.getItem('usuario-logueado')); 
+    this.turnos = JSON.parse(localStorage.getItem('turnos'));
+  }
 
   ngOnInit(): void {
     // Reemplazar con Local Storage

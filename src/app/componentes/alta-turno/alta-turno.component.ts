@@ -57,6 +57,8 @@ export class AltaTurnoComponent implements OnInit {
                                       Validators.required),
       fecha: new FormControl({value: this.turno.fecha, disabled: false},
                               Validators.required),
+      horario: new FormControl({value: this.turno.horario, disabled: false},
+                                Validators.required),
       duracion: new FormControl({value: this.turno.duracion, disabled: true},
                                   Validators.required),
       especialidad: new FormControl({value: this.turno.especialidad, disabled: true},
@@ -86,17 +88,19 @@ export class AltaTurnoComponent implements OnInit {
     this.turno.especialidad = this.especialidad.value;
     this.turno.fecha = this.fecha.value;
     this.turno.duracion = 30;
+    this.turno.fecha = this.fecha.value;
+    this.turno.horario = this.horario.value;
     this.turno.detalle = 'vacio';
     this.turno.estado = Estado.Pendiente;
 
     console.log(this.turno);
     this.servicio.crear(this.turno);
-
   }
 
   get nombrePaciente() { return this.datosTurnos.get('nombrePaciente'); }
   get nombreMedico() { return this.datosTurnos.get('nombreMedico'); }
   get fecha() { return this.datosTurnos.get('fecha'); }
+  get horario() { return this.datosTurnos.get('horario'); }
   get duracion() { return this.datosTurnos.get('duracion'); }
   get especialidad() { return this.datosTurnos.get('especialidad'); }
   get consultorio() { return this.datosTurnos.get('consultorio'); }

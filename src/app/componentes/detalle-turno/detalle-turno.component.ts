@@ -8,7 +8,10 @@ import { Turno } from 'src/app/clases/Turno';
 })
 export class DetalleTurnoComponent implements OnInit {
   @Input() turno:Turno;
-  constructor() { }
+  constructor() 
+  {
+    console.log(this.turno);
+   }
 
   ngOnInit(): void {
   }

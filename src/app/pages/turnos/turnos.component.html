@@ -1,20 +1,15 @@
 
-<!-- *ngIf='usuario' -->
+<div *ngIf="usuario">
 <div class="page" >
   <div class="titulos">
     <h1 >Turnos</h1>
   </div>
   <hr>
-  <!-- Condicionar si hay turno para dar de alta -->
-
-
-  <!-- Condicionar si hay usuario logueado -->
   <div>
-    <p>Se listan todos los turnos pendientes y cerrados</p>
-    <mat-grid-list cols="3" rowHeight="300px">
-        <mat-grid-tile *ngFor="let turno of turnos">        
+    <p class="parrafo">Se listan todos los turnos pendientes y cerrados</p>
+        <div *ngFor="let turno of turnos">        
           <app-detalle-turno [turno]='turno'></app-detalle-turno>
-        </mat-grid-tile>
-    </mat-grid-list>
+        </div>
   </div>
+</div>
 </div>
