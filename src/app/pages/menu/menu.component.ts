@@ -28,6 +28,7 @@ export class MenuComponent implements OnInit {
   public dataMedicos;
   public dataPacientes;
   public dataTurnos;
+  public turnosModificados: Turno[];
   columnasMedicos: string[] = ['nombre', 'matricula'];
   columnasPacientes: string[] = ['nombre', 'afiliado'];
   columnasTurnos: string[] = ['especialidad', 'estado' ,'fecha'];
@@ -61,6 +62,9 @@ export class MenuComponent implements OnInit {
     {
       this.obtenerPerfil();
       this.obtenerTurnos();
+      this.turnosModificados = this.turnos.filter(turno => turno.modificado == true);
+      console.log(`Turnos modificados: ${this.turnosModificados} `);
+
     }
   }
 

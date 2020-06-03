@@ -32,7 +32,7 @@ export class TurnosService extends MiservicioService{
           console.log(data);
           turnos.push(Turno.CrearTurno(data.nombrePaciente, data.nombreMedico,
                                           data.fecha, data.horario ,data.duracion, data.especialidad,
-                                          data.consultorio, data._detalle, data.estado,child.key ));
+                                          data.consultorio, data._detalle, data.estado,child.key, data.modificado ));
         });
         console.info("Turnos");
         console.log(turnos);         

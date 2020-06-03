@@ -41,6 +41,7 @@ export class ModificarTurnoComponent implements OnInit {
     this.turno.fecha = this.fecha.value != '' ? this.fecha.value : this.turno.fecha  ;
     this.turno.horario = this.horario.value != '' ? this.horario.value : this.turno.horario;
     this.turno.detalle = this.detalle.value != '' ? this.detalle.value : this.turno.detalle;
+    this.turno.modificado = true;
 
     console.log(this.turno);
     this.servicio.actualizar(this.turno);
@@ -56,14 +57,14 @@ export class ModificarTurnoComponent implements OnInit {
     this.datosTurnos = new FormGroup({
       nombrePaciente: new FormControl({value: this.turno.nombrePaciente, disabled: true}),
       nombreMedico: new FormControl({value: this.turno.nombreMedico, disabled: true}),
-      fecha: new FormControl({value: this.turno.fecha, disabled: false}),
+      fecha: new FormControl(this.turno.fecha),
       horario: new FormControl({value: this.turno.horario, disabled: false}),
       duracion: new FormControl({value: this.turno.duracion, disabled: true},
                                   Validators.required),
       especialidad: new FormControl({value: this.turno.especialidad, disabled: true}),
       consultorio: new FormControl({value: this.turno.consultorio, disabled: true}),
       estado: new FormControl({value: this.turno.estado, disabled: true}),
-      detalle: new FormControl({ value:'', disabled: false}),
+      detalle: new FormControl({ value:'Comentarios', disabled: false}),
     });
   }
 

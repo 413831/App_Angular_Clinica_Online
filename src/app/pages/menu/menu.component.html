@@ -20,7 +20,12 @@
             </mat-grid-tile>
 
             <mat-grid-tile class="tabla" *ngIf='paciente || medico' [colspan]=2 [rowspan]=4 >
-                <mat-grid-tile-header>Turnos</mat-grid-tile-header>
+                <mat-grid-tile-header>
+                    Turnos 
+                    <p *ngIf="turnosModificados.length > 0">
+                        <span matBadge="turnosModificados.length" matBadgeOverlap="false">Turnos modificados</span>
+                    </p>                      
+                </mat-grid-tile-header>
                 <mat-table [dataSource]="dataTurnos" class="mat-elevation-z8 frame">
              
                     <ng-container matColumnDef="especialidad">

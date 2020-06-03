@@ -36,10 +36,11 @@ export class Turno
                                         "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00",
                                         "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30"];
     public static dias: Dia[] = [Dia.Lunes, Dia.Martes, Dia.Miercoles, Dia.Jueves, Dia.Viernes, Dia.Sabado];
+    public modificado: boolean = false;
 
     public static CrearTurno(nombrePaciente: string, nombreMedico: string, fecha: Date, horario: string,
                                 duracion: number, especialidad: Especialidad, consultorio: number,
-                                detalle: string, estado: Estado, id?: string ): Turno
+                                detalle: string, estado: Estado, id?: string, modificado?: boolean ): Turno
     {
         let turno = new Turno();
 
@@ -53,6 +54,7 @@ export class Turno
         turno.estado = Estado.Pendiente;
         turno.horario = horario;
         turno.id = id;
+        turno.modificado = modificado;
 
         return turno;
     }

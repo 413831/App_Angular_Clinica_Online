@@ -61,7 +61,7 @@
       <mat-form-field class="example-full-width">
         <mat-label>Detalle del turno</mat-label>
         <textarea matInput  cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"
-         #message maxlength="256" placeholder="Detalles y comentarios..." formControlName="detalle"></textarea>
+         #message maxlength="256" formControlName="detalle"></textarea>
         <mat-hint align="start"><strong>Ingresar detalles del turno</strong> </mat-hint>
         <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
       </mat-form-field>
@@ -88,7 +88,7 @@
     <mat-grid-tile [colspan]=1 [rowspan]=1 >            
       <mat-button-toggle-group  name="fontStyle" aria-label="Font Style">
         <mat-button-toggle (click)="modificar()">Guardar cambios</mat-button-toggle>
-        <mat-button-toggle routerLink="'/menu'" >Volver</mat-button-toggle>      
+        <mat-button-toggle [routerLink]='["/menu"]' >Volver</mat-button-toggle>      
       </mat-button-toggle-group>
     </mat-grid-tile>
   </mat-grid-list>
