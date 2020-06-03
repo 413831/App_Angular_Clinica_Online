@@ -1,6 +1,15 @@
 import { Usuario, Rol } from './Usuario';
 import { Dia } from './Turno';
 
+
+export enum Especialidad{
+    General = 'General',
+    Pediatría = 'Pediatría',
+    Dermatología = 'Dermatología',
+    Traumatología = 'Traumatología',
+    Cardiología = 'Cardiología'
+}
+
 export class Medico extends Usuario
 {
     public autorizado: boolean;
@@ -9,6 +18,8 @@ export class Medico extends Usuario
     public especialidad: Especialidad[];      
     public diasAtencion: Dia[];
     public horasAtencion: string[];
+    public static especialidades: Especialidad[] = [Especialidad.Cardiología, Especialidad.Dermatología,
+                                Especialidad.General, Especialidad.Pediatría, Especialidad.Traumatología];
     
     public static CrearMedico(nombre: string, clave: string, dni: number, direccion: string,
                 email: string, telefono: number,imagen: any,
@@ -37,12 +48,4 @@ export class Medico extends Usuario
         return medico;
     }    
     
-}
-
-export enum Especialidad{
-    General = 'General',
-    Pediatría = 'Pediatría',
-    Dermatología = 'Dermatología',
-    Traumatología = 'Traumatología',
-    Cardiología = 'Cardiología'
 }

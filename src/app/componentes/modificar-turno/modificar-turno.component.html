@@ -1,6 +1,6 @@
 <div class="page">
   <h2>
-    <p class="titulos">Modificar turno</p>
+    <p class="titulos">Detalles del turno</p>
   </h2>
   <mat-divider></mat-divider>
   <br>
@@ -8,24 +8,24 @@
   <mat-grid-list cols="2" rowHeight="110px">
     <mat-grid-tile [colspan]=1 [rowspan]=3> 
 
-      <form class="example-form">
-        <mat-form-field class="example-full-width">
+      <form [formGroup]='datosTurnos' class="example-form">
+        <mat-form-field class="example-full-width turno-field" >
           <mat-label>Especialidad</mat-label>
-          <input matInput disabled>
+          <input matInput formControlName="especialidad">
         </mat-form-field>
     
         <table class="example-full-width" cellspacing="0">
           <tr>
             <td>
-              <mat-form-field class="example-full-width">
+              <mat-form-field class="example-full-width turno-field">
                 <mat-label>Nombre Paciente</mat-label>
-                <input matInput disabled>
+                <input matInput formControlName="nombrePaciente">
               </mat-form-field>
             </td>
             <td>
-              <mat-form-field class="example-full-width">
+              <mat-form-field class="example-full-width turno-field">
                 <mat-label>Nombre Profesional</mat-label>
-                <input matInput disabled>
+                <input matInput formControlName="nombreMedico">
               </mat-form-field>
             </td>
           </tr>
@@ -34,21 +34,25 @@
         <table class="example-full-width" cellspacing="0">
           <tr>
             <td>
-              <mat-form-field class="example-full-width">
+              <mat-form-field class="example-full-width turno-field">
                 <mat-label>Consultorio</mat-label>
-                <input matInput disabled>
+                <input matInput formControlName="consultorio">
               </mat-form-field>
             </td>
             <td>
-              <mat-form-field class="example-full-width">
+              <mat-form-field class="example-full-width turno-field">
                 <mat-label>Fecha</mat-label>
-                <input matInput>
+                <input formControlName="fecha" matInput [matDatepicker]="picker"
+                [min]="minDate" [max]="maxDate" [matDatepickerFilter]="filtroFecha"
+               (dateInput)="addEvent('input', $event)">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
             </td>
             <td>
               <mat-form-field class="example-full-width">
                 <mat-label>Horario</mat-label>
-                <input matInput>
+                <input matInput formControlName="horario">
               </mat-form-field>
             </td>
           </tr>
@@ -57,7 +61,7 @@
       <mat-form-field class="example-full-width">
         <mat-label>Detalle del turno</mat-label>
         <textarea matInput  cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"
-         #message maxlength="256" placeholder="Detalles y comentarios..."></textarea>
+         #message maxlength="256" placeholder="Detalles y comentarios..." formControlName="detalle"></textarea>
         <mat-hint align="start"><strong>Ingresar detalles del turno</strong> </mat-hint>
         <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
       </mat-form-field>
@@ -67,24 +71,24 @@
  
     <mat-grid-tile [colspan]=1 [rowspan]=1 >     
       <mat-chip-list class="mat-chip-list-stacked" aria-label="Estado turno">
-        <mat-chip>Estado turno</mat-chip>
+        <mat-chip><h2>Estado del turno</h2></mat-chip>
         <br>
-        <mat-chip color="primary" selected>{{turno.estado}}</mat-chip>
+        <mat-chip color="primary" selected> {{turno.estado}}</mat-chip>
       </mat-chip-list>        
     </mat-grid-tile>
 
     <mat-grid-tile [colspan]=1 [rowspan]=1 >            
-      <mat-button-toggle-group #group="matButtonToggleGroup" name="fontStyle" aria-label="Font Style">
-        <mat-button-toggle (click)="cambiarEstado(group.value)" value="Aceptado">Aceptar</mat-button-toggle>
-        <mat-button-toggle (click)="cambiarEstado(group.value)" value="Rechazado">Rechazar</mat-button-toggle>
-        <mat-button-toggle (click)="cambiarEstado(group.value)" value="Confirmado">Confirmar</mat-button-toggle>
+      <mat-button-toggle-group #group="matButtonToggleGroup" name="fontStyle" aria-label="Font Style">        
+        <mat-button-toggle *ngIf="usuario.rol == 2" (click)="cambiarEstado(group.value)" value="Aceptado">Aceptar</mat-button-toggle>
+        <mat-button-toggle *ngIf="usuario.rol == 2" (click)="cambiarEstado(group.value)" value="Rechazado">Rechazar</mat-button-toggle>
+        <mat-button-toggle *ngIf="usuario.rol == 2" (click)="cambiarEstado(group.value)" value="Confirmado">Confirmar</mat-button-toggle>
         <mat-button-toggle (click)="cambiarEstado(group.value)" value="Cancelado">Cancelar</mat-button-toggle>
       </mat-button-toggle-group>
     </mat-grid-tile>
     <mat-grid-tile [colspan]=1 [rowspan]=1 >            
       <mat-button-toggle-group  name="fontStyle" aria-label="Font Style">
-        <mat-button-toggle>Guardar cambios</mat-button-toggle>
-        <mat-button-toggle>Volver</mat-button-toggle>      
+        <mat-button-toggle (click)="modificar()">Guardar cambios</mat-button-toggle>
+        <mat-button-toggle routerLink="'/menu'" >Volver</mat-button-toggle>      
       </mat-button-toggle-group>
     </mat-grid-tile>
   </mat-grid-list>

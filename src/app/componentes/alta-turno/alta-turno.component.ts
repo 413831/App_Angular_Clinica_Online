@@ -95,8 +95,7 @@ export class AltaTurnoComponent implements OnInit {
   crearControles()
   {
     this.datosTurnos = new FormGroup({
-      nombrePaciente: new FormControl({value: this.turno.nombrePaciente, disabled: true},
-                                       Validators.required),
+      nombrePaciente: new FormControl({value: this.turno.nombrePaciente, disabled: true}),
       nombreMedico: new FormControl({value: this.turno.nombreMedico, disabled: true},
                                       Validators.required),
       fecha: new FormControl({value: this.turno.fecha, disabled: false},

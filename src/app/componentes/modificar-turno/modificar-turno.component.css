@@ -19,4 +19,23 @@
 
   mat-chip {
     max-width: 200px;
+    font
+  }
+
+  .mat-input-element::placeholder {
+    color: black;
+    
+    /* add placeholder css here */
+  }
+
+
+  .turno-field .mat-input-element {
+    color: black;
+    /* add input text color here */
+  }
+
+
+  .turno-field mat-label {
+    color: black;
+    /* add label text color here */
   }

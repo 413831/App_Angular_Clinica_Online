@@ -44,12 +44,12 @@
 <form [formGroup]="filterForm">
   <mat-form-field *ngFor="let filter of filterSelectObj" style="margin-left: 15px;">    
 
-    <mat-label>Filter {{filter.name}}</mat-label>
+    <mat-label>{{filter.name}}</mat-label>
     <input type="text" matInput formControlName="{{filter.columnProp}}" [matAutocomplete]="auto"
     (change)="filterChange(filter,$event)">
 
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option value="">-- Seleccione {{filter.name}} --</mat-option>
+      <mat-option value="">Seleccione {{filter.name}} --</mat-option>
       <mat-option [value]="item" *ngFor="let item of filter.options">{{item}}</mat-option>
     </mat-autocomplete>
 

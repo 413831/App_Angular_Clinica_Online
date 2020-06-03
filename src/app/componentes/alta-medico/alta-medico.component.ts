@@ -28,9 +28,7 @@ export class AltaMedicoComponent implements OnInit {
   franjaHoraria: string[] = ['mañana', 'tarde'];
   public horarios: string[] = Turno.horarios;
   public dias: Dia[] = Turno.dias;
-  especialidades = [Especialidad.Cardiología,Especialidad.Dermatología,
-                    Especialidad.General, Especialidad.Pediatría,
-                    Especialidad.Traumatología];
+  especialidades = Medico.especialidades
   // public especialidades: Especialidad[];
 
   constructor(private _formBuilder: FormBuilder,
@@ -120,6 +118,7 @@ export class AltaMedicoComponent implements OnInit {
   agregarEspecialidad()
   {
     this.especialidades.push(this.nuevaEspecialidad.value);
+    Medico.especialidades = this.especialidades;
   }
 
   get nombre() { return this.datosMedico.get('nombre'); }

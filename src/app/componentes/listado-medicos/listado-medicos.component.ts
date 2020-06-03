@@ -49,7 +49,7 @@ export class ListadoMedicosComponent implements OnInit {
       }, {
         name: 'Dia',
         columnProp: 'dia',
-        options: []
+        options: Turno.dias
       }, 
     ]
 
