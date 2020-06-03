@@ -23,3 +23,17 @@ tr:hover{
 th{
   font-size: medium;
 }
+
+.filter__form{
+  width: 100%;
+ display: flex;
+ flex-wrap: wrap;
+}
+.filter__form .form-group{
+ margin: 0 10px;
+}
+
+.primary{
+  background: orange;
+  color: white;
+}

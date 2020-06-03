@@ -35,6 +35,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 // Componentes
@@ -151,6 +152,7 @@ import { NuevoturnoSnackbarComponent } from './componentes/nuevoturno-snackbar/n
     MatTooltipModule,
     MatSnackBarModule,
     MatChipsModule,
+    MatAutocompleteModule,
     AgmCoreModule.forRoot({
       apiKey: environment.agmKey
     }),

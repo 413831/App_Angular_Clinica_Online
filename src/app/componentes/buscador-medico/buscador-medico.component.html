@@ -6,7 +6,7 @@
         <mat-select formControlName="especialidad" multiple>
           <mat-option *ngFor="let especialidad of especialidades" [value]="especialidad">{{especialidad}}</mat-option>
         </mat-select>
-      </mat-form-field>
+        </mat-form-field>
       </div>
       <div class="form-group">
         <mat-form-field class="example-full-width">
@@ -16,8 +16,8 @@
       <div class="form-group">
         <mat-form-field>
         <mat-label>Disponibilidad</mat-label>
-        <mat-select formControlName="horario" multiple>
-          <mat-option *ngFor="let horario of franjaHoraria" [value]="horario">{{horario}}</mat-option>
+        <mat-select formControlName="fecha" multiple>
+          <mat-option *ngFor="let dia of dias" [value]="dia">{{dia | diaAtencion}}</mat-option>
         </mat-select>
       </mat-form-field>
       </div>

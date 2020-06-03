@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Medico } from 'src/app/clases/Medico';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Turno, Dia } from 'src/app/clases/Turno';
 
 @Component({
   selector: 'app-buscador-medico',
@@ -11,11 +12,12 @@ export class BuscadorMedicoComponent implements OnInit {
   @Output() enviarListado: EventEmitter<any>= new EventEmitter<any>();
   @Input() listado: Medico[];
   franjaHoraria: string[] = ['mañana', 'tarde'];
+  dias: Dia[] = Turno.dias;
   especialidades: string[] = ['pediatría', 'general', 'traumatología'];
   // form group
   filterForm = new FormGroup(
   {
-    horario: new FormControl(),
+    fecha: new FormControl(),
     especialidad: new FormControl(),
     nombre: new FormControl(),
   });
@@ -26,15 +28,9 @@ export class BuscadorMedicoComponent implements OnInit {
   
   ngOnInit(): void {
   }
-  
-  filteredValues = {
-    nombre: '',
-    especialidad: [],
-    horario: ''
-  }
 
 
-  get horario() { return this.filterForm.get('horario'); }
+  get fecha() { return this.filterForm.get('fecha'); }
   get nombre() { return this.filterForm.get('nombre'); }
   get especialidad() { return this.filterForm.get('especialidad'); }
 
@@ -42,11 +38,10 @@ export class BuscadorMedicoComponent implements OnInit {
     let filtro = {
       nombre: this.nombre.value,
       especialidad: this.especialidad.value,
-      disponibilidad: this.horario.value
+      fecha: this.fecha.value
     }
     console.log(filtro);
     this.enviarListado.emit(filtro);
   }
   
-
 }
