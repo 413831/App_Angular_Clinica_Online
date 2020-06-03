@@ -51,7 +51,7 @@ export class AltaAdminComponent implements OnInit {
   {
     this.admin = Administrador.CrearAdministrador(this.nombre.value, this.clave.value, this.dni.value,
                                                   this.direccion.value, this.email.value, this.telefono.value,
-                                                  this.imagen.value, this.avatar.value, '');
+                                                  'imagenes/admin_1.jpg', 'imagenes/admin_2.jpg', '0');
     this.servicio.crear(this.admin);
     this.router.navigate(["/home"]);
   }
@@ -69,9 +69,7 @@ export class AltaAdminComponent implements OnInit {
   get dni() { return this.datosAdmin.get('dni'); }
   get direccion() { return this.datosAdmin.get('direccion'); }
   get telefono() { return this.datosAdmin.get('telefono'); }
-  get imagen() { return this.datosAdmin.get('imagen'); }
   get email() { return this.datosAdmin.get('email'); }
   get clave() { return this.datosAdmin.get('clave'); }
-  get avatar() { return this.datosAdmin.get('avatar'); }
 
 }

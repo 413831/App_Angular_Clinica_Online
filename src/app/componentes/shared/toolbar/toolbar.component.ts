@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/clases/Usuario';
+import { MiservicioService } from 'src/app/servicios/miservicio.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-toolbar',
@@ -24,5 +26,13 @@ export class ToolbarComponent implements OnInit {
       this.mostrarBarra = true;
     }
   }
+
+  logout()
+  {
+    MiservicioService.cerrarSesion(); 
+    
+  }
+
+
 
 }

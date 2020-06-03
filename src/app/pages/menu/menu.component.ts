@@ -171,9 +171,10 @@ export class MenuComponent implements OnInit {
     }
 
     dialogRef.afterClosed().subscribe(result => 
-    {
-      console.log('The dialog was closed');
-      console.log(result);
+    {this._snackBar.openFromComponent(AutorizadoSnackbarComponent, {
+      duration: this.durationInSeconds * 1000,
+      data: this.medicoAutorizar
+    });
     });
   }
 
@@ -243,6 +244,7 @@ export class MenuComponent implements OnInit {
     this.medicosService.actualizar(this.medicoAutorizar);
     this._snackBar.openFromComponent(AutorizadoSnackbarComponent, {
       duration: this.durationInSeconds * 1000,
+      data: this.medicoAutorizar
     });
     
   }

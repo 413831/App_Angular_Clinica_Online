@@ -40,8 +40,8 @@ body {
 
 .thumbnail
 {
-    max-width: 125px;
-    max-height: 175px;
+    max-width: 145px;
+    max-height: 160px;        
     border-radius: 19px 19px 19px 19px;
     -moz-border-radius: 19px 19px 19px 19px;
     -webkit-border-radius: 19px 19px 19px 19px;

@@ -45,17 +45,13 @@ export class DialogMedicoComponent implements OnInit {
     // Ver solo especialidad seleccionada
     this.turno.consultorio = this.medico.consultorio;   
     localStorage.setItem('nuevoTurno',JSON.stringify(this.turno));
-    // Se cierra el modal
     // Se navega al alta de Turno
-    this.router.navigate([`alta-turno/${this.medico.horasAtencion}/${this.medico.diasAtencion}`]);
-    this.dialogRef.close();
+    this.router.navigate([`alta-turno/${this.medico.horasAtencion}/${this.medico.diasAtencion}`])
+                .then(() => this.dialogRef.close());
+    // Se cierra el modal
   }
 
-  onNoClick(): void 
-  {
-    console.log("Cerrar dialog");
-    this.dialogRef.close();
-  }
+  
 
   public especialidad(value){value.map( especialidad => this.turno.especialidad = especialidad.value)}
   public fecha(value)

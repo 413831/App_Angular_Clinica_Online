@@ -5,7 +5,10 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { Turno, Estado, Dia } from 'src/app/clases/Turno';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { TurnosService } from 'src/app/servicios/servicio-turnos.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { NuevoturnoSnackbarComponent } from '../nuevoturno-snackbar/nuevoturno-snackbar.component';
 
 @Component({
   selector: 'app-alta-turno',
@@ -13,6 +16,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./alta-turno.component.css']
 })
 export class AltaTurnoComponent implements OnInit {
+  durationInSeconds = 5;
   public turno: Turno;
   public horarios: string[] = new Array<string>();
   public dias: number[] = new Array<number>();
@@ -21,10 +25,12 @@ export class AltaTurnoComponent implements OnInit {
   events: string[] = [];
   datosTurnos: FormGroup;
   filtroFecha;
-  // Crear set de horarios de atención
   
   constructor(private _formBuilder: FormBuilder,private servicio: TurnosService,
-              private route : ActivatedRoute) { 
+              private route : ActivatedRoute, private router: Router ,
+              private _snackBar: MatSnackBar, private dialogRef: MatDialog) 
+  { 
+    this.dialogRef.closeAll();
     this.turno = JSON.parse(localStorage.getItem('nuevoTurno'));
 
     // Obtengo los datos por parametros de la ruta
@@ -33,48 +39,12 @@ export class AltaTurnoComponent implements OnInit {
       this.horarios = params['horarios'].split(",");
       params['dias'].split(",").map( dia => this.dias.push(parseInt(dia)));
     });
-
-    this.minDate = new Date();
-    this.maxDate = new Date();
-    this.maxDate.setDate(this.minDate.getDay() + 15);
-    console.log(this.dias);
-    
-
-    // Filtros segun datos del medico
-    this.filtroFecha = (fecha: Date | null): boolean => 
-    {
-      const diaSeleccionado = (fecha || new Date()).getDay();
-      let validate = this.dias.includes(diaSeleccionado);  
-     
-      return validate;
-    }
-    
-    console.log(this.turno);
-    this.datosTurnos = new FormGroup({
-      nombrePaciente: new FormControl({value: this.turno.nombrePaciente, disabled: true},
-                                       Validators.required),
-      nombreMedico: new FormControl({value: this.turno.nombreMedico, disabled: true},
-                                      Validators.required),
-      fecha: new FormControl({value: this.turno.fecha, disabled: false},
-                              Validators.required),
-      horario: new FormControl({value: this.turno.horario, disabled: false},
-                                Validators.required),
-      duracion: new FormControl({value: this.turno.duracion, disabled: true},
-                                  Validators.required),
-      especialidad: new FormControl({value: this.turno.especialidad, disabled: true},
-                                    Validators.required),
-      consultorio: new FormControl({value: this.turno.consultorio, disabled: true},
-                                    Validators.required),
-      estado: new FormControl({value: this.turno.estado, disabled: true},
-                              Validators.required),
-   });
-   
+    this.crearFiltros();
+    this.crearControles();
   }
 
 
   ngOnInit(): void {
-   
-    
   }
 
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
@@ -95,6 +65,53 @@ export class AltaTurnoComponent implements OnInit {
 
     console.log(this.turno);
     this.servicio.crear(this.turno);
+
+    this._snackBar.openFromComponent(NuevoturnoSnackbarComponent, {
+      duration: this.durationInSeconds * 1000,
+    });
+
+    this.router.navigate(["/menu"]);
+
+
+  }
+
+  crearFiltros()
+  {
+    this.minDate = new Date();
+    this.maxDate = new Date();
+    this.maxDate.setDate(this.minDate.getDay() + 15);
+    console.log(this.dias);
+    
+    // Filtros segun datos del medico
+    this.filtroFecha = (fecha: Date | null): boolean => 
+    {
+      const diaSeleccionado = (fecha || new Date()).getDay();
+      let validate = this.dias.includes(diaSeleccionado);  
+     
+      return validate;
+    }
+  }
+
+  crearControles()
+  {
+    this.datosTurnos = new FormGroup({
+      nombrePaciente: new FormControl({value: this.turno.nombrePaciente, disabled: true},
+                                       Validators.required),
+      nombreMedico: new FormControl({value: this.turno.nombreMedico, disabled: true},
+                                      Validators.required),
+      fecha: new FormControl({value: this.turno.fecha, disabled: false},
+                              Validators.required),
+      horario: new FormControl({value: this.turno.horario, disabled: false},
+                                Validators.required),
+      duracion: new FormControl({value: this.turno.duracion, disabled: true},
+                                  Validators.required),
+      especialidad: new FormControl({value: this.turno.especialidad, disabled: true},
+                                    Validators.required),
+      consultorio: new FormControl({value: this.turno.consultorio, disabled: true},
+                                    Validators.required),
+      estado: new FormControl({value: this.turno.estado, disabled: true},
+                              Validators.required),
+    });
   }
 
   get nombrePaciente() { return this.datosTurnos.get('nombrePaciente'); }

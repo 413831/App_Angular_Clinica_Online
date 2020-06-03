@@ -21,7 +21,7 @@ export class ListadoMedicosComponent implements OnInit {
   
   @ViewChild(MatSort, {static: true}) sort: MatSort;
     
-  constructor( public dialog: MatDialog) 
+  constructor( public dialog: MatDialog, public listadoRef: MatDialogRef<ListadoMedicosComponent>) 
   {
     this.listado = JSON.parse(localStorage.getItem('medicos'));
     console.log(this.listado);
@@ -42,9 +42,9 @@ export class ListadoMedicosComponent implements OnInit {
            
     const dialogRef = this.dialog.open(DialogMedicoComponent, dialogConfig);
 
+
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result);
+      console.log('Dialogo medico cerrado.');
     });
     this.enviarMedico.emit(medico);
   }

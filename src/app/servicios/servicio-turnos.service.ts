@@ -23,12 +23,13 @@ export class TurnosService extends MiservicioService{
 
   public leer(): Turno[]
   {
-    let turnos = [];
+    let turnos = new Array<Turno>();
     console.info("Fetch de todos los turnos");
 
     database().ref('turnos').on('value',(snapshot) => {         
         snapshot.forEach((child) =>{
           var data = child.val();
+          console.log(data);
           turnos.push(Turno.CrearTurno(data.nombrePaciente, data.nombreMedico,
                                           data.fecha, data.horario ,data.duracion, data.especialidad,
                                           data.consultorio, data._detalle, data.estado,child.key ));

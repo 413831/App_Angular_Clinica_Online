@@ -1,8 +1,8 @@
 <mat-toolbar class="toolbar-text mat-elevation-z2" *ngIf="usuario">
-    <button mat-icon-button matTooltip="Menu de usuario" >
+    <button mat-icon-button matTooltip="Menu de usuario" [routerLink]="'/menu'">
         <mat-icon  aria-hidden="false" aria-label="menu">menu</mat-icon>
     </button>
-    <button mat-icon-button matTooltip="Cerrar sesion" >
+    <button mat-icon-button matTooltip="Cerrar sesion" (click)="logout()">
         <mat-icon  aria-hidden="false" aria-label="logout">logout</mat-icon>
     </button>
     <span class="spacer"></span>

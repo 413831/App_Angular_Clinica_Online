@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
+import { Medico } from 'src/app/clases/Medico';
 
 @Component({
   selector: 'app-autorizado-snackbar',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AutorizadoSnackbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(MAT_SNACK_BAR_DATA) public data: Medico) { }
 
   ngOnInit(): void {
   }

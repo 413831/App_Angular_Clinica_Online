@@ -33,7 +33,8 @@ export class LoginComponent implements OnInit {
   constructor(private servicioPacientes: PacientesService,
     private servicioMedicos: MedicosService,
     private servicioAdmin: AdministradoresService,
-    private route: ActivatedRoute, private router: Router) {
+    private route: ActivatedRoute, private router: Router) 
+  {
     this.usuario = new Usuario();
     this.datosLogin = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -59,12 +60,15 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    MiservicioService.cerrarSesion();
     // Implementar JWT
     let usuarios: Array<Usuario> = new Array<Usuario>();
     usuarios = usuarios.concat(this.medicos).concat(this.pacientes).concat(this.admin);
 
+    console.log(usuarios);
+
     this.usuario = usuarios.find((usuario) => usuario.email === this.email.value &&
-      usuario.clave === this.clave.value);
+                                  usuario.clave === this.clave.value);
     if (this.usuario) {
       console.info("Login");
       console.log(typeof this.usuario);
@@ -87,11 +91,11 @@ export class LoginComponent implements OnInit {
 
   initTest()
   {
-    this.adminTest = Administrador.CrearAdministrador('Admin',' admin', 99999999, 'Test 123', 'unmail@mail.com',
+    this.adminTest = Administrador.CrearAdministrador('Admin','admin', 99999999, 'Test 123', 'unmail1@mail.com',
                                                     11111111111, 'unafoto', 'otrafoto', '0');
-    this.pacienteTest_1 = Paciente.CrearPaciente('Paciente_0', 'paciente0', 888888888, 'Direccion 1234', 'paciente0@mail.com',
+    this.pacienteTest_1 = Paciente.CrearPaciente('Paciente_1', 'paciente1', 888888888, 'Direccion 1234', 'paciente1@mail.com',
                                                   1112341234, 'unafoto', 'Cobertura', 12345, 'otrafoto', '0');
-    this.pacienteTest_2 = Paciente.CrearPaciente('Paciente_1', 'paciente1', 77777777,'Direccion 4321', 'paciente1@mail.com',
+    this.pacienteTest_2 = Paciente.CrearPaciente('Paciente_2', 'paciente2', 77777777,'Direccion 4321', 'paciente2@mail.com',
                                                   119876544, 'unafoto', 'Cobertura', 12346, 'otrafoto', '0');
     this.medicoTest_1 = Medico.CrearMedico('Medico_1', 'medico1', 777777777, 'Direccion 222', 'medico1@mail.com',
                                             111426351, 'unafoto', 1010101010, 0, [Dia.Viernes, Dia.Miercoles], ["11:30", "15:00"] ,

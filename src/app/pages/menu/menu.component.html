@@ -14,7 +14,7 @@
                     <app-detalle-medico class="detalle" [imgPerfil]='imgPerfil' [medico]='medico'></app-detalle-medico>
                 </div>
                 <div *ngIf='administrador'>
-                    <app-detalle-administrador class="detalle" [administrador]="administrador">
+                    <app-detalle-administrador class="detalle" [imgPerfil]='imgPerfil' [administrador]="administrador">
                     </app-detalle-administrador>
                 </div>
             </mat-grid-tile>
@@ -86,7 +86,6 @@
                 <button mat-raised-button color="primary" (click)="autorizar()">Autorizar</button>
                 <button mat-raised-button color="primary" (click)="listarMedicos()">Ver Medicos</button>
                 <button mat-raised-button color="primary" (click)="listarPacientes()">Ver Pacientes</button>
-                <button mat-raised-button color="primary" (click)="listarMedicos()">Ver Medicos</button>
             </div>
             <div *ngIf="turno">
                 <button mat-raised-button class="default" (click)="modificarTurno()">Modificar Turno</button>
@@ -94,7 +93,6 @@
             <div class="botones">
                 <button mat-raised-button class="default" (click)="modificar()">Modificar datos</button>                
                 <button mat-raised-button class="default" (click)="cargarTurno()">Cargar Turno</button>
-                <button mat-raised-button class="default" (click)="logout()">Cerrar Sesion</button>
                 <button mat-raised-button class="warning" (click)="borrar()">Baja de usuario</button>
             </div>
 

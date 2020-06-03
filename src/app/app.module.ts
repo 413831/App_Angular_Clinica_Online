@@ -29,7 +29,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRippleModule, MatNativeDateModule} from '@angular/material/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -75,6 +75,7 @@ import { ToolbarComponent } from './componentes/shared/toolbar/toolbar.component
 import { DiasPipe } from './pipes/dias.pipe';
 import { ModificarTurnoComponent } from './componentes/modificar-turno/modificar-turno.component';
 import { AutorizadoSnackbarComponent } from './componentes/autorizado-snackbar/autorizado-snackbar.component';
+import { NuevoturnoSnackbarComponent } from './componentes/nuevoturno-snackbar/nuevoturno-snackbar.component';
 
 
 @NgModule({
@@ -114,7 +115,8 @@ import { AutorizadoSnackbarComponent } from './componentes/autorizado-snackbar/a
     ToolbarComponent,
     DiasPipe,
     ModificarTurnoComponent,
-    AutorizadoSnackbarComponent
+    AutorizadoSnackbarComponent,
+    NuevoturnoSnackbarComponent
   ],
   imports: [
     ApplicationModule,
@@ -157,7 +159,8 @@ import { AutorizadoSnackbarComponent } from './componentes/autorizado-snackbar/a
   }),
     
   ],
-  providers: [MatDatepickerModule],
+  providers: [MatDatepickerModule, {provide: MatDialogRef,
+    useValue: {}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

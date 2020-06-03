@@ -58,7 +58,10 @@ export class MiservicioService {
 
   public static descargarImagen(url: string)
   {
+    this.imgSrc = '';
+
     console.log("Descargando imagen");
+    
     return firebase.storage().ref().child(`${url}`).getDownloadURL()
                             .then((url)=> this.imgSrc = url)
                             .catch(error => console.error(error));
