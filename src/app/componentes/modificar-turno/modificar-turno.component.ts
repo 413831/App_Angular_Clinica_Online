@@ -9,6 +9,8 @@ import { CambioTurnoSnackbarComponent } from '../cambio-turno-snackbar/cambio-tu
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatBottomSheet, MatBottomSheetConfig } from '@angular/material/bottom-sheet';
 import { InfoTurnoComponent } from '../info-turno/info-turno.component';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DialogExtrasComponent } from '../dialog-extras/dialog-extras.component';
 
 @Component({
   selector: 'app-modificar-turno',
@@ -29,7 +31,8 @@ export class ModificarTurnoComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder,private servicio: TurnosService,
               private route: ActivatedRoute, private router: Router,
-              private _snackBar: MatSnackBar, private _bottomSheet: MatBottomSheet) 
+              private _snackBar: MatSnackBar, private _bottomSheet: MatBottomSheet,
+              public nuevoAtributo: MatDialog) 
   {
     
   }
@@ -110,6 +113,18 @@ export class ModificarTurnoComponent implements OnInit {
      
       return validate;
     }
+  }
+
+  agregarInfo()
+  {
+    let dialogConfig = new MatDialogConfig();
+    let dialogRef;
+    dialogConfig.data = this.turno;
+    dialogConfig.width = '400px';
+    dialogConfig.height = '35px';
+    dialogConfig.panelClass = "dialog";
+
+    dialogRef = this.nuevoAtributo.open(DialogExtrasComponent, dialogConfig);
   }
 
   get nombrePaciente() { return this.datosTurnos.get('nombrePaciente'); }

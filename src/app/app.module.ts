@@ -82,6 +82,7 @@ import { AutorizadoSnackbarComponent } from './componentes/autorizado-snackbar/a
 import { NuevoturnoSnackbarComponent } from './componentes/nuevoturno-snackbar/nuevoturno-snackbar.component';
 import { CambioTurnoSnackbarComponent } from './componentes/cambio-turno-snackbar/cambio-turno-snackbar.component';
 import { InfoTurnoComponent } from './componentes/info-turno/info-turno.component';
+import { DialogExtrasComponent } from './componentes/dialog-extras/dialog-extras.component';
 
 
 @NgModule({
@@ -124,7 +125,8 @@ import { InfoTurnoComponent } from './componentes/info-turno/info-turno.componen
     AutorizadoSnackbarComponent,
     NuevoturnoSnackbarComponent,
     CambioTurnoSnackbarComponent,
-    InfoTurnoComponent
+    InfoTurnoComponent,
+    DialogExtrasComponent
   ],
   imports: [
     ApplicationModule,
