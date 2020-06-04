@@ -7,6 +7,8 @@ import { Usuario, Rol } from 'src/app/clases/Usuario';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CambioTurnoSnackbarComponent } from '../cambio-turno-snackbar/cambio-turno-snackbar.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatBottomSheet, MatBottomSheetConfig } from '@angular/material/bottom-sheet';
+import { InfoTurnoComponent } from '../info-turno/info-turno.component';
 
 @Component({
   selector: 'app-modificar-turno',
@@ -27,7 +29,7 @@ export class ModificarTurnoComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder,private servicio: TurnosService,
               private route: ActivatedRoute, private router: Router,
-              private _snackBar: MatSnackBar) 
+              private _snackBar: MatSnackBar, private _bottomSheet: MatBottomSheet) 
   {
     
   }
@@ -46,6 +48,7 @@ export class ModificarTurnoComponent implements OnInit {
     this.turno.fecha = this.fecha.value != '' ? this.fecha.value : this.turno.fecha  ;
     this.turno.horario = this.horario.value != '' ? this.horario.value : this.turno.horario;
     this.turno.detalle = this.detalle.value != '' ? this.detalle.value : this.turno.detalle;
+    this.turno.comentarios = this.comentarios.value != '' ? this.comentarios.value : this.turno.comentarios;
     this.turno.modificado = true;
 
     console.log(this.turno);
@@ -55,6 +58,14 @@ export class ModificarTurnoComponent implements OnInit {
       duration: this.durationInSeconds * 1000,
       })
     );
+  }
+
+  verDetalles()
+  {
+    let config = new MatBottomSheetConfig()
+    config.data = this.turno;
+
+    this._bottomSheet.open(InfoTurnoComponent, config);
   }
 
   cambiarEstado(estado: Estado)
@@ -75,6 +86,7 @@ export class ModificarTurnoComponent implements OnInit {
       consultorio: new FormControl({value: this.turno.consultorio, disabled: true}),
       estado: new FormControl({value: this.turno.estado, disabled: true}),
       detalle: new FormControl({ value:'Comentarios', disabled: false}),
+      comentarios: new FormControl({ value:'Reseña', disabled: false})
     });
   }
 
@@ -100,13 +112,13 @@ export class ModificarTurnoComponent implements OnInit {
     }
   }
 
-
   get nombrePaciente() { return this.datosTurnos.get('nombrePaciente'); }
   get nombreMedico() { return this.datosTurnos.get('nombreMedico'); }
   get fecha() { return this.datosTurnos.get('fecha'); }
   get horario() { return this.datosTurnos.get('horario'); }
   get duracion() { return this.datosTurnos.get('duracion'); }
   get detalle() { return this.datosTurnos.get('detalle'); }
+  get comentarios() { return this.datosTurnos.get('comentarios'); }
   get especialidad() { return this.datosTurnos.get('especialidad'); }
   get consultorio() { return this.datosTurnos.get('consultorio'); }
 }

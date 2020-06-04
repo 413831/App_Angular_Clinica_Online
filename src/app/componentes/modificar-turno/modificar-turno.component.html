@@ -58,11 +58,19 @@
           </tr>
         </table>
     
-      <mat-form-field class="example-full-width">
+      <mat-form-field *ngIf="usuario.rol == 2" class="example-full-width">
         <mat-label>Detalle del turno</mat-label>
         <textarea matInput  cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"
          #message maxlength="256" formControlName="detalle"></textarea>
         <mat-hint align="start"><strong>Ingresar detalles del turno</strong> </mat-hint>
+        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="usuario.rol == 3" class="example-full-width">
+        <mat-label>Comentarios del turno</mat-label>
+        <textarea matInput  cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"
+         #message maxlength="256" formControlName="comentarios"></textarea>
+        <mat-hint align="start"><strong>Ingrese comentarios sobre el turno</strong> </mat-hint>
         <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
       </mat-form-field>
       </form>
@@ -71,10 +79,11 @@
  
     <mat-grid-tile [colspan]=1 [rowspan]=1 >     
       <mat-chip-list class="mat-chip-list-stacked" aria-label="Estado turno">
-        <mat-chip><h2>Estado del turno</h2></mat-chip>
-        <br>
+        <mat-chip [selectable]="false"><h2>Estado del turno</h2></mat-chip>
         <mat-chip color="primary" selected> {{turno.estado}}</mat-chip>
-      </mat-chip-list>        
+        <mat-chip (click)="verDetalles()">Ver detalles</mat-chip>
+      </mat-chip-list>
+      <br>
     </mat-grid-tile>
 
     <mat-grid-tile [colspan]=1 [rowspan]=1 >            
@@ -86,7 +95,7 @@
       </mat-button-toggle-group>
     </mat-grid-tile>
     <mat-grid-tile [colspan]=1 [rowspan]=1 >            
-      <mat-button-toggle-group  name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle-group  name="fontStyle" aria-label="Font Style">  
         <mat-button-toggle (click)="modificar()">Guardar cambios</mat-button-toggle>
         <mat-button-toggle [routerLink]='["/menu"]' >Volver</mat-button-toggle>      
       </mat-button-toggle-group>

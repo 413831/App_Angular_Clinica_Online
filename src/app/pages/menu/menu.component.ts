@@ -64,7 +64,6 @@ export class MenuComponent implements OnInit {
       this.obtenerTurnos();
       this.turnosModificados = this.turnos.filter(turno => turno.modificado == true);
       console.log(this.turnosModificados);
-
     }
   }
 
@@ -74,7 +73,6 @@ export class MenuComponent implements OnInit {
 
   obtenerPerfil()
   {
-
     switch(this.usuario.rol)
     {
       case Rol.Administrador:

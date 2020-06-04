@@ -24,6 +24,7 @@ export class Turno
 {
     public id: string;
     public detalle: string;
+    public comentarios: string;
     public nombrePaciente: string;
     public nombreMedico: string;
     public duracion: number;
@@ -40,7 +41,8 @@ export class Turno
 
     public static CrearTurno(nombrePaciente: string, nombreMedico: string, fecha: Date, horario: string,
                                 duracion: number, especialidad: Especialidad, consultorio: number,
-                                detalle: string, estado: Estado, id?: string, modificado?: boolean ): Turno
+                                detalle: string, estado: Estado, 
+                                id?: string, modificado?: boolean, comentarios?: string ): Turno
     {
         let turno = new Turno();
 
@@ -51,6 +53,7 @@ export class Turno
         turno.especialidad = especialidad;
         turno.consultorio = consultorio;
         turno.detalle = detalle;
+        turno.comentarios = comentarios;
         turno.estado = estado;
         turno.horario = horario;
         turno.id = id;

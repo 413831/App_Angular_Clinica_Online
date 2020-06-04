@@ -78,6 +78,7 @@ export class AltaTurnoComponent implements OnInit {
     this.turno.fecha = this.fecha.value;
     this.turno.horario = this.horario.value;
     this.turno.detalle = 'vacio';
+    this.turno.comentarios = 'vacio';
     this.turno.estado = Estado.Pendiente;
 
     console.log(this.turno);

@@ -37,6 +37,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 
 
 // Componentes
@@ -79,6 +80,7 @@ import { ModificarTurnoComponent } from './componentes/modificar-turno/modificar
 import { AutorizadoSnackbarComponent } from './componentes/autorizado-snackbar/autorizado-snackbar.component';
 import { NuevoturnoSnackbarComponent } from './componentes/nuevoturno-snackbar/nuevoturno-snackbar.component';
 import { CambioTurnoSnackbarComponent } from './componentes/cambio-turno-snackbar/cambio-turno-snackbar.component';
+import { InfoTurnoComponent } from './componentes/info-turno/info-turno.component';
 
 
 @NgModule({
@@ -120,7 +122,8 @@ import { CambioTurnoSnackbarComponent } from './componentes/cambio-turno-snackba
     ModificarTurnoComponent,
     AutorizadoSnackbarComponent,
     NuevoturnoSnackbarComponent,
-    CambioTurnoSnackbarComponent
+    CambioTurnoSnackbarComponent,
+    InfoTurnoComponent
   ],
   imports: [
     ApplicationModule,
@@ -157,6 +160,7 @@ import { CambioTurnoSnackbarComponent } from './componentes/cambio-turno-snackba
     MatChipsModule,
     MatAutocompleteModule,
     MatBadgeModule,
+    MatBottomSheetModule,
     AgmCoreModule.forRoot({
       apiKey: environment.agmKey
     }),
