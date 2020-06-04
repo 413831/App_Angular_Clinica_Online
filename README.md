@@ -16,9 +16,9 @@ Sistema de gestión web para clinicas con el que podrás brindar un servicio mod
 El sistema se integra con los diferentes perfiles de usuario generando una experiencia diferente para cada uno.
 Cada perfil tendrá acceso a opciones que enriqueceran al sistema y a su vez facilitará la gestión de la atención médica.
 
-## :information_source: ¿Qué contiene la aplicación?
+# :information_source: ¿Qué contiene la aplicación?
 
-- Menu principal
+## Menu principal
 
 ![Menu](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2FimgTP2.png?alt=media&token=c260c6bb-ca9e-4eea-91e8-88e5e0a200a0 "Menu de la aplicacion")
 
