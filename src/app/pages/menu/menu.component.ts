@@ -63,7 +63,7 @@ export class MenuComponent implements OnInit {
       this.obtenerPerfil();
       this.obtenerTurnos();
       this.turnosModificados = this.turnos.filter(turno => turno.modificado == true);
-      console.log(`Turnos modificados: ${this.turnosModificados} `);
+      console.log(this.turnosModificados);
 
     }
   }
@@ -175,10 +175,11 @@ export class MenuComponent implements OnInit {
     }
 
     dialogRef.afterClosed().subscribe(result => 
-    {this._snackBar.openFromComponent(AutorizadoSnackbarComponent, {
+    {
+      this._snackBar.openFromComponent(AutorizadoSnackbarComponent, {
       duration: this.durationInSeconds * 1000,
       data: this.medicoAutorizar
-    });
+      });
     });
   }
 

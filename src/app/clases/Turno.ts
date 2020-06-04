@@ -51,7 +51,7 @@ export class Turno
         turno.especialidad = especialidad;
         turno.consultorio = consultorio;
         turno.detalle = detalle;
-        turno.estado = Estado.Pendiente;
+        turno.estado = estado;
         turno.horario = horario;
         turno.id = id;
         turno.modificado = modificado;

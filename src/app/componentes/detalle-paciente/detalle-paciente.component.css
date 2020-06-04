@@ -16,4 +16,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  max-width: 150px;
+  max-height: 200px;
 }

@@ -2,10 +2,14 @@
     <h1><p class="titulos">Menú de usuario</p></h1>
     <hr>
     <div *ngIf='usuario'>
+        <mat-toolbar class="toolbar-text" *ngIf="turnosModificados.length > 0">
+            <span class="parrafo" matBadge="1" matBadgeOverlap="false">Turnos modificados</span>
+        </mat-toolbar> 
 
         <mat-grid-list cols="6" rowHeight="90px">
             <mat-grid-tile [colspan]=4 [rowspan]=4 class="detalle">
                 <mat-grid-tile-header>Datos personales</mat-grid-tile-header>
+              
                 <div *ngIf='paciente'>
                     <app-detalle-paciente *ngIf='paciente' class="detalle" [imgPerfil]='imgPerfil'
                         [paciente]='paciente'></app-detalle-paciente>
@@ -21,11 +25,9 @@
 
             <mat-grid-tile class="tabla" *ngIf='paciente || medico' [colspan]=2 [rowspan]=4 >
                 <mat-grid-tile-header>
-                    Turnos 
-                    <p *ngIf="turnosModificados.length > 0">
-                        <span matBadge="turnosModificados.length" matBadgeOverlap="false">Turnos modificados</span>
-                    </p>                      
+                    Turnos  
                 </mat-grid-tile-header>
+                                               
                 <mat-table [dataSource]="dataTurnos" class="mat-elevation-z8 frame">
              
                     <ng-container matColumnDef="especialidad">

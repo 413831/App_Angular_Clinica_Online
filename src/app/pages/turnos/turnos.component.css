@@ -3,11 +3,14 @@
     padding-top: 5px;
 }
 
-mat-grid-tile {    
- 
-    margin-bottom: 70px;
+.cards {    
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 30px;
     padding-bottom: 25px;
-  }
+}
 
 .page
 {

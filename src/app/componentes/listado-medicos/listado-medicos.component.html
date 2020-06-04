@@ -48,13 +48,13 @@
     <input type="text" matInput formControlName="{{filter.columnProp}}" [matAutocomplete]="auto"
     (change)="filterChange(filter,$event)">
 
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option value="">Seleccione {{filter.name}} --</mat-option>
-      <mat-option [value]="item" *ngFor="let item of filter.options">{{item}}</mat-option>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="autocompleteChange(filter,$event)">
+      <mat-option value=""></mat-option>
+      <mat-option  [value]="item" *ngFor="let item of filter.options">{{item}}</mat-option>
     </mat-autocomplete>
 
   </mat-form-field>
-  <button mat-flat-button color="warn" >Reset</button>
+  <button mat-flat-button class="primary" >Reset</button>
 </form>
 
 

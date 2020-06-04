@@ -22,14 +22,12 @@ export class ListadoMedicosComponent implements OnInit {
   dataSource: MatTableDataSource<Medico>;
   /////
   filterValues = {};
-  dias: Dia[] = Turno.dias;
-  especialidades: string[] = ['pediatría', 'general', 'traumatología'];
   filterSelectObj = {};
   filterForm = new FormGroup(
   {
-    dia: new FormControl(),
-    especialidad: new FormControl(),
     nombre: new FormControl(),
+    especialidad: new FormControl(),
+    diasAtencion: new FormControl()
   });
   
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -45,11 +43,11 @@ export class ListadoMedicosComponent implements OnInit {
       }, {
         name: 'Especialidad',
         columnProp: 'especialidad',
-        options: []
+        options: Medico.especialidades
       }, {
         name: 'Dia',
-        columnProp: 'dia',
-        options: Turno.dias
+        columnProp: 'diasAtencion',
+        options: Turno.dias.map(dia => Dia[dia])
       }, 
     ]
 
@@ -88,7 +86,7 @@ export class ListadoMedicosComponent implements OnInit {
   buscar(){
     let nombre = this.nombre.value ?  this.nombre.value : "";
     let especialidad = this.especialidad.value ?  this.especialidad.value : "";
-    let dia = this.diaAtencion.value ?  this.diaAtencion.value : "";
+    let dia = this.diasAtencion.value ?  this.diasAtencion.value : "";
 
     let filtro = {
       nombre: nombre,
@@ -103,8 +101,15 @@ export class ListadoMedicosComponent implements OnInit {
   // Called on Filter change
   filterChange(filter, event) {
     //let filterValues = {}
-    console.log(filter);
+    console.log(event.target.value.trim().toLowerCase());
     this.filterValues[filter.columnProp] = event.target.value.trim().toLowerCase()
+    this.dataSource.filter = JSON.stringify(this.filterValues)
+  }
+
+  autocompleteChange(filter, event)
+  {
+    console.log(event.option.value);
+    this.filterValues[filter.columnProp] = event.option.value
     this.dataSource.filter = JSON.stringify(this.filterValues)
   }
 
@@ -116,6 +121,7 @@ export class ListadoMedicosComponent implements OnInit {
       let searchTerms = JSON.parse(filter);
       //searchTerms = JSON.parse(filter);
       let isFilterSet = false;
+      console.log(searchTerms);
       
       for (const col in searchTerms) 
       {
@@ -128,25 +134,25 @@ export class ListadoMedicosComponent implements OnInit {
           delete searchTerms[col];
         }
       }
-      
-      console.log(searchTerms);
 
       let nameSearch = () => {
         let found = false;
         if (isFilterSet) 
         {
           for (const col in searchTerms) 
-          {
-            searchTerms[col].trim().toLowerCase().split(' ').forEach(word => 
+          {          
+            searchTerms[col].trim().split(",").forEach(word=> 
             {
+              word = col == "diasAtencion" ? Dia[word] : word;
+
               if (data[col].toString().toLowerCase().indexOf(word) != -1 && isFilterSet) 
               {
-                found = true
+                found = true;
               }
             });
           }
 
-          return found
+          return found;
         } else {
           return true;
         }
@@ -156,7 +162,7 @@ export class ListadoMedicosComponent implements OnInit {
     return filterFunction
   }
 
-  get diaAtencion() { return this.filterForm.get('dia'); }
+  get diasAtencion() { return this.filterForm.get('diasAtencion'); }
   get nombre() { return this.filterForm.get('nombre'); }
   get especialidad() { return this.filterForm.get('especialidad'); }
 

@@ -7,8 +7,8 @@
   <hr>
   <div>
     <p class="parrafo">Se listan todos los turnos pendientes y cerrados</p>
-        <div *ngFor="let turno of turnos">        
-          <app-detalle-turno [turno]='turno'></app-detalle-turno>
+        <div  *ngFor="let turno of turnos">        
+          <app-detalle-turno class="cards" [turno]='turno'></app-detalle-turno>
         </div>
   </div>
 </div>

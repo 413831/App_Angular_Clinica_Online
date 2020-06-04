@@ -4,6 +4,9 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { TurnosService } from 'src/app/servicios/servicio-turnos.service';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { Usuario, Rol } from 'src/app/clases/Usuario';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CambioTurnoSnackbarComponent } from '../cambio-turno-snackbar/cambio-turno-snackbar.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-modificar-turno',
@@ -11,7 +14,7 @@ import { Usuario, Rol } from 'src/app/clases/Usuario';
   styleUrls: ['./modificar-turno.component.css']
 })
 export class ModificarTurnoComponent implements OnInit {
-  durationInSeconds = 5;
+  durationInSeconds = 3;
   public usuario: Usuario;
   public turno: Turno;
   public horarios: string[] = new Array<string>();
@@ -22,7 +25,9 @@ export class ModificarTurnoComponent implements OnInit {
   datosTurnos: FormGroup;
   filtroFecha;
 
-  constructor(private _formBuilder: FormBuilder,private servicio: TurnosService) 
+  constructor(private _formBuilder: FormBuilder,private servicio: TurnosService,
+              private route: ActivatedRoute, private router: Router,
+              private _snackBar: MatSnackBar) 
   {
     
   }
@@ -45,6 +50,11 @@ export class ModificarTurnoComponent implements OnInit {
 
     console.log(this.turno);
     this.servicio.actualizar(this.turno);
+    this.router.navigate(["/menu"]).then(()=> 
+      this._snackBar.openFromComponent(CambioTurnoSnackbarComponent, {
+      duration: this.durationInSeconds * 1000,
+      })
+    );
   }
 
   cambiarEstado(estado: Estado)
