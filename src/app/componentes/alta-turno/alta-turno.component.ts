@@ -17,6 +17,7 @@ import { NuevoturnoSnackbarComponent } from '../nuevoturno-snackbar/nuevoturno-s
 })
 export class AltaTurnoComponent implements OnInit {
   durationInSeconds = 5;
+  habilitarHoras: boolean = false;
   public turno: Turno;
   public horarios: string[] = new Array<string>();
   public dias: number[] = new Array<number>();
@@ -49,7 +50,23 @@ export class AltaTurnoComponent implements OnInit {
 
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     this.events.push(`${type}: ${event.value}`);
-    console.log(`Valores de calendario: ${this.events}`);
+  }
+  
+  checkHoras()
+  {
+    this.habilitarHoras = true;
+    console.log(this.fecha.value.getDay());
+    
+
+    if(this.fecha.value.getDay() == Dia.Sabado)
+    {
+      this.horarios = this.horarios.filter( hora => parseInt(hora) < 14);
+      console.log(`Horarios de sabado: ${this.horarios}`);
+      this.datosTurnos.patchValue({
+        horario: this.horarios
+      })
+      
+    }
   }
 
   altaTurno()
