@@ -21,6 +21,7 @@
       <button mat-raised-button matTooltip="Login con perfiles de prueba" color="accent"
         (click)="drawer.toggle()">Seleccionar perfil</button>
       <br>
+      Agregar boton para deshabilitar captcha
       <recaptcha [formControl]="myRecaptcha" (scriptLoad)="onScriptLoad()" (scriptError)="onScriptError()">
       </recaptcha>
     </form>

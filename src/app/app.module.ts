@@ -38,6 +38,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 // Componentes
@@ -161,6 +162,7 @@ import { InfoTurnoComponent } from './componentes/info-turno/info-turno.componen
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
+    MatSlideToggleModule,
     AgmCoreModule.forRoot({
       apiKey: environment.agmKey
     }),

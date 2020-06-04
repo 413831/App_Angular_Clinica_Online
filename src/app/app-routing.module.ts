@@ -14,8 +14,8 @@ import { ModificarTurnoComponent } from './componentes/modificar-turno/modificar
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
-  { path: 'home', component: HomeComponent},
+  { path: '', component: HomeComponent, data: {animation: 'HomePage'} },
+  { path: 'home', component: HomeComponent, data: {animation: 'HomePage'} },
   { path: 'registro', component: RegistroComponent},
   { path: 'login', component: LoginComponent},
   { path: 'cartilla', component: CartillaComponent},
