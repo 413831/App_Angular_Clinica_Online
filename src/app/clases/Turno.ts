@@ -38,6 +38,7 @@ export class Turno
                                         "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30"];
     public static dias: Dia[] = [Dia.Lunes, Dia.Martes, Dia.Miercoles, Dia.Jueves, Dia.Viernes, Dia.Sabado];
     public modificado: boolean = false;
+    public opcionales: [string, unknown];
 
     public static CrearTurno(nombrePaciente: string, nombreMedico: string, fecha: Date, horario: string,
                                 duracion: number, especialidad: Especialidad, consultorio: number,
@@ -60,6 +61,11 @@ export class Turno
         turno.modificado = modificado;
 
         return turno;
+    }
+
+    public AgregarDato(key: string, value: unknown)
+    {
+        this.opcionales.push(key,value);
     }
 }
 

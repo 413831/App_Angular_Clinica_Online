@@ -13,13 +13,13 @@
   </mat-form-field>
 
   <!-- Sexo -->
-  <section class="example-section">
+  <mat-form-field>
     <label class="example-margin">Sexo</label>
     <mat-radio-group>
       <mat-radio-button class="example-margin" value="after">Masculino</mat-radio-button>
       <mat-radio-button class="example-margin" value="before">Femenino</mat-radio-button>
     </mat-radio-group>
-  </section>
+  <mat-form-field>>
 
   <!-- Fecha de atencion -->
   <mat-form-field class="example-full-width">
@@ -34,12 +34,16 @@
   </mat-form-field>
 
   <!-- Nivel satisfaccion -->
-  <mat-label>Indique nivel de satisfaccion de la atención</mat-label>
-  <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="1000" min="1" max="10"></mat-slider>
+  <mat-form-field>
+    <mat-label>Indique nivel de satisfaccion de la atención</mat-label>
+    <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="1000" min="1" max="10"></mat-slider>
+  </mat-form-field>mat-form-field>
 
   <!-- Primera vez -->
-  <mat-label>¿Fue su primera atención?</mat-label>
-  <mat-slide-toggle>Slide me!</mat-slide-toggle>
+  <mat-form-field>
+    <mat-label>¿Fue su primera atención?</mat-label>
+    <mat-slide-toggle>Slide me!</mat-slide-toggle>
+  <mat-form-field>
 
   <!-- Frecuencia -->
   <mat-form-field>
@@ -48,11 +52,14 @@
       <mat-option *ngFor="let frecuencia of frecuencias" [value]="frecuencia">
         {{frecuencia}}
       </mat-option>
-  </mat-select>
+    </mat-select>
+  </mat-form-field>
 
   <!-- Recomendacion -->
-  <mat-label>¿Recomendaria la atencion?</mat-label>
-  <mat-slide-toggle>Slide me!</mat-slide-toggle>
+  <mat-form-field>
+    <mat-label>¿Recomendaria la atencion?</mat-label>
+    <mat-slide-toggle>Slide me!</mat-slide-toggle>
+  <mat-form-field>
 
   <!-- Como nos conocio -->
   <mat-form-field>
@@ -62,8 +69,8 @@
         {{frecuencia}}
       </mat-option>
     </mat-select>
+  </mat-form-field>
 
-
-
-
+  <mat-button-toggle (click)="modificar()">Guardar cambios</mat-button-toggle>
+  <mat-button-toggle [routerLink]='["/menu"]'>Volver</mat-button-toggle>
 </form>
