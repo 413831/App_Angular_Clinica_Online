@@ -20,7 +20,7 @@ Cada perfil tendrá acceso a opciones que enriqueceran al sistema y a su vez fac
 
 ## Menu principal
 
-Menu principal insintivo para una facil navegación
+Menu principal instintivo para una fácil navegación
 
 ![Menu](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2FimgTP2.png?alt=media&token=c260c6bb-ca9e-4eea-91e8-88e5e0a200a0 "Menu de la aplicacion")
 
