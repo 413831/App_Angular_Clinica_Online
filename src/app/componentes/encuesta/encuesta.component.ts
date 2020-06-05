@@ -25,4 +25,9 @@ export class EncuestaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  guardar()
+  {
+
+  }
+
 }

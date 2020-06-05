@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Turno } from 'src/app/clases/Turno';
+import { Turno, Estado } from 'src/app/clases/Turno';
 import { Usuario, Rol } from 'src/app/clases/Usuario';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Medico } from 'src/app/clases/Medico';
@@ -28,7 +28,9 @@ export class MenuComponent implements OnInit {
   public dataMedicos;
   public dataPacientes;
   public dataTurnos;
-  public turnosModificados: Turno[];
+  public turnosCancelados: Turno[];
+  public turnosAceptados: Turno[];
+  public turnosFinalizados: Turno[];
   columnasMedicos: string[] = ['nombre', 'matricula'];
   columnasPacientes: string[] = ['nombre', 'afiliado'];
   columnasTurnos: string[] = ['especialidad', 'estado' ,'fecha'];
@@ -62,8 +64,10 @@ export class MenuComponent implements OnInit {
     {
       this.obtenerPerfil();
       this.obtenerTurnos();
-      this.turnosModificados = this.turnos.filter(turno => turno.modificado == true);
-      console.log(this.turnosModificados);
+      this.turnosAceptados = this.turnos.filter(turno => turno.estado == Estado.Aceptado);
+      this.turnosFinalizados = this.turnos.filter(turno => turno.estado == Estado.Confirmado);
+      this.turnosCancelados = this.turnos.filter(turno => turno.estado == Estado.Cancelado);
+      
     }
   }
 

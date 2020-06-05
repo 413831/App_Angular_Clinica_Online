@@ -77,29 +77,30 @@
     </mat-grid-tile>
 
  
-    <mat-grid-tile [colspan]=1 [rowspan]=1 >     
+    <mat-grid-tile [colspan]=1 [rowspan]=2 >     
       <mat-chip-list class="mat-chip-list-stacked" aria-label="Estado turno">
         <mat-chip [selectable]="false"><h2>Estado del turno</h2></mat-chip>
         <mat-chip color="primary" selected> {{turno.estado}}</mat-chip>
         <mat-chip (click)="verDetalles()">Ver detalles</mat-chip>
         <mat-chip (click)="agregarInfo()">Agregar información</mat-chip>
       </mat-chip-list>
-      <br>
-    </mat-grid-tile>
-
-    <mat-grid-tile [colspan]=1 [rowspan]=1 >            
       <mat-button-toggle-group #group="matButtonToggleGroup" name="fontStyle" aria-label="Font Style">        
         <mat-button-toggle *ngIf="usuario.rol == 2" (click)="cambiarEstado(group.value)" value="Aceptado">Aceptar</mat-button-toggle>
         <mat-button-toggle *ngIf="usuario.rol == 2" (click)="cambiarEstado(group.value)" value="Rechazado">Rechazar</mat-button-toggle>
         <mat-button-toggle *ngIf="usuario.rol == 2" (click)="cambiarEstado(group.value)" value="Confirmado">Confirmar</mat-button-toggle>
         <mat-button-toggle (click)="cambiarEstado(group.value)" value="Cancelado">Cancelar</mat-button-toggle>
       </mat-button-toggle-group>
+      <br>
     </mat-grid-tile>
+
     <mat-grid-tile [colspan]=1 [rowspan]=1 >            
+     
+      <br>
       <mat-button-toggle-group  name="fontStyle" aria-label="Font Style">  
         <mat-button-toggle (click)="modificar()">Guardar cambios</mat-button-toggle>
         <mat-button-toggle [routerLink]='["/menu"]' >Volver</mat-button-toggle>      
       </mat-button-toggle-group>
     </mat-grid-tile>
+    
   </mat-grid-list>
 </div>

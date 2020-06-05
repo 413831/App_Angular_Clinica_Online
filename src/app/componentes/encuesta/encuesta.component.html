@@ -9,7 +9,7 @@
 
   <mat-form-field class="example-full-width">
     <mat-label>Edad</mat-label>
-    <input type="text" matInput placeholder="Ingrese su edad"></input>
+    <input type="text" matInput placeholder="Ingrese su edad">
   </mat-form-field>
 
   <!-- Sexo -->
@@ -19,7 +19,7 @@
       <mat-radio-button class="example-margin" value="after">Masculino</mat-radio-button>
       <mat-radio-button class="example-margin" value="before">Femenino</mat-radio-button>
     </mat-radio-group>
-  <mat-form-field>>
+  </mat-form-field>>
 
   <!-- Fecha de atencion -->
   <mat-form-field class="example-full-width">
@@ -36,14 +36,14 @@
   <!-- Nivel satisfaccion -->
   <mat-form-field>
     <mat-label>Indique nivel de satisfaccion de la atención</mat-label>
-    <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="1000" min="1" max="10"></mat-slider>
+    <mat-slider thumbLabel  tickInterval="1000" min="1" max="10"></mat-slider>
   </mat-form-field>mat-form-field>
 
   <!-- Primera vez -->
   <mat-form-field>
     <mat-label>¿Fue su primera atención?</mat-label>
     <mat-slide-toggle>Slide me!</mat-slide-toggle>
-  <mat-form-field>
+  </mat-form-field>
 
   <!-- Frecuencia -->
   <mat-form-field>
@@ -59,7 +59,7 @@
   <mat-form-field>
     <mat-label>¿Recomendaria la atencion?</mat-label>
     <mat-slide-toggle>Slide me!</mat-slide-toggle>
-  <mat-form-field>
+  </mat-form-field>
 
   <!-- Como nos conocio -->
   <mat-form-field>
@@ -71,6 +71,6 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-button-toggle (click)="modificar()">Guardar cambios</mat-button-toggle>
+  <mat-button-toggle (click)="guardar()">Guardar</mat-button-toggle>
   <mat-button-toggle [routerLink]='["/menu"]'>Volver</mat-button-toggle>
 </form>

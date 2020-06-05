@@ -2,11 +2,7 @@
     <h1><p class="titulos">Menú de usuario</p></h1>
     <hr>
     <div *ngIf='usuario'>
-        <mat-toolbar class="toolbar-text" *ngIf="turnosModificados.length > 0">
-            <span class="parrafo" matBadge="1" matBadgeOverlap="false">Turnos modificados</span>
-        </mat-toolbar> 
-
-        <mat-grid-list cols="6" rowHeight="90px">
+       <mat-grid-list cols="6" rowHeight="90px">
             <mat-grid-tile [colspan]=4 [rowspan]=4 class="detalle">
                 <mat-grid-tile-header>Datos personales</mat-grid-tile-header>
               
@@ -88,6 +84,11 @@
             </mat-grid-tile>
 
         </mat-grid-list>
+        <mat-toolbar class="toolbar-text">
+            <span class="parrafo" [matBadge]="turnosAceptados.length" matBadgeOverlap="false">Turnos aceptados</span>
+            <span class="parrafo" [matBadge]="turnosFinalizados.length" matBadgeOverlap="false">Turnos finalizados</span>
+            <span class="parrafo" [matBadge]="turnosCancelados.length" matBadgeOverlap="false">Turnos cancelados</span>
+        </mat-toolbar> 
         <mat-toolbar>
             <div class="botones" *ngIf='administrador'>
                 <button mat-raised-button color="primary" (click)="autorizar()">Autorizar</button>

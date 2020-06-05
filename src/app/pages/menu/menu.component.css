@@ -60,7 +60,10 @@ font-size: medium;
 }
 
 .toolbar-text{
-    background-color: transparent;
+    display: flex;
+    justify-content: right;
+    background-color: rgb(234, 234, 248);
     max-height: 40px;
     font-size: smaller;
+    
 }
