@@ -15,17 +15,17 @@ import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, data: {animation: 'HomePage'} },
-  { path: 'home', component: HomeComponent, data: {animation: 'HomePage'} },
-  { path: 'registro', component: RegistroComponent},
-  { path: 'login', component: LoginComponent,  data: {animation: 'Login'}},
-  { path: 'cartilla', component: CartillaComponent},
-  { path: 'contacto', component: ContactoComponent},
-  { path: 'menu', component: MenuComponent},
-  { path: 'turnos', component: TurnosComponent},
+  { path: '', component: HomeComponent, data: {animation: 'Home'} },
+  { path: 'home', component: HomeComponent, data: {animation: 'Home'} },
+  { path: 'registro', component: RegistroComponent, data: {animation: 'Registro'}},
+  { path: 'login', component: LoginComponent, data: {animation: 'Login'}},
+  { path: 'cartilla', component: CartillaComponent, data: {animation: 'Cartilla'}},
+  { path: 'contacto', component: ContactoComponent, data: {animation: 'Contacto'}},
+  { path: 'menu', component: MenuComponent, data: {animation: 'Menu'}},
+  { path: 'turnos', component: TurnosComponent, data: {animation: 'Turnos'}},
   { path: 'alta-turno/:horarios/:dias', component: AltaTurnoComponent},
   { path: 'alta-admin', component: AltaAdminComponent},
-  { path: 'modificar-turno', component: ModificarTurnoComponent, data: {animation: 'Turno'}},
+  { path: 'modificar-turno', component: ModificarTurnoComponent, data: {animation: 'Detalle-turno'}},
   { path: 'encuesta', component: EncuestaComponent}
 ];
 
