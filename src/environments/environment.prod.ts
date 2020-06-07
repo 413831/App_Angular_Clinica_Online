@@ -11,5 +11,5 @@ export const environment = {
     measurementId: "G-YGGBT9VCC2"
   },
   agmKey : "AIzaSyDsWZIVQXZnWDJC-VcPvjRYJjKQXYunsnw",
-  captchaKey : "6LfEdv0UAAAAADvjmEuryidp1ieR917FbyCujDmR"
+  captchaKey : "6Lf4PgEVAAAAAIMCECzTn0my0GUYjL6DlfjXf_K_"
 };

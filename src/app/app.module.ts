@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import {ApplicationModule } from '@angular/core'; 
-import { RecaptchaModule } from 'ng-recaptcha';
+import { RECAPTCHA_SETTINGS, RecaptchaSettings,RecaptchaModule } from 'ng-recaptcha';
 import { environment } from '../environments/environment';
 
 // Routing
@@ -170,8 +170,15 @@ import { DialogExtrasComponent } from './componentes/dialog-extras/dialog-extras
       apiKey: environment.agmKey
     }), 
   ],
-  providers: [MatDatepickerModule, {provide: MatDialogRef,
-    useValue: {}}],
+  providers: [
+    MatDatepickerModule, 
+    {provide: MatDialogRef,
+    useValue: {}},
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: { siteKey: environment.captchaKey } as RecaptchaSettings,
+    },
+  ],   
   bootstrap: [AppComponent]
 })
 export class AppModule { }
