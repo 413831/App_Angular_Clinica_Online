@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import {ApplicationModule } from '@angular/core'; 
+import { HttpClientModule } from '@angular/common/http';
 import { RECAPTCHA_SETTINGS, RecaptchaSettings,RecaptchaModule } from 'ng-recaptcha';
 import { environment } from '../environments/environment';
 
@@ -135,6 +136,7 @@ import { DialogExtrasComponent } from './componentes/dialog-extras/dialog-extras
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MatSliderModule,
     MatTabsModule,
     MatButtonModule,

@@ -1,17 +1,18 @@
+import { environment } from './src/environments/environment'
+
 const express = require('express');
+// Request para servicio captcha
+const request = require("request");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 const path = require('path');
+const port = 8080;
 
 // Express application
 const app = express();
 
 app.use(express.static(__dirname + '/angularapp'));
-
-// // Configuracion para el mail
-// // app.use(ra origin: "*" }));
-// app.use(bodyParser.json());
 
 app.listen(process.env.PORT || 8080);
 
@@ -19,40 +20,53 @@ app.get('/*',function(req,res){
   res.sendFile(path.join(__dirname + '/angularapp/index.html'));
 });
 
-// define a sendmail endpoint, which will send emails and response with the corresponding status
-// app.post("/sendmail", (req, res) => {
-//   console.log("request came");
-//   let user = req.body;
-//   sendMail(user, (err, info) => {
-//     if (err) {
-//       console.log(err);
-//       res.status(400);
-//       res.send({ error: "Failed to send email" });
-//     } else {
-//       console.log("Email has been sent");
-//       res.send(info);
-//     }
-//   });
-// });
+////////////////////////////////////// CODIGO PARA CAPTCHA////////////////////////////////////////
 
-// const sendMail = (user, callback) => {
-//   const transporter = nodemailer.createTransport({
-//     host: "smtp.gmail.com",
-//     port: 587,
-//     secure: false,
-//     auth: {
-//       user: "<sender email>",
-//       pass: "<password>"
-//     }
-//   }); 
-// }
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// const mailOptions = {
-//   from: `<No reply>`,
-//   to: `<${usuario.email}>`,
-//   subject: "<Message subject>",
-//   html: "<h1>Esto es un mail autogenerado</h1>"
-// };
+app.post('/token_validate', (req, res)=>{
+      
+  let token = req.body.recaptcha;
+  const secretkey = environment.secretKey; //the secret key from your google admin console;
+  
+  //token validation url is URL: https://www.google.com/recaptcha/api/siteverify 
+  // METHOD used is: POST
+  
+  const url =  `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}&remoteip=${req.connection.remoteAddress}`
+   
+  //note that remoteip is the users ip address and it is optional
+  // in node req.connection.remoteAddress gives the users ip address
+  
+  if(token === null || token === undefined)
+  {
+    res.status(201).send({success: false, message: "Token is empty or invalid"})
+    return console.log("token empty");
+  }
+  
+  request(url, function(err, response, body)
+  {
+    //the body is the data that contains success message
+    body = JSON.parse(body);
+    
+    //check if the validation failed
+    if(body.success !== undefined && !data.success)
+    {
+         res.send({success: false, 'message': "recaptcha failed"});
+         return console.log("failed")
+     }
+    
+    //if passed response success message to client
+     res.send({"success": true, 'message': "recaptcha passed"});
+    
+  })
+
+})
+
+
+app.listen(port, ()=>{
+    console.log(`connected on port ${port}`)
+})
 
 
 console.log('Finalizo');

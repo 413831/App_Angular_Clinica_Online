@@ -113,9 +113,27 @@ export class LoginComponent implements OnInit {
     console.log('Something went long when loading the Google reCAPTCHA')
   }
 
-  resolved(captchaResponse: string) {
-    console.log(`Resolved captcha with response: ${captchaResponse}`);
+  //function to resolve the reCaptcha and retrieve a token
+async resolved(captchaResponse: string, res) 
+  {
+    console.log(`Resolved response token: ${captchaResponse}`);
+    await this.sendTokenToBackend(captchaResponse); //declaring the token send function with a token parameter
   }
+
+//function to send the token to the node server
+sendTokenToBackend(token)
+{
+  //calling the service and passing the token to the service
+  this.service.sendToken(token).subscribe(
+    data => {
+      console.log(data);
+    },
+    error => {
+      console.log(error);
+    },
+    () => {}
+  );
+}
 
   get email() { return this.datosLogin.get('email'); }
   get clave() { return this.datosLogin.get('clave'); }
