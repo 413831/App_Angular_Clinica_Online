@@ -11,6 +11,7 @@ import { Medico, Especialidad } from 'src/app/clases/Medico';
 import { Paciente } from 'src/app/clases/Paciente';
 import { Dia } from 'src/app/clases/Turno';
 import { environment } from '../../../environments/environment';
+import { AppService } from 'src/app/servicios/app.service';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
   pacientes: Array<Usuario>;
   admin: Array<Usuario>;
 
-  constructor(private servicioPacientes: PacientesService,
+  constructor(private captchaService: AppService, private servicioPacientes: PacientesService,
     private servicioMedicos: MedicosService,
     private servicioAdmin: AdministradoresService,
     private route: ActivatedRoute, private router: Router) 
@@ -124,7 +125,7 @@ async resolved(captchaResponse: string, res)
 sendTokenToBackend(token)
 {
   //calling the service and passing the token to the service
-  this.service.sendToken(token).subscribe(
+  this.captchaService.sendToken(token).subscribe(
     data => {
       console.log(data);
     },
