@@ -115,7 +115,7 @@ export class LoginComponent implements OnInit {
   }
 
   //function to resolve the reCaptcha and retrieve a token
-async resolved(captchaResponse: string, res) 
+async resolved(captchaResponse: string) 
   {
     console.log(`Resolved response token: ${captchaResponse}`);
     await this.sendTokenToBackend(captchaResponse); //declaring the token send function with a token parameter
