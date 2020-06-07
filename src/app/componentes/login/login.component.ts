@@ -10,6 +10,7 @@ import { Administrador } from 'src/app/clases/Administrador';
 import { Medico, Especialidad } from 'src/app/clases/Medico';
 import { Paciente } from 'src/app/clases/Paciente';
 import { Dia } from 'src/app/clases/Turno';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ import { Dia } from 'src/app/clases/Turno';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  public apiKey = environment.captchaKey;
   public adminTest: Administrador;
   public medicoTest_1: Medico;
   public medicoTest_2: Medico;
@@ -109,6 +111,10 @@ export class LoginComponent implements OnInit {
 
   onScriptError() {
     console.log('Something went long when loading the Google reCAPTCHA')
+  }
+
+  resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
   }
 
   get email() { return this.datosLogin.get('email'); }

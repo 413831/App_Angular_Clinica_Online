@@ -2,9 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
-import { environment } from '../environments/environment';
 import {ApplicationModule } from '@angular/core'; 
-import { RecaptchaModule } from 'angular-google-recaptcha';
+import { RecaptchaModule } from 'ng-recaptcha';
+import { environment } from '../environments/environment';
 
 // Routing
 import { AppRoutingModule } from './app-routing.module';
@@ -165,13 +165,10 @@ import { DialogExtrasComponent } from './componentes/dialog-extras/dialog-extras
     MatBadgeModule,
     MatBottomSheetModule,
     MatSlideToggleModule,
+    RecaptchaModule,
     AgmCoreModule.forRoot({
       apiKey: environment.agmKey
-    }),
-    RecaptchaModule.forRoot({
-      siteKey: environment.captchaKey,
-  }),
-    
+    }), 
   ],
   providers: [MatDatepickerModule, {provide: MatDialogRef,
     useValue: {}}],

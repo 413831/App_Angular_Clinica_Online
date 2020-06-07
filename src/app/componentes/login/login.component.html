@@ -22,8 +22,7 @@
         (click)="drawer.toggle()">Seleccionar perfil</button>
       <br>
       Agregar boton para deshabilitar captcha
-      <recaptcha [formControl]="myRecaptcha" (scriptLoad)="onScriptLoad()" (scriptError)="onScriptError()">
-      </recaptcha>
+      <re-captcha (resolved)="resolved($event)" siteKey="apiKey"></re-captcha>
     </form>
 
     <mat-drawer #drawer mode="over" class="botones" >
