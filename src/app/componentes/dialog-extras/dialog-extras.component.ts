@@ -29,7 +29,11 @@ export class DialogExtrasComponent implements OnInit {
     {
       if(result)
       {
+        Turno.AgregarDato(this.turno, this.key, this.value);
+        console.log(this.turno);
         console.log('Dato agregado.');
+        this.key = null;
+        this.value = null;
       }
     });
   }

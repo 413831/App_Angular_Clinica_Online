@@ -11,6 +11,7 @@ import { MatBottomSheet, MatBottomSheetConfig } from '@angular/material/bottom-s
 import { InfoTurnoComponent } from '../info-turno/info-turno.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogExtrasComponent } from '../dialog-extras/dialog-extras.component';
+import { Medico } from 'src/app/clases/Medico';
 
 @Component({
   selector: 'app-modificar-turno',
@@ -38,8 +39,9 @@ export class ModificarTurnoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.usuario = JSON.parse(localStorage.getItem('usuario-logueado'));
-    this.turno = JSON.parse(localStorage.getItem('nuevoTurno'));
+    this.usuario = <Usuario>JSON.parse(localStorage.getItem('usuario-logueado'));
+    // this.turno = <Turno>JSON.parse(localStorage.getItem('nuevoTurno'));
+    this.turno = Object.assign(new Turno, JSON.parse(localStorage.getItem('nuevoTurno')));
     this.dias = JSON.parse(localStorage.getItem('medicos'))
                           .filter(medico => medico.nombre == this.turno.nombreMedico)[0].diasAtencion;
     this.crearFiltros();
@@ -115,13 +117,48 @@ export class ModificarTurnoComponent implements OnInit {
     }
   }
 
+  validarControl(estado: string)
+  {
+    let validate: boolean = false;
+
+    switch(Estado[estado])
+    {
+      case Estado.Aceptado : 
+        if(this.turno.estado == Estado.Pendiente && this.usuario.rol == Rol.Medico)
+        {
+          validate = true;
+        }
+        break;
+      case Estado.Cancelado : 
+        if(this.turno.estado == Estado.Aceptado && this.usuario.rol == Rol.Paciente)
+        {
+          validate = true;
+        }
+        break;
+      case Estado.Confirmado : 
+        if(this.turno.estado == Estado.Aceptado && this.usuario.rol == Rol.Medico)
+        {
+          validate = true;
+        }
+        break;
+      case Estado.Rechazado : 
+        if(this.turno.estado == Estado.Pendiente && this.usuario.rol == Rol.Medico)
+        {
+          validate = true;
+        }
+        break;
+
+    }
+    return validate;
+  }
+
   agregarInfo()
   {
     let dialogConfig = new MatDialogConfig();
     let dialogRef;
     dialogConfig.data = this.turno;
     dialogConfig.width = '400px';
-    dialogConfig.height = '35px';
+    dialogConfig.height = '350px';
     dialogConfig.panelClass = "dialog";
 
     dialogRef = this.nuevoAtributo.open(DialogExtrasComponent, dialogConfig);

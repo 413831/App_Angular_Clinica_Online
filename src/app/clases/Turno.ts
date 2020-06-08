@@ -20,7 +20,7 @@ export enum Dia
     Sabado
 }
 
-export class Turno
+export class Turno 
 {
     public id: string;
     public detalle: string;
@@ -38,7 +38,6 @@ export class Turno
                                         "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30"];
     public static dias: Dia[] = [Dia.Lunes, Dia.Martes, Dia.Miercoles, Dia.Jueves, Dia.Viernes, Dia.Sabado];
     public modificado: boolean = false;
-    public opcionales: [string, unknown];
 
     public static CrearTurno(nombrePaciente: string, nombreMedico: string, fecha: Date, horario: string,
                                 duracion: number, especialidad: Especialidad, consultorio: number,
@@ -63,9 +62,16 @@ export class Turno
         return turno;
     }
 
-    public AgregarDato(key: string, value: unknown)
+    public static AgregarDato(turno: Turno, key: string, value: any)
     {
-        this.opcionales.push(key,value);
+        turno =  Object.defineProperty(turno, key, 
+        {
+            value: value,
+            writable: true,
+            enumerable: true,
+        })
+        return turno;
     }
+
 }
 
