@@ -1,4 +1,3 @@
-import { environment } from './src/environments/environment'
 
 const express = require('express');
 // Request para servicio captcha
@@ -28,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post('/token_validate', (req, res)=>{
       
   let token = req.body.recaptcha;
-  const secretkey = environment.secretKey; //the secret key from your google admin console;
+  const secretkey = '6Lf4PgEVAAAAAE35jCxVHpaHz1GiTnZgtvD6_m6s'; //the secret key from your google admin console;
   
   //token validation url is URL: https://www.google.com/recaptcha/api/siteverify 
   // METHOD used is: POST
