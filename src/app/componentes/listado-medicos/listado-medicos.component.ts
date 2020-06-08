@@ -7,6 +7,7 @@ import { DialogMedicoComponent } from '../dialog-medico/dialog-medico.component'
 import { SelectionModel } from '@angular/cdk/collections';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Dia, Turno } from 'src/app/clases/Turno';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 @Component({
@@ -30,6 +31,7 @@ export class ListadoMedicosComponent implements OnInit {
     diasAtencion: new FormControl()
   });
   
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
     
   constructor( public dialog: MatDialog, public listadoRef: MatDialogRef<ListadoMedicosComponent>) 
@@ -61,6 +63,7 @@ export class ListadoMedicosComponent implements OnInit {
     // Overrride default filter behaviour of Material Datatable
     this.dataSource.filterPredicate = this.createFilter();
     this.dataSource.sort = this.sort;    
+    this.dataSource.paginator = this.paginator;
   }
 
   seleccionar(medico: Medico)

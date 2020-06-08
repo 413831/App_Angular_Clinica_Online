@@ -1,0 +1,27 @@
+mat-table {
+    background-color: rgb(234, 234, 248);
+}
+
+
+.frame
+{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    height: 15rem;
+    width: 25rem;
+
+}
+
+mat-row:hover{
+    background-color: lightsteelblue;
+    color: black;
+}
+
+tr{
+    transition: 0.1s;
+}
+
+th{
+    font-size: medium;
+}

@@ -40,6 +40,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 // Componentes
@@ -84,6 +85,7 @@ import { NuevoturnoSnackbarComponent } from './componentes/nuevoturno-snackbar/n
 import { CambioTurnoSnackbarComponent } from './componentes/cambio-turno-snackbar/cambio-turno-snackbar.component';
 import { InfoTurnoComponent } from './componentes/info-turno/info-turno.component';
 import { DialogExtrasComponent } from './componentes/dialog-extras/dialog-extras.component';
+import { ListadoTurnosComponent } from './componentes/listado-turnos/listado-turnos.component';
 
 
 @NgModule({
@@ -127,7 +129,8 @@ import { DialogExtrasComponent } from './componentes/dialog-extras/dialog-extras
     NuevoturnoSnackbarComponent,
     CambioTurnoSnackbarComponent,
     InfoTurnoComponent,
-    DialogExtrasComponent
+    DialogExtrasComponent,
+    ListadoTurnosComponent
   ],
   imports: [
     ApplicationModule,
@@ -167,6 +170,7 @@ import { DialogExtrasComponent } from './componentes/dialog-extras/dialog-extras
     MatBadgeModule,
     MatBottomSheetModule,
     MatSlideToggleModule,
+    MatPaginatorModule,
     RecaptchaModule,
     AgmCoreModule.forRoot({
       apiKey: environment.agmKey

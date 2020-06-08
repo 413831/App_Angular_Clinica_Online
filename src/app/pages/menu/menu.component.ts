@@ -119,7 +119,6 @@ export class MenuComponent implements OnInit {
                       .map( turno => Object.assign(new Turno, turno));
         break;                 
     }
-    this.dataTurnos = new MatTableDataSource(this.turnos);
   }
 
   seleccionarTurno(turno: Turno)

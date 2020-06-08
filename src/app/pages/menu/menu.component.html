@@ -23,27 +23,9 @@
                 <mat-grid-tile-header>
                     Turnos  
                 </mat-grid-tile-header>
-                                               
-                <mat-table [dataSource]="dataTurnos" class="mat-elevation-z8 frame">
-             
-                    <ng-container matColumnDef="especialidad">
-                        <mat-header-cell *matHeaderCellDef> Especialidad </mat-header-cell>
-                        <mat-cell *matCellDef="let turno"> {{turno.especialidad}} </mat-cell>
-                    </ng-container>
-
-                    <ng-container matColumnDef="estado">
-                        <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
-                        <mat-cell *matCellDef="let turno"> {{turno.estado}} </mat-cell>
-                    </ng-container>
-
-                    <ng-container matColumnDef="fecha">
-                        <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
-                        <mat-cell *matCellDef="let turno"> {{turno.fecha}} </mat-cell>
-                    </ng-container>
-
-                    <mat-header-row *matHeaderRowDef="columnasTurnos"></mat-header-row>
-                    <mat-row (click)="seleccionarTurno(row)" class="example-element-row" *matRowDef="let row; columns: columnasTurnos;"></mat-row>
-                </mat-table>
+                <app-listado-turnos [turnos]='turnos' (seleccionar)='seleccionarTurno($event)'>                    
+                </app-listado-turnos>
+               
             </mat-grid-tile>
 
             <mat-grid-tile *ngIf='administrador' [colspan]=2 [rowspan]=4 class="table">

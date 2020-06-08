@@ -83,7 +83,7 @@ export class ModificarTurnoComponent implements OnInit {
     this.datosTurnos = new FormGroup({
       nombrePaciente: new FormControl({value: this.turno.nombrePaciente, disabled: true}),
       nombreMedico: new FormControl({value: this.turno.nombreMedico, disabled: true}),
-      fecha: new FormControl(this.turno.fecha),
+      fecha: new FormControl(new Date(this.turno.fecha)),
       horario: new FormControl({value: this.turno.horario, disabled: false}),
       duracion: new FormControl({value: this.turno.duracion, disabled: true},
                                   Validators.required),

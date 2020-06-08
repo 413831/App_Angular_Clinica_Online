@@ -27,6 +27,8 @@ transition: 0.1s;
 .tabla{
     display: flex;
     flex-direction: column;
+    justify-content: stretch;
+    width: 100%;
 }
 
 

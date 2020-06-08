@@ -29,7 +29,7 @@ export class Turno
     public nombreMedico: string;
     public duracion: number;
     public estado: Estado;
-    public fecha: Date;
+    public fecha: string;
     public horario: string;
     public consultorio: number;
     public especialidad: Especialidad; 
@@ -39,7 +39,7 @@ export class Turno
     public static dias: Dia[] = [Dia.Lunes, Dia.Martes, Dia.Miercoles, Dia.Jueves, Dia.Viernes, Dia.Sabado];
     public modificado: boolean = false;
 
-    public static CrearTurno(nombrePaciente: string, nombreMedico: string, fecha: Date, horario: string,
+    public static CrearTurno(nombrePaciente: string, nombreMedico: string, fecha: string, horario: string,
                                 duracion: number, especialidad: Especialidad, consultorio: number,
                                 detalle: string, estado: Estado, 
                                 id?: string, modificado?: boolean, comentarios?: string ): Turno

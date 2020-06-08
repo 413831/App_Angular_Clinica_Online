@@ -74,8 +74,8 @@ export class AltaTurnoComponent implements OnInit {
     this.turno.especialidad = this.especialidad.value;
     this.turno.fecha = this.fecha.value;
     this.turno.duracion = 30;
-    this.turno.fecha = new Date(this.fecha.value);
-    console.log(this.turno.fecha.toLocaleDateString());
+    this.turno.fecha = this.fecha.value.toLocaleDateString();
+    console.log(this.turno.fecha);
     this.turno.horario = this.horario.value;
     this.turno.detalle = 'vacio';
     this.turno.comentarios = 'vacio';
@@ -88,7 +88,7 @@ export class AltaTurnoComponent implements OnInit {
       duration: this.durationInSeconds * 1000,
     });
 
-    //this.router.navigate(["/menu"]);
+    this.router.navigate(["/menu"]);
   }
 
   crearFiltros()

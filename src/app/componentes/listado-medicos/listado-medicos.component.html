@@ -1,45 +1,4 @@
 <mat-label><p class="titulos">Listado de médicos</p></mat-label> 
-<hr>
-
-<!-- <form [formGroup]="filterForm">
-  <div mat-dialog-content class="filter__form">
-    <div class="form-group">
-    
-      <mat-form-field>
-        <mat-label>Especialidad</mat-label>
-        <input type="text" matInput formControlName="especialidad" [matAutocomplete]="autoEspecialidad">
-      </mat-form-field>
-      
-      <mat-autocomplete #autoEspecialidad="matAutocomplete">
-        <mat-option *ngFor="let especialidad of especialidades" [value]="especialidad">{{especialidad}}</mat-option>
-      </mat-autocomplete>
-
-    </div>
-    <div class="form-group">
-      <mat-form-field class="example-full-width">      
-        <mat-label>Nombre del profesional</mat-label>
-        <input matInput formControlName="nombre" placeholder="Ingrese nombre">
-      </mat-form-field>
-    </div>
-    <div class="form-group">
-
-      <mat-form-field>
-        <mat-label>Dia de atencion</mat-label>
-        <input type="text" matInput formControlName="dia" [matAutocomplete]="auto">
-      </mat-form-field>
-      
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let dia of dias" [value]="dia">{{dia | diaAtencion}}</mat-option>
-      </mat-autocomplete>
-
-    </div>
-    <div class="modal-inforce__footer">
-      <button type="submit" (click)="buscar()" mat-button class="primary">Filtrar</button>
-    </div>
-  </div>
-</form>
- -->
-
 
 <form [formGroup]="filterForm">
   <mat-form-field *ngFor="let filter of filterSelectObj" style="margin-left: 15px;">    
@@ -56,8 +15,6 @@
   </mat-form-field>
   <button mat-flat-button class="primary" >Reset</button>
 </form>
-
-
 
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
@@ -81,3 +38,4 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="seleccionar(row)"></tr>
   </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
