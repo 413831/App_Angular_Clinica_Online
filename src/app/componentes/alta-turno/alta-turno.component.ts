@@ -75,7 +75,7 @@ export class AltaTurnoComponent implements OnInit {
     this.turno.fecha = this.fecha.value;
     this.turno.duracion = 30;
     this.turno.fecha = new Date(this.fecha.value);
-    console.log(this.fecha.value);
+    console.log(this.turno.fecha.toLocaleDateString());
     this.turno.horario = this.horario.value;
     this.turno.detalle = 'vacio';
     this.turno.comentarios = 'vacio';
