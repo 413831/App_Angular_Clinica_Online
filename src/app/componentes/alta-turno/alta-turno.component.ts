@@ -32,7 +32,7 @@ export class AltaTurnoComponent implements OnInit {
               private _snackBar: MatSnackBar, private dialogRef: MatDialog) 
   { 
     this.dialogRef.closeAll();
-    this.turno = JSON.parse(localStorage.getItem('nuevoTurno'));
+    this.turno = Object.assign(new Turno,JSON.parse(localStorage.getItem('nuevoTurno')));
 
     // Obtengo los datos por parametros de la ruta
     this.route.params.subscribe( params => 
@@ -61,7 +61,6 @@ export class AltaTurnoComponent implements OnInit {
     if(this.fecha.value.getDay() == Dia.Sabado)
     {
       this.horarios = this.horarios.filter( hora => parseInt(hora) < 14);
-      console.log(`Horarios de sabado: ${this.horarios}`);
       this.datosTurnos.patchValue({
         horario: this.horarios
       })
@@ -75,7 +74,8 @@ export class AltaTurnoComponent implements OnInit {
     this.turno.especialidad = this.especialidad.value;
     this.turno.fecha = this.fecha.value;
     this.turno.duracion = 30;
-    this.turno.fecha = this.fecha.value;
+    this.turno.fecha = new Date(this.fecha.value);
+    console.log(this.fecha.value);
     this.turno.horario = this.horario.value;
     this.turno.detalle = 'vacio';
     this.turno.comentarios = 'vacio';
@@ -88,9 +88,7 @@ export class AltaTurnoComponent implements OnInit {
       duration: this.durationInSeconds * 1000,
     });
 
-    this.router.navigate(["/menu"]);
-
-
+    //this.router.navigate(["/menu"]);
   }
 
   crearFiltros()

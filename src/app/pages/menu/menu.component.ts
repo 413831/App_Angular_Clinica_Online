@@ -80,7 +80,7 @@ export class MenuComponent implements OnInit {
     switch(this.usuario.rol)
     {
       case Rol.Administrador:
-        this.administrador = <Administrador>this.usuario;
+        this.administrador = Object.assign(new Administrador,this.usuario);
         this.listadoMedicos = JSON.parse(localStorage.getItem('medicos'))
                                   .filter( medico => !medico.autorizado );
         this.dataMedicos = new MatTableDataSource(this.listadoMedicos);
@@ -90,11 +90,11 @@ export class MenuComponent implements OnInit {
         
         break;
       case Rol.Medico:
-        this.medico = <Medico>this.usuario;
+        this.medico = Object.assign(new Medico,this.usuario);
         
         break;
       case Rol.Paciente:
-        this.paciente = <Paciente>this.usuario;
+        this.paciente = Object.assign(new Paciente,this.usuario);
         break;                 
     }
 
@@ -109,12 +109,14 @@ export class MenuComponent implements OnInit {
     switch(this.usuario.rol)
     {     
       case Rol.Medico: 
-        this.turnos = JSON.parse(localStorage.getItem('turnos'))
-                      .filter( turno => this.medico.nombre == turno.nombreMedico);
+        this.turnos = (JSON.parse(localStorage.getItem('turnos'))
+                      .filter( turno => this.medico.nombre == turno.nombreMedico))
+                      .map( turno => Object.assign(new Turno, turno));
         break;
       case Rol.Paciente:
-        this.turnos = JSON.parse(localStorage.getItem('turnos'))
-                      .filter( turno => this.paciente.nombre == turno.nombrePaciente);
+        this.turnos = (JSON.parse(localStorage.getItem('turnos'))
+                      .filter( turno => this.paciente.nombre == turno.nombrePaciente))
+                      .map( turno => Object.assign(new Turno, turno));
         break;                 
     }
     this.dataTurnos = new MatTableDataSource(this.turnos);

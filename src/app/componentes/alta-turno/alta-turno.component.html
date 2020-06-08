@@ -4,33 +4,32 @@
   </div>
   <hr>
 
-<form [formGroup]='datosTurnos' class="example-container">
+  <form [formGroup]='datosTurnos' class="example-container">
     <h3></h3>
     <mat-form-field appearance="outline" class="turno-field">
-        <mat-label>Especialidad</mat-label>
-        <input formControlName="especialidad" matInput #input maxlength="10" placeholder='turno.especialidad' >
+      <mat-label>Especialidad</mat-label>
+      <input formControlName="especialidad" matInput #input maxlength="10" placeholder='turno.especialidad'>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="turno-field">
-        <mat-label>Profesional</mat-label>
-        <input formControlName="nombreMedico" matInput #input maxlength="10"  >
+      <mat-label>Profesional</mat-label>
+      <input formControlName="nombreMedico" matInput #input maxlength="10">
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="turno-field">
-        <mat-label>Consultorio</mat-label>
-        <input formControlName="consultorio" matInput #input maxlength="10"  >
+      <mat-label>Consultorio</mat-label>
+      <input formControlName="consultorio" matInput #input maxlength="10">
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="turno-field">
-      <mat-label>Paciente</mat-label> 
-      <input formControlName="nombrePaciente" matInput #input maxlength="10" >
+      <mat-label>Paciente</mat-label>
+      <input formControlName="nombrePaciente" matInput #input maxlength="10">
     </mat-form-field>
     <br>
     <mat-form-field class="turno-field">
       <mat-label>Fecha de turno</mat-label>
-      <input formControlName="fecha" matInput [matDatepicker]="picker"
-              [min]="minDate" [max]="maxDate" [matDatepickerFilter]="filtroFecha"
-             (dateInput)="addEvent('input', $event)" (dateChange)="checkHoras()">
+      <input formControlName="fecha" matInput [matDatepicker]="picker" [min]="minDate" [max]="maxDate"
+        [matDatepickerFilter]="filtroFecha" (dateInput)="addEvent('input', $event)" (dateChange)="checkHoras()">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
@@ -38,20 +37,20 @@
     <mat-form-field class="turno-field">
       <mat-label>Seleccione horario</mat-label>
       <mat-select formControlName="horario" [disabled]="">
-        <mat-option  *ngFor="let horario of horarios" [value]="horario">
+        <mat-option *ngFor="let horario of horarios" [value]="horario">
           {{horario}}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
-  
-      
-    </form>
-    <hr>
-    <div class="botones">
-      <mat-button-toggle-group  name="fontStyle" aria-label="Font Style" >
-        <mat-button-toggle  (click)='altaTurno()'>Pedir Turno</mat-button-toggle>
-        <mat-button-toggle  [routerLink]='["/menu"]'>Ir a menu</mat-button-toggle>
-      </mat-button-toggle-group>
-    </div>
+
+
+  </form>
+  <hr>
+  <div class="botones">
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle (click)='altaTurno()'>Pedir Turno</mat-button-toggle>
+      <mat-button-toggle [routerLink]='["/menu"]'>Ir a menu</mat-button-toggle>
+    </mat-button-toggle-group>
   </div>
+</div>

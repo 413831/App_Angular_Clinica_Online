@@ -20,7 +20,7 @@ export enum Dia
     Sabado
 }
 
-export class Turno 
+export class Turno
 {
     public id: string;
     public detalle: string;
@@ -73,5 +73,6 @@ export class Turno
         return turno;
     }
 
+  
 }
 

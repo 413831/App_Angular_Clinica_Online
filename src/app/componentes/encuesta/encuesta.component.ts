@@ -3,6 +3,7 @@ import { Especialidad, Medico } from 'src/app/clases/Medico';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/clases/Usuario';
+import { Encuesta } from 'src/app/clases/Encuesta';
 
 @Component({
   selector: 'app-encuesta',
@@ -10,6 +11,7 @@ import { Usuario } from 'src/app/clases/Usuario';
   styleUrls: ['./encuesta.component.css']
 })
 export class EncuestaComponent implements OnInit {
+  encuesta: Encuesta;
   usuario: Usuario;
   frecuencias: number[] = [1,2,5,10];
   selectedValue: number;
@@ -19,7 +21,8 @@ export class EncuestaComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder,
                   private route : ActivatedRoute, private router: Router ) 
   {
-    this.usuario = JSON.parse(localStorage.getItem('usuario-logueado'));
+     this.usuario = Object.assign(new Usuario, 
+                                  JSON.parse(localStorage.getItem('usuario-logueado')));
   }
 
   ngOnInit(): void {
