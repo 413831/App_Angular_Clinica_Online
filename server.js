@@ -32,7 +32,7 @@ app.post('/token_validate', (req, res)=>{
   //token validation url is URL: https://www.google.com/recaptcha/api/siteverify 
   // METHOD used is: POST
   
-  const url =  `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}&remoteip=${req.connection.remoteAddress}`
+  const url =  `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}`
    
   //note that remoteip is the users ip address and it is optional
   // in node req.connection.remoteAddress gives the users ip address
