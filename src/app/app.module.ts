@@ -42,7 +42,6 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
-
 // Componentes
 import { AppComponent } from './app.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
@@ -86,6 +85,7 @@ import { CambioTurnoSnackbarComponent } from './componentes/cambio-turno-snackba
 import { InfoTurnoComponent } from './componentes/info-turno/info-turno.component';
 import { DialogExtrasComponent } from './componentes/dialog-extras/dialog-extras.component';
 import { ListadoTurnosComponent } from './componentes/listado-turnos/listado-turnos.component';
+import { BooleanoPipe } from './pipes/booleano.pipe';
 
 
 @NgModule({
@@ -130,7 +130,8 @@ import { ListadoTurnosComponent } from './componentes/listado-turnos/listado-tur
     CambioTurnoSnackbarComponent,
     InfoTurnoComponent,
     DialogExtrasComponent,
-    ListadoTurnosComponent
+    ListadoTurnosComponent,
+    BooleanoPipe
   ],
   imports: [
     ApplicationModule,

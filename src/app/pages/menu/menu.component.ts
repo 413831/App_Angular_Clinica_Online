@@ -40,10 +40,10 @@ export class MenuComponent implements OnInit {
   public medicoAutorizar: Medico;
   public paciente: Paciente | null;
   public administrador: Administrador | null;
-  public turno: Turno | null;
   public rol: Rol;
   public imgPerfil: string;
   public imgAvatar: string;
+  public turno: Turno | null;
   public turnos: Turno[];
   public listadoMedicos: Medico[];
   public listadoPacientes: Paciente[];
@@ -261,6 +261,12 @@ export class MenuComponent implements OnInit {
   {
     this.medicoAutorizar = medico; 
     console.log(this.medicoAutorizar);
+  }
+
+  realizarEncuesta()
+  {
+    localStorage.setItem('turno-terminado',JSON.stringify(this.turno));
+    this.router.navigate(["/encuesta"]);
   }
 
 }

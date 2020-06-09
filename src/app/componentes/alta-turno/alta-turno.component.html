@@ -5,7 +5,7 @@
   <hr>
 
   <form [formGroup]='datosTurnos' class="example-container">
-    <h3></h3>
+
     <mat-form-field appearance="outline" class="turno-field">
       <mat-label>Especialidad</mat-label>
       <input formControlName="especialidad" matInput #input maxlength="10" placeholder='turno.especialidad'>
@@ -25,6 +25,7 @@
       <mat-label>Paciente</mat-label>
       <input formControlName="nombrePaciente" matInput #input maxlength="10">
     </mat-form-field>
+
     <br>
     <mat-form-field class="turno-field">
       <mat-label>Fecha de turno</mat-label>
@@ -43,9 +44,8 @@
       </mat-select>
     </mat-form-field>
 
-
-
   </form>
+  
   <hr>
   <div class="botones">
     <mat-button-toggle-group name="fontStyle" aria-label="Font Style">

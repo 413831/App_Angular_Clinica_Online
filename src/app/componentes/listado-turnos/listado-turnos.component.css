@@ -2,6 +2,10 @@ mat-table {
     background-color: rgb(234, 234, 248);
 }
 
+mat-paginator {
+    background-color: rgb(234, 234, 248);
+    
+}
 
 .frame
 {
@@ -10,6 +14,8 @@ mat-table {
     margin-top: 50px;
     height: 15rem;
     width: 25rem;
+    background-color: rgb(234, 234, 248);
+    padding-bottom: 18px;
 
 }
 

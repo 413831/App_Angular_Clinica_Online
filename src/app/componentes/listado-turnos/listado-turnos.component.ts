@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Turno } from 'src/app/clases/Turno';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-listado-turnos',
@@ -13,6 +14,8 @@ export class ListadoTurnosComponent implements OnInit {
   public dataTurnos;
   columnasTurnos: string[] = ['especialidad', 'estado' ,'fecha'];
   
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+
   constructor() 
   {
     
@@ -21,6 +24,7 @@ export class ListadoTurnosComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.turnos);
     this.dataTurnos = new MatTableDataSource(this.turnos);
+    this.dataTurnos.paginator = this.paginator;
 
   }
 

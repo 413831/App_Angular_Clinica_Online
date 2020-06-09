@@ -77,7 +77,8 @@
                 <button mat-raised-button color="primary" (click)="listarMedicos()">Ver Medicos</button>
                 <button mat-raised-button color="primary" (click)="listarPacientes()">Ver Pacientes</button>
             </div>
-            <div *ngIf="turno">
+            <div class="botones" *ngIf="turno">
+                <button *ngIf="turno.estado == 'Confirmado'" mat-raised-button color='primary'  (click)="realizarEncuesta()">Realizar encuesta</button>
                 <button mat-raised-button class="default" (click)="modificarTurno()">Detalles turno</button>
             </div>
             <div class="botones">
