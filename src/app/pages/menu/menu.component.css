@@ -15,13 +15,13 @@ mat-table {
     background-color: rgb(234, 234, 248);
   }
 
-  mat-row:hover{
-background-color: lightsteelblue;
-color: black;
+mat-row:hover{
+    background-color: lightsteelblue;
+    color: black;
 }
 
 tr{
-transition: 0.1s;
+    transition: 0.1s;
 }
 
 .tabla{

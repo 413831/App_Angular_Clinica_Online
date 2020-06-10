@@ -36,24 +36,24 @@ export class ServicioEncuestasService extends MiservicioService{
 
   public leer():Encuesta[]
   {
-    let turnos ;                                                        
+    let encuestas;                                                        
     console.info("Fetch de todas las encuestas");
 
     database().ref('encuestas').on('value',(snapshot) => {       
-        turnos = [];  
+        encuestas = [];  
         snapshot.forEach((child) =>{
           var data = child.val();
-          turnos.push(Encuesta.CrearEncuesta(data.id, data.idTurno, data.idPaciente, data.nombre,
+          encuestas.push(Encuesta.CrearEncuesta(data.id, data.idTurno, data.idPaciente, data.nombre,
                                             data.edad, data.sexo, data.fechaAtencion,
                                             data.especialidad, data.primeraAtencion,
                                             data.satisfaccion, data.frecuencia, data.recomienda,
                                             data.medioComunicacion, data.educacion));
         });
-        console.info("Turnos");
-        console.log(turnos);         
-        localStorage.setItem('turnos', JSON.stringify(turnos));
+        console.info("Encuestas");
+        console.log(encuestas);         
+        localStorage.setItem('encuestas', JSON.stringify(encuestas));
     })
-    return turnos;
+    return encuestas;
   }
 
 }

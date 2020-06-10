@@ -12,6 +12,7 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { AltaAdminComponent } from './componentes/alta-admin/alta-admin.component';
 import { ModificarTurnoComponent } from './componentes/modificar-turno/modificar-turno.component';
 import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
+import { AltaHistoriaComponent } from './componentes/alta-historia/alta-historia.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'alta-turno/:horarios/:dias', component: AltaTurnoComponent},
   { path: 'alta-admin', component: AltaAdminComponent},
   { path: 'modificar-turno', component: ModificarTurnoComponent, data: {animation: 'Detalle-turno'}},
-  { path: 'encuesta', component: EncuestaComponent}
+  { path: 'encuesta', component: EncuestaComponent},
+  { path: 'historia', component: AltaHistoriaComponent}
 ];
 
 @NgModule({

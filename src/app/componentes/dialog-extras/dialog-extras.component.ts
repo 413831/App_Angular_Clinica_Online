@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 import { Turno } from 'src/app/clases/Turno';
+import { Dato } from '../alta-historia/alta-historia.component';
 
 @Component({
   selector: 'app-dialog-extras',
@@ -12,15 +13,15 @@ export class DialogExtrasComponent implements OnInit {
   key = 'Dato';
   value = 'Valor';
 
-  constructor(public dialogRef: MatDialogRef<DialogExtrasComponent>,
-              @Inject(MAT_DIALOG_DATA) public turno: Turno,
+  constructor(public datosExtras: MatDialogRef<DialogExtrasComponent>,
+              @Inject(MAT_DIALOG_DATA) public extras: Array<Dato>,
               public confirmacion: MatDialog) 
   { }
 
   ngOnInit(): void {
   }
 
-  confirmar()
+  agregar()
   {
     // Modal confirmando la accion
     const dialogRef = this.confirmacion.open(DialogComponent);
@@ -28,14 +29,19 @@ export class DialogExtrasComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => 
     {
       if(result)
-      {
-        Turno.AgregarDato(this.turno, this.key, this.value);
-        console.log(this.turno);
-        console.log('Dato agregado.');
+      { 
+        this.extras.push({key: this.key, value: this.value});
+        
         this.key = null;
         this.value = null;
       }
     });
   }
+
+  confirmar()
+  {
+    this.datosExtras.close(this.extras);
+  }
+
 
 }

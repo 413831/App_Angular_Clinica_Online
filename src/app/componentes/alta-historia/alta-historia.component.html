@@ -1,0 +1,94 @@
+<div class="page ">
+<div class="titulos">
+  <h1>Historia Clinica</h1>
+</div>
+<hr>
+<div class="layout">
+    <form class="example-form datos-personales">
+      
+      <!-- Nombre -->
+      <mat-form-field appearance="fill" class=" historia-field">
+        <mat-label>Nombre del paciente</mat-label>
+        <input  matInput type="text"  value="{{historia.paciente}}" disabled>
+      </mat-form-field>
+    
+      <!-- Edad -->
+      <mat-form-field appearance="fill" class=" historia-field">
+        <mat-label>Ingrese su edad</mat-label>
+        <input matInput type="number" [(ngModel)]="edad" name="edad" value="Ingrese su edad">
+      </mat-form-field>
+
+      <!-- Sexo -->
+      <label class="example-margin">Indique su sexo</label>
+      <mat-radio-group class="example-radio-group" [(ngModel)]="historia.sexo" name="sexo">
+        <mat-radio-button class="example-radio-button" *ngFor="let sex of sexos" [value]="sex">{{sex}}</mat-radio-button>
+      </mat-radio-group>
+      <br>
+
+      <!-- Altura -->
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Ingrese altura</mat-label>
+        <input matInput class="right-align" type="number" [(ngModel)]="altura" name="altura" value="Ingrese altura" >
+        <span matSuffix> cm</span>    
+    </mat-form-field>
+
+      <!-- Peso -->
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Ingrese peso</mat-label>
+        <input matInput class="right-align" type="number" [(ngModel)]="peso" name="peso" value="Ingrese peso">
+        <span matSuffix>kg</span>
+    </mat-form-field>
+ 
+      
+    </form>
+    <form class="example-form datos-clinicos">
+        
+        <!-- Especialidad -->
+        <mat-form-field appearance="fill" class=" historia-field">
+          <mat-label>Especialidad</mat-label>
+          <input  matInput type="text" value="{{turno.especialidad}}" disabled>
+        </mat-form-field>
+      
+        <!-- Fecha -->
+        <mat-form-field appearance="fill" class=" historia-field">
+            <mat-label>Fecha</mat-label>
+            <input  matInput type="text" value="{{turno.fecha}}" disabled>
+        </mat-form-field>
+  
+        <!-- Detalle -->
+        <mat-form-field  class="">
+            <mat-label>Detalles del turno</mat-label>
+            <textarea matInput [(ngModel)]="turno.detalle" name="detalle"
+             cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="3"
+             #message maxlength="256" value="{{turno.detalle}}"></textarea>
+            <mat-hint align="start"><strong>Ingrese detalles sobre el turno</strong> </mat-hint>
+            <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+        </mat-form-field>
+        <br>
+        <!-- Datos extras -->
+        <button *ngIf="datosExtras"  mat-stroked-button [matMenuTriggerFor]="aboveMenu"> <h2> Datos adicionales</h2></button>
+            <mat-menu #aboveMenu="matMenu" yPosition="above">
+               
+                <mat-label (click)="seleccionar(extra)" *ngFor="let extra of extras" mat-menu-item> 
+                   <mat-icon aria-hidden="false" aria-label="label-icon">label</mat-icon>
+                     <strong>{{extra.key}} : {{extra.value}}</strong>
+                </mat-label>
+        </mat-menu>
+<!-- 
+        <div *ngIf="datosExtras" class="datosExtras">
+            <h4><p>Datos adicionales</p></h4>
+            <mat-form-field *ngFor="let extra of extras"  appearance="outline" class=" historia-field">
+                <mat-label> {{extra.key}}</mat-label>
+                <strong><input  matInput type="text" value="{{extra.value}}" disabled></strong>
+            </mat-form-field>
+        </div> -->
+
+       
+    </form>
+</div>
+<mat-toolbar>
+      <button class="opciones" mat-raised-button (click)="guardarHistoria()"> <h3>Guardar</h3></button>
+      <button class="opciones" mat-raised-button [routerLink]='["/menu"]'><h3>Volver</h3></button>
+      <button class="opciones" mat-raised-button (click)="agregarInfo()"><h3>Agregar dato</h3></button>
+</mat-toolbar>
+</div>

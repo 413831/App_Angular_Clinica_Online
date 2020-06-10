@@ -32,14 +32,13 @@ export class ModificarTurnoComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder,private servicio: TurnosService,
               private route: ActivatedRoute, private router: Router,
-              private _snackBar: MatSnackBar, private _bottomSheet: MatBottomSheet,
-              public nuevoAtributo: MatDialog) 
+              private _snackBar: MatSnackBar, private _bottomSheet: MatBottomSheet) 
   {
     
   }
 
   ngOnInit(): void {
-    this.usuario = <Usuario>JSON.parse(localStorage.getItem('usuario-logueado'));
+    this.usuario = Object.assign(new Usuario, JSON.parse(localStorage.getItem('usuario-logueado')));
     // this.turno = <Turno>JSON.parse(localStorage.getItem('nuevoTurno'));
     this.turno = Object.assign(new Turno, JSON.parse(localStorage.getItem('nuevoTurno')));
     this.dias = JSON.parse(localStorage.getItem('medicos'))
@@ -152,17 +151,7 @@ export class ModificarTurnoComponent implements OnInit {
     return validate;
   }
 
-  agregarInfo()
-  {
-    let dialogConfig = new MatDialogConfig();
-    let dialogRef;
-    dialogConfig.data = this.turno;
-    dialogConfig.width = '400px';
-    dialogConfig.height = '350px';
-    dialogConfig.panelClass = "dialog";
-
-    dialogRef = this.nuevoAtributo.open(DialogExtrasComponent, dialogConfig);
-  }
+  
 
   get nombrePaciente() { return this.datosTurnos.get('nombrePaciente'); }
   get nombreMedico() { return this.datosTurnos.get('nombreMedico'); }

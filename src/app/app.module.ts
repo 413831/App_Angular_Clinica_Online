@@ -41,6 +41,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatMenuModule} from '@angular/material/menu';
 
 // Componentes
 import { AppComponent } from './app.component';
@@ -86,6 +87,9 @@ import { InfoTurnoComponent } from './componentes/info-turno/info-turno.componen
 import { DialogExtrasComponent } from './componentes/dialog-extras/dialog-extras.component';
 import { ListadoTurnosComponent } from './componentes/listado-turnos/listado-turnos.component';
 import { BooleanoPipe } from './pipes/booleano.pipe';
+import { AltaHistoriaComponent } from './componentes/alta-historia/alta-historia.component';
+import { FechaPipe } from './pipes/fecha.pipe';
+import { DialogDatoComponent } from './componentes/dialog-dato/dialog-dato.component';
 
 
 @NgModule({
@@ -131,7 +135,10 @@ import { BooleanoPipe } from './pipes/booleano.pipe';
     InfoTurnoComponent,
     DialogExtrasComponent,
     ListadoTurnosComponent,
-    BooleanoPipe
+    BooleanoPipe,
+    AltaHistoriaComponent,
+    FechaPipe,
+    DialogDatoComponent
   ],
   imports: [
     ApplicationModule,
@@ -172,6 +179,7 @@ import { BooleanoPipe } from './pipes/booleano.pipe';
     MatBottomSheetModule,
     MatSlideToggleModule,
     MatPaginatorModule,
+    MatMenuModule,
     RecaptchaModule,
     AgmCoreModule.forRoot({
       apiKey: environment.agmKey

@@ -1,24 +1,30 @@
 // Historia clinica de un paciente
 
-import { Especialidad } from './Medico';
+import { Turno } from './Turno';
 
-export interface Consulta
-{
-    especialidad: Especialidad,
-    nombreMedico: string,
-    matricula: string,
-    fecha: Date,
-    detalle: string
-}
 
 export class Historia 
 {
-    paciente: string;
-    afiliado: number;
-    edad: number;
-    peso: number;
-    altura: number;
-    frecuenciaCardiaca: number;
-    consultas: Consulta[];
+    id: string;
+    idPaciente: string;
+    paciente: string;    
+    sexo: string;
+    consultas: Turno[] = [];
+    adicionales: string[];
+
+    public static CrearHistoria(id: string, idPaciente: string, paciente: string,
+                                sexo: string, consultas: Turno[], adicionales: string[])
+    {
+        let historia = new Historia();
+
+        historia.id = id;
+        historia.idPaciente = idPaciente;
+        historia.paciente = paciente;
+        historia.sexo = sexo;
+        historia.consultas = consultas;
+        historia.adicionales = adicionales;
+
+        return historia;
+    }
     
 }

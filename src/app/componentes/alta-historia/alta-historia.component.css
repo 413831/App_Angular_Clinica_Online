@@ -1,0 +1,83 @@
+
+.dialog{
+    display: flexbox;
+    align-content: center;
+    margin: auto;
+    padding: 0;
+    background-color: rgb(233, 233, 245); 
+}
+
+
+.example-form {
+  display: flex;
+  flex-direction: column;    
+  width: 100%;
+  margin: auto;
+}
+
+.datos-personales
+{
+  min-width: 200px;
+  max-width: 400px;
+}
+
+.datos-clinicos
+{
+  min-width: 200px;
+  max-width: 600px;
+}
+
+
+
+.layout
+{
+  display: flex;
+  flex-direction: row;
+}
+
+.form-field{
+  align-items: stretch;
+}
+
+.historia-field .mat-input-element {
+  color: black;
+  /* add input text color here */
+}
+
+
+.historia-field mat-label {
+  color: black;
+  /* add label text color here */
+}
+
+.mat-input-element::placeholder {
+  color: black;
+  
+  /* add placeholder css here */
+}
+
+.datosExtras{
+  max-height: 200px;
+}
+
+.opciones{ 
+  background-color: lightsteelblue;
+}
+
+
+
+.right-align {
+  text-align: right;
+}
+
+input.right-align {
+  -moz-appearance: textfield;
+}
+
+button{
+  margin-top: 10px;
+  margin-bottom: 5px;
+  width: 100%;
+  margin-left: 15px;
+  margin-right: 15px;
+}

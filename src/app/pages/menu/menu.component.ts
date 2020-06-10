@@ -58,7 +58,7 @@ export class MenuComponent implements OnInit {
               public adminService: AdministradoresService,              
               public route: ActivatedRoute, public router: Router) 
   { 
-    this.usuario = JSON.parse(localStorage.getItem('usuario-logueado'));
+    this.usuario = Object.assign(new Usuario, JSON.parse(localStorage.getItem('usuario-logueado')));;
 
     if(this.usuario)
     {
@@ -267,6 +267,12 @@ export class MenuComponent implements OnInit {
   {
     localStorage.setItem('turno-terminado',JSON.stringify(this.turno));
     this.router.navigate(["/encuesta"]);
+  }
+
+  guardarHistoria()
+  {
+    localStorage.setItem('turno-terminado',JSON.stringify(this.turno));
+    this.router.navigate(["/historia"]);
   }
 
 }
