@@ -19,9 +19,10 @@ export class AdministradoresService extends MiservicioService {
   public crear(administrador: Administrador)
   {
     database().ref('administradores')
-                 .push(administrador)
-                .then(() => console.info("Alta exitosa"))
-                .catch(() => console.info("No se pudo realizar alta"));
+              .push()
+              .then((snapshot) => administrador.id = snapshot.key)
+              .then(() => this.actualizar(administrador))
+              .catch(() => console.info("No se pudo realizar alta"));
   }
 
   public leer(): Administrador[]

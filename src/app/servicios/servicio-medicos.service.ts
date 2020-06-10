@@ -19,8 +19,9 @@ export class MedicosService extends MiservicioService{
   public crear(medico: Medico)
   {
     database().ref('medicos')
-                  .push(medico)
-                  .then(() => console.info("Alta exitosa"))
+                  .push()
+                  .then((snapshot) => medico.id = snapshot.key)
+                  .then(() => this.actualizar(medico))
                   .catch(() => console.info("No se pudo realizar alta"));
   }
 

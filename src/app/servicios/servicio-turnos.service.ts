@@ -16,9 +16,10 @@ export class TurnosService extends MiservicioService{
   public crear(turno: Turno)
   {
     database().ref('turnos')
-                  .push(turno)
-                  .then(() => console.info("Alta exitosa"))
-                  .catch(() => console.info("No se pudo realizar alta"));
+              .push()
+              .then((snapshot) => turno.id = snapshot.key)
+              .then(() => this.actualizar(turno))
+              .catch(() => console.info("No se pudo realizar alta"));
   }
 
   public leer(): Turno[]

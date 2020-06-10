@@ -19,9 +19,10 @@ export class PacientesService extends MiservicioService{
   public crear(paciente: Paciente)
   {
     database().ref('pacientes')
-                 .push(paciente)
-                .then(() => console.info("Alta exitosa"))
-                .catch(() => console.info("No se pudo realizar alta"));
+              .push()
+              .then((snapshot) => paciente.id = snapshot.key)
+              .then(()=> this.actualizar(paciente))
+              .catch(() => console.info("No se pudo realizar alta"));
   }
 
   public leer(): Paciente[]

@@ -5,6 +5,7 @@ import { Usuario } from 'src/app/clases/Usuario';
 import { Encuesta } from 'src/app/clases/Encuesta';
 import { Turno } from 'src/app/clases/Turno';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { ServicioEncuestasService } from 'src/app/servicios/servicio-encuestas.service';
 
 @Component({
   selector: 'app-encuesta',
@@ -26,7 +27,8 @@ export class EncuestaComponent implements OnInit {
   sexos: string[] = ["Masculino", "Femenino", "Otro"];
   educacion: string[] = ["Primaria", "Secundaria", "Terciaria", "Universitaria"];
 
-  constructor(private route : ActivatedRoute, private router: Router ) 
+  constructor(private route : ActivatedRoute, private router: Router,
+               private servicio: ServicioEncuestasService) 
   {
     this.usuario = Object.assign(new Usuario, 
                                   JSON.parse(localStorage.getItem('usuario-logueado')));  
@@ -44,8 +46,8 @@ export class EncuestaComponent implements OnInit {
 
   guardar()
   {    
-
     console.log(this.encuesta);
+    this.servicio.crear(this.encuesta);
   }
 
 }
