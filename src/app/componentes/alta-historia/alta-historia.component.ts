@@ -26,6 +26,7 @@ export class AltaHistoriaComponent implements OnInit {
   peso: number;
   altura: number;
   sexos: string[] = ["Masculino", "Femenino", "Otro"];
+  sexo: string;
   datosExtras: boolean = false;
   extras:Array<Dato> = new Array<Dato>();
 
@@ -88,6 +89,10 @@ export class AltaHistoriaComponent implements OnInit {
   {
     // Se agregan los datos extras al objeto Turno
     this.extras.forEach( dato => Turno.AgregarDato(this.turno, dato.key, dato.value));
+    Turno.AgregarDato(this.turno, "edad", this.edad);
+    Turno.AgregarDato(this.turno, "sexo", this.sexo);
+    Turno.AgregarDato(this.turno, "peso", this.peso);
+    Turno.AgregarDato(this.turno, "altura", this.altura);
 
     console.log(Object.entries(this.turno));
 
