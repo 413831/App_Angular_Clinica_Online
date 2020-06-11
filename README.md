@@ -30,6 +30,11 @@ Listado de profesionales con filtros para mayor detalle
 
 ![Cartilla](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2FimgTP3.png?alt=media&token=1a1bd50f-7cce-41b8-8aab-fbff667e12d5 "Cartilla medica")
 
+Cómo cargar un turno desde la cartilla.
+
+![Alta-turno](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2Fezgif.com-gif-maker.gif?alt=media&token=4bc35bd7-0329-446a-a548-d85332fdc188 "Alta-turno")
+
+
 ## Registro de usuario
 
 Ingreso de usuarios según perfil con datos validados para mayor seguridad
@@ -47,6 +52,9 @@ Menu con detalle de cada turno con opciones para mayor detalle e información de
 Pantalla de configuracion de datos personales y opciones para cada perfil de usuario
 
 ![Usuario](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2FimgTP6.png?alt=media&token=7e9bd2cf-d7b6-47bc-868e-f3a70c613b4c "Usuario")
+
+![Historia](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2FCaptura%20de%20pantalla%20de%202020-06-11%2019-00-38.png?alt=media&token=62856200-4a3c-46e7-9d23-ad20d7519856 "Historia")
+
 
 ## Contacto
 
