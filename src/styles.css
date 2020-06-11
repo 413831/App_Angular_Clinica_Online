@@ -64,21 +64,8 @@ body {
     background-color: rgb(233, 233, 245);
 }
 
-:host {
-
-    display: flex;
-    overflow: hidden;
-    height: 100vh;
-  
-    main {
-      flex: 1;
-      position: relative;
-    }
-  
-    /deep/ router-outlet ~ * {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-  
+router-outlet ~ * {
+    position: absolute;
+    height: 100%;
+    width: 100%;
   }
