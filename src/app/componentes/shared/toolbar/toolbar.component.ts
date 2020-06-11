@@ -19,7 +19,7 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit(): void
   {
-    this.usuario = JSON.parse(localStorage.getItem("usuario-logueado"));
+    this.usuario = JSON.parse(localStorage.getItem("usuario"));
 
     if(this.usuario != null)
     {

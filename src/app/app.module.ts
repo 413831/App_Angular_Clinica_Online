@@ -91,6 +91,9 @@ import { AltaHistoriaComponent } from './componentes/alta-historia/alta-historia
 import { FechaPipe } from './pipes/fecha.pipe';
 import { DialogDatoComponent } from './componentes/dialog-dato/dialog-dato.component';
 import { InformesComponent } from './pages/informes/informes.component';
+import { AuthService } from './servicios/auth.service';
+import { AuthGuard } from './auth/auth.guard';
+import { SecureInnerPagesGuard } from './auth/secure-inner-pages.guard';
 
 
 @NgModule({
@@ -189,6 +192,9 @@ import { InformesComponent } from './pages/informes/informes.component';
   ],
   providers: [
     MatDatepickerModule, 
+    AuthService, 
+    AuthGuard, 
+    SecureInnerPagesGuard,
     {provide: MatDialogRef,
     useValue: {}},
     {

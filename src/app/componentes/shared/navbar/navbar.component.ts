@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    let usuario = JSON.parse(localStorage.getItem('usuario-logueado'));
+    let usuario = JSON.parse(localStorage.getItem('usuario'));
     console.log(usuario);
     if(!usuario)
     {

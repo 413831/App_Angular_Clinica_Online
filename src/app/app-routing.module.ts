@@ -13,16 +13,19 @@ import { AltaAdminComponent } from './componentes/alta-admin/alta-admin.componen
 import { ModificarTurnoComponent } from './componentes/modificar-turno/modificar-turno.component';
 import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
 import { AltaHistoriaComponent } from './componentes/alta-historia/alta-historia.component';
+import { AuthGuard } from './auth/auth.guard';
+import { SecureInnerPagesGuard } from './auth/secure-inner-pages.guard';
 
 
 const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: '', component: HomeComponent, data: {animation: 'Home'} },
   { path: 'home', component: HomeComponent, data: {animation: 'Home'} },
   { path: 'registro', component: RegistroComponent, data: {animation: 'Registro'}},
-  { path: 'login', component: LoginComponent, data: {animation: 'Login'}},
+  { path: 'login', component: LoginComponent, canActivate: [SecureInnerPagesGuard],data: {animation: 'Login'}},
   { path: 'cartilla', component: CartillaComponent, data: {animation: 'Cartilla'}},
   { path: 'contacto', component: ContactoComponent, data: {animation: 'Contacto'}},
-  { path: 'menu', component: MenuComponent, data: {animation: 'Menu'}},
+  { path: 'menu', component: MenuComponent, canActivate: [AuthGuard] ,data: {animation: 'Menu'}},
   { path: 'turnos', component: TurnosComponent, data: {animation: 'Turnos'}},
   { path: 'alta-turno/:horarios/:dias', component: AltaTurnoComponent, data: {animation: 'Turno'}},
   { path: 'alta-admin', component: AltaAdminComponent},

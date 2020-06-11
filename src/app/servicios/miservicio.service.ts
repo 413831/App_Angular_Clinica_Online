@@ -37,11 +37,11 @@ export class MiservicioService {
   }
 
   public static iniciarSesion(usuario: Usuario) {
-    localStorage.setItem("usuario-logueado", JSON.stringify(usuario));
+    localStorage.setItem("usuario", JSON.stringify(usuario));
   }
 
   public static cerrarSesion() {
-    localStorage.removeItem("usuario-logueado");
+    localStorage.removeItem("usuario");
   }
 
   public static guardarImagen(imagen: string, base64string: string)

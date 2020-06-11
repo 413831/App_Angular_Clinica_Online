@@ -34,7 +34,7 @@ export class AltaHistoriaComponent implements OnInit {
               private servicioHistoria: ServicioHistoriasService, private servicioTurnos: TurnosService) 
   {
     this.medico = Object.assign(new Medico, 
-      JSON.parse(localStorage.getItem('usuario-logueado')));  
+      JSON.parse(localStorage.getItem('usuario')));  
     this.turno = Object.assign(new Turno, 
         JSON.parse(localStorage.getItem('turno-terminado')));
     // Recuperar historia existente con id del paciente sino crear nueva

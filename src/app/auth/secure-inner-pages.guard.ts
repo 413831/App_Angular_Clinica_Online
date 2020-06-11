@@ -6,10 +6,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SecureInnerPagesGuard implements CanActivate {
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  authService: any;
+  router: any;
+  canActivate( next: ActivatedRouteSnapshot,
+               state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | 
+                                            UrlTree> | boolean | UrlTree 
+  {
+    if(this.authService.isLoggedIn) 
+    {
+        window.alert("La sesión está iniciada");
+        this.router.navigate(['menu'])
+    }
     return true;
   }
-  
 }

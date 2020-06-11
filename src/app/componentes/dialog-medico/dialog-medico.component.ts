@@ -37,7 +37,7 @@ export class DialogMedicoComponent implements OnInit {
   pedirTurno()
   {
     // Traer paciente para el turno
-    let paciente = <Paciente>JSON.parse(localStorage.getItem('usuario-logueado'));
+    let paciente = <Paciente>JSON.parse(localStorage.getItem('usuario'));
     
     // turno.nombrePaciente = paciente.nombre;
     this.turno.nombrePaciente = paciente.nombre;

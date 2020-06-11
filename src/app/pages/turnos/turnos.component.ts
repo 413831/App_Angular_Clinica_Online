@@ -15,7 +15,7 @@ export class TurnosComponent implements OnInit {
 
   constructor() 
   { 
-    this.usuario = Object.assign(new Usuario, JSON.parse(localStorage.getItem('usuario-logueado')));
+    this.usuario = Object.assign(new Usuario, JSON.parse(localStorage.getItem('usuario')));
     this.turnos = (JSON.parse(localStorage.getItem('turnos'))
                       .filter( turno => 
                       {

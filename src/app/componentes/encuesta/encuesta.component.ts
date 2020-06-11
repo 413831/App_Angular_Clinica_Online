@@ -31,7 +31,7 @@ export class EncuestaComponent implements OnInit {
                private servicio: ServicioEncuestasService) 
   {
     this.usuario = Object.assign(new Usuario, 
-                                  JSON.parse(localStorage.getItem('usuario-logueado')));  
+                                  JSON.parse(localStorage.getItem('usuario')));  
     this.turno = Object.assign(new Turno, 
                                     JSON.parse(localStorage.getItem('turno-terminado'))); 
     this.encuesta.nombre = this.usuario.nombre;

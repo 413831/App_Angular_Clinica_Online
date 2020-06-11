@@ -38,7 +38,7 @@ export class ModificarTurnoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.usuario = Object.assign(new Usuario, JSON.parse(localStorage.getItem('usuario-logueado')));
+    this.usuario = Object.assign(new Usuario, JSON.parse(localStorage.getItem('usuario')));
     // this.turno = <Turno>JSON.parse(localStorage.getItem('nuevoTurno'));
     this.turno = Object.assign(new Turno, JSON.parse(localStorage.getItem('nuevoTurno')));
     this.dias = JSON.parse(localStorage.getItem('medicos'))

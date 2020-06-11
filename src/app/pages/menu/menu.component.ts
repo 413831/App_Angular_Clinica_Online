@@ -58,7 +58,7 @@ export class MenuComponent implements OnInit {
               public adminService: AdministradoresService,              
               public route: ActivatedRoute, public router: Router) 
   { 
-    this.usuario = Object.assign(new Usuario, JSON.parse(localStorage.getItem('usuario-logueado')));;
+    this.usuario = Object.assign(new Usuario, JSON.parse(localStorage.getItem('usuario')));;
 
     if(this.usuario)
     {
