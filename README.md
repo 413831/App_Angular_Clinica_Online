@@ -30,6 +30,11 @@ Listado de profesionales con filtros para mayor detalle
 
 ![Cartilla](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2FimgTP3.png?alt=media&token=1a1bd50f-7cce-41b8-8aab-fbff667e12d5 "Cartilla medica")
 
+Cómo cargar un turno desde la cartilla.
+
+![Alta-turno](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2F44ts74.gif?alt=media&token=bc5624f5-47ab-4885-8b81-546f05d573bf "Alta-turno")
+
+
 ## Registro de usuario
 
 Ingreso de usuarios según perfil con datos validados para mayor seguridad
