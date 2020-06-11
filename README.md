@@ -22,15 +22,24 @@ Cada perfil tendrá acceso a opciones que enriqueceran al sistema y a su vez fac
 
 Menu principal instintivo para una fácil navegación
 
+Desde el menú principial se puede acceder a las diferentes pantallas del sistema.
+- Registro : Formularios para ingresar datos de paciente y de profesional.
+- Menu: Pantalla con datos personales del usuario personalizado según rol.
+- Login: Ingreso para usuarios ya registrados con validación de datos
+- Cartilla: Listado de medicos con opcion de filtrado
+- Contacto: Datos sobre la institución con información de contacto
+
 ![Menu](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2FimgTP2.png?alt=media&token=c260c6bb-ca9e-4eea-91e8-88e5e0a200a0 "Menu de la aplicacion")
 
 ## Cartilla medica
 
 Listado de profesionales con filtros para mayor detalle
 
+- Desde el listado se podrá buscar el profesional por nombre, especialidad o día de atención. Al clickear en el mismo se verá una ficha resumida del médico seleccionado con la opción de pedir un turno que dirige hacia el formulario de alta de un nuevo turno con el médico elegido.
+
 ![Cartilla](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2FimgTP3.png?alt=media&token=1a1bd50f-7cce-41b8-8aab-fbff667e12d5 "Cartilla medica")
 
-Cómo cargar un turno desde la cartilla.
+Ejemplo de cómo cargar un turno desde la cartilla.
 
 ![Alta-turno](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2Fezgif.com-gif-maker.gif?alt=media&token=4bc35bd7-0329-446a-a548-d85332fdc188 "Alta-turno")
 
