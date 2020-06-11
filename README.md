@@ -48,17 +48,23 @@ Ejemplo de cómo cargar un turno desde la cartilla.
 
 Ingreso de usuarios según perfil con datos validados para mayor seguridad
 
+- Cada usuario deberá ingresar sus datos personales y datos correspondientes a su rol como usuario. Se podrá ingresar dos fotos que se mostrarán junto con su ficha. Los datos serán editables mientras se complete el formulario para mayor comodidad del usuario.
+
 ![Cartilla](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2FimgTP4.png?alt=media&token=76e42994-6af4-4fd9-bd99-7d818f7a06df "Registro")
 
 ## Detalle de los turnos
 
 Menu con detalle de cada turno con opciones para mayor detalle e información del mismo.
 
+- Se mostrara la ficha de todos los turnos relacionados al paciente o profesional con posibilidad de filtrar según estado del turno, dato a buscar o valor a buscar.
+
 ![Turno](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2FimgTP1.png?alt=media&token=cd1043a9-153f-4b7b-b578-d00bcaac4a18 "Turno")
 
 ## Menu de usuario
 
 Pantalla de configuracion de datos personales y opciones para cada perfil de usuario
+
+- En el menú del usuario se podrán modificar los datos personales del usuario, cargar nuevos turnos, modificar turnos ya cargados y dar de baja al usuario. En el caso de los turnos finalizados se podrá completar una encuesta en el caso de los pacientes o la historia clinica del paciente atendido en el caso del médico. Cada menú es personalizado según el rol mostrando listado de los turnos asociados o listado de pacientes o médicos en el caso de que el usuario sea administrador.
 
 ![Usuario](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2FimgTP6.png?alt=media&token=7e9bd2cf-d7b6-47bc-868e-f3a70c613b4c "Usuario")
 
