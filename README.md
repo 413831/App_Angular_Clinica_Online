@@ -68,6 +68,8 @@ Pantalla de configuracion de datos personales y opciones para cada perfil de usu
 
 ![Usuario](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2FimgTP6.png?alt=media&token=7e9bd2cf-d7b6-47bc-868e-f3a70c613b4c "Usuario")
 
+- En cada historia clínica se asociará la información del turno finalizado permitiendo agregar datos adicionales correspondientes a la consulta específica del turno.
+
 ![Historia](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2FCaptura%20de%20pantalla%20de%202020-06-11%2019-00-38.png?alt=media&token=62856200-4a3c-46e7-9d23-ad20d7519856 "Historia")
 
 
@@ -75,13 +77,15 @@ Pantalla de configuracion de datos personales y opciones para cada perfil de usu
 
 Menu configurable de datos de contacto e información adicional
 
+- En la pantalla de contacto se podrá mostrar los datos de contacto, ubicación, redes sociales y toda información institucional necesaria.
+
 ![Contacto](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2FimgTP5.png?alt=media&token=120dd88c-bcbd-4b0d-ae7e-9b0fbd164600 "Contacto")
 
 ## :information_source: Link de ejemplo
 
-Clickeando en el siguiente link podrá ver una demostración de la aplicación y explorar las funcionalidades que ofrece el sistema.
+Para observar una demo de la aplicación se puede ingresar al siguiente link y utilizar los perfiles pre-cargados de diferentes usuarios para explorar la funcionalidad de los diferentes roles en una experiencia de uso real.
 
 https://clinica-online-aplanes.herokuapp.com/
 
-
+:)
 
