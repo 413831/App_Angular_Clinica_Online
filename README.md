@@ -16,7 +16,7 @@ Sistema de gestión web para clinicas con el que podrás brindar un servicio mod
 El sistema se integra con los diferentes perfiles de usuario generando una experiencia diferente para cada uno.
 Cada perfil tendrá acceso a opciones que enriqueceran al sistema y a su vez facilitará la gestión de la atención médica.
 
-## :information_source: ¿Qué contiene la aplicación?
+:information_source: #  ¿Qué contiene la aplicación?
 
 ## Menu principal
 
