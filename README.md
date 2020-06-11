@@ -1,6 +1,7 @@
 # Clínica Online
 
 Sistema de gestión web para clinicas con el que podrás brindar un servicio moderno y seguro para los pacientes, profesionales y administrativos del equipo de trabajo. 
+Al final del documento se puede encontrar un enlace para probar la aplicación.
 
 
 # :information_source: ¿Cuáles son las funciones de la aplicación?
