@@ -5,6 +5,25 @@
     <h1 >Turnos</h1>
   </div>
   <hr>
+
+  <form >
+   
+
+      <div class="form-group">
+        <mat-form-field appearance="fill">
+          <mat-label>Buscar por campo</mat-label>
+          <input [(ngModel)]="campo" name="campo" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Buscar valor</mat-label>
+          <input [(ngModel)]="valor" name="valor" matInput>
+        </mat-form-field>
+      </div>
+     
+      <button mat-raised-button color="primary" (click)='filtrar()'>Filtrar</button>
+  </form>
+
   <div>
     <p class="parrafo">Listado con buscador de turnos</p>
         <div  *ngFor="let turno of turnos">        
