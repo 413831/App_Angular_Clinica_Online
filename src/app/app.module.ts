@@ -191,8 +191,6 @@ import { SecureInnerPagesGuard } from './auth/secure-inner-pages.guard';
     MatPaginatorModule,
     MatMenuModule,
     RecaptchaModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule,
     AgmCoreModule.forRoot({
       apiKey: environment.agmKey
     }), 
