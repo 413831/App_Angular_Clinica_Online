@@ -19,4 +19,6 @@ export class CartillaComponent implements OnInit {
     this.listado = medicos;
   }
 
+
+
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Inject, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject, Input, Output, EventEmitter, ElementRef } from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { Medico, Especialidad } from 'src/app/clases/Medico';
@@ -8,6 +8,8 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Dia, Turno } from 'src/app/clases/Turno';
 import { MatPaginator } from '@angular/material/paginator';
+import * as jsPDF from 'jspdf';
+import * as XLSX from 'xlsx'; 
 
 
 @Component({
@@ -18,9 +20,12 @@ import { MatPaginator } from '@angular/material/paginator';
 export class ListadoMedicosComponent implements OnInit {
   @Input() listado: Medico[];
   @Output() enviarMedico: EventEmitter<any> = new EventEmitter<any>();
+  @Output() enviarListado: EventEmitter<any> = new EventEmitter<any>();
   selection = new SelectionModel<Medico>(true, []);
   displayedColumns: string[] = ['nombre', 'especialidad', 'diasAtencion'];
   dataSource: MatTableDataSource<Medico>;
+
+  @ViewChild('content') content:ElementRef;
   /////
   filterValues = {};
   filterSelectObj = {};
@@ -101,6 +106,32 @@ export class ListadoMedicosComponent implements OnInit {
     this.dataSource.filter = filtro.especialidad;
   }
 
+  imprimirPDF(listado: Medico[])
+  {
+    let content= this.content.nativeElement;  
+    let doc = new jsPDF();  
+    let _elementHandlers =  
+    {  
+      '#editor':function(element,renderer){  
+        return true;  
+      }  
+    };  
+    doc.fromHTML(content.innerHTML,15,15,{  
+  
+      'width':190,  
+      'elementHandlers':_elementHandlers  
+    });  
+  
+    doc.save('test.pdf'); 
+  }
+
+  exportarExcel() {  
+    const workSheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(this.content.nativeElement);  
+    const workBook: XLSX.WorkBook = XLSX.utils.book_new();  
+    XLSX.utils.book_append_sheet(workBook, workSheet, 'Sheet1');  
+    XLSX.writeFile(workBook, 'ScoreSheet.xlsx');  
+  }  
+
   // Called on Filter change
   filterChange(filter, event) {
     //let filterValues = {}
@@ -164,6 +195,7 @@ export class ListadoMedicosComponent implements OnInit {
     }
     return filterFunction
   }
+
 
   get diasAtencion() { return this.filterForm.get('diasAtencion'); }
   get nombre() { return this.filterForm.get('nombre'); }
