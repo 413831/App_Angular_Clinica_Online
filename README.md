@@ -81,7 +81,7 @@ Menu configurable de datos de contacto e información adicional
 
 ![Contacto](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2FimgTP5.png?alt=media&token=120dd88c-bcbd-4b0d-ae7e-9b0fbd164600 "Contacto")
 
-## :information_source: Link de ejemplo
+# :information_source: Link de ejemplo
 
 Para observar una demo de la aplicación se puede ingresar al siguiente link y utilizar los perfiles pre-cargados de diferentes usuarios para explorar la funcionalidad de los diferentes roles en una experiencia de uso real.
 
