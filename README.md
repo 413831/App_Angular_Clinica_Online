@@ -53,6 +53,10 @@ Pantalla de configuracion de datos personales y opciones para cada perfil de usu
 
 ![Usuario](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2FimgTP6.png?alt=media&token=7e9bd2cf-d7b6-47bc-868e-f3a70c613b4c "Usuario")
 
+![Historia](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2FCaptura%20de%20pantalla%20de%202020-06-11%2019-00-38.png?alt=media&token=62856200-4a3c-46e7-9d23-ad20d7519856 "Historia")
+
+--
+
 ## Contacto
 
 Menu configurable de datos de contacto e información adicional
