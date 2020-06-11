@@ -10,6 +10,11 @@ import { environment } from '../environments/environment';
 // Routing
 import { AppRoutingModule } from './app-routing.module';
 
+// Firebase
+import { AngularFireAuthModule } from '@angular/fire/auth/';
+import { AngularFireModule } from '@angular/fire';
+
+
 // Material
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -186,6 +191,8 @@ import { SecureInnerPagesGuard } from './auth/secure-inner-pages.guard';
     MatPaginatorModule,
     MatMenuModule,
     RecaptchaModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
     AgmCoreModule.forRoot({
       apiKey: environment.agmKey
     }), 

@@ -18,7 +18,6 @@ import { SecureInnerPagesGuard } from './auth/secure-inner-pages.guard';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: '', component: HomeComponent, data: {animation: 'Home'} },
   { path: 'home', component: HomeComponent, data: {animation: 'Home'} },
   { path: 'registro', component: RegistroComponent, data: {animation: 'Registro'}},

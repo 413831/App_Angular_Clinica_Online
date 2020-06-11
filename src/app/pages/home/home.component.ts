@@ -33,10 +33,11 @@ export class HomeComponent implements OnInit {
               private servicioPacientes: PacientesService,
               private servicioTurnos: TurnosService) 
   {
-    this.activarServicios();
+   
   }
 
   ngOnInit(): void {
+    this.activarServicios();
   }
 
   activarServicios(){

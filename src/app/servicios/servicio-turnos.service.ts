@@ -11,6 +11,10 @@ export class TurnosService extends MiservicioService{
   constructor() 
   { 
     super();
+    if(!database())    
+    {
+      super.init(); 
+    }
   }
 
   public crear(turno: Turno)
