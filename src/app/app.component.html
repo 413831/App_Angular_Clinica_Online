@@ -1,5 +1,6 @@
 <!-- <app-toolbar></app-toolbar> -->
 <app-navbar></app-navbar>
-<div [@routeAnimations]="preparedRoute(outlet)">
+
+<main  [@routeAnimations]="preparedRoute(outlet)">
     <router-outlet #outlet="outlet"></router-outlet>
-</div>
+</main>

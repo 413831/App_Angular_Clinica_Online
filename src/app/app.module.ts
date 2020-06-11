@@ -90,6 +90,7 @@ import { BooleanoPipe } from './pipes/booleano.pipe';
 import { AltaHistoriaComponent } from './componentes/alta-historia/alta-historia.component';
 import { FechaPipe } from './pipes/fecha.pipe';
 import { DialogDatoComponent } from './componentes/dialog-dato/dialog-dato.component';
+import { InformesComponent } from './pages/informes/informes.component';
 
 
 @NgModule({
@@ -138,7 +139,8 @@ import { DialogDatoComponent } from './componentes/dialog-dato/dialog-dato.compo
     BooleanoPipe,
     AltaHistoriaComponent,
     FechaPipe,
-    DialogDatoComponent
+    DialogDatoComponent,
+    InformesComponent
   ],
   imports: [
     ApplicationModule,

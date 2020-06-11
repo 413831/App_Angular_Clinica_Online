@@ -24,11 +24,11 @@ const routes: Routes = [
   { path: 'contacto', component: ContactoComponent, data: {animation: 'Contacto'}},
   { path: 'menu', component: MenuComponent, data: {animation: 'Menu'}},
   { path: 'turnos', component: TurnosComponent, data: {animation: 'Turnos'}},
-  { path: 'alta-turno/:horarios/:dias', component: AltaTurnoComponent},
+  { path: 'alta-turno/:horarios/:dias', component: AltaTurnoComponent, data: {animation: 'Turno'}},
   { path: 'alta-admin', component: AltaAdminComponent},
   { path: 'modificar-turno', component: ModificarTurnoComponent, data: {animation: 'Detalle-turno'}},
-  { path: 'encuesta', component: EncuestaComponent},
-  { path: 'historia', component: AltaHistoriaComponent}
+  { path: 'encuesta', component: EncuestaComponent, data: {animation: 'Encuesta'}},
+  { path: 'historia', component: AltaHistoriaComponent, data: {animation: 'Historia'}}
 ];
 
 @NgModule({
