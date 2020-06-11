@@ -32,7 +32,7 @@ Listado de profesionales con filtros para mayor detalle
 
 Cómo cargar un turno desde la cartilla.
 
-![Alta-turno](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2F44ts74.gif?alt=media&token=bc5624f5-47ab-4885-8b81-546f05d573bf "Alta-turno")
+![Alta-turno](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2Fezgif.com-gif-maker.gif?alt=media&token=4bc35bd7-0329-446a-a548-d85332fdc188 "Alta-turno")
 
 
 ## Registro de usuario
