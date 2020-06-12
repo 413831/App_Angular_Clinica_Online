@@ -72,23 +72,23 @@ export class AltaTurnoComponent implements OnInit {
   {
     console.info("Alta de turno");
     this.turno.especialidad = this.especialidad.value;
-    this.turno.fecha = this.fecha.value;
+    this.turno.fecha = this.fecha.value.toLocaleDateString();
     this.turno.duracion = 30;
     this.turno.fecha = this.fecha.value.toLocaleDateString();
     console.log(this.turno.fecha);
     this.turno.horario = this.horario.value;
-    this.turno.detalle = 'vacio';
-    this.turno.comentarios = 'vacio';
+    this.turno.detalle = 'Detalle';
+    this.turno.comentarios = 'Comentarios';
     this.turno.estado = Estado.Pendiente;
 
     console.log(this.turno);
-    this.servicio.crear(this.turno);
+    this.servicio.crear(this.turno)
+                 .then(()=>  this.router.navigate(["/menu"]));
 
     this._snackBar.openFromComponent(NuevoturnoSnackbarComponent, {
       duration: this.durationInSeconds * 1000,
     });
 
-    this.router.navigate(["/menu"]);
   }
 
   crearFiltros()

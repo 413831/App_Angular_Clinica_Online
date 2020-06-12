@@ -6,7 +6,7 @@ export enum Estado
     Cancelado = "Cancelado", // Estado definido por el medico o el pacientepara cancelar turno
     Rechazado = "Rechazado", // Estado definido por el medico para rechazar turno pendiente
     Aceptado = "Aceptado", // Estado definido por el medico para confirmar turno pendiente
-    Confirmado = "Confirmado" // Estado definido por el medico al dar presente del turno
+    Atendido = "Atendido" // Estado definido por el medico al dar presente del turno
 }
 
 export enum Dia
@@ -25,6 +25,8 @@ export class Turno
     public id: string;
     public detalle: string;
     public comentarios: string;
+    public idPaciente: string;
+    public idMedico: string;
     public nombrePaciente: string;
     public nombreMedico: string;
     public duracion: number;
@@ -41,8 +43,8 @@ export class Turno
 
     public static CrearTurno(nombrePaciente: string, nombreMedico: string, fecha: string, horario: string,
                                 duracion: number, especialidad: Especialidad, consultorio: number,
-                                detalle: string, estado: Estado, 
-                                id?: string, modificado?: boolean, comentarios?: string ): Turno
+                                detalle: string, estado: Estado, idPaciente: string, idMedico: string,
+                                id: string, modificado?: boolean, comentarios?: string ): Turno
     {
         let turno = new Turno();
 
@@ -57,6 +59,8 @@ export class Turno
         turno.estado = estado;
         turno.horario = horario;
         turno.id = id;
+        turno.idPaciente = idPaciente;
+        turno.idMedico = idMedico;
         turno.modificado = modificado;
 
         return turno;

@@ -17,18 +17,18 @@ export class ServicioEncuestasService extends MiservicioService{
     }
   }
 
-  public crear(encuesta)
+  public crear(encuesta): Promise<any>
   {
-    database().ref('encuestas')
+    return database().ref('encuestas')
               .push()
               .then((snapshot) => encuesta.id = snapshot.key)
               .then(() => this.actualizar(encuesta))
               .catch(() => console.info("No se pudo realizar alta"));
   }
 
-  public actualizar(encuesta)
+  public actualizar(encuesta): Promise<any>
   {
-    database().ref('encuestas/' + encuesta.id)
+    return database().ref('encuestas/' + encuesta.id)
                   .update(encuesta)
                   .then(() => console.info("Actualizacion exitosa"))
                   .catch(() => console.info("No se pudo actualizar"));

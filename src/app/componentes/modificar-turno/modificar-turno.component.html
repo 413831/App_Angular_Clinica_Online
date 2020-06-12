@@ -49,10 +49,19 @@
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
             </td>
-            <td>
+            <!-- <td>
               <mat-form-field class="example-full-width">
                 <mat-label>Horario</mat-label>
                 <input matInput formControlName="horario">
+              </mat-form-field> -->
+
+              <mat-form-field class="turno-field">
+                <mat-label>Horario</mat-label>
+                <mat-select formControlName="horario" >
+                  <mat-option *ngFor="let horario of horarios" [value]="horario">
+                    {{horario}}
+                  </mat-option>
+                </mat-select>
               </mat-form-field>
             </td>
           </tr>
@@ -88,7 +97,7 @@
       <mat-button-toggle-group #group="matButtonToggleGroup" name="fontStyle" aria-label="Font Style">        
         <mat-button-toggle *ngIf="validarControl('Aceptado')" (click)="cambiarEstado(group.value)" value="Aceptado">Aceptar</mat-button-toggle>
         <mat-button-toggle *ngIf="validarControl('Rechazado')" (click)="cambiarEstado(group.value)" value="Rechazado">Rechazar</mat-button-toggle>
-        <mat-button-toggle *ngIf="validarControl('Confirmado')" (click)="cambiarEstado(group.value)" value="Confirmado">Confirmar</mat-button-toggle>
+        <mat-button-toggle *ngIf="validarControl('Atendido')" (click)="cambiarEstado(group.value)" value="Atendido">Confirmar</mat-button-toggle>
         <mat-button-toggle *ngIf="validarControl('Cancelado')" (click)="cambiarEstado(group.value)" value="Cancelado">Cancelar</mat-button-toggle>
       </mat-button-toggle-group>
     </mat-grid-tile>

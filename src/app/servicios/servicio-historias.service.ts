@@ -17,18 +17,18 @@ export class ServicioHistoriasService extends MiservicioService{
     }
   }
 
-  public crear(historia)
+  public crear(historia): Promise<any>
   {
-    database().ref('historias')
+    return database().ref('historias')
               .push()
               .then((snapshot) => historia.id = snapshot.key)
               .then(() => this.actualizar(historia))
               .catch(() => console.info("No se pudo realizar alta"));
   }
 
-  public actualizar(historia)
+  public actualizar(historia): Promise<any>
   {
-    database().ref('historias/' + historia.id)
+    return database().ref('historias/' + historia.id)
                   .update(historia)
                   .then(() => console.info("Actualizacion exitosa"))
                   .catch(() => console.info("No se pudo actualizar"));

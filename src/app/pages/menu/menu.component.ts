@@ -60,13 +60,14 @@ export class MenuComponent implements OnInit {
   { 
     this.usuario = JSON.parse(localStorage.getItem('usuario'));;
 
+    // Primero valido que no sea null luego instancio un objeto Usuario
     if(this.usuario)
     {
       this.usuario = Object.assign(new Usuario, this.usuario);
-      this.obtenerPerfil();
+      this.obtenerPerfil(); 
       this.obtenerTurnos();
       this.turnosAceptados = this.turnos.filter(turno => turno.estado == Estado.Aceptado);
-      this.turnosFinalizados = this.turnos.filter(turno => turno.estado == Estado.Confirmado);
+      this.turnosFinalizados = this.turnos.filter(turno => turno.estado == Estado.Atendido);
       this.turnosCancelados = this.turnos.filter(turno => turno.estado == Estado.Cancelado);
       
     }
@@ -107,16 +108,17 @@ export class MenuComponent implements OnInit {
 
   obtenerTurnos()
   {
+    //  Agregar validacion para llamar al servicio
     switch(this.usuario.rol)
     {     
       case Rol.Medico: 
         this.turnos = (JSON.parse(localStorage.getItem('turnos'))
-                      .filter( turno => this.medico.nombre == turno.nombreMedico))
+                      .filter( turno => this.medico.id == turno.idMedico))
                       .map( turno => Object.assign(new Turno, turno));
         break;
       case Rol.Paciente:
         this.turnos = (JSON.parse(localStorage.getItem('turnos'))
-                      .filter( turno => this.paciente.nombre == turno.nombrePaciente))
+                      .filter( turno => this.paciente.id == turno.idPaciente))
                       .map( turno => Object.assign(new Turno, turno));
         break;                 
     }

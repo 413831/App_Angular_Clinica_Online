@@ -16,9 +16,9 @@ export class AdministradoresService extends MiservicioService {
     }
   }
 
-  public crear(administrador: Administrador)
+  public crear(administrador: Administrador): Promise<any>
   {
-    database().ref('administradores')
+    return database().ref('administradores')
               .push()
               .then((snapshot) => administrador.id = snapshot.key)
               .then(() => this.actualizar(administrador))
@@ -44,17 +44,17 @@ export class AdministradoresService extends MiservicioService {
     return administradores;
   }
 
-  public actualizar(administrador: Administrador)
+  public actualizar(administrador: Administrador): Promise<any>
   {
-    database().ref('administradores/' + administrador.id)
+    return database().ref('administradores/' + administrador.id)
                   .update(administrador)
                   .then(() => console.info("Actualizacion exitosa"))
                   .catch(() => console.info("No se pudo actualizar"));
   }
 
-  public borrar(id: number)
+  public borrar(id: number): Promise<any>
   {
-    database().ref('administradores/' + id)
+    return database().ref('administradores/' + id)
                   .remove()
                   .then(() => console.info("administrador eliminado"))
                   .catch(() => console.info("No se pudo realizar la baja."));

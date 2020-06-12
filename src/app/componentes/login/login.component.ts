@@ -47,18 +47,25 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     // Traer al administrador tambien
-    this.medicos = this.servicioPacientes.leer();
-    this.pacientes = this.servicioMedicos.leer();
-    this.admin = this.servicioAdmin.leer();
+    this.medicos = JSON.parse(localStorage.getItem('medicos'))
+                                          .map(data => Object.assign(new Medico, data));
+    // this.medicos = this.servicioMedicos.leer();
+    // this.pacientes = this.servicioPacientes.leer();
+    this.pacientes = JSON.parse(localStorage.getItem('pacientes'))
+                                            .map(data => Object.assign(new Paciente, data));
+                  
+    this.admin = JSON.parse(localStorage.getItem('administradores'))
+                                        .map(data => Object.assign(new Administrador, data));
+
     // Hardcode para testing
     this.initTest();
   }
 
   getErrorMessage() {
-    if (this.email.hasError('required')) {
+    if (this.email.hasError('required'))
+    {
       return 'Debe ingresar un valor.';
     }
-
     return this.email.hasError('email') ? 'No es un mail válido.' : '';
   }
 
@@ -72,9 +79,9 @@ export class LoginComponent implements OnInit {
 
     this.usuario = usuarios.find((usuario) => usuario.email === this.email.value &&
                                   usuario.clave === this.clave.value);
-    if (this.usuario) {
+    if (this.usuario)
+    {
       console.info("Login");
-      console.log(typeof this.usuario);
       MiservicioService.iniciarSesion(this.usuario);
       this.router.navigate(["home"]);
     }

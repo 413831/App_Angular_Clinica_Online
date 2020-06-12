@@ -22,10 +22,17 @@ mat-paginator {
 mat-row:hover{
     background-color: lightsteelblue;
     color: black;
+    cursor: pointer;
 }
 
 tr{
     transition: 0.1s;
+}
+
+mat-row:active{
+    background-color: rgb(118, 150, 192);
+    transition: 0.5s;
+    
 }
 
 th{

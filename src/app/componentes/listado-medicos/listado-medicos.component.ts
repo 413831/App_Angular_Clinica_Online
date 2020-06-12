@@ -24,9 +24,6 @@ export class ListadoMedicosComponent implements OnInit {
   selection = new SelectionModel<Medico>(true, []);
   displayedColumns: string[] = ['nombre', 'especialidad', 'diasAtencion'];
   dataSource: MatTableDataSource<Medico>;
-
-  @ViewChild('content') content:ElementRef;
-  /////
   filterValues = {};
   filterSelectObj = {};
   filterForm = new FormGroup(
@@ -35,10 +32,11 @@ export class ListadoMedicosComponent implements OnInit {
     especialidad: new FormControl(),
     diasAtencion: new FormControl()
   });
-  
+
+  @ViewChild('content') content:ElementRef;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
-    
+  
   constructor( public dialog: MatDialog, public listadoRef: MatDialogRef<ListadoMedicosComponent>) 
   {
     // Object to create Filter for

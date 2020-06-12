@@ -22,10 +22,12 @@ export class ModificarTurnoComponent implements OnInit {
   durationInSeconds = 3;
   public usuario: Usuario;
   public turno: Turno;
+  public medico: Medico;
   public horarios: string[] = new Array<string>();
   public dias: number[] = Turno.dias;
   public minDate: Date;
   public maxDate: Date;
+  private disabled: boolean;
   events: string[] = [];
   datosTurnos: FormGroup;
   filtroFecha;
@@ -41,8 +43,12 @@ export class ModificarTurnoComponent implements OnInit {
     this.usuario = Object.assign(new Usuario, JSON.parse(localStorage.getItem('usuario')));
     // this.turno = <Turno>JSON.parse(localStorage.getItem('nuevoTurno'));
     this.turno = Object.assign(new Turno, JSON.parse(localStorage.getItem('nuevoTurno')));
-    this.dias = JSON.parse(localStorage.getItem('medicos'))
-                          .filter(medico => medico.nombre == this.turno.nombreMedico)[0].diasAtencion;
+    this.medico = JSON.parse(localStorage.getItem('medicos'))
+                      .filter(medico => medico.id == this.turno.idMedico)
+                      .map(medico => Object.assign(new Medico, medico));
+    this.dias = this.medico.diasAtencion;
+    this.horarios = this.medico.horasAtencion;
+    
     this.crearFiltros();
     this.crearControles();
   }
@@ -56,12 +62,11 @@ export class ModificarTurnoComponent implements OnInit {
     this.turno.modificado = true;
 
     console.log(this.turno);
-    this.servicio.actualizar(this.turno);
-    this.router.navigate(["/menu"]).then(()=> 
-      this._snackBar.openFromComponent(CambioTurnoSnackbarComponent, {
-      duration: this.durationInSeconds * 1000,
-      })
-    );
+    // this.servicio.actualizar(this.turno)
+    //             .then(()=> this.router.navigate(["/menu"]));
+
+    this._snackBar.openFromComponent(CambioTurnoSnackbarComponent, {
+      duration: this.durationInSeconds * 1000, });
   }
 
   verDetalles()
@@ -79,24 +84,25 @@ export class ModificarTurnoComponent implements OnInit {
 
   crearControles()
   {
+    this.disabled = (this.turno.estado != Estado.Pendiente);
+
     this.datosTurnos = new FormGroup({
       nombrePaciente: new FormControl({value: this.turno.nombrePaciente, disabled: true}),
       nombreMedico: new FormControl({value: this.turno.nombreMedico, disabled: true}),
-      fecha: new FormControl(this.turno.fecha),
-      horario: new FormControl({value: this.turno.horario, disabled: false}),
+      fecha: new FormControl({value: new Date(this.turno.fecha), disabled: this.disabled}),
+      horario: new FormControl({value: this.turno.horario, disabled: this.disabled}),
       duracion: new FormControl({value: this.turno.duracion, disabled: true},
                                   Validators.required),
       especialidad: new FormControl({value: this.turno.especialidad, disabled: true}),
       consultorio: new FormControl({value: this.turno.consultorio, disabled: true}),
       estado: new FormControl({value: this.turno.estado, disabled: true}),
-      detalle: new FormControl({ value:'Comentarios', disabled: false}),
-      comentarios: new FormControl({ value:'Reseña', disabled: false})
+      detalle: new FormControl({ value: this.turno.detalle, disabled: false}),
+      comentarios: new FormControl({ value: this.turno.comentarios, disabled: false})
     });
   }
 
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     this.events.push(`${type}: ${event.value}`);
-    console.log(`Valores de calendario: ${this.events}`);
   }
 
   crearFiltros()
@@ -134,7 +140,7 @@ export class ModificarTurnoComponent implements OnInit {
           validate = true;
         }
         break;
-      case Estado.Confirmado : 
+      case Estado.Atendido : 
         if(this.turno.estado == Estado.Aceptado && this.usuario.rol == Rol.Medico)
         {
           validate = true;

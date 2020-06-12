@@ -21,7 +21,7 @@ export class TurnosComponent implements OnInit {
     if(this.usuario)
     {
       this.usuario = Object.assign(new Usuario, this.usuario);
-    
+      //  Agregar validacion para llamar al servicio
       this.turnos = (JSON.parse(localStorage.getItem('turnos'))
                       .filter( turno => 
                       {

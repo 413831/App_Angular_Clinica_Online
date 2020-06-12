@@ -36,12 +36,17 @@ export class MiservicioService {
     this.inicializado = true;
   }
 
-  public static iniciarSesion(usuario: Usuario) {
-    localStorage.setItem("usuario", JSON.stringify(usuario));
+  public static iniciarSesion(usuario: Usuario) : Promise<any>
+  {
+    let promesa = new Promise( resolve => localStorage.setItem("usuario", JSON.stringify(usuario)));
+
+    return promesa;
   }
 
-  public static cerrarSesion() {
-    localStorage.removeItem("usuario");
+  public static cerrarSesion() : Promise<any>{
+    let promesa = new Promise( resolve => localStorage.removeItem("usuario"));
+
+    return promesa;
   }
 
   public static guardarImagen(imagen: string, base64string: string)

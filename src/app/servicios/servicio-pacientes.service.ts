@@ -16,9 +16,9 @@ export class PacientesService extends MiservicioService{
     }
   }
 
-  public crear(paciente: Paciente)
+  public crear(paciente: Paciente): Promise<any>
   {
-    database().ref('pacientes')
+    return database().ref('pacientes')
               .push()
               .then((snapshot) => paciente.id = snapshot.key)
               .then(()=> this.actualizar(paciente))
@@ -45,17 +45,17 @@ export class PacientesService extends MiservicioService{
     return pacientes;
   }
 
-  public actualizar(paciente: Paciente)
+  public actualizar(paciente: Paciente): Promise<any>
   {
-    database().ref('pacientes/' + paciente.id)
+    return database().ref('pacientes/' + paciente.id)
                   .update(paciente)
                   .then(() => console.info("Actualizacion exitosa"))
                   .catch(() => console.info("No se pudo actualizar"));
   }
 
-  public borrar(id: number)
+  public borrar(id: number): Promise<any>
   {
-    database().ref('pacientes/' + id)
+    return database().ref('pacientes/' + id)
                   .remove()
                   .then(() => console.info("Paciente eliminado"))
                   .catch(() => console.info("No se pudo realizar la baja."));
