@@ -16,7 +16,14 @@
   <button mat-flat-button class="primary" >Reset</button>
 </form>
 
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" id="content">
+<div>
+  <button mat-raised-button (click)="guardarPDF()">PDF</button>
+  <button mat-raised-button (click)="guardarExcel()">Excel</button>
+</div>
+
+
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" #content>
 
     <!-- Position Column -->
     <ng-container matColumnDef="nombre">

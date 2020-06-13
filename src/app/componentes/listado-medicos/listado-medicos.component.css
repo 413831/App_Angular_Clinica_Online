@@ -38,3 +38,8 @@ th{
   background: orange;
   color: white;
 }
+
+button{
+  margin-left: 10px;
+  margin-bottom: 10px;
+}

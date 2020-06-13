@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, Inject, Input, Output, EventEmitter, ElementRef } from '@angular/core';
 import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import {MatTableDataSource, MatTable} from '@angular/material/table';
 import { Medico, Especialidad } from 'src/app/clases/Medico';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig} from '@angular/material/dialog';
 import { DialogMedicoComponent } from '../dialog-medico/dialog-medico.component';
@@ -8,9 +8,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Dia, Turno } from 'src/app/clases/Turno';
 import { MatPaginator } from '@angular/material/paginator';
-import * as jsPDF from 'jspdf';
-import * as XLSX from 'xlsx'; 
-
+import { ArchivosService } from 'src/app/servicios/archivos.service';
 
 @Component({
   selector: 'app-listado-medicos',
@@ -33,11 +31,12 @@ export class ListadoMedicosComponent implements OnInit {
     diasAtencion: new FormControl()
   });
 
-  @ViewChild('content') content:ElementRef;
+  @ViewChild('content', {static: false}) content: MatTable<Medico>;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   
-  constructor( public dialog: MatDialog, public listadoRef: MatDialogRef<ListadoMedicosComponent>) 
+  constructor( public dialog: MatDialog, public listadoRef: MatDialogRef<ListadoMedicosComponent>,
+              private archivos: ArchivosService) 
   {
     // Object to create Filter for
     this.filterSelectObj = [
@@ -104,31 +103,15 @@ export class ListadoMedicosComponent implements OnInit {
     this.dataSource.filter = filtro.especialidad;
   }
 
-  imprimirPDF(listado: Medico[])
+  guardarExcel(): void
   {
-    let content= this.content.nativeElement;  
-    let doc = new jsPDF();  
-    let _elementHandlers =  
-    {  
-      '#editor':function(element,renderer){  
-        return true;  
-      }  
-    };  
-    doc.fromHTML(content.innerHTML,15,15,{  
-  
-      'width':190,  
-      'elementHandlers':_elementHandlers  
-    });  
-  
-    doc.save('test.pdf'); 
+    this.archivos.exportarExcel(this.dataSource.data, "cartilla");
   }
 
-  exportarExcel() {  
-    const workSheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(this.content.nativeElement);  
-    const workBook: XLSX.WorkBook = XLSX.utils.book_new();  
-    XLSX.utils.book_append_sheet(workBook, workSheet, 'Sheet1');  
-    XLSX.writeFile(workBook, 'ScoreSheet.xlsx');  
-  }  
+  guardarPDF(): void
+  {
+    this.archivos.exportarPDF(this.dataSource.data, "cartilla");
+  }
 
   // Called on Filter change
   filterChange(filter, event) {

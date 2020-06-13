@@ -77,6 +77,44 @@ export class Turno
         return turno;
     }
 
+    // Se parsean los dias de atencion de Dias a numero
+    public static ParseDiasNumero(data: any)
+    {
+        Object.values(data).map(elemento => Object.entries(elemento).map(tuple => 
+            {
+                if(tuple[0] == "diasAtencion")
+                {
+        
+                let dias = Array.of(elemento[tuple[0]]);
+                let numeros: any = [];
+                dias = Object.values(dias);
+                dias.forEach(array => array.map(dia => numeros.push(Dia[dia])));
+
+                elemento[tuple[0]] = numeros;
+                }
+            })
+        );
+    }
+
+    // Se parsean los dias de atencion de numero a Dias
+    public static ParseNumeroDias(data: any)
+    {
+        Object.values(data).map(elemento => Object.entries(elemento).map(tuple => 
+            {
+                if(tuple[0] == "diasAtencion")
+                {
+        
+                let numeros = Array.of(elemento[tuple[0]]);
+                let dias: any = [];
+                numeros = Object.values(numeros);
+                numeros.forEach(array => array.map(numero => dias.push(Dia[numero])));
+
+                elemento[tuple[0]] = dias;
+                }
+            })
+        );
+    }
+
   
 }
 
