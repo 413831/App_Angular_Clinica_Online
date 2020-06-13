@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Estado, Turno } from 'src/app/clases/Turno';
+import { Estado, Turno, Dia } from 'src/app/clases/Turno';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { TurnosService } from 'src/app/servicios/servicio-turnos.service';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
@@ -24,7 +24,7 @@ export class ModificarTurnoComponent implements OnInit {
   public turno: Turno;
   public medico: Medico;
   public horarios: string[] = new Array<string>();
-  public dias: number[] = Turno.dias;
+  public dias: Dia[];
   public minDate: Date;
   public maxDate: Date;
   private disabled: boolean;
@@ -36,18 +36,18 @@ export class ModificarTurnoComponent implements OnInit {
               private route: ActivatedRoute, private router: Router,
               private _snackBar: MatSnackBar, private _bottomSheet: MatBottomSheet) 
   {
-    
-  }
-
-  ngOnInit(): void {
     this.usuario = Object.assign(new Usuario, JSON.parse(localStorage.getItem('usuario')));
     // this.turno = <Turno>JSON.parse(localStorage.getItem('nuevoTurno'));
     this.turno = Object.assign(new Turno, JSON.parse(localStorage.getItem('nuevoTurno')));
     this.medico = JSON.parse(localStorage.getItem('medicos'))
                       .filter(medico => medico.id == this.turno.idMedico)
-                      .map(medico => Object.assign(new Medico, medico));
+                      .map(medico => Object.assign(new Medico, medico))[0];
     this.dias = this.medico.diasAtencion;
     this.horarios = this.medico.horasAtencion;
+  }
+
+  ngOnInit(): void {
+   
     
     this.crearFiltros();
     this.crearControles();
@@ -62,8 +62,8 @@ export class ModificarTurnoComponent implements OnInit {
     this.turno.modificado = true;
 
     console.log(this.turno);
-    // this.servicio.actualizar(this.turno)
-    //             .then(()=> this.router.navigate(["/menu"]));
+    this.servicio.actualizar(this.turno)
+                .then(()=> this.router.navigate(["/menu"]));
 
     this._snackBar.openFromComponent(CambioTurnoSnackbarComponent, {
       duration: this.durationInSeconds * 1000, });
@@ -91,8 +91,7 @@ export class ModificarTurnoComponent implements OnInit {
       nombreMedico: new FormControl({value: this.turno.nombreMedico, disabled: true}),
       fecha: new FormControl({value: new Date(this.turno.fecha), disabled: this.disabled}),
       horario: new FormControl({value: this.turno.horario, disabled: this.disabled}),
-      duracion: new FormControl({value: this.turno.duracion, disabled: true},
-                                  Validators.required),
+      duracion: new FormControl({value: this.turno.duracion, disabled: true}),
       especialidad: new FormControl({value: this.turno.especialidad, disabled: true}),
       consultorio: new FormControl({value: this.turno.consultorio, disabled: true}),
       estado: new FormControl({value: this.turno.estado, disabled: true}),

@@ -50,14 +50,14 @@
               </mat-form-field>
             </td>
             <td>
-              <mat-form-field class="example-full-width">
+              <!-- <mat-form-field class="example-full-width">
                 <mat-label>Horario</mat-label>
                 <input matInput formControlName="horario">
-              </mat-form-field> -->
+              </mat-form-field>  -->
 
               <mat-form-field class="turno-field">
                 <mat-label>Horario</mat-label>
-                <mat-select formControlName="horario" >
+                <mat-select formControlName="horario" [disabled]="">
                   <mat-option *ngFor="let horario of horarios" [value]="horario">
                     {{horario}}
                   </mat-option>
