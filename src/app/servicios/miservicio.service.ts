@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import { environment } from '../../environments/environment'
 import { Usuario } from '../clases/Usuario';
+import { Sesion } from '../clases/Sesion';
+import { AppService } from './app.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,7 @@ import { Usuario } from '../clases/Usuario';
 export class MiservicioService {
   public static imgSrc;
   protected database;
-  public inicializado: boolean = false;
+  public inicializado: boolean = false
 
   constructor() 
   {
@@ -36,10 +38,17 @@ export class MiservicioService {
     this.inicializado = true;
   }
 
-  public static iniciarSesion(usuario: Usuario) : Promise<any>
+  public static iniciarSesion(usuario: Usuario, servicio: AppService) : Promise<any>
   {
-    let promesa = new Promise( resolve => localStorage.setItem("usuario", JSON.stringify(usuario)));
+    // Llamar multiples servicios segun el usuario logueado ?
+    let promesa = new Promise( (resolve,reject) => {
+      let sesion = Sesion.CrearSesion( usuario.id, usuario.nombre, new Date().toString());
+      localStorage.setItem("usuario", JSON.stringify(usuario));
 
+      console.log("Inicio de sesion");
+      servicio.cargarLogin(sesion).then(() => resolve(sesion.id) );
+    });
+    
     return promesa;
   }
 
@@ -49,12 +58,14 @@ export class MiservicioService {
     return promesa;
   }
 
-  public static guardarImagen(imagen: string, base64string: string)
+  public static guardarImagen(imagen: string, base64string: string, usuario: string, dni: string)
   {
     // let formData = new FormData();
     // formData.append('image',imagen,imagen.name);
     let metadata = {
-      contentType: 'image/jpeg'
+      contentType: 'image/jpeg',
+      user : usuario,
+      id : dni
     };
     console.log("Guardando imagen");
     return firebase.storage().ref().child('imagenes/'+imagen)

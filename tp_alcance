@@ -29,4 +29,22 @@ ABM
 Se requiere perfiles de usuarios
 JWT
 
+-----------------
+
+Informes
+- Se requiere dias y horarios de ingreso de profesionales :
+Cada profesional podrá ver sus propias estadisticas de cuando ingreso al sistema ( dia x hora de ingreso).
+El administrador podrá ver el de todos los médicos y pacientes seleccionando desde el listado de su menu
+- Cantidad de operaciones por especialidad
+Grafico de barras que muestran cantidad de turnos finalizados por especialidad ( especialidad x cantidad de turnos )
+- Cantidad de turnos por dia de la semana 
+Grafico de barras con cantidad de turnos por cada día de la semana ( dia x cantidad de turnos en sus diferentes estaods )
+- Cantidad de medicos por cantidad de turnos
+Grafico de barras que muestran medicos respecto a la cantidad de turnos para calcular proporcion ( cantidad de medicos por cantidad de turnos )
+- Cantidad de medicos por cantidad de dias
+Proporcion de medicos por cantidad de dias de operaciones realizadas ( cantidad de dias por cantidad de medicos )
+
+Todos los graficos excepto el primero solo serán vistos por un administrador
+
+
 

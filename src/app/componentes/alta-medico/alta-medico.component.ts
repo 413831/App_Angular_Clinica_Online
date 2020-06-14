@@ -66,8 +66,10 @@ export class AltaMedicoComponent implements OnInit {
                                     `imagenes/${this.imagen1.nombre}`, this.matricula.value, 0, 
                                     this.diasAtencion.value, this.horasAtencion.value,
                                      this.especialidad.value, `imagenes/${this.imagen1.nombre}`,'');
-    MiservicioService.guardarImagen(this.imagen1.nombre, this.imagen1.base64);
-    MiservicioService.guardarImagen(this.imagen2.nombre, this.imagen2.base64);
+      MiservicioService.guardarImagen(this.imagen1.nombre, this.imagen1.base64, 
+                                      this.nombre.value,this.dni.value);
+      MiservicioService.guardarImagen(this.imagen2.nombre, this.imagen2.base64,
+                                      this.nombre.value, this.dni.value);
     
     console.log(medico);
     this.servicio.crear(medico);

@@ -20,10 +20,10 @@ export class ServicioHistoriasService extends MiservicioService{
   public crear(historia): Promise<any>
   {
     return database().ref('historias')
-              .push()
-              .then((snapshot) => historia.id = snapshot.key)
-              .then(() => this.actualizar(historia))
-              .catch(() => console.info("No se pudo realizar alta"));
+                    .push()
+                    .then((snapshot) => historia.id = snapshot.key)
+                    .then(() => this.actualizar(historia))
+                    .catch(() => console.info("No se pudo realizar alta"));
   }
 
   public actualizar(historia): Promise<any>

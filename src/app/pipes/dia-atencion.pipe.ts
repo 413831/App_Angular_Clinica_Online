@@ -6,7 +6,7 @@ import { Dia } from '../clases/Turno';
 })
 export class DiaAtencionPipe implements PipeTransform {
 
-  transform(value: number, ...args: unknown[]): unknown {
+  transform(value: number, ...args: unknown[]): string {
     return Dia[value];
   }
 

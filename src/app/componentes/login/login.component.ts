@@ -12,6 +12,7 @@ import { Paciente } from 'src/app/clases/Paciente';
 import { Dia } from 'src/app/clases/Turno';
 import { environment } from '../../../environments/environment';
 import { AppService } from 'src/app/servicios/app.service';
+import { Sesion } from 'src/app/clases/Sesion';
 
 @Component({
   selector: 'app-login',
@@ -34,9 +35,10 @@ export class LoginComponent implements OnInit {
   admin: Array<Usuario>;
 
   constructor(private captchaService: AppService, private servicioPacientes: PacientesService,
-    private servicioMedicos: MedicosService,
-    private servicioAdmin: AdministradoresService,
-    private route: ActivatedRoute, private router: Router) 
+              private servicioMedicos: MedicosService,
+              private servicioAdmin: AdministradoresService,
+              private route: ActivatedRoute, private router: Router,
+              public servicioLogin: AppService) 
   {
     this.usuario = new Usuario();
     this.datosLogin = new FormGroup({
@@ -49,14 +51,10 @@ export class LoginComponent implements OnInit {
     // Traer al administrador tambien
     this.medicos = JSON.parse(localStorage.getItem('medicos'))
                                           .map(data => Object.assign(new Medico, data));
-    // this.medicos = this.servicioMedicos.leer();
-    // this.pacientes = this.servicioPacientes.leer();
     this.pacientes = JSON.parse(localStorage.getItem('pacientes'))
-                                            .map(data => Object.assign(new Paciente, data));
-                  
+                                            .map(data => Object.assign(new Paciente, data));                  
     this.admin = JSON.parse(localStorage.getItem('administradores'))
                                         .map(data => Object.assign(new Administrador, data));
-
     // Hardcode para testing
     this.initTest();
   }
@@ -70,20 +68,19 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    MiservicioService.cerrarSesion();
+    //MiservicioService.cerrarSesion();
     // Implementar JWT
     let usuarios: Array<Usuario> = new Array<Usuario>();
     usuarios = usuarios.concat(this.medicos).concat(this.pacientes).concat(this.admin);
 
-    console.log(usuarios);
-
+    // Se busca que existe el usuario
     this.usuario = usuarios.find((usuario) => usuario.email === this.email.value &&
                                   usuario.clave === this.clave.value);
+    
     if (this.usuario)
     {
-      console.info("Login");
-      MiservicioService.iniciarSesion(this.usuario);
-      this.router.navigate(["home"]);
+      MiservicioService.iniciarSesion(this.usuario, this.servicioLogin)
+                      .then(() => this.router.navigate(["home"]));
     }
   }
 

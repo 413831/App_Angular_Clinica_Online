@@ -53,8 +53,10 @@ export class AltaPacienteComponent implements OnInit {
                                           this.direccion.value,this.email.value, this.telefono.value,
                                           `imagenes/${this.imagen1.nombre}`, this.obraSocial.value, 
                                           this.numeroAfiliado.value, `imagenes/${this.imagen2.nombre}`,'');
-    MiservicioService.guardarImagen(this.imagen1.nombre, this.imagen1.base64);
-    MiservicioService.guardarImagen(this.imagen2.nombre, this.imagen2.base64);
+    MiservicioService.guardarImagen(this.imagen1.nombre, this.imagen1.base64, 
+                                    this.nombre.value,this.dni.value);
+    MiservicioService.guardarImagen(this.imagen2.nombre, this.imagen2.base64,
+                                    this.nombre.value, this.dni.value);
 
     console.log(paciente);
     this.servicio.crear(paciente);
