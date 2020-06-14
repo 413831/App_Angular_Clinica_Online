@@ -30,7 +30,6 @@ export class InformesComponent implements OnInit {
    valoresHoras : Valor;
    labelsEspecialidades: string[] = [];
 
-
    data = [{
       name: 'Turnos',
       data: [15, 20, 10, 30, 17, 10]
@@ -54,12 +53,7 @@ export class InformesComponent implements OnInit {
          ///
          this.turnos = (JSON.parse(localStorage.getItem('turnos')))
                              .map(turno => Object.assign(new Turno, turno));
-         this.turnos.forEach(turno => {
-            if(!this.labelsEspecialidades.includes(turno.especialidad))
-            {
-               this.labelsEspecialidades.push(turno.especialidad);
-            }
-         });
+        
          
          this.crearGraficos();
      }
@@ -117,18 +111,32 @@ export class InformesComponent implements OnInit {
 
   ordenarDias(diaA : Sesion, diaB: Sesion)
   {
-        if(new Date(diaA.fechaInicio).getDay() > new Date(diaB.fechaInicio).getDay())
-        {
-            return 1;
-        }
-        else if(new Date(diaA.fechaInicio).getDay() < new Date(diaB.fechaInicio).getDay())
-        {
-            return -1;
-        }
-        else
-        {
-            return 0;
-        }
+      if(new Date(diaA.fechaInicio).getDay() > new Date(diaB.fechaInicio).getDay())
+      {
+         return 1;
+      }
+      else if(new Date(diaA.fechaInicio).getDay() < new Date(diaB.fechaInicio).getDay())
+      {
+         return -1;
+      }
+      else
+      {
+         return 0;
+      }
+  }
+
+  calcularOperaciones()
+  {
+   // Obtengo las diferentes especialidades para mostrar
+   this.turnos.forEach(turno => {
+      if(!this.labelsEspecialidades.includes(turno.especialidad))
+      {
+         this.labelsEspecialidades.push(turno.especialidad);
+      }
+   });
+
+
+
   }
    
     

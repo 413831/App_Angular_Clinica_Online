@@ -1,5 +1,5 @@
-<div class="mat-elevation-z8">
-    <mat-table [dataSource]="dataTurnos" class="frame" >
+<div class="mat-elevation-z8 frame">
+    <mat-table [dataSource]="dataTurnos" >
 
         <ng-container matColumnDef="especialidad">
             <mat-header-cell *matHeaderCellDef> Especialidad </mat-header-cell>
@@ -20,6 +20,6 @@
         <mat-row (click)="seleccionarTurno(row)" class="example-element-row"
             *matRowDef="let row; columns: columnasTurnos;"></mat-row>
     </mat-table>
-    <mat-paginator [length]="100" [pageSize]="4" showFirstLastButtons>
-    </mat-paginator>
+        <mat-paginator [length]="100" [pageSize]='pages' showFirstLastButtons>
+        </mat-paginator>
 </div>

@@ -19,6 +19,8 @@ mat-paginator {
 
 }
 
+
+
 mat-row:hover{
     background-color: lightsteelblue;
     color: black;

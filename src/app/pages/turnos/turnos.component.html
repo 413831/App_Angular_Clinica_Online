@@ -1,34 +1,45 @@
-
-<div *ngIf="usuario">
-<div class="page" >
+<div class="page">
   <div class="titulos">
-    <h1 >Turnos</h1>
+    <h1>Turnos</h1>
   </div>
-  <hr>
+  <div *ngIf="usuario">
+    <hr>
 
-  <form >
-   
+    <div>
+      <h3><p class="parrafo">Listado con buscador de turnos</p></h3>
+    </div>
 
-      <div class="form-group">
-        <mat-form-field appearance="fill">
-          <mat-label>Buscar por campo</mat-label>
-          <input [(ngModel)]="campo" name="campo" matInput>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-          <mat-label>Buscar valor</mat-label>
-          <input [(ngModel)]="valor" name="valor" matInput>
-        </mat-form-field>
-      </div>
-     
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Buscar por campo</mat-label>
+        <input [(ngModel)]="campo" name="campo" matInput>
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Buscar valor</mat-label>
+        <input [(ngModel)]="valor" name="valor" matInput>
+      </mat-form-field>
       <button mat-raised-button color="primary" (click)='filtrar()'>Filtrar</button>
-  </form>
+    </div>
 
-  <div>
-    <p class="parrafo">Listado con buscador de turnos</p>
-        <div  *ngFor="let turno of turnos">        
-          <app-detalle-turno class="cards" [turno]='turno'></app-detalle-turno>
+
+      <div class="layout">
+        <div class="tabla">
+       
+    
+          <app-listado-turnos [turnos]='turnos' [pages]=6 (seleccionar)='seleccionarTurno($event)'></app-listado-turnos>
+
         </div>
+
+        <div *ngIf="turno" class="cards">
+
+          <app-detalle-turno [turno]="turno"></app-detalle-turno>
+
+        </div>
+      </div>
+
+
   </div>
-</div>
+
+
 </div>

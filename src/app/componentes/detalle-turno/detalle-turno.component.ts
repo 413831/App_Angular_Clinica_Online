@@ -8,12 +8,22 @@ import { Turno } from 'src/app/clases/Turno';
 })
 export class DetalleTurnoComponent implements OnInit {
   @Input() turno:Turno;
+  privados = ["modificado","id","idPaciente","idMedico","comentarios","detalle"];
+  atributos: any ;
+
   constructor() 
-  {
-    console.log(this.turno);
-   }
+  { 
+   
+  }
 
   ngOnInit(): void {
+    if(this.turno)
+    {
+      this.atributos = Object.entries(this.turno).filter(tuple => {
+        return !this.privados.includes(tuple[0]);
+      });
+      console.log(this.atributos);
+    }
   }
 
 }

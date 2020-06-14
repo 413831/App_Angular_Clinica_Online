@@ -1,19 +1,18 @@
-<mat-card class="example-card">
+<mat-card class="example-card mat-elevation-z8">
+    <div class="example-content">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>{{turno.especialidad}}</mat-card-title>
       <mat-card-subtitle>Consultorio: {{turno.consultorio}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-        <ul>
-            <li>Fecha: {{turno.fecha}}</li>
-            <li>Usted se atenderá con: {{turno.nombreMedico}}</li>
-            <li>Detalles: {{turno.detalle}}</li>
-            <li>Estado de su turno: {{turno.estado}}</li>
-        </ul>
-    </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions class="example-content">
+      <button mat-stroked-button>Modificar</button>
       <button mat-stroked-button>Modificar</button>
     </mat-card-actions>
+    </div>
+    <mat-card-content class="example-content">
+        <ul *ngFor="let atributo of atributos">
+          <li> <strong>{{atributo[0]}}</strong> : {{atributo[1]}}</li>
+        </ul>
+    </mat-card-content>
   </mat-card>

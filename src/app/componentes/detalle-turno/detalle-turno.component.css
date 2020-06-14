@@ -1,8 +1,10 @@
 .example-card {
-    max-width: 400px;
+    display: flex;
+    flex-flow: row wrap;
+    text-align: justify;
     background-color: #E6E6FA;  
-    padding-bottom: 35px;
-    margin: 30px;
+    margin: 25px 50px 0 50px;
+    width: 700px;
   }
   
 .example-header-image {
@@ -12,8 +14,11 @@
 
 .example-content
 {
+    display: flexbox;
+    flex-flow: wrap row;
+    justify-content: space-evenly;
     padding: 5px;
     margin-top: 10px;
-   
+    max-height: 300px;
 }
 

@@ -10,6 +10,7 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class ListadoTurnosComponent implements OnInit {
   @Input() turnos: any;
+  @Input() pages: number;
   @Output() seleccionar: EventEmitter<Turno> = new EventEmitter<Turno>();
   public dataTurnos;
   columnasTurnos: string[] = ['especialidad', 'estado' ,'fecha'];
