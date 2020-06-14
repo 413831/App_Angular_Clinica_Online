@@ -73,13 +73,14 @@
         </mat-toolbar> 
         <mat-toolbar>
             <div class="botones" *ngIf='administrador'>
+                <button mat-raised-button color="primary" (click)="verInformes()">Informes</button>
                 <button mat-raised-button color="primary" (click)="autorizar()">Autorizar</button>
-                <button mat-raised-button color="primary" (click)="listarMedicos()">Ver Medicos</button>
-                <button mat-raised-button color="primary" (click)="listarPacientes()">Ver Pacientes</button>
+                <button mat-raised-button color="default" (click)="listarMedicos()">Ver Medicos</button>
+                <button mat-raised-button color="default" (click)="listarPacientes()">Ver Pacientes</button>
             </div>
             <div class="botones" *ngIf="turno">
                 <button *ngIf="paciente && turno.estado == 'Atendido'" mat-raised-button color='primary'  (click)="realizarEncuesta()">Realizar encuesta</button>
-                <button *ngIf="medico && turno.estado == 'Atendido'" mat-raised-button color='primary'  (click)="guardarHistoria()">Guardar historia</button>
+                <button *ngIf="medico && turno.estado == 'Atendido'" mat-raised-button color='primary'  (click)="editarHistoria()">Guardar historia</button>
                 <button mat-raised-button class="default" (click)="modificarTurno()">Detalles turno</button>
             </div>
             <div class="botones">

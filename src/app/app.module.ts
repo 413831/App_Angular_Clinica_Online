@@ -5,6 +5,8 @@ import { AgmCoreModule } from '@agm/core';
 import {ApplicationModule } from '@angular/core'; 
 import { HttpClientModule } from '@angular/common/http';
 import { RECAPTCHA_SETTINGS, RecaptchaSettings,RecaptchaModule } from 'ng-recaptcha';
+import { HighchartsChartModule } from 'highcharts-angular';
+
 import { environment } from '../environments/environment';
 
 // Routing
@@ -148,7 +150,7 @@ import { SecureInnerPagesGuard } from './auth/secure-inner-pages.guard';
     AltaHistoriaComponent,
     FechaPipe,
     DialogDatoComponent,
-    InformesComponent
+    InformesComponent,
   ],
   imports: [
     ApplicationModule,
@@ -191,6 +193,7 @@ import { SecureInnerPagesGuard } from './auth/secure-inner-pages.guard';
     MatPaginatorModule,
     MatMenuModule,
     RecaptchaModule,
+    HighchartsChartModule,
     AgmCoreModule.forRoot({
       apiKey: environment.agmKey
     }), 

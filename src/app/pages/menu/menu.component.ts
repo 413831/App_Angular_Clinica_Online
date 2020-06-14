@@ -28,9 +28,9 @@ export class MenuComponent implements OnInit {
   public dataMedicos;
   public dataPacientes;
   public dataTurnos;
-  public turnosCancelados: Turno[];
-  public turnosAceptados: Turno[];
-  public turnosFinalizados: Turno[];
+  public turnosCancelados: Turno[] = [];
+  public turnosAceptados: Turno[] = [];
+  public turnosFinalizados: Turno[] = [];
   columnasMedicos: string[] = ['nombre', 'matricula'];
   columnasPacientes: string[] = ['nombre', 'afiliado'];
   columnasTurnos: string[] = ['especialidad', 'estado' ,'fecha'];
@@ -45,8 +45,8 @@ export class MenuComponent implements OnInit {
   public imgAvatar: string;
   public turno: Turno | null;
   public turnos: Turno[];
-  public listadoMedicos: Medico[];
-  public listadoPacientes: Paciente[];
+  public listadoMedicos: Medico[] = [];
+  public listadoPacientes: Paciente[] = [];
   public mostrarPacientes: boolean = false;
   public mostrarMedicos: boolean = true;
 
@@ -65,11 +65,13 @@ export class MenuComponent implements OnInit {
     {
       this.usuario = Object.assign(new Usuario, this.usuario);
       this.obtenerPerfil(); 
-      this.obtenerTurnos();
-      this.turnosAceptados = this.turnos.filter(turno => turno.estado == Estado.Aceptado);
-      this.turnosFinalizados = this.turnos.filter(turno => turno.estado == Estado.Atendido);
-      this.turnosCancelados = this.turnos.filter(turno => turno.estado == Estado.Cancelado);
-      
+      if(this.usuario.rol != Rol.Administrador)
+      {
+        this.obtenerTurnos();
+        this.turnosAceptados = this.turnos.filter(turno => turno.estado == Estado.Aceptado);
+        this.turnosFinalizados = this.turnos.filter(turno => turno.estado == Estado.Atendido);
+        this.turnosCancelados = this.turnos.filter(turno => turno.estado == Estado.Cancelado);
+      }
     }
   }
 
@@ -272,10 +274,15 @@ export class MenuComponent implements OnInit {
     this.router.navigate(["/encuesta"]);
   }
 
-  guardarHistoria()
+  editarHistoria()
   {
     localStorage.setItem('turno-terminado',JSON.stringify(this.turno));
     this.router.navigate(["/historia"]);
+  }
+
+  verInformes()
+  {
+    this.router.navigate(["/informes"]);
   }
 
 }
