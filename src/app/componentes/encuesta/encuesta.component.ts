@@ -6,6 +6,8 @@ import { Encuesta } from 'src/app/clases/Encuesta';
 import { Turno } from 'src/app/clases/Turno';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ServicioEncuestasService } from 'src/app/servicios/servicio-encuestas.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { NotificacionComponent } from '../notificacion/notificacion.component';
 
 @Component({
   selector: 'app-encuesta',
@@ -28,7 +30,8 @@ export class EncuestaComponent implements OnInit {
   educacion: string[] = ["Primaria", "Secundaria", "Terciaria", "Universitaria"];
 
   constructor(private route : ActivatedRoute, private router: Router,
-               private servicio: ServicioEncuestasService) 
+               private servicio: ServicioEncuestasService,
+               private _snackBar: MatSnackBar) 
   {
     this.usuario = Object.assign(new Usuario, 
                                   JSON.parse(localStorage.getItem('usuario')));  
@@ -37,6 +40,8 @@ export class EncuestaComponent implements OnInit {
     this.encuesta.nombre = this.usuario.nombre;
     this.encuesta.especialidad = this.turno.especialidad;
     this.encuesta.fechaAtencion = this.turno.fecha;
+    this.encuesta.idPaciente = this.usuario.id;
+    this.encuesta.idTurno = this.turno.id;
 
   }
 
@@ -45,9 +50,14 @@ export class EncuestaComponent implements OnInit {
   }
 
   guardar()
-  {    
-    console.log(this.encuesta);
-    this.servicio.crear(this.encuesta);
+  { 
+    this.servicio.crear(this.encuesta)
+                  .then(()=> this.router.navigate(["/menu"]));
+    this._snackBar.openFromComponent(NotificacionComponent, {
+      duration: 3 * 1000,
+      data: 'Muchas gracias por completar la encuesta'
+    });
+    
   }
 
 }

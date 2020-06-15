@@ -19,6 +19,7 @@ export class DialogMedicoComponent implements OnInit {
   private turno: Turno;
   public usuario: Usuario;
   imgSrc: string;
+  avatarSrc: string;
   datosCompletos: Boolean = false;
 
   constructor( public dialogRef: MatDialogRef<DialogMedicoComponent>,
@@ -34,7 +35,9 @@ export class DialogMedicoComponent implements OnInit {
   {
     console.log(`URL Imagen: ${this.medico.imagen}`);
     MiservicioService.descargarImagen(this.medico.imagen)
-                      .then( ()=> this.imgSrc = MiservicioService.imgSrc);    
+                      .then( ()=> this.imgSrc = MiservicioService.imgSrc);
+    MiservicioService.descargarImagen(this.medico.avatar)
+                      .then( ()=> this.avatarSrc = MiservicioService.imgSrc);      
     this.turno = new Turno();
   }
 

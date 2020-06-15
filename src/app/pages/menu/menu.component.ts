@@ -242,21 +242,6 @@ export class MenuComponent implements OnInit {
 
   }
 
-  // autorizar()
-  // {
-  //   this.medicoAutorizar.autorizado = true;
-  //   this.medicoAutorizar.consultorio = Math.floor(Math.random() * 6) + 1; 
-  //   //Aca se tiene que mostrar los datos del medico
-  //   //Tambien un boton para cambiar el estado de autorizado
-  //   this.medicosService.actualizar(this.medicoAutorizar);
-  //   this._snackBar.openFromComponent(NotificacionComponent, {
-  //     duration: this.durationInSeconds * 1000,
-  //     data: `Medico ${this.medicoAutorizar.nombre} - 
-  //             ${this.medicoAutorizar.matricula} autorizado.`
-  //   });
-    
-  // }
-
   seleccionarMedico(medico: Medico)
   {
     // this.medicoAutorizar = medico; 

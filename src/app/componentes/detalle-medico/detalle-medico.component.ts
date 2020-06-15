@@ -10,7 +10,6 @@ export class DetalleMedicoComponent implements OnInit {
   @Input() imgPerfil: string;
   @Input() imgAvatar: string;
   @Input() medico: Medico;
-  imgSrc: string;
 
   constructor() { }
 

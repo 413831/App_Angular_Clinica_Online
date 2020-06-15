@@ -1,12 +1,13 @@
 <mat-card class="panel">
   <mat-card-header>
+    <img mat-card-avatar [src]='avatarSrc' >
     <mat-card-title>{{medico.nombre}}</mat-card-title>
     <mat-card-subtitle>Matricula N°: {{medico.matricula}}</mat-card-subtitle>
 
   </mat-card-header>
   <mat-card-content>
     <div class="panel">
-      <img class="thumbnail" mat-card-image [src]='imgSrc' alt="Foto del medico">
+      <img class='thumbnail' mat-card-image [src]='imgSrc' alt="Foto del medico">
     </div>
     <mat-accordion>
       <mat-expansion-panel>
@@ -61,9 +62,13 @@
         </mat-expansion-panel-header>
         <mat-list>
           <mat-list-item> Autorizado: {{medico.autorizado}} </mat-list-item>
+          <mat-divider></mat-divider>
           <mat-list-item> D.N.I.: {{medico.dni}} </mat-list-item>
+          <mat-divider></mat-divider>
           <mat-list-item> Direccion: {{medico.direccion}} </mat-list-item>
+          <mat-divider></mat-divider>
           <mat-list-item> Teléfono : {{medico.telefono}} </mat-list-item>
+          <mat-divider></mat-divider>
           <mat-list-item> E-mail {{medico.email}} </mat-list-item>
         </mat-list>
       </mat-expansion-panel>

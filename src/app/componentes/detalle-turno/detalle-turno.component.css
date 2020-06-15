@@ -18,7 +18,7 @@
     flex-flow: wrap row;
     justify-content: space-evenly;
     align-content: center;
-    padding: 20px;
+    padding: 10px;
     margin-top: 10px;
     max-height: 300px;
 }
@@ -26,3 +26,21 @@
 mat-chip {
     max-width: 250px;
   }
+
+
+.button-group
+{
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-between;
+    align-content: center;
+    padding: 5px;
+    max-height: 300px;
+    margin-bottom: 0;
+}
+ .button-group > button
+{
+    margin-top: 10px;
+    max-height: 300px;
+    width: max-content;
+}

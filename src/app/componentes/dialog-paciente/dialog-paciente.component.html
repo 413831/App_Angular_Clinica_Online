@@ -1,24 +1,32 @@
-<mat-card>
+<mat-card class="panel">
     <mat-card-header>
-        <mat-card-title>{{paciente.nombre}}</mat-card-title>
-        <mat-card-subtitle>N° Afiliado: {{paciente.obraSocial}}</mat-card-subtitle>
-        <mat-card-subtitle>N° Afiliado: {{paciente.numeroAfiliado}}</mat-card-subtitle>
+    <img mat-card-avatar [src]='avatarSrc' >
+      <mat-card-title>{{paciente.nombre}}</mat-card-title>
+      <mat-card-subtitle>N° Afiliado: {{paciente.numeroAfiliado}}</mat-card-subtitle>
+  
     </mat-card-header>
     <mat-card-content>
-        <div class="panel">
-            <img class="thumbnail" mat-card-image [src]='imgSrc' alt="Foto del paciente">
-        </div>
-            <mat-panel-title>
-                Datos personales
-            </mat-panel-title>
-        <div>
-            <mat-label>Dni: {{paciente.dni}}</mat-label><br>
-            <mat-label>Dirección: {{paciente.direccion}}</mat-label><br>
-            <mat-label>Telefono: {{paciente.telefono}}</mat-label><br>
-            <mat-label>E-mail: {{paciente.email}}</mat-label><br>
-        </div>
+      <div class="panel">
+        <img class='thumbnail' mat-card-image [src]='imgSrc' alt="Foto del paciente">
+      </div>
+
+      <mat-list>
+        <mat-list-item> D.N.I.: {{paciente.dni}} </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item> Direccion: {{paciente.direccion}} </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item> Teléfono : {{paciente.telefono}} </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item> E-mail {{paciente.email}} </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+
     </mat-card-content>
     <mat-card-actions>
+        <button *ngIf="usuario.id == paciente.id || usuario.rol != 3" mat-stroked-button 
+                (click)='verHistoria()'>
+            Ver historia
+        </button>
         <button mat-stroked-button (click)='this.dialogRef.close()'>Volver</button>
     </mat-card-actions>
-</mat-card>
+  </mat-card>

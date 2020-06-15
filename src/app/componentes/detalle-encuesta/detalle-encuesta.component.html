@@ -1,0 +1,66 @@
+<div class="page">
+    <h2 mat-dialog-title>Encuesta</h2>
+    <mat-dialog-content class="mat-typography">
+        <div *ngIf="encuesta.nombre">
+            <h3>Nombre</h3>
+            <mat-divider></mat-divider>
+            <p>{{encuesta.nombre}}</p>
+        </div>
+        <div *ngIf="encuesta.edad > 0">
+            <h3>Edad</h3>
+            <mat-divider></mat-divider>
+            <p>{{encuesta.edad}}</p>
+        </div>
+        <div *ngIf="encuesta.sexo">
+            <h3>Sexo</h3>
+            <mat-divider></mat-divider>
+            <p>{{encuesta.sexo}}</p>
+        </div>
+        <div *ngIf="encuesta.fechaAtencion">
+            <h3>Fecha de atencion</h3>
+            <mat-divider></mat-divider>
+            <p>{{encuesta.fechaAtencion}}</p>
+        </div>
+        <div *ngIf="encuesta.especialidad">
+            <h3>Especialidad</h3>
+            <mat-divider></mat-divider>
+            <p>{{encuesta.especialidad}}</p>
+        </div>
+        <div>
+            <h3>Fue su primera atencion</h3>
+            <mat-divider></mat-divider>
+            <p>{{encuesta.primeraAtencion}}</p>
+        </div>
+        <div>
+            <h3>Nivel de satisfaccion</h3>
+            <mat-divider></mat-divider>
+            <p>{{encuesta.satisfaccion}}</p>
+        </div>
+        <div>
+            <h3>Frecuencia de atención del último mes</h3>
+            <mat-divider></mat-divider>
+            <p>{{encuesta.frecuenciaAtencion}}</p>
+        </div>
+        <div>
+            <h3>Recomendaría</h3>
+            <mat-divider></mat-divider>
+            <p>{{encuesta.recomienda}}</p>
+        </div>
+        <div *ngIf="encuesta.medioComunicacion">
+            <h3>Medio de comunicacion</h3>
+            <mat-divider></mat-divider>
+            <p>{{encuesta.medioComunicacion}}</p>
+        </div>
+        <div *ngIf="encuesta.educacion">
+            <h3>Nivel de educacion</h3>
+            <mat-divider></mat-divider>
+            <p>{{encuesta.educacion}}</p>
+        </div>
+
+
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cerrar</button>
+    </mat-dialog-actions>
+</div>

@@ -19,6 +19,10 @@ export class TurnosComponent implements OnInit {
 
   constructor() 
   { 
+    
+  }
+
+  ngOnInit(): void {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
     if(this.usuario)
     {
@@ -26,10 +30,6 @@ export class TurnosComponent implements OnInit {
       //  Agregar validacion para llamar al servicio
       this.obtenerTurnos();
     }
-  }
-
-  ngOnInit(): void {
-    
     
   }
 
@@ -59,7 +59,11 @@ export class TurnosComponent implements OnInit {
         this.turnos = (JSON.parse(localStorage.getItem('turnos'))
                       .filter( turno => this.usuario.id == turno.idPaciente))
                       .map( turno => Object.assign(new Turno, turno));
-        break;                 
+        break;
+      case Rol.Administrador:
+          this.turnos = (JSON.parse(localStorage.getItem('turnos')))
+                        .map( turno => Object.assign(new Turno, turno));
+          break;
     }
   }
 

@@ -101,6 +101,7 @@ import { BooleanoPipe } from './pipes/booleano.pipe';
 import { FechaPipe } from './pipes/fecha.pipe';
 import { DiasPipe } from './pipes/dias.pipe';
 import { DiaAtencionPipe } from './pipes/dia-atencion.pipe';
+import { DetalleEncuestaComponent } from './componentes/detalle-encuesta/detalle-encuesta.component';
 
 @NgModule({
   declarations: [
@@ -148,6 +149,7 @@ import { DiaAtencionPipe } from './pipes/dia-atencion.pipe';
     DialogDatoComponent,
     InformesComponent,
     NotificacionComponent,
+    DetalleEncuestaComponent,
   ],
   imports: [
     ApplicationModule,
