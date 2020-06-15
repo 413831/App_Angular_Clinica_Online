@@ -5,13 +5,13 @@ import { TurnosService } from 'src/app/servicios/servicio-turnos.service';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { Usuario, Rol } from 'src/app/clases/Usuario';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CambioTurnoSnackbarComponent } from '../cambio-turno-snackbar/cambio-turno-snackbar.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatBottomSheet, MatBottomSheetConfig } from '@angular/material/bottom-sheet';
 import { InfoTurnoComponent } from '../info-turno/info-turno.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogExtrasComponent } from '../dialog-extras/dialog-extras.component';
 import { Medico } from 'src/app/clases/Medico';
+import { NotificacionComponent } from '../notificacion/notificacion.component';
 
 @Component({
   selector: 'app-modificar-turno',
@@ -65,8 +65,10 @@ export class ModificarTurnoComponent implements OnInit {
     this.servicio.actualizar(this.turno)
                 .then(()=> this.router.navigate(["/menu"]));
 
-    this._snackBar.openFromComponent(CambioTurnoSnackbarComponent, {
-      duration: this.durationInSeconds * 1000, });
+    this._snackBar.openFromComponent(NotificacionComponent, {
+      duration: this.durationInSeconds * 1000,
+      data: "Se modificó el turno exitosamente."
+    });
   }
 
   verDetalles()

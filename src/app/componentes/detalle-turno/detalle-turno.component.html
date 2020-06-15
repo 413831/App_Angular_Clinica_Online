@@ -1,18 +1,41 @@
 <mat-card class="example-card mat-elevation-z8">
     <div class="example-content">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
+      <img mat-card-avatar [src]='imgSrc' >
       <mat-card-title>{{turno.especialidad}}</mat-card-title>
       <mat-card-subtitle>Consultorio: {{turno.consultorio}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-actions class="example-content">
-      <button mat-stroked-button>Modificar</button>
-      <button mat-stroked-button>Modificar</button>
+      <button mat-stroked-button (click)="modificar()">Modificar</button>
+      <button mat-stroked-button (click)="verDetalles()">Detalles</button>
     </mat-card-actions>
     </div>
     <mat-card-content class="example-content">
-        <ul *ngFor="let atributo of atributos">
-          <li> <strong>{{atributo[0]}}</strong> : {{atributo[1]}}</li>
-        </ul>
+        
+      <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+        <mat-chip color="primary">
+          <strong>Estado</strong> : {{turno.estado}}
+        </mat-chip>
+        <mat-chip   color="primary">
+          <strong>Fecha</strong> : {{turno.fecha}} - {{turno.horario}} 
+        </mat-chip>
+        <mat-chip   color="primary">
+          <strong>Profesional</strong> : {{turno.nombreMedico}}
+        </mat-chip>
+      </mat-chip-list>
+        <br>
+
+
+
+    </mat-card-content>
+    <mat-card-content class="example-content">
+
+      <button mat-stroked-button [matMenuTriggerFor]="aboveMenu">Datos adicionales</button>
+      <mat-menu #aboveMenu="matMenu" yPosition="below" xPosition="after" >
+        <mat-label *ngFor="let atributo of atributos" mat-menu-item> 
+          <mat-icon aria-hidden="false" aria-label="label-icon">label</mat-icon>
+            <strong>{{atributo[0]}} : {{atributo[1]}}</strong>
+        </mat-label>
+      </mat-menu>
     </mat-card-content>
   </mat-card>

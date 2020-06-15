@@ -66,7 +66,7 @@
         </mat-form-field>
         <br>
         <!-- Datos extras -->
-        <button *ngIf="datosExtras"  mat-stroked-button [matMenuTriggerFor]="aboveMenu"> <h2> Datos adicionales</h2></button>
+        <button *ngIf="datosExtras"  mat-stroked-button [matMenuTriggerFor]="aboveMenu"><h2> Datos adicionales</h2></button>
             <mat-menu #aboveMenu="matMenu" yPosition="above">
                
                 <mat-label (click)="seleccionar(extra)" *ngFor="let extra of extras" mat-menu-item> 

@@ -73,7 +73,7 @@
         </mat-toolbar> 
         <mat-toolbar>
             <div class="botones" *ngIf='administrador'>
-                <button mat-raised-button color="primary" (click)="autorizar()">Autorizar</button>
+                <button *ngIf="medicoAutorizar"  mat-raised-button color="primary" (click)="autorizar()">Autorizar</button>
                 <button mat-raised-button color="default" (click)="listarMedicos()">Ver Medicos</button>
                 <button mat-raised-button color="default" (click)="listarPacientes()">Ver Pacientes</button>
             </div>

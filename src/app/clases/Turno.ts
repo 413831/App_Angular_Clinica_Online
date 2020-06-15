@@ -35,18 +35,24 @@ export class Turno
     public horario: string;
     public consultorio: number;
     public especialidad: Especialidad; 
+    public modificado: boolean = false;
     public static horarios: string[] = ["8:00", "8:30" , "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", 
                                         "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00",
                                         "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30"];
     public static dias: Dia[] = [Dia.Lunes, Dia.Martes, Dia.Miercoles, Dia.Jueves, Dia.Viernes, Dia.Sabado];
-    public modificado: boolean = false;
+    public static atributosNativos : string[] = ['id','detalle','comentarios','idPaciente','idMedico',
+                                                    'nombrePaciente','nombreMedico','duracion', 'estado',
+                                                    'fecha','horario','consultorio','especialidad',
+                                                    'modificado'];
 
     public static CrearTurno(nombrePaciente: string, nombreMedico: string, fecha: string, horario: string,
                                 duracion: number, especialidad: Especialidad, consultorio: number,
                                 detalle: string, estado: Estado, idPaciente: string, idMedico: string,
-                                id: string, modificado?: boolean, comentarios?: string ): Turno
+                                id: string, modificado?: boolean, comentarios?: string,...atributos): Turno
     {
-        let turno = new Turno();
+        let turno = new Turno();   
+        let extras = atributos.map( data => Object.entries(data)
+                                            .filter(atributo => !this.atributosNativos.includes(atributo[0])))[0];
 
         turno.nombrePaciente = nombrePaciente;
         turno.nombreMedico = nombreMedico;
@@ -62,7 +68,9 @@ export class Turno
         turno.idPaciente = idPaciente;
         turno.idMedico = idMedico;
         turno.modificado = modificado;
+        extras.forEach( atributo => this.AgregarDato(turno, atributo[0], atributo[1]));
 
+        console.log(turno);
         return turno;
     }
 

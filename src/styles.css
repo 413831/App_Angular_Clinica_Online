@@ -54,7 +54,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #F8F8FF;
+    /* background-color: #F8F8FF; */
+    background-color: transparent;
 }
 
 .dialog{

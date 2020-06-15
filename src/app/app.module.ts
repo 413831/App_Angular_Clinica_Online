@@ -83,25 +83,24 @@ import { DetalleMedicoComponent } from './componentes/detalle-medico/detalle-med
 import { AltaAdminComponent } from './componentes/alta-admin/alta-admin.component';
 import { DialogPacienteComponent } from './componentes/dialog-paciente/dialog-paciente.component';
 import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
-import { DiaAtencionPipe } from './pipes/dia-atencion.pipe';
 import { ToolbarComponent } from './componentes/shared/toolbar/toolbar.component';
-import { DiasPipe } from './pipes/dias.pipe';
 import { ModificarTurnoComponent } from './componentes/modificar-turno/modificar-turno.component';
-import { AutorizadoSnackbarComponent } from './componentes/autorizado-snackbar/autorizado-snackbar.component';
-import { NuevoturnoSnackbarComponent } from './componentes/nuevoturno-snackbar/nuevoturno-snackbar.component';
-import { CambioTurnoSnackbarComponent } from './componentes/cambio-turno-snackbar/cambio-turno-snackbar.component';
 import { InfoTurnoComponent } from './componentes/info-turno/info-turno.component';
 import { DialogExtrasComponent } from './componentes/dialog-extras/dialog-extras.component';
 import { ListadoTurnosComponent } from './componentes/listado-turnos/listado-turnos.component';
-import { BooleanoPipe } from './pipes/booleano.pipe';
 import { AltaHistoriaComponent } from './componentes/alta-historia/alta-historia.component';
-import { FechaPipe } from './pipes/fecha.pipe';
 import { DialogDatoComponent } from './componentes/dialog-dato/dialog-dato.component';
 import { InformesComponent } from './pages/informes/informes.component';
 import { AuthService } from './servicios/auth.service';
 import { AuthGuard } from './auth/auth.guard';
 import { SecureInnerPagesGuard } from './auth/secure-inner-pages.guard';
+import { NotificacionComponent } from './componentes/notificacion/notificacion.component';
 
+// Pipes
+import { BooleanoPipe } from './pipes/booleano.pipe';
+import { FechaPipe } from './pipes/fecha.pipe';
+import { DiasPipe } from './pipes/dias.pipe';
+import { DiaAtencionPipe } from './pipes/dia-atencion.pipe';
 
 @NgModule({
   declarations: [
@@ -140,9 +139,6 @@ import { SecureInnerPagesGuard } from './auth/secure-inner-pages.guard';
     ToolbarComponent,
     DiasPipe,
     ModificarTurnoComponent,
-    AutorizadoSnackbarComponent,
-    NuevoturnoSnackbarComponent,
-    CambioTurnoSnackbarComponent,
     InfoTurnoComponent,
     DialogExtrasComponent,
     ListadoTurnosComponent,
@@ -151,6 +147,7 @@ import { SecureInnerPagesGuard } from './auth/secure-inner-pages.guard';
     FechaPipe,
     DialogDatoComponent,
     InformesComponent,
+    NotificacionComponent,
   ],
   imports: [
     ApplicationModule,

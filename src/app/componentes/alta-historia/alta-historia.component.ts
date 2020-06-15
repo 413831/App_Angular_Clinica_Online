@@ -7,6 +7,8 @@ import { Historia } from 'src/app/clases/Historia';
 import { DialogDatoComponent } from '../dialog-dato/dialog-dato.component';
 import { ServicioHistoriasService } from 'src/app/servicios/servicio-historias.service';
 import { TurnosService } from 'src/app/servicios/servicio-turnos.service';
+import { NotificacionComponent } from '../notificacion/notificacion.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface Dato{
   key: string,
@@ -31,7 +33,9 @@ export class AltaHistoriaComponent implements OnInit {
   extras:Array<Dato> = new Array<Dato>();
 
   constructor(public nuevoAtributo: MatDialog, public detalleDato: MatDialog,
-              private servicioHistoria: ServicioHistoriasService, private servicioTurnos: TurnosService) 
+              private servicioHistoria: ServicioHistoriasService, 
+              private servicioTurnos: TurnosService,
+              private _snackBar: MatSnackBar) 
   {
     this.medico = Object.assign(new Medico, 
       JSON.parse(localStorage.getItem('usuario')));  
@@ -89,19 +93,39 @@ export class AltaHistoriaComponent implements OnInit {
   {
     // Se agregan los datos extras al objeto Turno
     this.extras.forEach( dato => Turno.AgregarDato(this.turno, dato.key, dato.value));
-    Turno.AgregarDato(this.turno, "edad", this.edad);
-    Turno.AgregarDato(this.turno, "sexo", this.sexo);
-    Turno.AgregarDato(this.turno, "peso", this.peso);
-    Turno.AgregarDato(this.turno, "altura", this.altura);
+
+    if(this.edad)
+    {
+      Turno.AgregarDato(this.turno, "edad", this.edad);
+    }
+
+    if(this.sexo)
+    {
+      Turno.AgregarDato(this.turno, "sexo", this.sexo);
+    }
+
+    if(this.peso)
+    {
+      Turno.AgregarDato(this.turno, "peso", this.peso);
+    }
+
+    if(this.altura)
+    {
+      Turno.AgregarDato(this.turno, "altura", this.altura);
+    }
 
     console.log(Object.entries(this.turno));
 
     this.historia.consultas.push(this.turno);
     this.historia.adicionales = this.extras.map( dato => dato.key);
     console.log(this.historia);
-    this.servicioTurnos.actualizar(this.turno);
-    this.servicioHistoria.crear(this.historia);
-    
+    this.servicioTurnos.actualizar(this.turno)
+    .then(() => this.servicioHistoria.crear(this.historia));
+    ;
+    this._snackBar.openFromComponent(NotificacionComponent, {
+      duration: 2 * 1000,
+      data: "Se actualizó la historia clínica exitosamente."
+    });
   }
 
 }

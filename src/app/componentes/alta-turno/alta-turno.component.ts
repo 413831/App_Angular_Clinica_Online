@@ -8,7 +8,7 @@ import { TurnosService } from 'src/app/servicios/servicio-turnos.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { NuevoturnoSnackbarComponent } from '../nuevoturno-snackbar/nuevoturno-snackbar.component';
+import { NotificacionComponent } from '../notificacion/notificacion.component';
 
 @Component({
   selector: 'app-alta-turno',
@@ -85,8 +85,9 @@ export class AltaTurnoComponent implements OnInit {
     this.servicio.crear(this.turno)
                  .then(()=>  this.router.navigate(["/menu"]));
 
-    this._snackBar.openFromComponent(NuevoturnoSnackbarComponent, {
+    this._snackBar.openFromComponent(NotificacionComponent, {
       duration: this.durationInSeconds * 1000,
+      data: 'Se ha cargado un nuevo turno.'
     });
 
   }

@@ -12,14 +12,13 @@
     <div class="form-group">
       <mat-form-field appearance="fill">
         <mat-label>Buscar por campo</mat-label>
-        <input [(ngModel)]="campo" name="campo" matInput>
+        <input [(ngModel)]="campo" name="campo" (keyup)="filtrar($event)" matInput>
       </mat-form-field>
       
       <mat-form-field appearance="fill">
         <mat-label>Buscar valor</mat-label>
-        <input [(ngModel)]="valor" name="valor" matInput>
+        <input [(ngModel)]="valor" name="valor" (keyup)="filtrar($event)" matInput>
       </mat-form-field>
-      <button mat-raised-button color="primary" (click)='filtrar()'>Filtrar</button>
     </div>
 
 
@@ -35,6 +34,13 @@
 
           <app-detalle-turno [turno]="turno"></app-detalle-turno>
 
+        </div>
+        <div *ngIf="!turno" class="box">
+          <ul>
+          <li> Seleccione el turno del listado para ver los detalles de su consulta </li>
+          <br>
+          <li> Podrá visualizar estado del turno, fecha, horario de atención y profesional correspondiente al turno </li>
+        </ul>
         </div>
       </div>
 

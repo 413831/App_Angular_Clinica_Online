@@ -39,7 +39,7 @@ export class TurnosService extends MiservicioService{
                                         data.fecha, data.horario ,data.duracion, data.especialidad,
                                         data.consultorio, data.detalle, data.estado, data.idPaciente,
                                         data.idMedico ,child.key,
-                                        data.modificado, data.comentarios));
+                                        data.modificado, data.comentarios, data));
         });
         console.info("Turnos");
         console.log(turnos);         

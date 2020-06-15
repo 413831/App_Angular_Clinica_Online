@@ -3,7 +3,7 @@
     flex-flow: row wrap;
     text-align: justify;
     background-color: #E6E6FA;  
-    margin: 25px 50px 0 50px;
+    margin: 50px 50px 0 50px;
     width: 700px;
   }
   
@@ -17,8 +17,12 @@
     display: flexbox;
     flex-flow: wrap row;
     justify-content: space-evenly;
-    padding: 5px;
+    align-content: center;
+    padding: 20px;
     margin-top: 10px;
     max-height: 300px;
 }
 
+mat-chip {
+    max-width: 250px;
+  }

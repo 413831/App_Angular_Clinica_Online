@@ -16,7 +16,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { ListadoMedicosComponent } from 'src/app/componentes/listado-medicos/listado-medicos.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AutorizadoSnackbarComponent } from 'src/app/componentes/autorizado-snackbar/autorizado-snackbar.component';
+import { NotificacionComponent } from 'src/app/componentes/notificacion/notificacion.component';
 
 @Component({
   selector: 'app-menu',
@@ -181,14 +181,6 @@ export class MenuComponent implements OnInit {
         dialogRef = this.modificarDialog.open(ModificarPacienteComponent, dialogConfig);
         break; 
     }
-
-    dialogRef.afterClosed().subscribe(result => 
-    {
-      this._snackBar.openFromComponent(AutorizadoSnackbarComponent, {
-      duration: this.durationInSeconds * 1000,
-      data: this.medicoAutorizar
-      });
-    });
   }
 
   borrar()
@@ -255,9 +247,10 @@ export class MenuComponent implements OnInit {
     //Aca se tiene que mostrar los datos del medico
     //Tambien un boton para cambiar el estado de autorizado
     this.medicosService.actualizar(this.medicoAutorizar);
-    this._snackBar.openFromComponent(AutorizadoSnackbarComponent, {
+    this._snackBar.openFromComponent(NotificacionComponent, {
       duration: this.durationInSeconds * 1000,
-      data: this.medicoAutorizar
+      data: `Medico ${this.medicoAutorizar.nombre} - 
+              ${this.medicoAutorizar.matricula} autorizado.`
     });
     
   }
