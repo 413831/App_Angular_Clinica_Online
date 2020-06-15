@@ -11,6 +11,7 @@ import { MatPaginator } from '@angular/material/paginator';
 export class ListadoTurnosComponent implements OnInit {
   @Input() turnos: any;
   @Input() pages: number;
+  @Input() filtro: string;
   @Output() seleccionar: EventEmitter<Turno> = new EventEmitter<Turno>();
   public dataTurnos;
   columnasTurnos: string[] = ['especialidad', 'estado' ,'fecha'];
@@ -27,6 +28,12 @@ export class ListadoTurnosComponent implements OnInit {
     this.dataTurnos = new MatTableDataSource(this.turnos);
     this.dataTurnos.paginator = this.paginator;
 
+  }
+  
+  ngOnChanges(): void
+  {
+    this.dataTurnos = new MatTableDataSource(this.turnos);
+    this.dataTurnos.filter = this.filtro;
   }
 
   seleccionarTurno(turno: Turno)

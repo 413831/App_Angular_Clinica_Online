@@ -29,15 +29,16 @@ export class MedicosService extends MiservicioService{
   {
     let medicos = [];
     console.info("Fetch de todos los medicos");
-
-    database().ref('medicos').on('value',(snapshot) => {         
+    
+    database().ref('medicos').on('value',(snapshot) => {
+        medicos = [];
         snapshot.forEach((child) =>{
           var data = child.val();
           medicos.push(Medico.CrearMedico(data.nombre, data.clave,
                                           data.dni, data.direccion, data.email,
                                           data.telefono, data.imagen, data.matricula,
                                           data.consultorio, data.diasAtencion , data.horasAtencion,
-                                          data.especialidad, data.avatar, child.key ));
+                                          data.especialidad, data.avatar, child.key, data.autorizado ));
         });
         console.info("Fetch medicos");
         console.log(medicos);         

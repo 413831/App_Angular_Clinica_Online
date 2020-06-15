@@ -25,7 +25,7 @@ export class Medico extends Usuario
                 email: string, telefono: number,imagen: any,
                 matricula: number, consultorio: number,
                 diasAtencion: Dia[], horasAtencion: string[],
-                especialidad: Especialidad[], avatar: string,id: string): Medico
+                especialidad: Especialidad[], avatar: string,id: string,autorizado? : boolean): Medico
     {
         let medico = new Medico();
         medico.nombre = nombre;
@@ -43,7 +43,7 @@ export class Medico extends Usuario
         medico.avatar = avatar;
         medico.id = id;
         medico.rol = Rol.Medico;
-        medico.autorizado = false;
+        medico.autorizado = autorizado;
 
         return medico;
     }    

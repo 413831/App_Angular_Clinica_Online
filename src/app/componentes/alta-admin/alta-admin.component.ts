@@ -51,7 +51,7 @@ export class AltaAdminComponent implements OnInit {
   {
     this.admin = Administrador.CrearAdministrador(this.nombre.value, this.clave.value, this.dni.value,
                                                   this.direccion.value, this.email.value, this.telefono.value,
-                                                  'imagenes/admin_1.jpg', 'imagenes/admin_2.jpg', '0');
+                                                  'imagenes/admin_1.jpg', 'imagenes/admin_2.png', '0');
     this.servicio.crear(this.admin);
     this.router.navigate(["/home"]);
   }

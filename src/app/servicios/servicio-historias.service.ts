@@ -40,7 +40,7 @@ export class ServicioHistoriasService extends MiservicioService{
     console.info("Fetch de todas las historias");
 
     database().ref('historias').on('value',(snapshot) => {       
-      historias = [];  
+        historias = [];  
         snapshot.forEach((child) =>{
           var data = child.val();
           historias.push(Historia.CrearHistoria(data.id, data.idPaciente, data.paciente, data.sexo,

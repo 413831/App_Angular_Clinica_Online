@@ -70,7 +70,6 @@ export class Turno
         turno.modificado = modificado;
         extras.forEach( atributo => this.AgregarDato(turno, atributo[0], atributo[1]));
 
-        console.log(turno);
         return turno;
     }
 

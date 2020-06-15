@@ -29,7 +29,7 @@
             </mat-grid-tile>
 
             <mat-grid-tile *ngIf='administrador' [colspan]=2 [rowspan]=4 class="table">
-                <!-- <app-listado-medicos (enviarMedico)='seleccionarMedico($event)'></app-listado-medicos> -->
+                <!-- Listado de medicos -->
                 <mat-grid-tile-header *ngIf="mostrarMedicos">Listado de medicos</mat-grid-tile-header>
                 <mat-table *ngIf="mostrarMedicos" [dataSource]="dataMedicos" class="mat-elevation-z8 frame">
 
@@ -43,10 +43,16 @@
                         <mat-cell *matCellDef="let medico"> {{medico.matricula}} </mat-cell>
                     </ng-container>
 
+                    <ng-container matColumnDef="autorizado">
+                        <mat-header-cell *matHeaderCellDef> Autorizado </mat-header-cell>
+                        <mat-cell *matCellDef="let medico"> {{medico.autorizado}} </mat-cell>
+                    </ng-container>
+
                     <mat-header-row *matHeaderRowDef="columnasMedicos"></mat-header-row>
                     <mat-row (click)="seleccionarMedico(row)" class="example-element-row"
                         *matRowDef="let row; columns: columnasMedicos;"></mat-row>
                 </mat-table>
+                <!-- Listado de paciente -->
                 <mat-grid-tile-header *ngIf="mostrarPacientes">Listado de pacientes</mat-grid-tile-header>
                 <mat-table *ngIf="mostrarPacientes" [dataSource]="dataPacientes" class="mat-elevation-z8 frame">
 
@@ -58,6 +64,11 @@
                     <ng-container matColumnDef="afiliado">
                         <mat-header-cell *matHeaderCellDef> Nro Afiliado </mat-header-cell>
                         <mat-cell *matCellDef="let paciente"> {{paciente.numeroAfiliado}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="obraSocial">
+                        <mat-header-cell *matHeaderCellDef> Obra Social </mat-header-cell>
+                        <mat-cell *matCellDef="let paciente"> {{paciente.obraSocial}} </mat-cell>
                     </ng-container>
 
                     <mat-header-row *matHeaderRowDef="columnasPacientes"></mat-header-row>
@@ -73,7 +84,7 @@
         </mat-toolbar> 
         <mat-toolbar>
             <div class="botones" *ngIf='administrador'>
-                <button *ngIf="medicoAutorizar"  mat-raised-button color="primary" (click)="autorizar()">Autorizar</button>
+                <!-- <button *ngIf="medicoAutorizar"  mat-raised-button color="primary" (click)="autorizar()">Autorizar</button> -->
                 <button mat-raised-button color="default" (click)="listarMedicos()">Ver Medicos</button>
                 <button mat-raised-button color="default" (click)="listarPacientes()">Ver Pacientes</button>
             </div>

@@ -27,8 +27,21 @@ export class ToolbarComponent implements OnInit {
     }
   }
 
+  ngOnChanges() : void
+  {
+    this.usuario = JSON.parse(localStorage.getItem("usuario"));
+
+    if(this.usuario != null)
+    {
+      this.mostrarBarra = true;
+    }
+  }
+
   logout()
   {
-    MiservicioService.cerrarSesion().then(()=> this.router.navigate(["/login"])); 
+    console.log("Cerrar sesion");
+    MiservicioService.cerrarSesion();
+    this.router.navigate(["/login"]);
+    this.usuario == null; 
   }
 }

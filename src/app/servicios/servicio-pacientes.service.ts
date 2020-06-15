@@ -31,6 +31,7 @@ export class PacientesService extends MiservicioService{
     console.info("Fetch de todos los pacientes");
 
     database().ref('pacientes').on('value',(snapshot) => {          
+        pacientes = [];  
         snapshot.forEach((child) =>{
           var data = child.val();
           pacientes.push(Paciente.CrearPaciente(data.nombre, data.clave,

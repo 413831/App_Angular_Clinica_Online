@@ -15,6 +15,7 @@ export class TurnosComponent implements OnInit {
   public turno: Turno;
   public campo: string;
   public valor: any;
+  public filtro: string;
 
   constructor() 
   { 
@@ -38,10 +39,7 @@ export class TurnosComponent implements OnInit {
     // const filterValue = (event.target as HTMLInputElement).value;
     // this.dataSource.filter = filterValue.trim().toLowerCase();
     
-    // Busco los turnos con el campo ingresado en el buscador
-    this.turnos = this.turnos.filter( () => Object.keys(this.turnos).includes(this.campo));
-    // Busco los turnos con el valor ingresado en el buscador
-    this.turnos = this.turnos.filter( () => Object.values(this.turnos).includes(this.valor));
+    this.filtro = this.campo.concat(this.valor);
     
     console.log(this.turnos);
   }

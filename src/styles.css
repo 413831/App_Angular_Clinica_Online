@@ -65,9 +65,3 @@ body {
     padding: 0;
     background-color: rgb(233, 233, 245);
 }
-
-router-outlet ~ * {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-  }

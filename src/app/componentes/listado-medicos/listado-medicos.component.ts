@@ -60,7 +60,9 @@ export class ListadoMedicosComponent implements OnInit {
   ngOnInit()
   {    
     //this.dataSource.filterPredicate = this.createFilter();
-    this.listado = JSON.parse(localStorage.getItem('medicos'));    
+    // Solamente se muestran los medicos autorizados
+    this.listado = (JSON.parse(localStorage.getItem('medicos')))
+                    .filter(medico => medico.autorizado);    
     this.dataSource = new MatTableDataSource(this.listado);
     // Overrride default filter behaviour of Material Datatable
     this.dataSource.filterPredicate = this.createFilter();
@@ -73,7 +75,7 @@ export class ListadoMedicosComponent implements OnInit {
     let dialogConfig = new MatDialogConfig();
     dialogConfig.data = medico;
     dialogConfig.width = '400px';
-    dialogConfig.height = '700px';
+    dialogConfig.height = '500px';
            
     const dialogRef = this.dialog.open(DialogMedicoComponent, dialogConfig);
 

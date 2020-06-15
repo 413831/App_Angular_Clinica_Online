@@ -17,6 +17,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ListadoMedicosComponent } from 'src/app/componentes/listado-medicos/listado-medicos.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotificacionComponent } from 'src/app/componentes/notificacion/notificacion.component';
+import { DialogMedicoComponent } from 'src/app/componentes/dialog-medico/dialog-medico.component';
 
 @Component({
   selector: 'app-menu',
@@ -31,8 +32,8 @@ export class MenuComponent implements OnInit {
   public turnosCancelados: Turno[] = [];
   public turnosAceptados: Turno[] = [];
   public turnosFinalizados: Turno[] = [];
-  columnasMedicos: string[] = ['nombre', 'matricula'];
-  columnasPacientes: string[] = ['nombre', 'afiliado'];
+  columnasMedicos: string[] = ['nombre', 'matricula','autorizado'];
+  columnasPacientes: string[] = ['nombre', 'afiliado','obraSocial'];
   columnasTurnos: string[] = ['especialidad', 'estado' ,'fecha'];
   public confirmacion: boolean = false;
   public usuario: any;
@@ -56,7 +57,8 @@ export class MenuComponent implements OnInit {
               public medicosService: MedicosService,
               public pacienteService: PacientesService,
               public adminService: AdministradoresService,              
-              public route: ActivatedRoute, public router: Router) 
+              public route: ActivatedRoute, public router: Router,
+              public medicoDialog: MatDialog) 
   { 
     this.usuario = JSON.parse(localStorage.getItem('usuario'));;
 
@@ -240,25 +242,35 @@ export class MenuComponent implements OnInit {
 
   }
 
-  autorizar()
-  {
-    this.medicoAutorizar.autorizado = true;
-    this.medicoAutorizar.consultorio = Math.floor(Math.random() * 6) + 1; 
-    //Aca se tiene que mostrar los datos del medico
-    //Tambien un boton para cambiar el estado de autorizado
-    this.medicosService.actualizar(this.medicoAutorizar);
-    this._snackBar.openFromComponent(NotificacionComponent, {
-      duration: this.durationInSeconds * 1000,
-      data: `Medico ${this.medicoAutorizar.nombre} - 
-              ${this.medicoAutorizar.matricula} autorizado.`
-    });
+  // autorizar()
+  // {
+  //   this.medicoAutorizar.autorizado = true;
+  //   this.medicoAutorizar.consultorio = Math.floor(Math.random() * 6) + 1; 
+  //   //Aca se tiene que mostrar los datos del medico
+  //   //Tambien un boton para cambiar el estado de autorizado
+  //   this.medicosService.actualizar(this.medicoAutorizar);
+  //   this._snackBar.openFromComponent(NotificacionComponent, {
+  //     duration: this.durationInSeconds * 1000,
+  //     data: `Medico ${this.medicoAutorizar.nombre} - 
+  //             ${this.medicoAutorizar.matricula} autorizado.`
+  //   });
     
-  }
+  // }
 
   seleccionarMedico(medico: Medico)
   {
-    this.medicoAutorizar = medico; 
-    console.log(this.medicoAutorizar);
+    // this.medicoAutorizar = medico; 
+
+    let dialogConfig = new MatDialogConfig();
+    dialogConfig.data = medico;
+    dialogConfig.width = '400px';
+    dialogConfig.height = '500px';
+           
+    const dialogRef = this.medicoDialog.open(DialogMedicoComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialogo medico cerrado.');
+    });
   }
 
   realizarEncuesta()

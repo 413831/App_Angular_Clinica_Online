@@ -3,6 +3,7 @@ import { MedicosService } from 'src/app/servicios/servicio-medicos.service';
 import { TurnosService } from 'src/app/servicios/servicio-turnos.service';
 import { PacientesService } from 'src/app/servicios/servicio-pacientes.service';
 import { Especialidad } from 'src/app/clases/Medico';
+import { AdministradoresService } from 'src/app/servicios/servicio-administradores.service';
 
 export interface Tile {
   color: string;
@@ -31,7 +32,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private servicioMedicos: MedicosService,
               private servicioPacientes: PacientesService,
-              private servicioTurnos: TurnosService) 
+              private servicioTurnos: TurnosService,
+              private servicioAdmin : AdministradoresService) 
   {
    
   }
@@ -48,6 +50,7 @@ export class HomeComponent implements OnInit {
     this.servicioMedicos.leer();
     this.servicioPacientes.leer();
     this.servicioTurnos.leer();  
+    this.servicioAdmin.leer();
   }
 
 

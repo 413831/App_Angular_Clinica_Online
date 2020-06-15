@@ -31,6 +31,7 @@ export class AdministradoresService extends MiservicioService {
     console.info("Fetch de todos los administradores");
 
     database().ref('administradores').on('value',(snapshot) => {          
+        administradores = [];  
         snapshot.forEach((child) =>{
           var data = child.val();
           administradores.push(Administrador.CrearAdministrador(data.nombre, data.clave,

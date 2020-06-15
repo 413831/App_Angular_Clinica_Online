@@ -52,10 +52,9 @@ export class MiservicioService {
     return promesa;
   }
 
-  public static cerrarSesion() : Promise<any>{
-    let promesa = new Promise( resolve => localStorage.removeItem("usuario"));
+  public static cerrarSesion(){
+    localStorage.removeItem("usuario");
 
-    return promesa;
   }
 
   public static guardarImagen(imagen: string, base64string: string, usuario: string, dni: string)
