@@ -2,7 +2,13 @@
     <div class="titulos">
         <h1>Informes</h1>
     </div>
-   
+    <div  *ngIf="sesiones" >
+        <app-grafico-lineas [sesiones]="sesiones"></app-grafico-lineas>
+    </div>
+
+    <app-grafico-area></app-grafico-area>
+
+    <app-grafico-columnas></app-grafico-columnas>
     <app-grafico-area></app-grafico-area>
     <!-- <highcharts-chart [Highcharts]="highcharts"
         [options]="configurarGrafico(dias,'Dias', null ,'Operaciones', valoresHoras, 'Operaciones por especialidad')"

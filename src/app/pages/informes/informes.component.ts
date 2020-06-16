@@ -37,13 +37,7 @@ export class InformesComponent implements OnInit {
    valoresHoras: Valor;
    labelsEspecialidades: string[] = [];
 
-   data = [{
-      name: 'Turnos',
-      data: [15, 20, 10, 30, 17, 10]
-   }, {
-      name: 'Medicos',
-      data: [13, 10, 9, 15, 16, 10]
-   }];
+
 
    
   ////////////////////////////////
@@ -51,7 +45,6 @@ export class InformesComponent implements OnInit {
    @ViewChild('container', {static: false}) content: any;
 
    constructor(private appService: AppService) {
-      this.appService.getLoginData();
       this.usuario = JSON.parse(localStorage.getItem('usuario'));
 
       if (this.usuario) {
@@ -87,42 +80,6 @@ export class InformesComponent implements OnInit {
          name: "Horas",
          data: horas
       }
-   }
-
-
-   configurarGrafico(XData: any, XTitle: string, YData: any, YTitle: string, data: any, titulo: string) {
-
-      let chartOptions = {
-         chart: {
-            type: "areaspline"
-         },
-         title: {
-            text: titulo
-         },
-         xAxis: {
-            categories: XData
-         },
-         exporting: {
-            enabled: true,
-         },
-         yAxis: {
-            title: {
-               text: YTitle
-            },
-            categories: YData
-         },
-         tooltip: {
-            shared: true,
-            valueSuffix: ' units'
-          },
-          credits: {
-            enabled: false
-          },
-          
-         series: [data]
-      };
-
-      return chartOptions;
    }
 
    ordenarDias(diaA: Sesion, diaB: Sesion) {

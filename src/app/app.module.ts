@@ -103,6 +103,8 @@ import { DiasPipe } from './pipes/dias.pipe';
 import { DiaAtencionPipe } from './pipes/dia-atencion.pipe';
 import { DetalleEncuestaComponent } from './componentes/detalle-encuesta/detalle-encuesta.component';
 import { GraficoAreaComponent } from './componentes/widgets/grafico-area/grafico-area.component';
+import { GraficoColumnasComponent } from './componentes/widgets/grafico-columnas/grafico-columnas.component';
+import { GraficoLineasComponent } from './componentes/widgets/grafico-lineas/grafico-lineas.component';
 
 @NgModule({
   declarations: [
@@ -152,6 +154,8 @@ import { GraficoAreaComponent } from './componentes/widgets/grafico-area/grafico
     NotificacionComponent,
     DetalleEncuestaComponent,
     GraficoAreaComponent,
+    GraficoColumnasComponent,
+    GraficoLineasComponent,
   ],
   imports: [
     ApplicationModule,
