@@ -105,6 +105,7 @@ import { DetalleEncuestaComponent } from './componentes/detalle-encuesta/detalle
 import { GraficoAreaComponent } from './componentes/widgets/grafico-area/grafico-area.component';
 import { GraficoColumnasComponent } from './componentes/widgets/grafico-columnas/grafico-columnas.component';
 import { GraficoLineasComponent } from './componentes/widgets/grafico-lineas/grafico-lineas.component';
+import { GraficoTortaComponent } from './componentes/widgets/grafico-torta/grafico-torta.component';
 
 @NgModule({
   declarations: [
@@ -156,6 +157,7 @@ import { GraficoLineasComponent } from './componentes/widgets/grafico-lineas/gra
     GraficoAreaComponent,
     GraficoColumnasComponent,
     GraficoLineasComponent,
+    GraficoTortaComponent,
   ],
   imports: [
     ApplicationModule,

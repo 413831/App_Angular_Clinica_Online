@@ -14,11 +14,23 @@ const EXCEL_EXT = '.xlsx';
   providedIn: 'root'
 })
 export class ArchivosService {
+  private static privados = ["imagen","autorizado","id","rol","direccion","email","telefono",
+                            "clave", "avatar", "horasAtencion"];
 
   constructor() { }
 
   exportarExcel(json:any[] , nombreArchivo: string): void 
   {
+    // Elimino los campos privados que no deben imprimirse
+    json = Object.values(json).map(elemento => Object.entries(elemento).map(tuple => 
+      {
+        if(ArchivosService.privados.includes(tuple[0])) 
+        { 
+          delete elemento[tuple[0]];
+        }
+      })
+    );
+
     const worksheet : XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);
     const workbook: XLSX.WorkBook = { 
       Sheets : {'data': worksheet}, 
@@ -41,15 +53,15 @@ export class ArchivosService {
 
     let values: any;
     let data = json;  
-    let privados = ["imagen","autorizado","id","rol","direccion","email","telefono","clave", "avatar", "horasAtencion"];
-    let header = Object.keys(data[0]).filter(key => !privados.includes(key));
+    
+    let header = Object.keys(data[0]).filter(key => !ArchivosService.privados.includes(key));
     // data.map( (elemento,i) => console.log(`Indice:${i} ${Object.values(elemento)}`));
     Turno.ParseNumeroDias(data);
 
     // Elimino los campos privados que no deben imprimirse
     values = Object.values(data).map(elemento => Object.entries(elemento).map(tuple => 
       {
-        if(privados.includes(tuple[0])) 
+        if(ArchivosService.privados.includes(tuple[0])) 
         { 
           delete elemento[tuple[0]];
         }
@@ -58,7 +70,6 @@ export class ArchivosService {
     // Obtengo los valores de los campos a imprimir
     values = data.map( (elemento) => Object.values(elemento));
   
-   
     autoTable(pdf,
     {
       theme: 'striped',

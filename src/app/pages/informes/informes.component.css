@@ -1,5 +1,6 @@
-highcharts-figure{
-  width: 100%; 
-  height: 400px; 
-  display: block;
+.frame-row{
+  display: flex;
+  flex-flow: row wrap; 
+  justify-content: center; 
 }
+

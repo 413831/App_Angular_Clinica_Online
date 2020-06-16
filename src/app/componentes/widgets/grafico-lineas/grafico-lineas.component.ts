@@ -97,12 +97,18 @@ export class GraficoLineasComponent implements OnInit {
         enabled: false
       },
       xAxis: {
-        // categories: ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes" , "Sabado"]
-        categories: this.XCategories
+        tickInterval: 7 * 24 * 3600 * 1000, // one week
+        tickWidth: 0,
+        gridLineWidth: 1,
+        labels: {
+          align: 'left',
+          x: 3,
+          y: -3
+        }
       },
       yAxis: {
         title: {
-          text: "Temperature °C"
+          text: "Horarios"
         },
         categories: this.horarios
       },
