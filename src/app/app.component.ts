@@ -27,4 +27,6 @@ export class AppComponent {
   { 
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
   }
+
+  
 }

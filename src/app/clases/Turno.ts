@@ -51,8 +51,12 @@ export class Turno
                                 id: string, modificado?: boolean, comentarios?: string,...atributos): Turno
     {
         let turno = new Turno();   
-        let extras = atributos.map( data => Object.entries(data)
-                                            .filter(atributo => !this.atributosNativos.includes(atributo[0])))[0];
+        if(atributos)
+        {                                                                                                                                                                                                                                           
+            let extras = atributos.map( data => Object.entries(data)
+                                                .filter(atributo => !this.atributosNativos.includes(atributo[0])))[0];
+            extras.forEach( atributo => this.AgregarDato(turno, atributo[0], atributo[1]));
+        }
 
         turno.nombrePaciente = nombrePaciente;
         turno.nombreMedico = nombreMedico;
@@ -68,7 +72,6 @@ export class Turno
         turno.idPaciente = idPaciente;
         turno.idMedico = idMedico;
         turno.modificado = modificado;
-        extras.forEach( atributo => this.AgregarDato(turno, atributo[0], atributo[1]));
 
         return turno;
     }
