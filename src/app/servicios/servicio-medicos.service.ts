@@ -10,10 +10,10 @@ export class MedicosService extends MiservicioService{
 
   constructor() { 
     super();
-    if(!database())    
-    {
-      super.init(); 
-    }
+    // if(!database())    
+    // {
+    //   super.init(); 
+    // }
   }
 
   public crear(medico: Medico): Promise<any>

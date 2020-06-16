@@ -10,10 +10,10 @@ export class AdministradoresService extends MiservicioService {
 
   constructor() { 
     super();
-    if(!database())    
-    {
-      super.init(); 
-    }
+    // if(!database())    
+    // {
+    //   super.init(); 
+    // }
   }
 
   public crear(administrador: Administrador): Promise<any>

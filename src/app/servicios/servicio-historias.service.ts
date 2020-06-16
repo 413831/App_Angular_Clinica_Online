@@ -11,10 +11,10 @@ export class ServicioHistoriasService extends MiservicioService{
   constructor() 
   { 
     super();
-    if(!database())    
-    {
-      super.init(); 
-    }
+    // if(!database())    
+    // {
+    //   super.init(); 
+    // }
   }
 
   public crear(historia): Promise<any>

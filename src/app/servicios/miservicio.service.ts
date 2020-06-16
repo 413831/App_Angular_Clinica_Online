@@ -10,15 +10,15 @@ import { AppService } from './app.service';
 })
 export class MiservicioService {
   public static imgSrc;
-  protected database;
-  public inicializado: boolean = false
+  protected static database;
+  public static inicializado: boolean = false
 
   constructor() 
   {
     
   }
 
-  public init()
+  public static init()
   {
     // var firebaseConfig = {
     //   apiKey: "AIzaSyCS42LNdtLkC3whUk1CcDIp07XDH7xYTMo",

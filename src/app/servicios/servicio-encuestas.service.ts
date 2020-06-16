@@ -11,10 +11,10 @@ export class ServicioEncuestasService extends MiservicioService{
   constructor() 
   { 
     super();
-    if(!database())    
-    {
-      super.init(); 
-    }
+    // if(!database())    
+    // {
+    //   super.init(); 
+    // }
   }
 
   public crear(encuesta): Promise<any>

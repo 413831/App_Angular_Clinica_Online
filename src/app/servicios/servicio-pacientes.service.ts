@@ -10,10 +10,10 @@ export class PacientesService extends MiservicioService{
 
   constructor() { 
     super();
-    if(!database())    
-    {
-      super.init(); 
-    }
+    // if(!database())    
+    // {
+    //   super.init(); 
+    // }
   }
 
   public crear(paciente: Paciente): Promise<any>

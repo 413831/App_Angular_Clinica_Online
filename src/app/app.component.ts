@@ -15,11 +15,11 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent {
   title = 'clinica-online';
   
-  constructor(private servicio: MiservicioService) 
+  constructor() 
   {
-    if(!this.servicio.inicializado)
+    if(!MiservicioService.inicializado)
     {
-      this.servicio.init();
+      MiservicioService.init();
     }
   }
 
