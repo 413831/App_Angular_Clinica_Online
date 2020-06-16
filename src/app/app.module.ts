@@ -102,6 +102,7 @@ import { FechaPipe } from './pipes/fecha.pipe';
 import { DiasPipe } from './pipes/dias.pipe';
 import { DiaAtencionPipe } from './pipes/dia-atencion.pipe';
 import { DetalleEncuestaComponent } from './componentes/detalle-encuesta/detalle-encuesta.component';
+import { GraficoAreaComponent } from './componentes/widgets/grafico-area/grafico-area.component';
 
 @NgModule({
   declarations: [
@@ -150,6 +151,7 @@ import { DetalleEncuestaComponent } from './componentes/detalle-encuesta/detalle
     InformesComponent,
     NotificacionComponent,
     DetalleEncuestaComponent,
+    GraficoAreaComponent,
   ],
   imports: [
     ApplicationModule,

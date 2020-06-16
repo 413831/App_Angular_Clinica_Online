@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
 import * as ExportXLSX from 'highcharts/modules/export-data';
@@ -8,6 +8,11 @@ import { Sesion } from 'src/app/clases/Sesion';
 import { Turno, Dia } from 'src/app/clases/Turno';
 import { DiaAtencionPipe } from 'src/app/pipes/dia-atencion.pipe';
 import zipcelx from 'zipcelx';
+Highcharts.createElement('link', {
+    href: 'https://fonts.googleapis.com/css?family=Unica+One',
+    rel: 'stylesheet',
+    type: 'text/css'
+}, null, document.getElementsByTagName('head')[0]);
 
 HC_exporting(Highcharts);
 
@@ -39,6 +44,11 @@ export class InformesComponent implements OnInit {
       name: 'Medicos',
       data: [13, 10, 9, 15, 16, 10]
    }];
+
+   
+  ////////////////////////////////
+
+   @ViewChild('container', {static: false}) content: any;
 
    constructor(private appService: AppService) {
       this.appService.getLoginData();
@@ -105,11 +115,10 @@ export class InformesComponent implements OnInit {
             shared: true,
             valueSuffix: ' units'
           },
-          plotOptions: {
-            areaspline: {
-              fillOpacity: 0.5
-            }
+          credits: {
+            enabled: false
           },
+          
          series: [data]
       };
 
@@ -136,6 +145,8 @@ export class InformesComponent implements OnInit {
          }
       });
    }
+
+  
 
 //    (function (H) {
 //       if (window.zipcelx && H.getOptions().exporting) {
