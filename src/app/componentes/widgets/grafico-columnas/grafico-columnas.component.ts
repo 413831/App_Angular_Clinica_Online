@@ -1,6 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
+import { Usuario } from 'src/app/clases/Usuario';
+import { Turno, Estado } from 'src/app/clases/Turno';
+import { Especialidad } from 'src/app/clases/Medico';
+
+interface Serie
+{
+   name: string,
+   data : any,
+}
+
 
 @Component({
   selector: 'app-grafico-columnas',
@@ -8,13 +18,73 @@ import HC_exporting from 'highcharts/modules/exporting';
   styleUrls: ['./grafico-columnas.component.css']
 })
 export class GraficoColumnasComponent implements OnInit {
+  public usuario: Usuario;
+  public turnos: Turno[] = [];
   public highchart;
   public chartOptions;
+  public data;
+  public especialidades : Especialidad[] = [];
 
-  constructor() { }
+  constructor() 
+  {
+   this.usuario = JSON.parse(localStorage.getItem('usuario'));
+      
+      if (this.usuario) 
+      {
+         this.usuario = Object.assign(new Usuario, this.usuario);
+
+         this.turnos = (JSON.parse(localStorage.getItem('turnos'))
+                              .map(turno => Object.assign(new Turno, turno)));
+      }
+
+   }
 
   ngOnInit(): void {
+   this.procesarDatos();
     this.crearGrafico();
+  }
+
+  procesarDatos()
+  {
+     this.data = this.turnos;
+     let aux = [];
+   
+     // Por cada fecha de inicio obtengo el día
+     // El array de día contendrá dias diferentes para las categorias
+     for (let index = 0; index < this.turnos.length; index++) 
+     {
+         const element = this.data[index];
+         const especialidad =  element.especialidad;
+         
+         if(!this.especialidades.includes(especialidad))
+         {
+            console.log("In");
+            this.especialidades.push(especialidad);
+            // aux.push(new Date(element.fechaInicio));
+         } 
+     }
+
+     console.log(this.especialidades);
+
+     this.especialidades.forEach((especialidad) =>
+     {
+         let operaciones = 0;
+         this.turnos.forEach(turno => 
+         {        
+            if(turno.especialidad == especialidad && turno.estado == Estado.Atendido)
+            {
+               operaciones++;
+            }
+         });
+         aux.push({
+            name : especialidad,
+            data : [operaciones]
+         });
+      
+     });
+     
+     console.log(aux);
+     this.data = aux;
   }
 
   crearGrafico() {
@@ -26,20 +96,19 @@ export class GraficoColumnasComponent implements OnInit {
          type: 'column'
       },
       title: {
-         text: 'Monthly Average Rainfall'
+         text: 'Turnos atendidos por día'
       },
-      subtitle:{
-         text: 'Source: WorldClimate.com' 
+      credits : {
+         enabled : false
       },
       xAxis:{
-         categories: ['Jan','Feb','Mar','Apr','May','Jun','Jul',
-         'Aug','Sep','Oct','Nov','Dec'],
+         categories: ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'],
          crosshair: true        
       },     
       yAxis : {
          min: 0,
          title: {
-            text: 'Rainfall (mm)'         
+            text: 'Cantidad de turnos'         
          }      
       },
       tooltip : {
@@ -53,26 +122,7 @@ export class GraficoColumnasComponent implements OnInit {
             borderWidth: 0
          }
       },
-      series: [{
-         name: 'Tokyo',
-         data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6,
-            148.5, 216.4, 194.1, 95.6, 54.4]
-      }, 
-      {
-         name: 'New York',
-         data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3,
-            91.2, 83.5, 106.6, 92.3]
-      }, 
-      {
-         name: 'London',
-         data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6,
-            52.4, 65.2, 59.3, 51.2]
-      }, 
-      {
-         name: 'Berlin',
-         data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4,
-            47.6, 39.1, 46.8, 51.1]
-      }]
+      series: this.data
    };
 
 

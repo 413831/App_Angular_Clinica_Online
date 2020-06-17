@@ -49,7 +49,6 @@ export class InformesComponent implements OnInit {
 
       if (this.usuario) {
          this.usuario = Object.assign(new Usuario, this.usuario);
-         console.log(JSON.parse(localStorage.getItem('sesiones')));
          this.sesiones = (JSON.parse(localStorage.getItem('sesiones'))
             .filter(sesion => this.usuario.id == sesion.idUsuario)
             .map(sesion => Object.assign(new Sesion, sesion)));

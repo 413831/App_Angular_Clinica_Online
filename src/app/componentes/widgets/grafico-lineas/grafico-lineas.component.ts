@@ -19,13 +19,7 @@ export class GraficoLineasComponent implements OnInit {
   public chartOptions;
   private data;
   private XCategories : Array<any>;
-  private horarios: string[] = [  "00:00", "00:30","01:00", "01:30" , "02:00", "02:30", "03:00",
-                                  "03:30", "04:00","04:30", "05:00" , "05:30", "06:00", "06:30",
-                                  "07:00", "07:30","08:00", "08:30" , "09:00", "09:30", "10:00", 
-                                  "10:30","11:00", "11:30", "12:00", "12:30", "13:00", "13:30",
-                                  "14:00","14:30", "15:00", "15:30", "16:00", "16:30", "17:00", 
-                                  "17:30","18:00", "18:30","19:00", "19:30", "20:00", "20:30",
-                                  "21:00", "21:30", "22:00","22:30", "23:00", "23:30"];
+  // private horarios: number[] = [  0, 1, 2, 3 , 4, 5, 6 ,7, 8 ,9 , 10 ,11 ,12 ,13 ,14 ,15 ,16, 17 ,];
   private dias: Dia[] = [];
 
   constructor() 
@@ -43,30 +37,7 @@ export class GraficoLineasComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    // Ordeno las sesiones por día
-    this.data = this.sesiones.sort((a, b) => this.ordenarDias(a, b)).reverse();
-    let aux = [];
-
-    // Por cada fecha de inicio obtengo el día
-    // El array de día contendrá dias diferentes para las categorias
-    for (let index = 0; this.dias.length < 6; index++) 
-    {
-      const element = this.data[index];
-      const diaSemana =  new Date(element.fechaInicio).getDay();
-
-      // Al estar ordenado de manera descendente va a guardar el último logueo del día
-      if(!this.dias.includes(diaSemana))
-      {
-        console.log("In");
-        this.dias.push(diaSemana);
-        aux.push(new Date(element.fechaInicio));
-      } 
-    }
-    this.data = aux.reverse().map(fecha => fecha.getHours());
-
-    this.XCategories = this.dias.map(dia => Dia[dia]).reverse();
-    console.log(this.XCategories);
-    console.log(this.data);
+    this.procesarDatos();
     this.crearGrafico();
   }
 
@@ -81,6 +52,33 @@ export class GraficoLineasComponent implements OnInit {
     else {
       return 0;
     }
+  }
+
+  procesarDatos()
+  {
+     // Ordeno las sesiones por día
+     this.data = [];
+     this.data = this.sesiones.sort((a, b) => this.ordenarDias(a, b)).reverse();
+     let aux = [];
+ 
+     // Por cada fecha de inicio obtengo el día
+     // El array de día contendrá dias diferentes para las categorias
+     for (let index = 0; this.dias.length < 6; index++) 
+     {
+       const element = this.data[index];
+       const diaSemana =  new Date(element.fechaInicio).getDay();
+ 
+       // Al estar ordenado de manera descendente va a guardar el último logueo del día
+       if(!this.dias.includes(diaSemana))
+       {
+         console.log("In");
+         this.dias.push(diaSemana);
+         aux.push(new Date(element.fechaInicio));
+       } 
+     }
+     console.log(aux);
+     this.data = aux.reverse().map(fecha => (<Date>fecha).getHours());
+     this.XCategories = this.dias.map(dia => Dia[dia]).reverse();
   }
 
 
@@ -108,7 +106,6 @@ export class GraficoLineasComponent implements OnInit {
         title: {
           text: "Horarios"
         },
-        categories: this.horarios
       },
       plotOptions: {
         series: {
@@ -118,7 +115,7 @@ export class GraficoLineasComponent implements OnInit {
         }
       },
       tooltip: {
-        valueSuffix: " °C"
+        valueSuffix: " hr"
       },
       series: [{
         name: 'Usuario',
