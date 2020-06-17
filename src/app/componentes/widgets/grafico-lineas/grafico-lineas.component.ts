@@ -64,7 +64,7 @@ export class GraficoLineasComponent implements OnInit {
  
      // Por cada fecha de inicio obtengo el día
      // El array de día contendrá dias diferentes para las categorias
-     for (let index = 0; this.dias.length < 6; index++) 
+     for (let index = 0; this.dias.length < 6 || index < this.data.length; index++) 
      {
        const element = this.data[index];
        const diaSemana =  new Date(element.fechaInicio).getDay();
