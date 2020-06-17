@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import * as Highcharts from 'highcharts';
-import HC_exporting from 'highcharts/modules/exporting';
+import HighchartExporting from 'highcharts/modules/exporting';
 import * as ExportXLSX from 'highcharts/modules/export-data';
 import { AppService } from 'src/app/servicios/app.service';
 import { Usuario } from 'src/app/clases/Usuario';
@@ -14,7 +14,7 @@ Highcharts.createElement('link', {
     type: 'text/css'
 }, null, document.getElementsByTagName('head')[0]);
 
-HC_exporting(Highcharts);
+HighchartExporting(Highcharts);
 
 interface Valor {
    name: string,

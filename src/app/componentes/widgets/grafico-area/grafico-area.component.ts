@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
-import HC_exporting from 'highcharts/modules/exporting';
+import HighchartExporting from 'highcharts/modules/exporting';
+import HighchartExportData from 'highcharts/modules/export-data';
 
 @Component({
   selector: 'app-grafico-area',
@@ -79,6 +80,7 @@ export class GraficoAreaComponent implements OnInit {
    };
 
 
-    HC_exporting(Highcharts);
+    HighchartExporting(Highcharts);
+    HighchartExportData(Highcharts);
   }
 }

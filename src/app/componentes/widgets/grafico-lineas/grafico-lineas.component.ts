@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import * as Highcharts from 'highcharts';
-import HC_exporting from 'highcharts/modules/exporting';
+import HighchartExporting from 'highcharts/modules/exporting';
+import HighchartExportData from 'highcharts/modules/export-data';
 import { Turno, Dia } from 'src/app/clases/Turno';
 import { Sesion } from 'src/app/clases/Sesion';
 import { Usuario } from 'src/app/clases/Usuario';
@@ -137,6 +138,7 @@ export class GraficoLineasComponent implements OnInit {
     };
 
 
-    HC_exporting(Highcharts);
+    HighchartExporting(Highcharts);
+    HighchartExportData(Highcharts);
   }
 }

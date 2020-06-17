@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
+import HighchartExporting from 'highcharts/modules/exporting';
+import HighchartExportData from 'highcharts/modules/export-data';
+
 
 @Component({
   selector: 'app-grafico-torta',
@@ -56,6 +59,8 @@ export class GraficoTortaComponent implements OnInit {
          ]
       }]
    };
+   HighchartExporting(Highcharts);
+    HighchartExportData(Highcharts);
   }
 
 }
