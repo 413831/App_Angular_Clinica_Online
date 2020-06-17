@@ -67,6 +67,8 @@ export class HomeComponent implements OnInit {
       this.servicioEncuesta.leer();
       // Informacion para estadisticas
       this.servicioApp.getLoginData();
+
+      resolve;
     });
 
     return promesa;

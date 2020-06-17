@@ -40,12 +40,13 @@ export class AltaTurnoComponent implements OnInit {
       this.horarios = params['horarios'].split(",");
       params['dias'].split(",").map( dia => this.dias.push(parseInt(dia)));
     });
-    this.crearFiltros();
-    this.crearControles();
+    
   }
 
 
   ngOnInit(): void {
+    this.crearFiltros();
+    this.crearControles();
   }
 
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
@@ -96,12 +97,11 @@ export class AltaTurnoComponent implements OnInit {
   {
     this.minDate = new Date();
     this.maxDate = new Date();
-    this.maxDate.setDate(this.minDate.getDay() + 15);
-    console.log(this.dias);
-    
+    this.maxDate.setDate(this.maxDate.getDate() + 15);
+
     // Filtros segun datos del medico
     this.filtroFecha = (fecha: Date | null): boolean => 
-    {
+    {  
       const diaSeleccionado = (fecha || new Date()).getDay();
       let validate = this.dias.includes(diaSeleccionado);  
      
@@ -115,7 +115,7 @@ export class AltaTurnoComponent implements OnInit {
       nombrePaciente: new FormControl({value: this.turno.nombrePaciente, disabled: true}),
       nombreMedico: new FormControl({value: this.turno.nombreMedico, disabled: true},
                                       Validators.required),
-      fecha: new FormControl({value: this.turno.fecha, disabled: false},
+      fecha: new FormControl({value: '', disabled: false},
                               Validators.required),
       horario: new FormControl({value: this.turno.horario, disabled: false},
                                 Validators.required),
