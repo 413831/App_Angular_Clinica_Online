@@ -7,6 +7,8 @@ import { AdministradoresService } from 'src/app/servicios/servicio-administrador
 import { ServicioHistoriasService } from 'src/app/servicios/servicio-historias.service';
 import { ServicioEncuestasService } from 'src/app/servicios/servicio-encuestas.service';
 import { Turno, Estado } from 'src/app/clases/Turno';
+import { Sesion } from 'src/app/clases/Sesion';
+import { AppService } from 'src/app/servicios/app.service';
 
 export interface Tile {
   color: string;
@@ -38,14 +40,15 @@ export class HomeComponent implements OnInit {
               private servicioTurnos: TurnosService,
               private servicioAdmin : AdministradoresService,
               private servicioHistoria : ServicioHistoriasService,
-              private servicioEncuesta : ServicioEncuestasService) 
+              private servicioEncuesta : ServicioEncuestasService,
+              private servicioApp : AppService) 
   {
    
   }
 
   ngOnInit(): void {
-    this.activarServicios();
-    this.mocker();
+    this.activarServicios().then(() => this.mocker());
+    
   }
 
   activarServicios() : Promise<any>{
@@ -55,13 +58,15 @@ export class HomeComponent implements OnInit {
     console.info("Se leen datos de la base de datos");
 
 
-    promesa = new Promise( () => {
+    promesa = new Promise( (resolve) => {
       this.servicioMedicos.leer();
       this.servicioPacientes.leer();
       this.servicioTurnos.leer();  
       this.servicioAdmin.leer();
       this.servicioHistoria.leer();
       this.servicioEncuesta.leer();
+      // Informacion para estadisticas
+      this.servicioApp.getLoginData();
     });
 
     return promesa;
@@ -92,11 +97,23 @@ export class HomeComponent implements OnInit {
     let turno6 = Turno.CrearTurno("Antonio Ruedas", "Emanuel Ortega", "05/4/2020", "16:00",
                                   30, Especialidad.Traumatología, 0, "Detalle", Estado.Atendido,
                                   "-M9_xN9UNjqTY8bgm-nS", "-M9_x40xTu5GJKFrWb5G", "0", false, 
-                                  "comentarios", "");
+                                  "comentarios", "");                                  
     let turnos = [turno1, turno2, turno3, turno4, turno5, turno6];
-                                
     //////////////////////////////
-    turnos.forEach(turno =>  this.servicioTurnos.crear(turno));
+    let sesion1 = Sesion.CrearSesion( "-M9_xN9UNjqTY8bgm-nS", "Antonio Ruedas", "2020-05-10T18:16:11.000Z");
+    let sesion2 = Sesion.CrearSesion( "-M9_xN9UNjqTY8bgm-nS", "Antonio Ruedas", "2020-05-21T16:16:11.000Z");
+    let sesion3 = Sesion.CrearSesion( "-M9_xN9UNjqTY8bgm-nS", "Antonio Ruedas", "2020-05-13T08:16:11.000Z");
+    let sesion4 = Sesion.CrearSesion( "-M9_xN9UNjqTY8bgm-nS", "Antonio Ruedas", "2020-05-15T13:16:11.000Z");
+    let sesion5 = Sesion.CrearSesion( "-M9_xN9UNjqTY8bgm-nS", "Antonio Ruedas", "2020-05-22T12:16:11.000Z");
+    let sesion6 = Sesion.CrearSesion( "-M9_xN9UNjqTY8bgm-nS", "Antonio Ruedas", "2020-05-10T11:16:11.000Z");
+    let sesion7 = Sesion.CrearSesion( "-M9_xN9UNjqTY8bgm-nS", "Antonio Ruedas", "2020-06-01T10:16:11.000Z");
+    let sesion8 = Sesion.CrearSesion( "-M9_xN9UNjqTY8bgm-nS", "Antonio Ruedas", "2020-06-10T20:16:11.000Z");
+    let sesion9 = Sesion.CrearSesion( "-M9_xN9UNjqTY8bgm-nS", "Antonio Ruedas", "2020-06-08T09:16:11.000Z");
+    let sesiones = [sesion1, sesion2,sesion3,sesion4,sesion5,sesion6,sesion7,sesion8,sesion9];                            
+    //////////////////////////////
+    // turnos.forEach(turno =>  this.servicioTurnos.crear(turno));
+  //  turnos.forEach(turno =>  this.servicioTurnos.actualizar(turno));
+    // sesiones.forEach(sesion => this.servicioApp.cargarLogin(sesion));
 
   }
 

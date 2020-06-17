@@ -69,10 +69,8 @@ export class InformesComponent implements OnInit {
       let horas: number[] = [];
 
       this.sesiones.sort((a, b) => this.ordenarDias(a, b));
-      console.log(this.sesiones);
+      // console.log(this.sesiones);
       this.sesiones.forEach(sesion => {
-         console.log(new Date(sesion.fechaInicio).getHours());
-         console.log(`${new Date(sesion.fechaInicio).getDay()} - ${new Date(sesion.fechaInicio).getHours()}`);
          horas.push(new Date(sesion.fechaInicio).getHours());
       })
 
