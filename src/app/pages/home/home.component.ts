@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.activarServicios();
     this.mocker();
-    
+    this.test();
   }
 
   activarServicios() : Promise<any>{
@@ -72,6 +72,18 @@ export class HomeComponent implements OnInit {
     });
 
     return promesa;
+  }
+
+  test()
+  {
+    let fechaStr: string = "'14 Jun 2017 00:00:00 PDT'";
+    let fechaDate : Date = new Date(fechaStr);
+
+    console.log("//////////////////////////////////////////////////");
+    console.log(fechaStr);
+    console.log(fechaDate);
+    console.log(fechaDate.toLocaleString('en-GB', { timeZone: 'UTC' }).split(',')[0]);
+    console.log(`${new Date(fechaStr).getDay()} -- ${fechaDate.getDay()} `);
   }
 
   mocker() {

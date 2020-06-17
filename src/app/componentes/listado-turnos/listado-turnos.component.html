@@ -13,7 +13,7 @@
 
         <ng-container matColumnDef="fecha">
             <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
-            <mat-cell *matCellDef="let turno"> {{turno.fecha}} </mat-cell>
+            <mat-cell *matCellDef="let turno"> {{turno.fecha | fecha}} </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="columnasTurnos"></mat-header-row>

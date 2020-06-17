@@ -35,14 +35,24 @@ Informes
 - Se requiere dias y horarios de ingreso de profesionales :
 Cada profesional podrá ver sus propias estadisticas de cuando ingreso al sistema ( dia x hora de ingreso).
 El administrador podrá ver el de todos los médicos y pacientes seleccionando desde el listado de su menu
+Ingreso al sistema en un periodo de seis dias
+
 - Cantidad de operaciones por especialidad
 Grafico de barras que muestran cantidad de turnos finalizados por especialidad ( especialidad x cantidad de turnos )
+Cantidad de turnos atendidos de cada especialidad por dia
+
 - Cantidad de turnos por dia de la semana 
 Grafico de barras con cantidad de turnos por cada día de la semana ( dia x cantidad de turnos en sus diferentes estaods )
+Cantidad de turnos por estado en un periodo de una semana
+
 - Cantidad de medicos por cantidad de turnos
 Grafico de barras que muestran medicos respecto a la cantidad de turnos para calcular proporcion ( cantidad de medicos por cantidad de turnos )
+Proporcion de medicos por cada turno por especialidad
+
 - Cantidad de medicos por cantidad de dias
 Proporcion de medicos por cantidad de dias de operaciones realizadas ( cantidad de dias por cantidad de medicos )
+Proporcion de medicos por cada dia por especialidad
+
 
 Todos los graficos excepto el primero solo serán vistos por un administrador
 
@@ -50,6 +60,6 @@ Todos los graficos excepto el primero solo serán vistos por un administrador
 BUGS
 - Validar hora de alta de turno con hora actual del usuario
 - Verificar inicio de sesion
-
+- Modificacion de turno desde pantalla Turnos
 
 

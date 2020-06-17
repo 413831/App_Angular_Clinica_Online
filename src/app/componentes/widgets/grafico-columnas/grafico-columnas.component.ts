@@ -22,6 +22,7 @@ export class GraficoColumnasComponent implements OnInit {
    public highchart;
    public chartOptions;
    public data;
+   public series: Serie[] ;
    public especialidades: Especialidad[] = [];
    public semana: Dia[] = [Dia.Lunes, Dia.Martes, Dia.Miercoles, Dia.Jueves, Dia.Viernes, Dia.Sabado];
 
@@ -44,13 +45,11 @@ export class GraficoColumnasComponent implements OnInit {
 
    procesarDatos() {
       this.data = this.turnos;
-      let aux = [];
-      let series: Serie[] = [];
+      this.series = [];
       let operacionesPorDia = [];
       
       // Se obtienen las especialidades de los turnos para las categorias
       this.obtenerCategorias();
-
       // Por cada especialidad
       this.especialidades.forEach((especialidad) => 
       {
@@ -62,41 +61,38 @@ export class GraficoColumnasComponent implements OnInit {
 
             // Busco operaciones de la especialidad y guardo por cada dia
             this.turnos.forEach(turno => 
-            {
+            {            
                if (turno.especialidad == especialidad && turno.estado == Estado.Atendido &&
                   new Date(turno.fecha).getDay() == dia) {
-                     console.log(turno);
+                  console.log(turno);
                   operaciones++;
                }
             });
 
             operacionesPorDia.push(operaciones);            
          });
-
-
-         series.push({
+         this.series.push({
             name: especialidad,
             data: operacionesPorDia
          });
 
       });
 
-      console.log(series);
-      this.data = series;
+      console.log(this.series);
    }
 
-   obtenerCategorias() {
-      for (let index = 0; index < this.turnos.length; index++) {
+   obtenerCategorias() 
+   {
+      for (let index = 0; index < this.turnos.length; index++) 
+      {
          const element = this.turnos[index];
          const especialidad = element.especialidad;
 
          if (!this.especialidades.includes(especialidad)) {
             console.log("In");
             this.especialidades.push(especialidad);
-            // aux.push(new Date(element.fechaInicio));
          }
       }
-
    }
 
    crearGrafico() {
@@ -134,7 +130,7 @@ export class GraficoColumnasComponent implements OnInit {
                borderWidth: 0
             }
          },
-         series: this.data
+         series: this.series
       };
 
 

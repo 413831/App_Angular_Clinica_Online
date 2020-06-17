@@ -73,16 +73,16 @@ export class AltaTurnoComponent implements OnInit {
   {
     console.info("Alta de turno");
     this.turno.especialidad = this.especialidad.value;
-    this.turno.fecha = this.fecha.value.toLocaleDateString();
+    this.turno.fecha = this.fecha.value.toUTCString();
     this.turno.duracion = 30;
-    this.turno.fecha = this.fecha.value.toLocaleDateString();
+    this.turno.fecha = this.fecha.value.toUTCString();
     console.log(this.turno.fecha);
     this.turno.horario = this.horario.value;
     this.turno.detalle = 'Detalle';
     this.turno.comentarios = 'Comentarios';
-    // this.turno.estado = Estado.Pendiente;
+    this.turno.estado = Estado.Pendiente;
     // VALOR SOLO PARA TESTING
-    this.turno.estado = Estado.Atendido;
+    // this.turno.estado = Estado.Atendido;
 
     console.log(this.turno);
     this.servicio.crear(this.turno)

@@ -55,7 +55,7 @@ export class ModificarTurnoComponent implements OnInit {
 
   modificar()
   {
-    this.turno.fecha = this.fecha.value != '' ? this.fecha.value.toLocaleDateString() : this.turno.fecha  ;
+    this.turno.fecha = this.fecha.value != '' ? this.fecha.value.toUTCString() : this.turno.fecha  ;
     this.turno.horario = this.horario.value != '' ? this.horario.value : this.turno.horario;
     this.turno.detalle = this.detalle.value != '' ? this.detalle.value : this.turno.detalle;
     this.turno.comentarios = this.comentarios.value != '' ? this.comentarios.value : this.turno.comentarios;
