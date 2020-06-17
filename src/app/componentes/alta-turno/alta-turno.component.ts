@@ -80,7 +80,9 @@ export class AltaTurnoComponent implements OnInit {
     this.turno.horario = this.horario.value;
     this.turno.detalle = 'Detalle';
     this.turno.comentarios = 'Comentarios';
-    this.turno.estado = Estado.Pendiente;
+    // this.turno.estado = Estado.Pendiente;
+    // VALOR SOLO PARA TESTING
+    this.turno.estado = Estado.Atendido;
 
     console.log(this.turno);
     this.servicio.crear(this.turno)

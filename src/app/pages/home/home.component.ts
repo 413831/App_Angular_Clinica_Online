@@ -76,31 +76,27 @@ export class HomeComponent implements OnInit {
 
   mocker() {
     console.log("Mocker");
-    let turno1 = Turno.CrearTurno("Paciente_1", "Medico_1", "15/3/2020", "10:00",
+    let turno1 = Turno.CrearTurno("Paciente_1", "Mariela Rosas", "11/6/2020", "10:00",
+                                  30, Especialidad.Pediatría, 0, "Detalle", Estado.Atendido,
+                                  "-M9_xN9UNjqTY8bgm-nS", "-M8h7176CHDOnFR5ddXG", "0", false, 
+                                  "comentarios", "");
+    let turno2 = Turno.CrearTurno("Paciente_1", "Medico_1", "11/6/2020", "09:00",
                                   30, Especialidad.General, 0, "Detalle", Estado.Atendido,
                                   "-M9_xN9UNjqTY8bgm-nS", "-M9pIrAdOyRfQSXPh0nv", "0", false, 
                                   "comentarios", "");
-    let turno2 = Turno.CrearTurno("Paciente_1", "Medico_1", "25/3/2020", "09:00",
-                                  30, Especialidad.General, 0, "Detalle", Estado.Atendido,
-                                  "-M9_xN9UNjqTY8bgm-nS", "-M9pIrAdOyRfQSXPh0nv", "0", false, 
-                                  "comentarios", "");
-    let turno3 = Turno.CrearTurno("Paciente_1", "Medico_1", "05/4/2020", "10:00",
+    let turno3 = Turno.CrearTurno("Paciente_1", "Medico_1", "11/6/2020", "10:00",
                                   30, Especialidad.Cardiología, 0, "Detalle", Estado.Atendido,
                                   "-M9_xN9UNjqTY8bgm-nS", "-M9pIrAdOyRfQSXPh0nv", "0", false, 
                                   "comentarios", "");
-    let turno4 = Turno.CrearTurno("Paciente_1", "Emanuel Ortega", "15/3/2020", "10:00",
+    let turno4 = Turno.CrearTurno("Paciente_1", "Emanuel Ortega", "11/6/2020", "10:00",
                                   30, Especialidad.Traumatología, 0, "Detalle", Estado.Atendido,
                                   "-M9_xN9UNjqTY8bgm-nS", "-M9_x40xTu5GJKFrWb5G", "0", false, 
                                   "comentarios", "");
-    let turno5 = Turno.CrearTurno("Paciente_1", "Emanuel Ortega", "25/3/2020", "09:00",
-                                  30, Especialidad.Traumatología, 0, "Detalle", Estado.Atendido,
-                                  "-M9_xN9UNjqTY8bgm-nS", "-M9_x40xTu5GJKFrWb5G", "0", false, 
-                                  "comentarios", "");
-    let turno6 = Turno.CrearTurno("Paciente_1", "Emanuel Ortega", "05/4/2020", "16:00",
-                                  30, Especialidad.Traumatología, 0, "Detalle", Estado.Atendido,
-                                  "-M9_xN9UNjqTY8bgm-nS", "-M9_x40xTu5GJKFrWb5G", "0", false, 
+    let turno5 = Turno.CrearTurno("Paciente_1", "Juana Paredes", "11/6/2020", "16:00",
+                                  30, Especialidad.Dermatología, 0, "Detalle", Estado.Atendido,
+                                  "-M9_xN9UNjqTY8bgm-nS", "-M9_wavAIICyCvfPSrgy", "0", false, 
                                   "comentarios", "");                                  
-    let turnos = [turno1, turno2, turno3, turno4, turno5, turno6];
+    let turnos = [turno1, turno2, turno3, turno4, turno5];
     //////////////////////////////
     let sesion1 = Sesion.CrearSesion( "-M8rJOjwLDwZmpF0EgoC", "Medico_1", "2020-06-17T08:16:11.000Z");
     let sesion2 = Sesion.CrearSesion( "-M8rJOjwLDwZmpF0EgoC", "Medico_1", "2020-06-16T16:16:11.000Z");

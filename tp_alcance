@@ -46,5 +46,10 @@ Proporcion de medicos por cantidad de dias de operaciones realizadas ( cantidad 
 
 Todos los graficos excepto el primero solo serán vistos por un administrador
 
+-----------------------
+BUGS
+- Validar hora de alta de turno con hora actual del usuario
+- Verificar inicio de sesion
+
 
 

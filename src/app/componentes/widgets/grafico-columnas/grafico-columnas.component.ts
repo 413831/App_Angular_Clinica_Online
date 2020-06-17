@@ -47,7 +47,7 @@ export class GraficoColumnasComponent implements OnInit {
       let aux = [];
       let series: Serie[] = [];
       let operacionesPorDia = [];
-
+      
       // Se obtienen las especialidades de los turnos para las categorias
       this.obtenerCategorias();
 
@@ -65,6 +65,7 @@ export class GraficoColumnasComponent implements OnInit {
             {
                if (turno.especialidad == especialidad && turno.estado == Estado.Atendido &&
                   new Date(turno.fecha).getDay() == dia) {
+                     console.log(turno);
                   operaciones++;
                }
             });
@@ -72,10 +73,12 @@ export class GraficoColumnasComponent implements OnInit {
             operacionesPorDia.push(operaciones);            
          });
 
+
          series.push({
             name: especialidad,
             data: operacionesPorDia
          });
+
       });
 
       console.log(series);
@@ -123,7 +126,7 @@ export class GraficoColumnasComponent implements OnInit {
          tooltip: {
             headerFormat: '<span style = "font-size:10px">{point.key}</span><table>',
             pointFormat: '<tr><td style = "color:{series.color};padding:0">{series.name}: </td>' +
-               '<td style = "padding:0"><b>{point.y:.1f} mm</b></td></tr>', footerFormat: '</table>', shared: true, useHTML: true
+               '<td style = "padding:0"><b>{point.y} </b></td></tr>', footerFormat: '</table>', shared: true, useHTML: true
          },
          plotOptions: {
             column: {
