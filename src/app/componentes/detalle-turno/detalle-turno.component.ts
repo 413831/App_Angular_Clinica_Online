@@ -112,6 +112,7 @@ export class DetalleTurnoComponent implements OnInit {
 
   modificar()
   {
+    localStorage.setItem('nuevoTurno',JSON.stringify(this.turno));
     this.router.navigate(["/modificar-turno"]);
   }
 
