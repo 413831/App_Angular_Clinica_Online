@@ -43,13 +43,18 @@ export class GraficoLineasComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.data = this.sesiones.sort((a, b) => this.ordenarDias(a, b));
+    // Ordeno las sesiones por día
+    this.data = this.sesiones.sort((a, b) => this.ordenarDias(a, b)).reverse();
     let aux = [];
 
-    for (let index = 0; index < 6; index++) 
+    // Por cada fecha de inicio obtengo el día
+    // El array de día contendrá dias diferentes para las categorias
+    for (let index = 0; this.dias.length < 6; index++) 
     {
       const element = this.data[index];
       const diaSemana =  new Date(element.fechaInicio).getDay();
+
+      // Al estar ordenado de manera descendente va a guardar el último logueo del día
       if(!this.dias.includes(diaSemana))
       {
         console.log("In");
@@ -57,9 +62,9 @@ export class GraficoLineasComponent implements OnInit {
         aux.push(new Date(element.fechaInicio));
       } 
     }
-    this.data = aux;
+    this.data = aux.reverse().map(fecha => fecha.getHours());
 
-    this.XCategories = this.dias.map(dia => Dia[dia]);
+    this.XCategories = this.dias.map(dia => Dia[dia]).reverse();
     console.log(this.XCategories);
     console.log(this.data);
     this.crearGrafico();
@@ -88,23 +93,16 @@ export class GraficoLineasComponent implements OnInit {
         type: "spline"
       },
       title: {
-        text: "Monthly Average Temperature"
+        text: "Inicios de sesión del usuario"
       },
       subtitle: {
-        text: "Source: WorldClimate.com"
+        text: this.usuario.nombre
       },
       credits: {
         enabled: false
       },
       xAxis: {
-        tickInterval: 7 * 24 * 3600 * 1000, // one week
-        tickWidth: 0,
-        gridLineWidth: 1,
-        labels: {
-          align: 'left',
-          x: 3,
-          y: -3
-        }
+        categories: this.XCategories
       },
       yAxis: {
         title: {
@@ -123,8 +121,8 @@ export class GraficoLineasComponent implements OnInit {
         valueSuffix: " °C"
       },
       series: [{
-        name: 'Tokyo',
-        data: ["11:30", 6.9, 9.5, 14.5, 18.2, 21.5]
+        name: 'Usuario',
+        data: this.data
       },
       // {
       //   name: 'New York',

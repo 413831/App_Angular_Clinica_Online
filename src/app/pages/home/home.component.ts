@@ -102,16 +102,17 @@ export class HomeComponent implements OnInit {
                                   "comentarios", "");                                  
     let turnos = [turno1, turno2, turno3, turno4, turno5, turno6];
     //////////////////////////////
-    let sesion1 = Sesion.CrearSesion( "-M8rBhmsrPuI7oeUJyh6", "El administrador", "2020-04-10T18:16:11.000Z");
-    let sesion2 = Sesion.CrearSesion( "-M8rBhmsrPuI7oeUJyh6", "El administrador", "2020-04-21T16:16:11.000Z");
-    let sesion3 = Sesion.CrearSesion( "-M8rBhmsrPuI7oeUJyh6", "El administrador", "2020-04-13T08:16:11.000Z");
-    let sesion4 = Sesion.CrearSesion( "-M8rBhmsrPuI7oeUJyh6", "El administrador", "2020-05-15T13:16:11.000Z");
-    let sesion5 = Sesion.CrearSesion( "-M8rBhmsrPuI7oeUJyh6", "El administrador", "2020-05-22T12:16:11.000Z");
-    let sesion6 = Sesion.CrearSesion( "-M8rBhmsrPuI7oeUJyh6", "El administrador", "2020-05-10T11:16:11.000Z");
-    let sesion7 = Sesion.CrearSesion( "-M8rBhmsrPuI7oeUJyh6", "El administrador", "2020-06-01T10:16:11.000Z");
-    let sesion8 = Sesion.CrearSesion( "-M8rBhmsrPuI7oeUJyh6", "El administrador", "2020-06-10T20:16:11.000Z");
-    let sesion9 = Sesion.CrearSesion( "-M8rBhmsrPuI7oeUJyh6", "El administrador", "2020-06-08T09:16:11.000Z");
-    let sesiones = [sesion1, sesion2,sesion3,sesion4,sesion5,sesion6,sesion7,sesion8,sesion9];                            
+    let sesion1 = Sesion.CrearSesion( "-M8rJOjwLDwZmpF0EgoC", "Medico_1", "2020-06-17T08:16:11.000Z");
+    let sesion2 = Sesion.CrearSesion( "-M8rJOjwLDwZmpF0EgoC", "Medico_1", "2020-06-16T16:16:11.000Z");
+    let sesion3 = Sesion.CrearSesion( "-M8rJOjwLDwZmpF0EgoC", "Medico_1", "2020-06-15T08:16:11.000Z");
+    let sesion4 = Sesion.CrearSesion( "-M8rJOjwLDwZmpF0EgoC", "Medico_1", "2020-06-11T13:16:11.000Z");
+    // let sesion5 = Sesion.CrearSesion( "-M8rJOjwLDwZmpF0EgoC", "Medico_1", "2020-05-22T12:16:11.000Z");
+    // let sesion6 = Sesion.CrearSesion( "-M8rJOjwLDwZmpF0EgoC", "Medico_1", "2020-05-10T11:16:11.000Z");
+    // let sesion7 = Sesion.CrearSesion( "-M8rJOjwLDwZmpF0EgoC", "Medico_1", "2020-06-01T10:16:11.000Z");
+    // let sesion8 = Sesion.CrearSesion( "-M8rJOjwLDwZmpF0EgoC", "Medico_1", "2020-06-10T20:16:11.000Z");
+    // let sesion9 = Sesion.CrearSesion( "-M8rJOjwLDwZmpF0EgoC", "Medico_1", "2020-06-08T09:16:11.000Z");
+    // let sesiones = [sesion1, sesion2,sesion3,sesion4,sesion5,sesion6,sesion7,sesion8,sesion9];                            
+    let sesiones = [sesion1, sesion2,sesion3,sesion4];                            
     //////////////////////////////
     // turnos.forEach(turno =>  this.servicioTurnos.crear(turno));
     // turnos.forEach(turno =>  this.servicioTurnos.actualizar(turno));
