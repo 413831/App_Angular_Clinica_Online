@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
   radius: number;
   color: string;
   especialidades: Especialidad[] = [Especialidad.Cardiología,Especialidad.Dermatología,
-                                  Especialidad.General, Especialidad.Pediatría,
+                                  Especialidad.General, Especialidad.Cardiología,
                                   Especialidad.Traumatología];
 
   constructor(private servicioMedicos: MedicosService,
@@ -76,7 +76,7 @@ export class HomeComponent implements OnInit {
 
   test()
   {
-    let fechaStr: string = "'14 Jun 2017 00:00:00 PDT'";
+    let fechaStr: string = "14 Jun 2017 00:00:00 PDT";
     let fechaDate : Date = new Date(fechaStr);
 
     console.log("//////////////////////////////////////////////////");
@@ -88,26 +88,27 @@ export class HomeComponent implements OnInit {
 
   mocker() {
     console.log("Mocker");
-    let turno1 = Turno.CrearTurno("Paciente_1", "Mariela Rosas", "11/6/2020", "10:00",
-                                  30, Especialidad.Pediatría, 0, "Detalle", Estado.Atendido,
-                                  "-M9_xN9UNjqTY8bgm-nS", "-M8h7176CHDOnFR5ddXG", "0", false, 
+    let turno1 = Turno.CrearTurno("Paciente_1", "Medico_1", "14 Jun 2017 00:00:00 PDT",
+                                  "10:00",30, Especialidad.Cardiología, 0, "Detalle", Estado.Atendido,
+                                  "-M9_xN9UNjqTY8bgm-nS", "-M8rJOjwLDwZmpF0EgoC", "0", false, 
                                   "comentarios", "");
-    let turno2 = Turno.CrearTurno("Paciente_1", "Medico_1", "11/6/2020", "09:00",
-                                  30, Especialidad.General, 0, "Detalle", Estado.Atendido,
-                                  "-M9_xN9UNjqTY8bgm-nS", "-M9pIrAdOyRfQSXPh0nv", "0", false, 
+    let turno2 = Turno.CrearTurno("Paciente_1", "Medico_1", "15 Jun 2017 00:00:00 PDT",
+                                  "10:00",30, Especialidad.Cardiología, 0, "Detalle", Estado.Atendido,
+                                  "-M9_xN9UNjqTY8bgm-nS", "-M8rJOjwLDwZmpF0EgoC", "0", false, 
                                   "comentarios", "");
-    let turno3 = Turno.CrearTurno("Paciente_1", "Medico_1", "11/6/2020", "10:00",
-                                  30, Especialidad.Cardiología, 0, "Detalle", Estado.Atendido,
-                                  "-M9_xN9UNjqTY8bgm-nS", "-M9pIrAdOyRfQSXPh0nv", "0", false, 
+    let turno3 = Turno.CrearTurno("Paciente_1", "Medico_1", "11 Jun 2017 00:00:00 PDT",
+                                  "10:00",30, Especialidad.Cardiología, 0, "Detalle", Estado.Atendido,
+                                  "-M9_xN9UNjqTY8bgm-nS", "-M8rJOjwLDwZmpF0EgoC", "0", false, 
                                   "comentarios", "");
-    let turno4 = Turno.CrearTurno("Paciente_1", "Emanuel Ortega", "11/6/2020", "10:00",
-                                  30, Especialidad.Traumatología, 0, "Detalle", Estado.Atendido,
-                                  "-M9_xN9UNjqTY8bgm-nS", "-M9_x40xTu5GJKFrWb5G", "0", false, 
+    let turno4 = Turno.CrearTurno("Paciente_1", "Medico_1", "16 Jun 2017 00:00:00 PDT",
+                                  "10:00",30, Especialidad.Cardiología, 0, "Detalle", Estado.Atendido,
+                                  "-M9_xN9UNjqTY8bgm-nS", "-M8rJOjwLDwZmpF0EgoC", "0", false, 
                                   "comentarios", "");
-    let turno5 = Turno.CrearTurno("Paciente_1", "Juana Paredes", "11/6/2020", "16:00",
-                                  30, Especialidad.Dermatología, 0, "Detalle", Estado.Atendido,
-                                  "-M9_xN9UNjqTY8bgm-nS", "-M9_wavAIICyCvfPSrgy", "0", false, 
-                                  "comentarios", "");                                  
+    let turno5 = Turno.CrearTurno("Paciente_1", "Medico_1", "10 Jun 2017 00:00:00 PDT",
+                                  "10:00",30, Especialidad.Cardiología, 0, "Detalle", Estado.Atendido,
+                                  "-M9_xN9UNjqTY8bgm-nS", "-M8rJOjwLDwZmpF0EgoC", "0", false, 
+                                  "comentarios", "");                            
+
     let turnos = [turno1, turno2, turno3, turno4, turno5];
     //////////////////////////////
     let sesion1 = Sesion.CrearSesion( "-M8rJOjwLDwZmpF0EgoC", "Medico_1", "2020-06-17T08:16:11.000Z");
@@ -122,7 +123,7 @@ export class HomeComponent implements OnInit {
     // let sesiones = [sesion1, sesion2,sesion3,sesion4,sesion5,sesion6,sesion7,sesion8,sesion9];                            
     let sesiones = [sesion1, sesion2,sesion3,sesion4];                            
     //////////////////////////////
-    // turnos.forEach(turno =>  this.servicioTurnos.crear(turno));
+    //  turnos.forEach(turno =>  this.servicioTurnos.crear(turno));
     // turnos.forEach(turno =>  this.servicioTurnos.actualizar(turno));
     // sesiones.forEach(sesion => this.servicioApp.cargarLogin(sesion));
 
