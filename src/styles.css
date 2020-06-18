@@ -13,9 +13,9 @@ body {
 
 .page
 {
-    background-color: #F8F8FF;
-    min-height: 90%;
-    height: fit-content;
+    background-color: #F8F8FF;    
+    height: 90%;
+    min-height: fit-content;
     padding-top: 3px;
 }
 
@@ -65,4 +65,9 @@ body {
     margin: auto;
     padding: 0;
     background-color: rgb(233, 233, 245);
+}
+
+/* remove scrollbar */
+.menu::-webkit-scrollbar {
+     width: 0 !important 
 }

@@ -61,7 +61,7 @@ export class AltaHistoriaComponent implements OnInit {
     let dialogConfig = new MatDialogConfig();
     dialogConfig.data = this.extras;
     dialogConfig.width = '300px';
-    dialogConfig.height = '250px';
+    dialogConfig.height = '300px';
     dialogConfig.panelClass = "dialog";
     const dialogRef = this.nuevoAtributo.open(DialogExtrasComponent, dialogConfig);
 

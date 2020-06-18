@@ -1,20 +1,22 @@
-<mat-form-field class="example-form-field">
-    <mat-label>Agregar nombre del nuevo dato</mat-label>
-    <input matInput type="text" [(ngModel)]="key">
-    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-        <mat-icon>close</mat-icon>
-    </button>
-</mat-form-field>
+<div class="menu">
+    <mat-form-field class="example-form-field">
+        <mat-label>Agregar nombre del nuevo dato</mat-label>
+        <input matInput type="text" [(ngModel)]="key">
+        <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
 
-<mat-form-field class="example-form-field">
-    <mat-label>Ingresar valor para el nuevo dato</mat-label>
-    <input matInput type="text" [(ngModel)]="value">
-    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-        <mat-icon>close</mat-icon>
-    </button>
-</mat-form-field>
-<br>
-<p>Para guardar los campos agregados presione 'Confirmar'</p>
+    <mat-form-field class="example-form-field">
+        <mat-label>Ingresar valor para el nuevo dato</mat-label>
+        <input matInput type="text" [(ngModel)]="value">
+        <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+    <br>
+    <p>Para guardar los campos agregados presione 'Confirmar'</p>
 
-<button mat-raised-button color="primary" (click)="agregar()">Agregar dato</button>
-<button mat-raised-button color="primary" (click)="confirmar()">Confirmar</button>
+    <button mat-raised-button color="primary" (click)="agregar()">Agregar dato</button>
+    <button mat-raised-button color="primary" (click)="confirmar()">Confirmar</button>
+</div>
