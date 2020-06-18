@@ -23,7 +23,7 @@ export class AppService extends MiservicioService{
 
   cargarLogin(login: Sesion)
   {
-    return database().ref('logs/sesion/')
+    return database().ref(`logs/sesion/${login.idUsuario}`)
                     .push()
                     .then((snapshot) => login.id = snapshot.key)
                     .then(() => this.actualizarLogin(login))
@@ -32,7 +32,7 @@ export class AppService extends MiservicioService{
 
   public actualizarLogin(login: Sesion): Promise<any>
   {
-    return database().ref('logs/sesion/' + login.id)
+    return database().ref(`logs/sesion/${login.idUsuario}/${login.id}`)
                   .update(login)
                   .then(() => console.info("Actualizacion exitosa"))
                   .catch(() => console.info("No se pudo actualizar"));

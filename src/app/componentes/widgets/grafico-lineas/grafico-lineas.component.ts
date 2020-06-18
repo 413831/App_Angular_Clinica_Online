@@ -62,11 +62,13 @@ export class GraficoLineasComponent implements OnInit {
      this.data = this.sesiones.sort((a, b) => this.ordenarDias(a, b)).reverse();
      let aux = [];
  
+     console.log(this.data);
      // Por cada fecha de inicio obtengo el día
      // El array de día contendrá dias diferentes para las categorias
-     for (let index = 0; this.dias.length < 6 || index < this.data.length; index++) 
+     for (let index = 0; index < this.data.length ; index++) 
      {
        const element = this.data[index];
+       console.log(element);
        const diaSemana =  new Date(element.fechaInicio).getDay();
  
        // Al estar ordenado de manera descendente va a guardar el último logueo del día
