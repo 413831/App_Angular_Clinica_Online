@@ -2,85 +2,116 @@ import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HighchartExporting from 'highcharts/modules/exporting';
 import HighchartExportData from 'highcharts/modules/export-data';
+import { Medico } from 'src/app/clases/Medico';
+import { Dia } from 'src/app/clases/Turno';
+
+interface Serie {
+   name: string,
+   data: any,
+}
+
 
 @Component({
-  selector: 'app-grafico-area',
-  templateUrl: './grafico-area.component.html',
-  styleUrls: ['./grafico-area.component.css']
+   selector: 'app-grafico-area',
+   templateUrl: './grafico-area.component.html',
+   styleUrls: ['./grafico-area.component.css']
 })
 export class GraficoAreaComponent implements OnInit {
-  public highchart;
-  public chartOptions;
+   public highchart;
+   public chartOptions;
+   public medicos: Medico[];
+   public data = [];
+   public series: Serie[] = [];
+   public totalMedicos: number;
+   public semana: Dia[] = [Dia.Lunes, Dia.Martes, Dia.Miercoles, Dia.Jueves, Dia.Viernes, Dia.Sabado];
 
-  constructor() { }
+   constructor()
+   {
+      this.medicos = (JSON.parse(localStorage.getItem('medicos'))
+                             .map(medico => Object.assign(new Medico, medico)));
+   }
 
-  ngOnInit(): void {
-    this.crearGrafico();
-  }
+   ngOnInit(): void {
+      this.procesarDatos();
+      this.crearGrafico();
+   }
 
-  crearGrafico() {
-    this.highchart = Highcharts;
+   procesarDatos() {
+      let medicosPorDia = [];
+      this.totalMedicos = this.medicos.length;
+
+      this.semana.forEach(dia =>
+      {
+         let cantidadMedicos = 0;
+
+         this.medicos.forEach(medico =>
+         {
+            if(medico.diasAtencion.includes(dia))
+            {
+               cantidadMedicos++;
+            }
+         });
+         medicosPorDia.push(cantidadMedicos);
+      });
+      this.series.push({
+         name: "Medicos",
+         data: medicosPorDia
+      });
+   }
+
+   crearGrafico() {
+      this.highchart = Highcharts;
 
 
-    this.chartOptions = {   
-      chart: {
-        type: 'areaspline'
-      },
-      title: {
-        text: 'Average fruit consumption during one week'
-      },
-      subtitle : {
-         style: {
-            position: 'absolute',
-            right: '0px',
-            bottom: '10px'
-         }
-      },
-      legend : {
-         layout: 'vertical',
-         align: 'left',
-         verticalAlign: 'top',
-         x: -150,
-         y: 100,
-         floating: true,
-         borderWidth: 1,
-        
-        
-      },
-      xAxis:{
-         categories: ['Monday','Tuesday','Wednesday','Thursday',
-            'Friday','Saturday','Sunday'] 
-      },
-      yAxis : {
+      this.chartOptions = {
+         chart: {
+            type: 'areaspline'
+         },
          title: {
-            text: 'Number of units'
-         }
-      },
-      tooltip : {
-         shared: true, valueSuffix: ' units'
-      },
-      plotOptions : {
-         area: {
-            fillOpacity: 0.5 
-         }
-      },
-      credits:{
-        enabled: false
-      },
-      series: [
-         {
-            name: 'John',
-            data: [3, 4, 3, 5, 4, 10, 12]
-         }, 
-         {
-            name: 'Jane',
-            data: [1, 3, 4, 3, 3, 5, 4]
-         }
-      ]
-   };
+            text: 'Cantidad de medicos por día de la semana'
+         },
+         subtitle: {
+            style: {
+               position: 'absolute',
+               right: '0px',
+               bottom: '10px'
+            }
+         },
+         legend: {
+            layout: 'vertical',
+            align: 'left',
+            verticalAlign: 'top',
+            x: -150,
+            y: 100,
+            floating: true,
+            borderWidth: 1,
 
 
-    HighchartExporting(Highcharts);
-    HighchartExportData(Highcharts);
-  }
+         },
+         xAxis: {
+            categories: this.semana.map(dia => Dia[dia])
+         },
+         yAxis: {
+            title: {
+               text: 'Cantidad de medicos'
+            }
+         },
+         tooltip: {
+            shared: true, valueSuffix: ' profesionales'
+         },
+         plotOptions: {
+            area: {
+               fillOpacity: 0.5
+            }
+         },
+         credits: {
+            enabled: false
+         },
+         series: this.series
+      };
+
+
+      HighchartExporting(Highcharts);
+      HighchartExportData(Highcharts);
+   }
 }

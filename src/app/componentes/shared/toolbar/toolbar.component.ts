@@ -21,12 +21,12 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit(): void
   {
-    // this.usuario = JSON.parse(localStorage.getItem("usuario"));
+    this.usuario = JSON.parse(localStorage.getItem("usuario"));
 
-    // if(this.usuario != null)
-    // {
-    //   this.mostrarBarra = true;
-    // }
+    if(this.usuario != null)
+    {
+      this.mostrarBarra = true;
+    }
   }
 
   ngOnChanges() : void

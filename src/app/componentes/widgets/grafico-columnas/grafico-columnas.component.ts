@@ -65,21 +65,16 @@ export class GraficoColumnasComponent implements OnInit {
             {            
                if (turno.especialidad == especialidad && turno.estado == Estado.Atendido &&
                   new Date(turno.fecha).getDay() == dia) {
-                  console.log(turno);
                   operaciones++;
                }
             });
-
             operacionesPorDia.push(operaciones);            
          });
          this.series.push({
             name: especialidad,
             data: operacionesPorDia
          });
-
       });
-
-      console.log(this.series);
    }
 
    obtenerCategorias() 

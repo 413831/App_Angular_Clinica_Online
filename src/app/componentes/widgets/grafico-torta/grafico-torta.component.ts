@@ -2,65 +2,111 @@ import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HighchartExporting from 'highcharts/modules/exporting';
 import HighchartExportData from 'highcharts/modules/export-data';
+import { Turno } from 'src/app/clases/Turno';
+import { Especialidad } from 'src/app/clases/Medico';
 
 
 @Component({
-  selector: 'app-grafico-torta',
-  templateUrl: './grafico-torta.component.html',
-  styleUrls: ['./grafico-torta.component.css']
+   selector: 'app-grafico-torta',
+   templateUrl: './grafico-torta.component.html',
+   styleUrls: ['./grafico-torta.component.css']
 })
 export class GraficoTortaComponent implements OnInit {
-  public highchart;
-  public chartOptions;
+   public highchart;
+   public chartOptions;
+   public especialidades : Especialidad[] = [];
+   public data = [];
+   public turnos: Turno[];
+   public totalTurnos: number;
+   public totalMedicos: number;
 
-  constructor() { }
+   constructor() 
+   {
+      this.turnos = (JSON.parse(localStorage.getItem('turnos'))
+                          .map(turno => Object.assign(new Turno, turno)));
+   }
 
-  ngOnInit(): void {
-    this.crearGrafico();
-  }
+   ngOnInit(): void 
+   {
+      this.procesarDatos();
+      this.crearGrafico();
+   }
 
-  crearGrafico()
-  {
-    this.highchart = Highcharts;
-    this.chartOptions = {   
-      chart : {
-         plotBorderWidth: null,
-         plotShadow: false
-      },
-      title : {
-         text: 'Browser market shares at a specific website, 2014'   
-      },
-      tooltip : {
-         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-      },
-      plotOptions : {
-         pie: {
-            shadow: false,
-            center: ['50%', '50%'],
-            size:'45%',
-            innerSize: '20%'            
-         }
-      },
-      series : [{
-         type: 'pie',
-         name: 'Browser share',
-         data: [
-            ['Firefox',   45.0],
-            ['IE',       26.8],
+   procesarDatos()
+   {
+      this.totalTurnos = this.turnos.length;
+      this.totalMedicos = 0;
+      this.obtenerCategorias();
+
+      this.especialidades.forEach(especialidad =>
+      {
+         let cantidadMedicos = 0;
+         let value = [];
+
+         this.turnos.forEach(turno => 
+         {
+            if(turno.especialidad == especialidad)
             {
-               name: 'Chrome',
-               y: 12.8,
-               sliced: true,
-               selected: true
-            },
-            ['Safari',    8.5],
-            ['Opera',     6.2],
-            ['Others',      0.7]
-         ]
-      }]
-   };
-   HighchartExporting(Highcharts);
-    HighchartExportData(Highcharts);
-  }
+               cantidadMedicos++;
+            }
+         });
+         this.totalMedicos += cantidadMedicos;
+         value.push(especialidad,cantidadMedicos / this.totalTurnos);
+         this.data.push(value);
+      });
+   }
+
+   obtenerCategorias() 
+   {
+      for (let index = 0; index < this.turnos.length; index++) 
+      {
+         const element = this.turnos[index];
+         const especialidad = element.especialidad;
+
+         if (!this.especialidades.includes(especialidad)) {
+            this.especialidades.push(especialidad);
+         }
+      }
+   }
+
+
+   crearGrafico() {
+      this.highchart = Highcharts;
+
+      this.chartOptions = {   
+         chart : {
+            plotBorderWidth: null,
+            plotShadow: false
+         },
+         title : {
+            text: 'Proporcion de medicos por turno'   
+         },
+         subtitle : {
+            text : `Total de turnos ${this.totalTurnos}`
+         },
+         tooltip : {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+         },
+         plotOptions : {
+            pie: {
+               allowPointSelect: true,
+               cursor: 'pointer',
+         
+               dataLabels: {
+                  enabled: false           
+               },
+         
+               showInLegend: true
+            }
+         },
+         series : [{
+            type: 'pie',
+            name: 'Porcentaje ',
+            data: this.data
+         }]
+      };
+      HighchartExporting(Highcharts);
+      HighchartExportData(Highcharts);
+   }
 
 }

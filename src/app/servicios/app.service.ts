@@ -49,16 +49,19 @@ export class AppService extends MiservicioService{
 
   getLoginData()
   {
-    let loginData ;                                                        
+    let loginData;
+    let registros = [];  
     console.info("Datos de sesion");
 
     database().ref('logs/sesion/').on('value',(snapshot) => {       
       loginData = [];  
         snapshot.forEach((child) =>{
-          var data = child.val();
-          loginData.push(Sesion.CrearSesion(data.idUsuario, data.nombreUsuario,
-                                            data.fechaInicio, data.id,
-                                            data.duracion, data.fechaFin));
+          child.forEach(element => {
+            var data = element.val();
+            loginData.push(Sesion.CrearSesion(data.idUsuario, data.nombreUsuario,              
+                                                data.fechaInicio, data.id,
+                                                data.duracion, data.fechaFin));            
+          });            
         });
         console.info("Registros de sesiones");      
         localStorage.setItem('sesiones', JSON.stringify(loginData));
