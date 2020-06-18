@@ -73,6 +73,10 @@ Pantalla de configuracion de datos personales y opciones para cada perfil de usu
 
 ![Historia](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2FCaptura%20de%20pantalla%20de%202020-06-11%2019-00-38.png?alt=media&token=62856200-4a3c-46e7-9d23-ad20d7519856 "Historia")
 
+- En el menu cada administrador podrá tener acceso a gráficos estadísticos de las operaciones de los profesionales como asi de sesiones de usuarios
+
+![Graficos](https://firebasestorage.googleapis.com/v0/b/tp-clinica-online---labiv.appspot.com/o/private%2FCaptura%20de%20pantalla%20de%202020-06-18%2019-00-29.png?alt=media&token=82048cba-ea2a-4b07-a0f7-59678582c9a3 "Graficos")
+
 
 ## Contacto
 
