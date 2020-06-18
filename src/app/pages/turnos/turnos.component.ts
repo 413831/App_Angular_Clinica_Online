@@ -39,7 +39,7 @@ export class TurnosComponent implements OnInit {
     // const filterValue = (event.target as HTMLInputElement).value;
     // this.dataSource.filter = filterValue.trim().toLowerCase();
     
-    this.filtro = this.campo.concat(this.valor);
+    this.filtro = this.valor.concat(this.valor);
     
     console.log(this.turnos);
   }
