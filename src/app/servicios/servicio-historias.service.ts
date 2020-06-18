@@ -43,7 +43,7 @@ export class ServicioHistoriasService extends MiservicioService{
         historias = [];  
         snapshot.forEach((child) =>{
           var data = child.val();
-          historias.push(Historia.CrearHistoria(data.id, data.idPaciente, data.paciente, data.sexo,
+          historias.push(Historia.CrearHistoria(data.id, data.idPaciente, data.paciente,
                                             data.consultas, data.adicionales));
         });
         console.info("Historias clinicas");

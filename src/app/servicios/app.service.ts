@@ -71,22 +71,4 @@ export class AppService extends MiservicioService{
 
  
 
-  public leer():Historia[]
-  {
-    let historias ;                                                        
-    console.info("Fetch de todas las historias");
-
-    database().ref('historias').on('value',(snapshot) => {       
-      historias = [];  
-        snapshot.forEach((child) =>{
-          var data = child.val();
-          historias.push(Historia.CrearHistoria(data.id, data.idPaciente, data.paciente, data.sexo,
-                                            data.consultas, data.adicionales));
-        });
-        console.info("Historias clinicas");
-        console.log(historias);         
-        localStorage.setItem('historias', JSON.stringify(historias));
-    })
-    return historias;
-  }
 }

@@ -39,16 +39,17 @@ export class AltaHistoriaComponent implements OnInit {
   {
     this.medico = Object.assign(new Medico, 
                   JSON.parse(localStorage.getItem('usuario')));  
-    this.turno = Object.assign(new Turno, 
-      JSON.parse(localStorage.getItem('turno-terminado')));
+    this.turno = Object.assign(new Turno,
+                               JSON.parse(localStorage.getItem('turno-terminado')));
     // Recuperar historia existente con id del paciente sino crear nueva
     this.historia = JSON.parse(localStorage.getItem('historias'))
-                        .filter(historia => historia.id == this.turno.idPaciente)
+                        .filter(historia => historia.idPaciente == this.turno.idPaciente)
                         .map(historia => Object.assign(new Historia, historia))[0];
     if(!this.historia)
     {
       this.historia = new Historia(); 
     }
+    console.log(this.historia);
   }
 
   ngOnInit(): void {
@@ -97,6 +98,8 @@ export class AltaHistoriaComponent implements OnInit {
 
   guardarHistoria()
   {
+    this.historia.idPaciente = this.turno.idPaciente;
+    this.historia.paciente = this.turno.nombrePaciente;
     // Se agregan los datos extras al objeto Turno
     this.extras.forEach( dato => Turno.AgregarDato(this.turno, dato.key, dato.value));
 
@@ -122,12 +125,15 @@ export class AltaHistoriaComponent implements OnInit {
 
     console.log(Object.entries(this.turno));
 
+    // Array de turnos del paciente
     this.historia.consultas.push(this.turno);
+
     this.historia.adicionales = this.extras.map( dato => dato.key);
     console.log(this.historia);
+
     this.servicioTurnos.actualizar(this.turno)
-    .then(() => this.servicioHistoria.crear(this.historia));
-    ;
+                        .then(() => this.servicioHistoria.crear(this.historia));
+    
     this._snackBar.openFromComponent(NotificacionComponent, {
       duration: 2 * 1000,
       data: "Se actualizó la historia clínica exitosamente."
