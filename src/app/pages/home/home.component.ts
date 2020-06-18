@@ -88,41 +88,41 @@ export class HomeComponent implements OnInit {
 
   mocker() {
     console.log("Mocker");
-    let turno1 = Turno.CrearTurno("Paciente_1", "Medico_1", "14 Jun 2017 00:00:00 PDT",
+    let turno1 = Turno.CrearTurno("Antonio Ruedas", "Medico_1", "14 Jun 2017 00:00:00 PDT",
                                   "10:00",30, Especialidad.Cardiología, 0, "Detalle", Estado.Atendido,
                                   "-M9_xN9UNjqTY8bgm-nS", "-M8rJOjwLDwZmpF0EgoC", "0", false, 
                                   "comentarios", "");
-    let turno2 = Turno.CrearTurno("Paciente_1", "Medico_1", "15 Jun 2017 00:00:00 PDT",
+    let turno2 = Turno.CrearTurno("Antonio Ruedas", "Medico_1", "15 Jun 2017 00:00:00 PDT",
                                   "10:00",30, Especialidad.Cardiología, 0, "Detalle", Estado.Atendido,
                                   "-M9_xN9UNjqTY8bgm-nS", "-M8rJOjwLDwZmpF0EgoC", "0", false, 
                                   "comentarios", "");
-    let turno3 = Turno.CrearTurno("Paciente_1", "Medico_1", "11 Jun 2017 00:00:00 PDT",
+    let turno3 = Turno.CrearTurno("Antonio Ruedas", "Medico_1", "11 Jun 2017 00:00:00 PDT",
                                   "10:00",30, Especialidad.Cardiología, 0, "Detalle", Estado.Atendido,
                                   "-M9_xN9UNjqTY8bgm-nS", "-M8rJOjwLDwZmpF0EgoC", "0", false, 
                                   "comentarios", "");
-    let turno4 = Turno.CrearTurno("Paciente_1", "Medico_1", "16 Jun 2017 00:00:00 PDT",
+    let turno4 = Turno.CrearTurno("Antonio Ruedas", "Medico_1", "16 Jun 2017 00:00:00 PDT",
                                   "10:00",30, Especialidad.Cardiología, 0, "Detalle", Estado.Atendido,
                                   "-M9_xN9UNjqTY8bgm-nS", "-M8rJOjwLDwZmpF0EgoC", "0", false, 
                                   "comentarios", "");
-    let turno5 = Turno.CrearTurno("Paciente_1", "Medico_1", "10 Jun 2017 00:00:00 PDT",
+    let turno5 = Turno.CrearTurno("Antonio Ruedas", "Medico_1", "10 Jun 2017 00:00:00 PDT",
                                   "10:00",30, Especialidad.Cardiología, 0, "Detalle", Estado.Atendido,
                                   "-M9_xN9UNjqTY8bgm-nS", "-M8rJOjwLDwZmpF0EgoC", "0", false, 
                                   "comentarios", "");                            
 
     let turnos = [turno1, turno2, turno3, turno4, turno5];
     //////////////////////////////
-    let sesion1 = Sesion.CrearSesion( "-M8rJOjwLDwZmpF0EgoC", "Medico_1", "2020-06-17T08:16:11.000Z");
-    let sesion2 = Sesion.CrearSesion( "-M8rJOjwLDwZmpF0EgoC", "Medico_1", "2020-06-16T16:16:11.000Z");
-    let sesion3 = Sesion.CrearSesion( "-M8rJOjwLDwZmpF0EgoC", "Medico_1", "2020-06-15T08:48:11.000Z");
-    let sesion4 = Sesion.CrearSesion( "-M8rJOjwLDwZmpF0EgoC", "Medico_1", "2020-06-11T13:16:11.000Z");
-    let sesion5 = Sesion.CrearSesion( "-M8rJsqHcy25TmPSCAwq", "Medico_2", "2020-05-22T12:46:11.000Z");
-    let sesion6 = Sesion.CrearSesion( "-M8rJsqHcy25TmPSCAwq", "Medico_2", "2020-05-10T11:16:11.000Z");
-    let sesion7 = Sesion.CrearSesion( "-M8rJsqHcy25TmPSCAwq", "Medico_2", "2020-06-01T10:32:11.000Z");
-    let sesion8 = Sesion.CrearSesion( "-M8rJsqHcy25TmPSCAwq", "Medico_2", "2020-06-10T20:16:11.000Z");
-    let sesion9 = Sesion.CrearSesion( "-M9_xN9UNjqTY8bgm-nS", "Antonio Ruedas", "2020-06-08T09:16:11.000Z");
-    let sesion10 = Sesion.CrearSesion( "-M9_xN9UNjqTY8bgm-nS", "Antonio Ruedas", "2020-06-12T08:16:11.000Z");
-    let sesion11 = Sesion.CrearSesion( "-M9_xN9UNjqTY8bgm-nS", "Antonio Ruedas", "2020-06-14T10:30:11.000Z");
-    let sesion12 = Sesion.CrearSesion( "-M9_xN9UNjqTY8bgm-nS", "Antonio Ruedas", "2020-06-15T09:16:11.000Z");
+    let sesion1 = Sesion.CrearSesion( "--M9_x40xTu5GJKFrWb5G", "Emanuel Ortega", "2020-06-17T22:16:11.000Z");
+    let sesion2 = Sesion.CrearSesion( "--M9_x40xTu5GJKFrWb5G", "Emanuel Ortega", "2020-06-16T17:16:11.000Z");
+    let sesion3 = Sesion.CrearSesion( "--M9_x40xTu5GJKFrWb5G", "Emanuel Ortega", "2020-06-15T09:48:11.000Z");
+    let sesion4 = Sesion.CrearSesion( "--M9_x40xTu5GJKFrWb5G", "Emanuel Ortega", "2020-06-11T13:16:11.000Z");
+    let sesion5 = Sesion.CrearSesion( "--M9_x40xTu5GJKFrWb5G", "Emanuel Ortega", "2020-05-22T10:46:11.000Z");
+    let sesion6 = Sesion.CrearSesion( "--M9_x40xTu5GJKFrWb5G", "Emanuel Ortega", "2020-05-10T11:16:11.000Z");
+    let sesion7 = Sesion.CrearSesion( "--M9_x40xTu5GJKFrWb5G", "Emanuel Ortega", "2020-06-01T08:32:11.000Z");
+    let sesion8 = Sesion.CrearSesion( "--M9_x40xTu5GJKFrWb5G", "Emanuel Ortega", "2020-06-10T20:16:11.000Z");
+    let sesion9 = Sesion.CrearSesion( "0",  "El administrador", "2020-06-08T12:16:11.000Z");
+    let sesion10 = Sesion.CrearSesion( "0", "El administrador", "2020-06-12T10:16:11.000Z");
+    let sesion11 = Sesion.CrearSesion( "0", "El administrador", "2020-06-14T08:30:11.000Z");
+    let sesion12 = Sesion.CrearSesion( "0", "El administrador", "2020-06-15T07:16:11.000Z");
     let sesiones = [sesion1, sesion2,sesion3,sesion4,sesion5,
                     sesion6,sesion7,sesion8,sesion9,
                     sesion10, sesion11, sesion12];  

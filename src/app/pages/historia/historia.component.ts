@@ -24,11 +24,11 @@ export class HistoriaComponent implements OnInit {
 
   ngOnInit(): void {
     this.paciente = (JSON.parse(localStorage.getItem('pacientes'))
-    .filter(paciente => this.idPaciente == paciente.id))
-    .map(paciente => Object.assign(new Paciente, paciente))[0];
+                        .filter(paciente => this.idPaciente == paciente.id))
+                        .map(paciente => Object.assign(new Paciente, paciente))[0];
     this.historia = JSON.parse(localStorage.getItem('historias'))
-        .filter(historia => historia.idPaciente == this.idPaciente)
-        .map(historia => Object.assign(new Historia, historia))[0];
+                        .filter(historia => historia.idPaciente == this.idPaciente)
+                        .map(historia => Object.assign(new Historia, historia))[0];
 
     console.log(this.paciente);
     console.log(this.historia);

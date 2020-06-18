@@ -59,11 +59,12 @@ Todos los graficos excepto el primero solo serán vistos por un administrador
 -----------------------
 BUGS
 - Validar hora de alta de turno con hora actual del usuario
-- Verificar inicio de sesion
+- Verificar inicio de sesion con captcha
 - Implementar canActivate con Menu, Alta turno, Turnos
 - Validar cambio de estados de turno contra fecha
-- Validar alta de turno contra fecha
-- Al cambiar turno a confirmado llevar a Alta Historia
+- Al cambiar estado del turno a confirmado llevar a Alta Historia
+- Una vez cargado los datos de un turno en la historia no se debe poder cargar de nuevo
 - Modificacion de turno desde pantalla Turnos
+- Manejo de errores y logs en bases de datos
 
 

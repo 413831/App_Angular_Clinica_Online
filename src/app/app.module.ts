@@ -68,9 +68,6 @@ import { ListadoPacientesComponent } from './componentes/listado-pacientes/lista
 import { AltaMedicoComponent } from './componentes/alta-medico/alta-medico.component';
 import { AltaPacienteComponent } from './componentes/alta-paciente/alta-paciente.component';
 import { AltaTurnoComponent } from './componentes/alta-turno/alta-turno.component';
-import { MenuPacienteComponent } from './componentes/menu-paciente/menu-paciente.component';
-import { MenuMedicoComponent } from './componentes/menu-medico/menu-medico.component';
-import { MenuAdministradorComponent } from './componentes/menu-administrador/menu-administrador.component';
 import { DialogMedicoComponent } from './componentes/dialog-medico/dialog-medico.component';
 import { DetallePacienteComponent } from './componentes/detalle-paciente/detalle-paciente.component';
 import { BuscadorMedicoComponent } from './componentes/buscador-medico/buscador-medico.component';
@@ -128,9 +125,6 @@ import { SanitizadorPipe } from './pipes/sanitizador.pipe';
     AltaMedicoComponent,
     AltaPacienteComponent,
     AltaTurnoComponent,
-    MenuPacienteComponent,
-    MenuMedicoComponent,
-    MenuAdministradorComponent,
     DialogMedicoComponent,
     DetallePacienteComponent,
     BuscadorMedicoComponent,
