@@ -38,11 +38,17 @@ export class AltaHistoriaComponent implements OnInit {
               private _snackBar: MatSnackBar) 
   {
     this.medico = Object.assign(new Medico, 
-      JSON.parse(localStorage.getItem('usuario')));  
+                  JSON.parse(localStorage.getItem('usuario')));  
     this.turno = Object.assign(new Turno, 
-        JSON.parse(localStorage.getItem('turno-terminado')));
+      JSON.parse(localStorage.getItem('turno-terminado')));
     // Recuperar historia existente con id del paciente sino crear nueva
-    this.historia = new Historia(); 
+    this.historia = JSON.parse(localStorage.getItem('historias'))
+                        .filter(historia => historia.id == this.turno.idPaciente)
+                        .map(historia => Object.assign(new Historia, historia))[0];
+    if(!this.historia)
+    {
+      this.historia = new Historia(); 
+    }
   }
 
   ngOnInit(): void {
@@ -53,8 +59,8 @@ export class AltaHistoriaComponent implements OnInit {
   {
     let dialogConfig = new MatDialogConfig();
     dialogConfig.data = this.extras;
-    dialogConfig.width = '260px';
-    dialogConfig.height = '220px';
+    dialogConfig.width = '300px';
+    dialogConfig.height = '250px';
     dialogConfig.panelClass = "dialog";
     const dialogRef = this.nuevoAtributo.open(DialogExtrasComponent, dialogConfig);
 

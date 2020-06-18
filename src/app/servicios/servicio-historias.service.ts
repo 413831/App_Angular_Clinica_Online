@@ -17,9 +17,9 @@ export class ServicioHistoriasService extends MiservicioService{
     // }
   }
 
-  public crear(historia): Promise<any>
+  public crear(historia: Historia): Promise<any>
   {
-    return database().ref('historias')
+    return database().ref(`historias/${historia.idPaciente}`)
                     .push()
                     .then((snapshot) => historia.id = snapshot.key)
                     .then(() => this.actualizar(historia))
@@ -28,7 +28,7 @@ export class ServicioHistoriasService extends MiservicioService{
 
   public actualizar(historia): Promise<any>
   {
-    return database().ref('historias/' + historia.id)
+    return database().ref('historias/' + historia.idPaciente)
                   .update(historia)
                   .then(() => console.info("Actualizacion exitosa"))
                   .catch(() => console.info("No se pudo actualizar"));
