@@ -16,6 +16,7 @@ import { AltaHistoriaComponent } from './componentes/alta-historia/alta-historia
 import { AuthGuard } from './auth/auth.guard';
 import { SecureInnerPagesGuard } from './auth/secure-inner-pages.guard';
 import { InformesComponent } from './pages/informes/informes.component';
+import { HistoriaComponent } from './pages/historia/historia.component';
 
 
 const routes: Routes = [
@@ -31,7 +32,8 @@ const routes: Routes = [
   { path: 'alta-admin', component: AltaAdminComponent},
   { path: 'modificar-turno', component: ModificarTurnoComponent, data: {animation: 'Detalle-turno'}},
   { path: 'encuesta', component: EncuestaComponent, data: {animation: 'Encuesta'}},
-  { path: 'historia', component: AltaHistoriaComponent, data: {animation: 'Historia'}},
+  { path: 'alta-historia', component: AltaHistoriaComponent, data: {animation: 'Historia'}},
+  { path: 'historia/:paciente', component: HistoriaComponent, data: {animation: 'Historia'}},
   { path: 'informes', component: InformesComponent }
 ];
 

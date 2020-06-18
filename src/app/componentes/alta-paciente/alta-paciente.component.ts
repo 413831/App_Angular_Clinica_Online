@@ -83,6 +83,7 @@ export class AltaPacienteComponent implements OnInit {
         this.imgUrl2 = this.avatar.value;
         break
     }
+    console.log(this.imgUrl1);
   }
 
   parseToBase64(readerEvt) 
@@ -101,7 +102,6 @@ export class AltaPacienteComponent implements OnInit {
       this.imagen2.nombre = this.selectedFile.name;
       this.imagen2.base64 = this.base64textString;
     }
-    console.log(this.imagen1.nombre );
   }
 
   // Solo para test

@@ -1,0 +1,49 @@
+<div class="page ">
+  <div class="titulos">
+    <h1>Historia Clinica</h1>
+  </div>
+  <hr>
+  <div class="layout" *ngIf="historia">
+    <form>
+
+      <!-- Nombre -->
+      <mat-form-field appearance="fill" class=" historia-field">
+        <mat-label>Nombre del paciente</mat-label>
+        <input matInput type="text" value="{{historia.paciente}}" disabled>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class=" historia-field">
+        <mat-label>Número de afiliado</mat-label>
+        <input matInput type="number" value="{{paciente.numeroAfiliado}}" disabled>
+      </mat-form-field>
+
+      <mat-tab-group mat-align-tabs="start">
+        <mat-tab label="Consultas realizadas">
+          <p class="parrafo">Total de consultas realizadas : {{historia.consultas.length}}</p>
+        </mat-tab>
+        <mat-tab label="Second">Content 2</mat-tab>
+        <mat-tab label="Third">Content 3</mat-tab>
+      </mat-tab-group>
+
+      <mat-tab-group mat-align-tabs="start" *ngFor="let dato of datos">
+        <mat-tab label="{{dato.key}}" class="parrafo"> {{dato.value}}</mat-tab>
+      </mat-tab-group>
+    </form>
+    <form class="example-form datos-clinicos">
+
+
+    </form>
+    <mat-toolbar>
+      <button class="opciones" mat-raised-button>
+        <h3>Guardar</h3>
+      </button>
+      <button class="opciones" mat-raised-button [routerLink]='["/menu"]'>
+        <h3>Volver</h3>
+      </button>
+    </mat-toolbar>
+  </div>
+  <div *ngIf="!historia">
+    <p class="parrafo"> Aún no se ha generado la historia clinica del paciente
+       {{paciente.nombre}} - {{paciente.numeroAfiliado}}</p>
+  </div>
+</div>

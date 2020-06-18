@@ -28,7 +28,7 @@
         <hr>
         <div class="panel">
           <input formControlName="imagen"  class="botonFile" id="imagenUno" type="file" placeholder="Seleccione su imagen" (change)="onFileSelected($event)">        
-          <img *ngIf='imgUrl1' class="thumbnail" [src]="imgUrl1" alt="foto-de-perfil">
+          <img *ngIf='imgUrl1' class="thumbnail" [src]="imgUrl1 | sanitizador : 'url'" alt="foto-de-perfil">
           <!-- <button mat-raised-button color="primary" (click)='upLoad()'>Subir imagen</button> -->
         </div>
         
@@ -72,7 +72,7 @@
         <hr>
         <div class="panel">
           <input formControlName="avatar" class="botonFile" id="imagenDos" type="file" placeholder="Seleccione su imagen" (change)="onFileSelected($event)">        
-          <img *ngIf='imgUrl2' class="thumbnail" [src]="imgUrl2" alt="foto-de-perfil">
+          <img *ngIf='imgUrl2' class="thumbnail" [src]="imgUrl2 | sanitizador : 'url'" alt="foto-de-perfil">
           <!-- <button mat-raised-button color="primary" (click)='upLoad()'>Vista previa</button> -->
         </div>
 

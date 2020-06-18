@@ -45,6 +45,7 @@ export class AltaHistoriaComponent implements OnInit {
     this.historia = JSON.parse(localStorage.getItem('historias'))
                         .filter(historia => historia.idPaciente == this.turno.idPaciente)
                         .map(historia => Object.assign(new Historia, historia))[0];
+    console.log(`${this.turno.idPaciente}`)
     if(!this.historia)
     {
       this.historia = new Historia(); 
@@ -100,6 +101,21 @@ export class AltaHistoriaComponent implements OnInit {
   {
     this.historia.idPaciente = this.turno.idPaciente;
     this.historia.paciente = this.turno.nombrePaciente;
+
+    if(this.historia.adicionales == undefined)
+    {
+      this.historia.adicionales =  [...new Set(this.extras.map(extra => extra.key))];
+    }
+    else
+    {
+      this.extras.map(extra => this.historia.adicionales.push(extra.key));
+
+    }
+
+    // Array de turnos del paciente
+    this.historia.consultas.push(this.turno);
+    console.log(this.extras);
+    console.log(this.historia.adicionales);
     // Se agregan los datos extras al objeto Turno
     this.extras.forEach( dato => Turno.AgregarDato(this.turno, dato.key, dato.value));
 
@@ -125,10 +141,8 @@ export class AltaHistoriaComponent implements OnInit {
 
     console.log(Object.entries(this.turno));
 
-    // Array de turnos del paciente
-    this.historia.consultas.push(this.turno);
 
-    this.historia.adicionales = this.extras.map( dato => dato.key);
+
     console.log(this.historia);
 
     this.servicioTurnos.actualizar(this.turno)

@@ -267,7 +267,7 @@ export class MenuComponent implements OnInit {
   editarHistoria()
   {
     localStorage.setItem('turno-terminado',JSON.stringify(this.turno));
-    this.router.navigate(["/historia"]);
+    this.router.navigate(["/alta-historia"]);
   }
 
   verInformes()

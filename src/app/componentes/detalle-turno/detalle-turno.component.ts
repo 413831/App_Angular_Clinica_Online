@@ -116,6 +116,11 @@ export class DetalleTurnoComponent implements OnInit {
     this.router.navigate(["/modificar-turno"]);
   }
 
+  verHistoria()
+  {
+    this.router.navigate([`/historia/${this.paciente.id}`]);
+  }
+
 
 
 }

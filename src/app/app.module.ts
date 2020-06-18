@@ -107,6 +107,8 @@ import { GraficoColumnasComponent } from './componentes/widgets/grafico-columnas
 import { GraficoLineasComponent } from './componentes/widgets/grafico-lineas/grafico-lineas.component';
 import { GraficoTortaComponent } from './componentes/widgets/grafico-torta/grafico-torta.component';
 import { GraficoBarrasComponent } from './componentes/widgets/grafico-barras/grafico-barras.component';
+import { HistoriaComponent } from './pages/historia/historia.component';
+import { SanitizadorPipe } from './pipes/sanitizador.pipe';
 
 @NgModule({
   declarations: [
@@ -160,6 +162,8 @@ import { GraficoBarrasComponent } from './componentes/widgets/grafico-barras/gra
     GraficoLineasComponent,
     GraficoTortaComponent,
     GraficoBarrasComponent,
+    HistoriaComponent,
+    SanitizadorPipe,
   ],
   imports: [
     ApplicationModule,
