@@ -28,13 +28,13 @@ const routes: Routes = [
   { path: 'contacto', component: ContactoComponent, data: {animation: 'Contacto'}},
   { path: 'menu', component: MenuComponent, canActivate : [AuthGuard],data: {animation: 'Menu'}},
   { path: 'turnos', component: TurnosComponent, canActivate : [AuthGuard],data: {animation: 'Turnos'}},
-  { path: 'alta-turno/:horarios/:dias', component: AltaTurnoComponent, data: {animation: 'Turno'}},
+  { path: 'alta-turno/:horarios/:dias', component: AltaTurnoComponent, canActivate : [AuthGuard], data: {animation: 'Turno'}},
   { path: 'alta-admin', component: AltaAdminComponent},
-  { path: 'modificar-turno', component: ModificarTurnoComponent, data: {animation: 'Detalle-turno'}},
-  { path: 'encuesta', component: EncuestaComponent, data: {animation: 'Encuesta'}},
-  { path: 'alta-historia', component: AltaHistoriaComponent, data: {animation: 'Historia'}},
-  { path: 'historia/:paciente', component: HistoriaComponent, data: {animation: 'Historia'}},
-  { path: 'informes', component: InformesComponent }
+  { path: 'modificar-turno', component: ModificarTurnoComponent, canActivate : [AuthGuard], data: {animation: 'Detalle-turno'}},
+  { path: 'encuesta', component: EncuestaComponent, canActivate : [AuthGuard],data: {animation: 'Encuesta'}},
+  { path: 'alta-historia', component: AltaHistoriaComponent, canActivate : [AuthGuard], data: {animation: 'Historia'}},
+  { path: 'historia/:paciente', component: HistoriaComponent, canActivate : [AuthGuard], data: {animation: 'Historia'}},
+  { path: 'informes', canActivate : [AuthGuard], component: InformesComponent }
 ];
 
 @NgModule({

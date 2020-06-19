@@ -18,11 +18,10 @@
         </button>
       </mat-form-field>
       <br>
-      <button mat-raised-button color="primary" (click)='login()' []>Entrar</button>
+      <button mat-raised-button color="primary" (click)='login()' [disabled]='disabled'>Entrar</button>
       <button mat-raised-button matTooltip="Login con perfiles de prueba" color="accent"
         (click)="drawer.toggle()">Seleccionar perfil</button>
       <br>
-      Agregar boton para deshabilitar captcha
       <re-captcha (resolved)="resolved($event)" ></re-captcha>
     </form>
 

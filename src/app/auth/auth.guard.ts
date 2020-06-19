@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate {
     {
       this._snackBar.openFromComponent(NotificacionComponent, {
         duration: 3 * 1000,
-        data: "Se modificó el turno exitosamente."
+        data: "Acceso denegado. Debe iniciar sesión"
       });
       this.router.navigate(['login'])
     }

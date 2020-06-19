@@ -132,6 +132,7 @@ sendTokenToBackend(token)
   //calling the service and passing the token to the service
   this.captchaService.sendToken(token).subscribe(
     data => {
+      this.disabled = false;
       console.log(data);
     },
     error => {

@@ -1,9 +1,11 @@
 <div class="page">
     <div class="titulos">
         <h1>Informes</h1>
+        <mat-divider></mat-divider>
     </div>
-    <div  *ngIf="sesiones" >
+    <div *ngIf="sesiones" >
         <div>
+            <h4>Descargar inicios de sesión de todos los usuarios</h4>
             <button mat-raised-button (click)="guardarPDF()">PDF</button>
             <button mat-raised-button (click)="guardarExcel()">Excel</button>
         </div>

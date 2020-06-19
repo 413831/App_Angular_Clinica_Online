@@ -12,6 +12,7 @@ export class MiservicioService {
   public static imgSrc;
   protected static database;
   public static inicializado: boolean = false
+  public static usuario: Usuario;
 
   constructor() 
   {
@@ -42,10 +43,11 @@ export class MiservicioService {
   {
     // Llamar multiples servicios segun el usuario logueado ?
     let promesa = new Promise( (resolve,reject) => {
-      let sesion = Sesion.CrearSesion( usuario.id, usuario.nombre, new Date().toString());
-      localStorage.setItem("usuario", JSON.stringify(usuario));
-
       console.log("Inicio de sesion");
+      localStorage.setItem("usuario", JSON.stringify(usuario));
+      this.usuario = usuario;
+      
+      let sesion = Sesion.CrearSesion( usuario.id, usuario.nombre, new Date().toString());
       servicio.cargarLogin(sesion).then(() => resolve(sesion.id) );
     });
     
@@ -54,6 +56,7 @@ export class MiservicioService {
 
   public static cerrarSesion(){
     localStorage.removeItem("usuario");
+    this.usuario = null;
 
   }
 
