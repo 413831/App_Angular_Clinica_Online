@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   public pacienteTest_2: Paciente;
   public usuario: Usuario;
   public datosLogin: FormGroup;
+  public disabled = true;
   myRecaptcha = new FormControl(false);
   hide = true;
   medicos: Array<Usuario>;

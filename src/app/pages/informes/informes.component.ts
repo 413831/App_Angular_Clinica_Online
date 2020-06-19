@@ -8,6 +8,7 @@ import { Sesion } from 'src/app/clases/Sesion';
 import { Turno, Dia } from 'src/app/clases/Turno';
 import { DiaAtencionPipe } from 'src/app/pipes/dia-atencion.pipe';
 import zipcelx from 'zipcelx';
+import { ArchivosService } from 'src/app/servicios/archivos.service';
 Highcharts.createElement('link', {
     href: 'https://fonts.googleapis.com/css?family=Unica+One',
     rel: 'stylesheet',
@@ -44,39 +45,17 @@ export class InformesComponent implements OnInit {
 
    @ViewChild('container', {static: false}) content: any;
 
-   constructor(private appService: AppService) {
+   constructor(private appService: AppService, private archivos: ArchivosService) {
       this.usuario = JSON.parse(localStorage.getItem('usuario'));
 
       if (this.usuario) {
          this.usuario = Object.assign(new Usuario, this.usuario);
          this.sesiones = (JSON.parse(localStorage.getItem('sesiones'))
-            .filter(sesion => this.usuario.id == sesion.idUsuario)
-            .map(sesion => Object.assign(new Sesion, sesion)));
-         ///
-         this.turnos = (JSON.parse(localStorage.getItem('turnos')))
-            .map(turno => Object.assign(new Turno, turno));
-
-
-         this.crearGraficos();
+                              .map(sesion => Object.assign(new Sesion, sesion)));
       }
    }
 
    ngOnInit(): void {
-   }
-
-   crearGraficos() {
-      let horas: number[] = [];
-
-      this.sesiones.sort((a, b) => this.ordenarDias(a, b));
-      // console.log(this.sesiones);
-      this.sesiones.forEach(sesion => {
-         horas.push(new Date(sesion.fechaInicio).getHours());
-      })
-
-      this.valoresHoras = {
-         name: "Horas",
-         data: horas
-      }
    }
 
    ordenarDias(diaA: Sesion, diaB: Sesion) {
@@ -100,60 +79,13 @@ export class InformesComponent implements OnInit {
       });
    }
 
-  
-
-//    (function (H) {
-//       if (window.zipcelx && H.getOptions().exporting) {
-//           H.Chart.prototype.downloadXLSX = function () {
-//               var div = document.createElement('div'),
-//                   name,
-//                   xlsxRows = [],
-//                   rows;
-//               div.style.display = 'none';
-//               document.body.appendChild(div);
-//               rows = this.getDataRows(true);
-//               xlsxRows = H.map(rows.slice(1), function (row) {
-//                   return H.map(row, function (column) {
-//                       return {
-//                           type: typeof column === 'number' ? 'number' : 'string',
-//                           value: column
-//                       };
-//                   });
-//               });
-  
-//               // Get the filename, copied from the Chart.fileDownload function
-//               if (this.options.exporting.filename) {
-//                   name = this.options.exporting.filename;
-//               } else if (this.title && this.title.textStr) {
-//                   name = this.title.textStr.replace(/ /g, '-').toLowerCase();
-//               } else {
-//                   name = 'chart';
-//               }
-  
-//               window.zipcelx({
-//                   filename: name,
-//                   sheet: {
-//                       data: xlsxRows
-//                   }
-//               });
-//           };
-  
-//           // Default lang string, overridable in i18n options
-//           H.getOptions().lang.downloadXLSX = 'Download XLSX';
-  
-//           // Add the menu item handler
-//           H.getOptions().exporting.menuItemDefinitions.downloadXLSX = {
-//               textKey: 'downloadXLSX',
-//               onclick: function () {
-//                   this.downloadXLSX();
-//               }
-//           };
-  
-//           // Replace the menu item
-//           var menuItems = H.getOptions().exporting.buttons.contextButton.menuItems;
-//           menuItems[menuItems.indexOf('downloadXLS')] = 'downloadXLSX';
-//       }
-  
-//   }(Highcharts));
-
+   guardarExcel(): void
+   {
+     this.archivos.exportarExcel(this.sesiones, "sesiones");
+   }
+ 
+   guardarPDF(): void
+   {
+     this.archivos.exportarPDF(this.sesiones, "sesiones");
+   }
 }

@@ -3,6 +3,10 @@
         <h1>Informes</h1>
     </div>
     <div  *ngIf="sesiones" >
+        <div>
+            <button mat-raised-button (click)="guardarPDF()">PDF</button>
+            <button mat-raised-button (click)="guardarExcel()">Excel</button>
+        </div>
         <app-grafico-lineas [sesiones]="sesiones"></app-grafico-lineas>
     </div>
     <app-grafico-columnas></app-grafico-columnas>
