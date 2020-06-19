@@ -49,7 +49,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.activarServicios();
     this.mocker();
-    this.test();
   }
 
   activarServicios() : Promise<any>{

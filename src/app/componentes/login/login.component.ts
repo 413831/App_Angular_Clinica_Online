@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { PacientesService } from 'src/app/servicios/servicio-pacientes.service';
 import { MedicosService } from 'src/app/servicios/servicio-medicos.service';
@@ -20,6 +20,7 @@ import { Sesion } from 'src/app/clases/Sesion';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  @Output() enviarUsuario = new EventEmitter<any>();
   public apiKey = environment.captchaKey;
   public adminTest: Administrador;
   public medicoTest_1: Medico;
@@ -28,7 +29,9 @@ export class LoginComponent implements OnInit {
   public pacienteTest_2: Paciente;
   public usuario: Usuario;
   public datosLogin: FormGroup;
-  public disabled = true;
+  // VALOR PARA DESARROLLO cambiar a true
+  // public disabled = true;
+  public disabled = false;
   myRecaptcha = new FormControl(false);
   hide = true;
   medicos: Array<Usuario>;
@@ -82,6 +85,8 @@ export class LoginComponent implements OnInit {
     {
       MiservicioService.iniciarSesion(this.usuario, this.servicioLogin)
                       .then(() => this.router.navigate(["home"]));
+      this.enviarUsuario.emit(this.usuario);
+      console.log("SE ENVIA USUARIO");
     }
   }
 

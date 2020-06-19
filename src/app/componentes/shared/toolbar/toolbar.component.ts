@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Usuario } from 'src/app/clases/Usuario';
 import { MiservicioService } from 'src/app/servicios/miservicio.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -9,13 +9,11 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./toolbar.component.css'],
 })
 export class ToolbarComponent implements OnInit {
-  public usuario: Usuario;
+  @Input() usuario: Usuario;
   public mostrarBarra : boolean = false;
 
-  constructor(private route: ActivatedRoute, private router: Router,
-              private servicio: MiservicioService) 
+  constructor(private route: ActivatedRoute, private router: Router) 
   {
-    this.usuario = MiservicioService.usuario;
   }
 
   ngOnInit(): void

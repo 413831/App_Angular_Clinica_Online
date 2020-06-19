@@ -12,11 +12,13 @@ export class MiservicioService {
   public static imgSrc;
   protected static database;
   public static inicializado: boolean = false
-  public static usuario: Usuario;
+  public static usuarioPrivado: Usuario = null;
+  public usuarioPublico:Usuario;
 
   constructor() 
   {
-    
+    this.getUsuario(this);
+    console.log(this.usuarioPublico);
   }
 
   public static init()
@@ -39,13 +41,20 @@ export class MiservicioService {
     this.inicializado = true;
   }
 
+  getUsuario(servicio : MiservicioService)
+  {
+    servicio.usuarioPublico = MiservicioService.usuarioPrivado;
+
+    return servicio;
+  }
+
   public static iniciarSesion(usuario: Usuario, servicio: AppService) : Promise<any>
   {
     // Llamar multiples servicios segun el usuario logueado ?
     let promesa = new Promise( (resolve,reject) => {
       console.log("Inicio de sesion");
       localStorage.setItem("usuario", JSON.stringify(usuario));
-      this.usuario = usuario;
+      MiservicioService.usuarioPrivado = usuario;
       
       let sesion = Sesion.CrearSesion( usuario.id, usuario.nombre, new Date().toString());
       servicio.cargarLogin(sesion).then(() => resolve(sesion.id) );
@@ -56,7 +65,7 @@ export class MiservicioService {
 
   public static cerrarSesion(){
     localStorage.removeItem("usuario");
-    this.usuario = null;
+    MiservicioService.usuarioPrivado = null;
 
   }
 
