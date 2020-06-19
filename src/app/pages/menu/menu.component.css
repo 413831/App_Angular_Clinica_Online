@@ -12,7 +12,7 @@ mat-toolbar {
 
 mat-table {
     width: 100%;
-    background-color: rgb(234, 234, 248);
+    background-color: rgb(234, 234, 248);    
   }
 
 mat-row:hover{

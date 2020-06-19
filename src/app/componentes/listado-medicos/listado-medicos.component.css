@@ -15,11 +15,6 @@ tr{
   transition: 0.1s;
 }
 
-tr:hover{
-  background-color: lightsteelblue;
-  color: black;
-}
-
 th{
   font-size: medium;
 }

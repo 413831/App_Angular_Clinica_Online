@@ -1,4 +1,7 @@
 <figure>
+    <div>
+        <button mat-raised-button [appHoverButton] (click)="guardarPDF()">Descargar PDF</button>
+    </div>
     <highcharts-chart [Highcharts]="highchart" [options]="chartOptions" 
     style = "width: 100%; height: 400px; display: block;">
     </highcharts-chart>

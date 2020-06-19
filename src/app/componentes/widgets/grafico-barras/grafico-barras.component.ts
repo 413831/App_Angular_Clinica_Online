@@ -3,6 +3,7 @@ import * as Highcharts from 'highcharts';
 import HighchartExporting from 'highcharts/modules/exporting';
 import HighchartExportData from 'highcharts/modules/export-data';
 import { Dia, Turno } from 'src/app/clases/Turno';
+import { ArchivosService } from 'src/app/servicios/archivos.service';
 
 interface Serie {
    name: string,
@@ -23,7 +24,7 @@ export class GraficoBarrasComponent implements OnInit {
    public chartOptions;
    public semana: Dia[] = [Dia.Lunes, Dia.Martes, Dia.Miercoles, Dia.Jueves, Dia.Viernes, Dia.Sabado];
 
-   constructor() 
+   constructor(private archivos: ArchivosService) 
    {
       this.turnos = (JSON.parse(localStorage.getItem('turnos'))
                           .map(turno => Object.assign(new Turno, turno)));
@@ -32,6 +33,11 @@ export class GraficoBarrasComponent implements OnInit {
    ngOnInit(): void {
       this.procesarDatos();
       this.crearGrafico();
+   }
+
+   guardarPDF(): void
+   {
+     this.archivos.exportarPDF(this.data, "turnospordia");
    }
 
    procesarDatos() 

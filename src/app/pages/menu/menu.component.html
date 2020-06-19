@@ -84,20 +84,20 @@
         </mat-toolbar> 
         <mat-toolbar>
             <div class="botones" *ngIf='administrador'>
-                <!-- <button *ngIf="medicoAutorizar"  mat-raised-button color="primary" (click)="autorizar()">Autorizar</button> -->
-                <button mat-raised-button color="default" (click)="listarMedicos()">Ver Medicos</button>
-                <button mat-raised-button color="default" (click)="listarPacientes()">Ver Pacientes</button>
+                <!-- <button appElevation *ngIf="medicoAutorizar"  mat-raised-button color="primary" (click)="autorizar()">Autorizar</button> -->
+                <button appElevation mat-raised-button color="default" (click)="listarMedicos()">Ver Medicos</button>
+                <button appElevation mat-raised-button color="default" (click)="listarPacientes()">Ver Pacientes</button>
             </div>
             <div class="botones" *ngIf="turno">
-                <button *ngIf="paciente && turno.estado == 'Atendido'" mat-raised-button color='primary'  (click)="realizarEncuesta()">Realizar encuesta</button>
-                <button *ngIf="medico && turno.estado == 'Atendido'" mat-raised-button color='primary'  (click)="editarHistoria()">Guardar historia</button>
-                <button mat-raised-button class="default" (click)="modificarTurno()">Detalles turno</button>
+                <button appElevation *ngIf="paciente && turno.estado == 'Atendido'" mat-raised-button color='primary'  (click)="realizarEncuesta()">Realizar encuesta</button>
+                <button appElevation *ngIf="medico && turno.estado == 'Atendido'" mat-raised-button color='primary'  (click)="editarHistoria()">Guardar historia</button>
+                <button appElevation mat-raised-button class="default" (click)="modificarTurno()">Detalles turno</button>
             </div>
             <div class="botones">
-                <button mat-raised-button class="default" (click)="modificar()">Modificar datos</button>                
-                <button mat-raised-button class="default" (click)="cargarTurno()">Cargar Turno</button>
-                <button mat-raised-button color="primary" (click)="verInformes()">Informes</button>
-                <button mat-raised-button class="warning" (click)="borrar()">Baja de usuario</button>
+                <button appElevation [defaultElevation]="0" mat-raised-button class="default" (click)="modificar()">Modificar datos</button>                
+                <button appElevation mat-raised-button class="default" (click)="cargarTurno()">Cargar Turno</button>
+                <button appElevation mat-raised-button color="primary" (click)="verInformes()">Informes</button>
+                <button appElevation mat-raised-button class="warning" (click)="borrar()">Baja de usuario</button>
             </div>
 
         </mat-toolbar>

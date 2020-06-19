@@ -1,6 +1,7 @@
 
 .container{
     padding-top: 5px;
+    padding-bottom: 10px;
 }
 
 .cards {    
@@ -14,7 +15,7 @@
     background-color: #F8F8FF;
     height: 100%;
     padding-top: 3px;
-    padding-bottom: 15px;
+    padding-bottom: 30px;
 }
 
 .example-form {
@@ -27,6 +28,9 @@
   
   .tabla
   {
+    display: flex;
+    justify-content: stretch;
+    flex-direction: column;
     min-width: 200px;
     max-width: 400px;
   }
@@ -43,9 +47,15 @@
   {
     display: flex;
     flex-direction: row;
+
+  }
+
+  * > .layout {
+    margin-left: 30px;
   }
 
   mat-form-field{
+    margin-top: 15px;
     margin-left: 30px;
     margin-right: 15px;
   }
@@ -59,5 +69,10 @@
     box-shadow: lightsteelblue;
     shape-margin: 5px;
     width: 700px;
-    margin: 50px 50px 0 50px;
+    margin: 0 50px 0 50px;
   }
+
+mat-icon
+{
+    font-size: 3px;
+}

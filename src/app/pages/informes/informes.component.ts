@@ -39,10 +39,6 @@ export class InformesComponent implements OnInit {
    labelsEspecialidades: string[] = [];
 
 
-
-   
-  ////////////////////////////////
-
    @ViewChild('container', {static: false}) content: any;
 
    constructor(private appService: AppService, private archivos: ArchivosService) {

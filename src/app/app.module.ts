@@ -106,6 +106,11 @@ import { GraficoTortaComponent } from './componentes/widgets/grafico-torta/grafi
 import { GraficoBarrasComponent } from './componentes/widgets/grafico-barras/grafico-barras.component';
 import { HistoriaComponent } from './pages/historia/historia.component';
 import { SanitizadorPipe } from './pipes/sanitizador.pipe';
+import { BotonDirective } from './directivas/boton.directive';
+import { EstadoDirective } from './directivas/estado.directive';
+import { ElevationDirective } from './directivas/elevation.directive';
+import { EspecialidadesPipe } from './pipes/especialidades.pipe';
+import { DisponibilidadPipe } from './pipes/disponibilidad.pipe';
 
 @NgModule({
   declarations: [
@@ -158,6 +163,11 @@ import { SanitizadorPipe } from './pipes/sanitizador.pipe';
     GraficoBarrasComponent,
     HistoriaComponent,
     SanitizadorPipe,
+    BotonDirective,
+    EstadoDirective,
+    ElevationDirective,
+    EspecialidadesPipe,
+    DisponibilidadPipe,
   ],
   imports: [
     ApplicationModule,

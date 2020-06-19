@@ -16,6 +16,7 @@ import { NotificacionComponent } from '../notificacion/notificacion.component';
   styleUrls: ['./dialog-medico.component.css']
 })
 export class DialogMedicoComponent implements OnInit {
+  private opened: boolean = false;
   private turno: Turno;
   public usuario: Usuario;
   imgSrc: string;

@@ -4,6 +4,7 @@ import HighchartExporting from 'highcharts/modules/exporting';
 import HighchartExportData from 'highcharts/modules/export-data';
 import { Turno } from 'src/app/clases/Turno';
 import { Especialidad } from 'src/app/clases/Medico';
+import { ArchivosService } from 'src/app/servicios/archivos.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class GraficoTortaComponent implements OnInit {
    public totalTurnos: number;
    public totalMedicos: number;
 
-   constructor() 
+   constructor(private archivos: ArchivosService) 
    {
       this.turnos = (JSON.parse(localStorage.getItem('turnos'))
                           .map(turno => Object.assign(new Turno, turno)));
@@ -30,6 +31,12 @@ export class GraficoTortaComponent implements OnInit {
    {
       this.procesarDatos();
       this.crearGrafico();
+   }
+
+    
+   guardarPDF(): void
+   {
+     this.archivos.exportarPDF(this.data, "medicosporturno");
    }
 
    procesarDatos()

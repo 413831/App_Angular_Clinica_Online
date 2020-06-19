@@ -98,6 +98,8 @@ export class AltaTurnoComponent implements OnInit {
   crearFiltros()
   {
     this.minDate = new Date();
+    this.minDate.setDate(this.minDate.getDate() + 1);
+
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 15);
 

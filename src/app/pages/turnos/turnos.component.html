@@ -2,33 +2,65 @@
   <div class="titulos">
     <h1>Turnos</h1>
   </div>
-  <div *ngIf="usuario">
-    <hr>
+  <div>
+    <h3>
+      <p class="parrafo">Listado con buscador de turnos</p>
+    </h3>
 
-    <div>
-      <h3>
-        <p class="parrafo">Listado con buscador de turnos</p>
-      </h3>
-    </div>
-    <mat-form-field appearance="fill">
-      <mat-label>Buscar turno por valor</mat-label>
-      <input [(ngModel)]="valor" name="valor" (keyup)="filtrar($event)" matInput>
-    </mat-form-field>
+  </div>
+  <hr>
+  <div *ngIf="usuario" class="container">
+    
     <div class="layout">
       <div class="tabla">
-        <app-listado-turnos [filtro]="filtro" [turnos]='turnos' [pages]=6 (seleccionar)='seleccionarTurno($event)'>
+        <mat-form-field appearance="fill">
+          <mat-label>Buscar turno por valor</mat-label>
+          <input [(ngModel)]="valor" name="valor" (keyup)="filtrar($event)" matInput>
+          <mat-hint align="start"><strong>Seleccione un turno para poder ver el detalle</strong> </mat-hint>
+        </mat-form-field>
+        <app-listado-turnos [filtro]="filtro" [turnos]='turnos' [pages]=4 (seleccionar)='seleccionarTurno($event)'>
         </app-listado-turnos>
       </div>
-      <div *ngIf="turno" class="cards">
-        <app-detalle-turno [turno]="turno"></app-detalle-turno>
-      </div>
-      <div *ngIf="!turno" class="box">
-        <ul>
-          <li> Seleccione el turno del listado para ver los detalles de su consulta </li>
-          <br>
-          <li> Podrá visualizar estado del turno, fecha, horario de atención y profesional correspondiente al turno
-          </li>
-        </ul>
+
+      <div>
+        <div *ngIf="turno" class="cards">
+          <app-detalle-turno [turno]="turno"></app-detalle-turno>
+        </div>
+        <div appElevation *ngIf="!turno" class="box">
+
+          <mat-list>
+            <div mat-subheader>
+              <h3>Los turnos pueden ser filtrados por los siguientes valores</h3>
+            </div>
+
+            <mat-list-item>
+              <mat-icon mat-list-icon>label_outline</mat-icon>
+              <div mat-line>Nombre del paciente</div>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon mat-list-icon>label_outline</mat-icon>
+              <div mat-line>Nombre del medico</div>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon mat-list-icon>label_outline</mat-icon>
+              <div mat-line>Estado del turno</div>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon mat-list-icon>label_outline</mat-icon>
+              <div mat-line>Especialidad del turno</div>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon mat-list-icon>label_outline</mat-icon>
+              <div mat-line>Consultorio de atención</div>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon mat-list-icon>label_outline</mat-icon>
+              <div mat-line>Valor de dato específico de la consulta</div>
+            </mat-list-item>
+
+          </mat-list>
+
+        </div>
       </div>
     </div>
   </div>

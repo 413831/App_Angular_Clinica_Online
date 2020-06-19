@@ -1,27 +1,33 @@
-<div class="flex-container">
+<div appElevation class="flex-container">
   <div class="img-container">
     <img class='thumbnail' [src]="imgPerfil" alt="Foto de perfil">
   </div>
-  <div>
-    <h4>Nombre:</h4>
-    <p>{{paciente.nombre}}</p>
-    <h4>Dni:</h4>
-    <p>{{paciente.dni}}</p>
-    <h4>Dirección:</h4>
-    <p>{{paciente.direccion}}</p>
-  </div>
-  <div>
-    <h4>Telefono:</h4>
-    <p>{{paciente.telefono}}</p>
 
-    <h4>E-mail:</h4>
-    <p>{{paciente.email}}</p>
-  </div>
-  <div>
-    <h4>N° Afiliado:</h4>
-    <p>{{paciente.numeroAfiliado}}</p>
-    <h4>Obra Social:</h4>
-    <p>{{paciente.obraSocial}}</p>
+    <mat-chip-list class="mat-chip-list-stacked" aria-label="Datos personales">
+      <mat-chip color="primary" [selectable]="false">
+        <strong>Nombre:&nbsp;</strong>{{paciente.nombre}}
+      </mat-chip>
+      <mat-chip color="primary" [selectable]="false">
+        <strong>D.N.I.:&nbsp;</strong>{{paciente.dni}}
+      </mat-chip>
+      <mat-chip color="primary" [selectable]="false">
+        <strong>Direccion:&nbsp;</strong>{{paciente.direccion}}
+      </mat-chip>
+       <mat-chip color="primary" [selectable]="false">
+        <strong>Telefono:&nbsp;</strong>{{paciente.telefono}}
+      </mat-chip>
+      <mat-chip color="primary" [selectable]="false">
+        <strong>Email:&nbsp;</strong>{{paciente.email}}
+      </mat-chip>
+    </mat-chip-list>   
 
-  </div>
+    <mat-chip-list class="mat-chip-list-stacked" aria-label="Datos personales 2">
+      <mat-chip color="primary" [selectable]="false">
+        <strong>Numero de afiliado:&nbsp;</strong>{{paciente.numeroAfiliado}}
+      </mat-chip>
+      <mat-chip color="primary" [selectable]="false">
+        <strong>Obra Social:&nbsp;</strong>{{paciente.obraSocial}}
+      </mat-chip>      
+    </mat-chip-list>   
+  
 </div>

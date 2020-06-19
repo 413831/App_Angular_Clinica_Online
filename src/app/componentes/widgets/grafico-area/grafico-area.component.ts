@@ -4,6 +4,7 @@ import HighchartExporting from 'highcharts/modules/exporting';
 import HighchartExportData from 'highcharts/modules/export-data';
 import { Medico } from 'src/app/clases/Medico';
 import { Dia } from 'src/app/clases/Turno';
+import { ArchivosService } from 'src/app/servicios/archivos.service';
 
 interface Serie {
    name: string,
@@ -25,7 +26,7 @@ export class GraficoAreaComponent implements OnInit {
    public totalMedicos: number;
    public semana: Dia[] = [Dia.Lunes, Dia.Martes, Dia.Miercoles, Dia.Jueves, Dia.Viernes, Dia.Sabado];
 
-   constructor()
+   constructor(private archivos: ArchivosService)
    {
       this.medicos = (JSON.parse(localStorage.getItem('medicos'))
                              .map(medico => Object.assign(new Medico, medico)));
@@ -34,6 +35,11 @@ export class GraficoAreaComponent implements OnInit {
    ngOnInit(): void {
       this.procesarDatos();
       this.crearGrafico();
+   }
+
+   guardarPDF(): void
+   {
+     this.archivos.exportarPDF(this.series, "semanamedicos");
    }
 
    procesarDatos() {

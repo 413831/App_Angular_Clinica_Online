@@ -6,8 +6,8 @@
     <div *ngIf="sesiones" >
         <div>
             <h4>Descargar inicios de sesión de todos los usuarios</h4>
-            <button mat-raised-button (click)="guardarPDF()">PDF</button>
-            <button mat-raised-button (click)="guardarExcel()">Excel</button>
+            <button mat-raised-button [appHoverButton] (click)="guardarPDF()">PDF</button>
+            <button mat-raised-button [appHoverButton] (click)="guardarExcel()">Excel</button>
         </div>
         <app-grafico-lineas [sesiones]="sesiones"></app-grafico-lineas>
     </div>

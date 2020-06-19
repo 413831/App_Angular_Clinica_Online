@@ -6,14 +6,22 @@
   margin-top: 50px;
   display: flex;
   flex-direction: row;
-  background-color: rgb(217, 205, 233);
+  background-color: rgb(234, 226, 243);
   justify-content: space-evenly;
   border-radius: 15px;
-  width: 650px;
+  width: 700px;
 }
   
 .img-container{
-  display: flex;
+  display: flexbox;
   flex-direction: row;
+  justify-content: space-evenly;
   align-items: center;
+  max-width: 150px;
+  max-height: 200px;
+}
+
+mat-chip-list{
+  padding: 5px;
+  margin: 5px;
 }

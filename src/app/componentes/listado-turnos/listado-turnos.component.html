@@ -17,7 +17,7 @@
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="columnasTurnos"></mat-header-row>
-        <mat-row (click)="seleccionarTurno(row)" class="example-element-row"
+        <mat-row [appHoverButton] (click)="seleccionarTurno(row)" class="example-element-row"
             *matRowDef="let row; columns: columnasTurnos;"></mat-row>
     </mat-table>
         <mat-paginator [length]="100" [pageSize]='pages' showFirstLastButtons>

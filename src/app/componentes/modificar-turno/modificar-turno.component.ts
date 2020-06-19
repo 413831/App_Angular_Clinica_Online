@@ -27,7 +27,8 @@ export class ModificarTurnoComponent implements OnInit {
   public dias: Dia[];
   public minDate: Date;
   public maxDate: Date;
-  private disabled: boolean;
+  public confirmar: boolean;
+  private modificacion: boolean;
   events: string[] = [];
   datosTurnos: FormGroup;
   filtroFecha;
@@ -47,8 +48,6 @@ export class ModificarTurnoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
-    
     this.crearFiltros();
     this.crearControles();
   }
@@ -86,13 +85,16 @@ export class ModificarTurnoComponent implements OnInit {
 
   crearControles()
   {
-    this.disabled = (this.turno.estado != Estado.Pendiente);
+    // El turno sólo se podrá modificar si es Pendiente
+    this.modificacion = (this.turno.estado != Estado.Pendiente);
+    // El turno sólo se podrá confirmar si es el día de la fecha
+    this.confirmar = (new Date() == new Date(this.turno.fecha));
 
     this.datosTurnos = new FormGroup({
       nombrePaciente: new FormControl({value: this.turno.nombrePaciente, disabled: true}),
       nombreMedico: new FormControl({value: this.turno.nombreMedico, disabled: true}),
-      fecha: new FormControl({value: '', disabled: this.disabled}),
-      horario: new FormControl({value: this.turno.horario, disabled: this.disabled}),
+      fecha: new FormControl({value: '', disabled: this.modificacion}),
+      horario: new FormControl({value: this.turno.horario, disabled: this.modificacion}),
       duracion: new FormControl({value: this.turno.duracion, disabled: true}),
       especialidad: new FormControl({value: this.turno.especialidad, disabled: true}),
       consultorio: new FormControl({value: this.turno.consultorio, disabled: true}),
