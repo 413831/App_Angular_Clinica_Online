@@ -11,7 +11,7 @@ mat-paginator {
 {
     display: flex;
     flex-direction: column;
-    margin-top: 50px;
+    margin-top: 25px;
     height: 15rem;
     width: 25rem;
     background-color: rgb(234, 234, 248);

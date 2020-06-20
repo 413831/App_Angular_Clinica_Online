@@ -13,10 +13,13 @@ body {
 
 .page
 {
-    background-color: #F8F8FF;    
     height: 90%;
-    min-height: fit-content;
+    min-height: min-content;
     padding-top: 3px;
+}
+
+body{
+    background-color: #F8F8FF;   
 }
 
 .titulos{

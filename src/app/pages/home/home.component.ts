@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { MedicosService } from 'src/app/servicios/servicio-medicos.service';
 import { TurnosService } from 'src/app/servicios/servicio-turnos.service';
 import { PacientesService } from 'src/app/servicios/servicio-pacientes.service';
-import { Especialidad } from 'src/app/clases/Medico';
+import { Especialidad, Medico } from 'src/app/clases/Medico';
 import { AdministradoresService } from 'src/app/servicios/servicio-administradores.service';
 import { ServicioHistoriasService } from 'src/app/servicios/servicio-historias.service';
 import { ServicioEncuestasService } from 'src/app/servicios/servicio-encuestas.service';
 import { Turno, Estado } from 'src/app/clases/Turno';
 import { Sesion } from 'src/app/clases/Sesion';
 import { AppService } from 'src/app/servicios/app.service';
+import { Usuario } from 'src/app/clases/Usuario';
+import { MiservicioService } from 'src/app/servicios/miservicio.service';
 
 export interface Tile {
   color: string;
@@ -23,6 +25,7 @@ export interface Tile {
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  public usuario: Usuario;
   base64textString: string;
   reader: FileReader;
   selectedFile: File;
@@ -31,9 +34,7 @@ export class HomeComponent implements OnInit {
   unbounded = false;
   radius: number;
   color: string;
-  especialidades: Especialidad[] = [Especialidad.Cardiología,Especialidad.Dermatología,
-                                  Especialidad.General, Especialidad.Cardiología,
-                                  Especialidad.Traumatología];
+  especialidades: Especialidad[] = Medico.especialidades;
 
   constructor(private servicioMedicos: MedicosService,
               private servicioPacientes: PacientesService,
@@ -43,7 +44,7 @@ export class HomeComponent implements OnInit {
               private servicioEncuesta : ServicioEncuestasService,
               private servicioApp : AppService) 
   {
-   
+    this.usuario = MiservicioService.usuarioPrivado;
   }
 
   ngOnInit(): void {

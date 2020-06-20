@@ -21,6 +21,12 @@
     <mat-card-content class="example-content">
         
       <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+        <mat-chip   color="primary">
+          <strong>Profesional</strong> : {{turno.nombreMedico}}
+        </mat-chip>
+        <mat-chip color="primary">
+          <strong>Paciente</strong> : {{turno.nombrePaciente}}
+        </mat-chip>
         <mat-chip color="primary">
           <strong>Estado</strong> : {{turno.estado}}
         </mat-chip>
@@ -28,7 +34,7 @@
           <strong>Fecha</strong> : {{turno.fecha | fecha}} - {{turno.horario}} 
         </mat-chip>
         <mat-chip   color="primary">
-          <strong>Profesional</strong> : {{turno.nombreMedico}}
+          <strong>Dias faltantes</strong> : {{turno.fecha | diasFaltantes}}
         </mat-chip>
       </mat-chip-list>
         <br>

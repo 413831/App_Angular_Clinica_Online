@@ -111,6 +111,7 @@ import { EstadoDirective } from './directivas/estado.directive';
 import { ElevationDirective } from './directivas/elevation.directive';
 import { EspecialidadesPipe } from './pipes/especialidades.pipe';
 import { DisponibilidadPipe } from './pipes/disponibilidad.pipe';
+import { DiasFaltantesPipe } from './pipes/dias-faltantes.pipe';
 
 @NgModule({
   declarations: [
@@ -168,6 +169,7 @@ import { DisponibilidadPipe } from './pipes/disponibilidad.pipe';
     ElevationDirective,
     EspecialidadesPipe,
     DisponibilidadPipe,
+    DiasFaltantesPipe,
   ],
   imports: [
     ApplicationModule,
