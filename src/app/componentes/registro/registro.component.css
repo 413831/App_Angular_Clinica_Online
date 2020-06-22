@@ -3,7 +3,7 @@
     align-items: flex-start;
     justify-content: left;
     margin: 16px;
-    padding: 0 0 20px 0;
+    padding: 0 0 50px 0;
     border-radius: 8px;
   }
   
@@ -11,7 +11,7 @@
   .example-large-box {
     display: flex;
     margin: auto;    
-    height: 700px;
+    height: 750px;
     width: max-content;
   }
 

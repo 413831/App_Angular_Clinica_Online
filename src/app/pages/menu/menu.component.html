@@ -45,7 +45,7 @@
 
                     <ng-container matColumnDef="autorizado">
                         <mat-header-cell *matHeaderCellDef> Autorizado </mat-header-cell>
-                        <mat-cell *matCellDef="let medico"> {{medico.autorizado}} </mat-cell>
+                        <mat-cell *matCellDef="let medico"> {{medico.autorizado | booleano}} </mat-cell>
                     </ng-container>
 
                     <mat-header-row *matHeaderRowDef="columnasMedicos"></mat-header-row>
@@ -85,19 +85,22 @@
         <mat-toolbar>
             <div class="botones" *ngIf='administrador'>
                 <!-- <button appElevation *ngIf="medicoAutorizar"  mat-raised-button color="primary" (click)="autorizar()">Autorizar</button> -->
-                <button appElevation mat-raised-button color="default" (click)="listarMedicos()">Ver Medicos</button>
-                <button appElevation mat-raised-button color="default" (click)="listarPacientes()">Ver Pacientes</button>
+                <button appElevation mat-raised-button [defaultElevation]="0" [routerLink]="'/alta-admin'" color="accent">Cargar Admin</button>
+                <button appElevation mat-raised-button [defaultElevation]="0" (click)="listarMedicos()" color="default">Ver Medicos</button>
+                <button appElevation mat-raised-button [defaultElevation]="0" (click)="listarPacientes()" color="default">Ver Pacientes</button>
             </div>
             <div class="botones" *ngIf="turno">
-                <button appElevation *ngIf="paciente && turno.estado == 'Atendido'" mat-raised-button color='primary'  (click)="realizarEncuesta()">Realizar encuesta</button>
-                <button appElevation *ngIf="medico && turno.estado == 'Atendido'" mat-raised-button color='primary'  (click)="editarHistoria()">Guardar historia</button>
+                <button appElevation mat-raised-button *ngIf="paciente && turno.estado == 'Atendido'" [defaultElevation]="0"  color='primary'  (click)="realizarEncuesta()">Realizar encuesta</button>
+                <button appElevation mat-raised-button *ngIf="medico && turno.estado == 'Atendido'"  color='primary'  (click)="editarHistoria()">Guardar historia</button>
                 <button appElevation mat-raised-button class="default" (click)="modificarTurno()">Detalles turno</button>
             </div>
             <div class="botones">
-                <button appElevation [defaultElevation]="0" mat-raised-button class="default" (click)="modificar()">Modificar datos</button>                
-                <button appElevation mat-raised-button class="default" (click)="cargarTurno()">Cargar Turno</button>
-                <button appElevation mat-raised-button color="primary" (click)="verInformes()">Informes</button>
-                <button appElevation mat-raised-button class="warning" (click)="borrar()">Baja de usuario</button>
+                <button appElevation mat-raised-button [defaultElevation]="0" class="default" (click)="modificar()">Modificar datos</button>                
+                <button appElevation mat-raised-button *ngIf="paciente || medico" [defaultElevation]="0" class="default" (click)="cargarTurno()">
+                 Cargar Turno
+                </button>
+                <button appElevation mat-raised-button [defaultElevation]="0" (click)="verInformes()" color="primary">Informes</button>
+                <button appElevation mat-raised-button [defaultElevation]="0" class="warning" (click)="borrar()">Baja de usuario</button>
             </div>
 
         </mat-toolbar>

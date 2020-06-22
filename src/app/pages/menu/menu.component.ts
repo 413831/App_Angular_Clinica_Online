@@ -87,8 +87,7 @@ export class MenuComponent implements OnInit {
     {
       case Rol.Administrador:
         this.administrador = Object.assign(new Administrador,this.usuario);
-        this.listadoMedicos = JSON.parse(localStorage.getItem('medicos'))
-                                  .filter( medico => !medico.autorizado );
+        this.listadoMedicos = JSON.parse(localStorage.getItem('medicos'));
         this.dataMedicos = new MatTableDataSource(this.listadoMedicos);
         this.dataMedicos = new MatTableDataSource(this.listadoMedicos);
         this.listadoPacientes = JSON.parse(localStorage.getItem('pacientes'));
