@@ -2,12 +2,6 @@
   <div class="titulos">
     <h1>Turnos</h1>
   </div>
-  <div>
-    <h3>
-      <p class="parrafo">Listado con buscador de turnos</p>
-    </h3>
-
-  </div>
   <hr>
   <div *ngIf="usuario" class="container">
     
@@ -22,9 +16,9 @@
         </app-listado-turnos>
       </div>
 
-      <div>
-        <div *ngIf="turno" class="cards">
-          <app-detalle-turno [turno]="turno"></app-detalle-turno>
+      <div class="example-boundary">
+        <div *ngIf="turno" class="cards" cdkDrag cdkDragLockAxis="y" cdkDragBoundary=".example-boundary">
+          <app-detalle-turno [turno]="turno" ></app-detalle-turno>
         </div>
         <div appElevation *ngIf="!turno" class="box">
 

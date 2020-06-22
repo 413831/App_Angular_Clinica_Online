@@ -5,6 +5,7 @@ import HighchartExportData from 'highcharts/modules/export-data';
 import { Usuario } from 'src/app/clases/Usuario';
 import { Turno, Estado, Dia } from 'src/app/clases/Turno';
 import { Especialidad } from 'src/app/clases/Medico';
+import { ArchivosService } from 'src/app/servicios/archivos.service';
 
 interface Serie {
    name: string,
@@ -27,7 +28,7 @@ export class GraficoColumnasComponent implements OnInit {
    public especialidades: Especialidad[] = [];
    public semana: Dia[] = [Dia.Lunes, Dia.Martes, Dia.Miercoles, Dia.Jueves, Dia.Viernes, Dia.Sabado];
 
-   constructor() {
+   constructor(private archivos: ArchivosService) {
       this.usuario = JSON.parse(localStorage.getItem('usuario'));
 
       if (this.usuario) {
@@ -77,6 +78,12 @@ export class GraficoColumnasComponent implements OnInit {
       });
    }
 
+      
+   guardarPDF(): void
+   {
+     this.archivos.exportarPDF(this.data, "medicosporturno");
+   }
+
    obtenerCategorias() 
    {
       for (let index = 0; index < this.turnos.length; index++) 
@@ -101,6 +108,9 @@ export class GraficoColumnasComponent implements OnInit {
          },
          title: {
             text: 'Turnos atendidos por día'
+         },
+         subtitle: {
+            text: 'Informe de turnos según especialidad por día de la semana'
          },
          credits: {
             enabled: false

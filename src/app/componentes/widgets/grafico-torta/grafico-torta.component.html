@@ -1,7 +1,6 @@
 <figure class="highcharts-figure">
-    <div class="parrafo">
-        <p> En este gráfico se puede observar la cantidad de médicos por cada turno según especialidad</p>        
-        <button mat-raised-button [appHoverButton] (click)="guardarPDF()">PDF</button>
+    <div>
+        <button mat-flat-button [appHoverButton] (click)="guardarPDF()">Descargar PDF</button>
     </div>
     <highcharts-chart [Highcharts]="highchart" [options]="chartOptions"
     style = "width: 100%; height: 400px; display: block;">

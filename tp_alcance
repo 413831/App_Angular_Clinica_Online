@@ -57,7 +57,7 @@ Proporcion de medicos por cada dia por especialidad
 Todos los graficos excepto el primero solo serán vistos por un administrador
 
 -----------------------
-BUGS
+TODO
 - Validar hora de alta de turno con hora actual del usuario
 - Verificar inicio de sesion con captcha
 - Implementar canActivate con Menu, Alta turno, Turnos
@@ -66,5 +66,5 @@ BUGS
 - Una vez cargado los datos de un turno en la historia no se debe poder cargar de nuevo
 - Modificacion de turno desde pantalla Turnos
 - Manejo de errores y logs en bases de datos
-
+- Agregar una scrollbar decente
 

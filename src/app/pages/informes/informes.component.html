@@ -1,22 +1,59 @@
 <div class="page">
     <div class="titulos">
         <h1>Informes</h1>
+    </div>
+
+    <mat-tab-group mat-stretch-tabs class="mat-elevation-z4">
+        <mat-tab label="Inicios de sesión del usuario" *ngIf="sesiones">
+
+            <app-grafico-lineas [sesiones]="sesiones"></app-grafico-lineas>
+            <div class="parrafo botones" *ngIf="usuario.rol == 1">
+                <mat-label class="parrafo">
+                    <h2>Sesiones de todos los usuarios: </h2>
+                </mat-label>
+                <button mat-raised-button [appHoverButton] (click)="guardarPDF()">Exportar PDF</button>
+                <button mat-raised-button [appHoverButton] (click)="guardarExcel()">Exportar Excel</button>
+            </div>
+
+        </mat-tab>
+        <mat-tab label="Turnos por especialidad">
+            <app-grafico-columnas></app-grafico-columnas>
+        </mat-tab>
+        <mat-tab label="Turnos por día de la semana">
+            <app-grafico-barras></app-grafico-barras>
+        </mat-tab>
+        <mat-tab label="Medicos por día de la semana">
+            <app-grafico-area></app-grafico-area>
+        </mat-tab>
+        <mat-tab label="Medicos por turno">
+            <app-grafico-torta></app-grafico-torta>
+        </mat-tab>
+    </mat-tab-group>
+</div>
+
+
+
+
+
+
+    <!-- <div *ngIf="sesiones">               
+        <app-grafico-lineas [sesiones]="sesiones"></app-grafico-lineas>
+        <div class="parrafo botones">
+           
+            <mat-label class="parrafo"><h2>Sesiones de todos los usuarios: </h2></mat-label>
+            <button mat-raised-button [appHoverButton] (click)="guardarPDF()">Exportar PDF</button>
+            <button mat-raised-button [appHoverButton] (click)="guardarExcel()">Exportar Excel</button>
+        </div>
         <mat-divider></mat-divider>
     </div>
-    <div *ngIf="sesiones" >
-        <div>
-            <h4>Descargar inicios de sesión de todos los usuarios</h4>
-            <button mat-raised-button [appHoverButton] (click)="guardarPDF()">PDF</button>
-            <button mat-raised-button [appHoverButton] (click)="guardarExcel()">Excel</button>
-        </div>
-        <app-grafico-lineas [sesiones]="sesiones"></app-grafico-lineas>
-    </div>
     <app-grafico-columnas></app-grafico-columnas>
-
+    <mat-divider></mat-divider>
     <app-grafico-barras></app-grafico-barras>
+    <mat-divider></mat-divider>
     <app-grafico-area></app-grafico-area>
-        <app-grafico-torta></app-grafico-torta>
-</div>
+    <mat-divider></mat-divider>
+    <app-grafico-torta></app-grafico-torta> -->
+
 
 <!-- 
 <div *ngIf="usuario.rol == 1">

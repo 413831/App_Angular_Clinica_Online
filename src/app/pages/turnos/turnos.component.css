@@ -76,3 +76,9 @@ mat-icon
 {
     font-size: 3px;
 }
+
+.example-boundary {
+  width: 400px;
+  height: 400px;
+  max-width: 100%;
+}

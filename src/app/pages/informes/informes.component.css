@@ -4,3 +4,11 @@
   justify-content: center; 
 }
 
+.botones{
+  display: flex;
+  justify-content: center;
+}
+
+.example-stretched-tabs {
+  max-width: 800px;
+}

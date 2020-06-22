@@ -13,9 +13,9 @@
 }
   
 .img-container{
-  display: flexbox;
+  display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   max-width: 150px;
   max-height: 200px;
@@ -23,5 +23,5 @@
 
 mat-chip-list{
   padding: 5px;
-  margin: 5px;
+  margin: 10px;
 }

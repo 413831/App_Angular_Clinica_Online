@@ -21,6 +21,7 @@ export class ArchivosService {
 
   exportarExcel(json:any[] , nombreArchivo: string): void 
   {
+    console.log(json);
     // Elimino los campos privados que no deben imprimirse
     json = Object.values(json).map(elemento => Object.entries(elemento).map(tuple => 
       {
@@ -49,6 +50,7 @@ export class ArchivosService {
 
   exportarPDF(json:any[],  nombreArchivo: string)
   {
+    console.log(json);
     const pdf = new jsPDF();
 
     let values: any;
