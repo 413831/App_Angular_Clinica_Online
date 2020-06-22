@@ -115,6 +115,7 @@ import { EspecialidadesPipe } from './pipes/especialidades.pipe';
 import { DisponibilidadPipe } from './pipes/disponibilidad.pipe';
 import { DiasFaltantesPipe } from './pipes/dias-faltantes.pipe';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -225,12 +226,14 @@ import { DiasFaltantesPipe } from './pipes/dias-faltantes.pipe';
     AuthService, 
     AuthGuard, 
     SecureInnerPagesGuard,
-    {provide: MatDialogRef,
-    useValue: {}},
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
     {
       provide: RECAPTCHA_SETTINGS,
       useValue: { siteKey: environment.captchaKey } as RecaptchaSettings,
-    },
+    }
   ],   
   bootstrap: [AppComponent]
 })

@@ -40,7 +40,9 @@ img:hover {
   -webkit-tap-highlight-color: transparent;
 }
 
-
+.scroll-container {
+  position: relative;
+}
 
 .list{
   text-align: left;
