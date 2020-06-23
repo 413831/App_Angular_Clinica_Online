@@ -36,10 +36,17 @@
               Presione para ver la información
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <mat-list *ngFor="let dato of datos">
+          <cdk-virtual-scroll-viewport itemSize="20" minBufferPx="200" maxBufferPx="400"
+                             class="example-viewport">
+           <mat-list *cdkVirtualFor="let dato of datos" class="example-item">
             <mat-list-item>{{dato.key}} : {{dato.value}}</mat-list-item>
             <mat-divider></mat-divider>
-          </mat-list>
+            </mat-list>
+          </cdk-virtual-scroll-viewport>
+          <!-- <mat-list *ngFor="let dato of datos">
+            <mat-list-item>{{dato.key}} : {{dato.value}}</mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list> -->
         </mat-expansion-panel>
 
         <mat-expansion-panel [expanded]="true" >

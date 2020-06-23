@@ -50,6 +50,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatMenuModule} from '@angular/material/menu';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 
 // Componentes
@@ -217,6 +218,7 @@ import { DiasFaltantesPipe } from './pipes/dias-faltantes.pipe';
     RecaptchaModule,
     HighchartsChartModule,
     DragDropModule,
+    ScrollingModule,
     AgmCoreModule.forRoot({
       apiKey: environment.agmKey
     }), 

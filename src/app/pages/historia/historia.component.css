@@ -65,7 +65,14 @@ form{
   background-color: lightsteelblue;
 }
 
+.example-viewport {
+  height: 200px;
+  width: 400px;
+}
 
+.example-item {
+  height: 35px;
+}
 
 .right-align {
   text-align: right;
@@ -81,4 +88,8 @@ button{
   width: 100%;
   margin-left: 15px;
   margin-right: 15px;
+}
+
+mat-list {
+  max-height: 300px;
 }
