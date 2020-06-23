@@ -1,42 +1,43 @@
-
-.dialog{
-    display: flexbox;
-    align-content: center;
-    margin: auto;
-    padding: 0;
-    background-color: rgb(233, 233, 245); 
+.img-frame{
+  margin-left: 50px;
 }
 
 
-.example-form {
+ mat-accordion {
   display: flex;
-  flex-direction: column;    
-  width: 100%;
-  margin: auto;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: #F8F8FF;  
 }
 
-.datos-personales
-{
-  min-width: 200px;
-  max-width: 400px;
+mat-expansion-panel{
+  background-color: #F8F8FF;  
 }
-
-.datos-clinicos
-{
-  min-width: 200px;
-  max-width: 600px;
-}
-
-
 
 .layout
 {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+  height: 300px;
+  padding-bottom: 50px;
 }
 
-.form-field{
+.tabla{
+  height: 100px;
+  width: 50px;
+}
+
+
+form{
+  display: flex;
+  flex-direction: column;
   align-items: stretch;
+  margin-top: 0;
+}
+
+.historia-field{
+  width: 300px;  
 }
 
 .historia-field .mat-input-element {

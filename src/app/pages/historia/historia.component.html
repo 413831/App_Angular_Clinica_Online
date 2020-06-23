@@ -2,48 +2,77 @@
   <div class="titulos">
     <h1>Historia Clinica</h1>
   </div>
-  <hr>
   <div class="layout" *ngIf="historia">
-    <form>
+    <div class="img-frame">
+      <img class='thumbnail' [src]='imgSrc' alt="Foto del paciente">
+    </div>
+      <form>
+        <!-- Nombre -->
+        <mat-form-field appearance="outline" class=" historia-field">
+          <mat-label>Nombre del paciente</mat-label>
+          <input matInput type="text" value="{{historia.paciente}}" disabled>
+        </mat-form-field>
 
-      <!-- Nombre -->
-      <mat-form-field appearance="fill" class=" historia-field">
-        <mat-label>Nombre del paciente</mat-label>
-        <input matInput type="text" value="{{historia.paciente}}" disabled>
-      </mat-form-field>
+        <mat-form-field appearance="outline" class=" historia-field">
+          <mat-label>Número de afiliado</mat-label>
+          <input matInput type="number" value="{{paciente.numeroAfiliado}}" disabled>
+        </mat-form-field>
 
-      <mat-form-field appearance="fill" class=" historia-field">
-        <mat-label>Número de afiliado</mat-label>
-        <input matInput type="number" value="{{paciente.numeroAfiliado}}" disabled>
-      </mat-form-field>
-
-      <mat-tab-group mat-align-tabs="start">
-        <mat-tab label="Consultas realizadas">
-          <p class="parrafo">Total de consultas realizadas : {{historia.consultas.length}}</p>
-        </mat-tab>
-        <mat-tab label="Second">Content 2</mat-tab>
-        <mat-tab label="Third">Content 3</mat-tab>
-      </mat-tab-group>
-
-      <mat-tab-group mat-align-tabs="start" *ngFor="let dato of datos">
-        <mat-tab label="{{dato.key}}" class="parrafo"> {{dato.value}}</mat-tab>
-      </mat-tab-group>
-    </form>
-    <form class="example-form datos-clinicos">
+        <mat-form-field appearance="outline" class=" historia-field">
+          <mat-label>Obras social</mat-label>
+          <input matInput type="text" value="{{paciente.obraSocial}}" disabled>
+        </mat-form-field>
 
 
-    </form>
-    <mat-toolbar>
-      <button class="opciones" mat-raised-button>
-        <h3>Guardar</h3>
-      </button>
-      <button class="opciones" mat-raised-button [routerLink]='["/menu"]'>
-        <h3>Volver</h3>
-      </button>
-    </mat-toolbar>
+      </form>
+    <div>
+      <mat-accordion *ngIf="datos.length > 0">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Datos médicos
+            </mat-panel-title>
+            <mat-panel-description>
+              Presione para ver la información
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-list *ngFor="let dato of datos">
+            <mat-list-item>{{dato.key}} : {{dato.value}}</mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel [expanded]="true" >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Consultas
+            </mat-panel-title>
+            <mat-panel-description>
+              Listado de turnos del paciente
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <app-listado-turnos class="tabla" [turnos]='turnos' [pages]=1>
+          </app-listado-turnos>
+        </mat-expansion-panel>
+
+      </mat-accordion>
+      <!-- <app-listado-turnos class="tabla" [turnos]='turnos' [pages]=1>
+        </app-listado-turnos> -->
+    </div>
+
   </div>
+  <br>
+  <mat-toolbar>
+    <button class="opciones" mat-raised-button [routerLink]='["/turnos"]'>
+      <h3>Ver turnos</h3>
+    </button>
+    <button class="opciones" mat-raised-button [routerLink]='["/menu"]'>
+      <h3>Ir a menu</h3>
+    </button>
+  </mat-toolbar>
   <div *ngIf="!historia">
     <p class="parrafo"> Aún no se ha generado la historia clinica del paciente
-       {{paciente.nombre}} - {{paciente.numeroAfiliado}}</p>
+      {{paciente.nombre}} - {{paciente.numeroAfiliado}}</p>
   </div>
 </div>

@@ -11,12 +11,10 @@
       <button mat-stroked-button (click)="verMedico()">Médico</button>
       <button mat-stroked-button (click)="verPaciente()">Paciente</button>
     </mat-card-actions>
-    <mat-card-actions class="button-group" *ngIf="usuario.rol == 1">
-      <button mat-stroked-button (click)="verEncuesta()">Encuesta</button>
-    </mat-card-actions>
-    <!-- <mat-card-actions class="button-group" >
+    <mat-card-actions class="stretched-button" >
+      <button *ngIf="usuario.rol == 1" mat-stroked-button (click)="verEncuesta()">Encuesta</button>
       <button mat-stroked-button (click)="verHistoria()">Historia Clinica</button>
-    </mat-card-actions> -->
+    </mat-card-actions>    
     </div>
     <mat-card-content class="example-content">
         

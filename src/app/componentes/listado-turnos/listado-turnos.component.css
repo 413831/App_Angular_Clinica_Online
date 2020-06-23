@@ -4,15 +4,19 @@ mat-table {
 
 mat-paginator {
     background-color: rgb(234, 234, 248);
-    
 }
+
+mat-header-cell{
+    font-size: medium;
+  }
+  
 
 .frame
 {
     display: flex;
     flex-direction: column;
     margin-top: 25px;
-    height: 15rem;
+    height: fit-content;
     width: 25rem;
     background-color: rgb(234, 234, 248);
     padding-bottom: 18px;

@@ -32,15 +32,28 @@ mat-chip {
 {
     display: flex;
     flex-flow: wrap row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-content: center;
     padding: 5px;
     max-height: 300px;
     margin-bottom: 0;
 }
- .button-group > button
+
+.stretched-group
+{
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-evenly;
+    align-content: center;
+    padding: 5px;
+    max-height: 300px;
+    margin-bottom: 0;
+}
+
+
+ .stretched-button > button
 {
     margin-top: 10px;
     max-height: 300px;
-    width: max-content;
+    width: 200px;
 }
