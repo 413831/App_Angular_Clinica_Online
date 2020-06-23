@@ -16,6 +16,11 @@
             <mat-cell *matCellDef="let turno"> {{turno.fecha | fecha}} </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="fecha">
+            <mat-header-cell *matHeaderCellDef> Horario </mat-header-cell>
+            <mat-cell *matCellDef="let turno"> {{turno.horario}} </mat-cell>
+        </ng-container>
+
         <mat-header-row *matHeaderRowDef="columnasTurnos"></mat-header-row>
         <mat-row [appHoverButton] (click)="seleccionarTurno(row)" class="example-element-row"
             *matRowDef="let row; columns: columnasTurnos;"></mat-row>

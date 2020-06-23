@@ -14,7 +14,7 @@ export class ListadoTurnosComponent implements OnInit {
   @Input() filtro: string;
   @Output() seleccionar: EventEmitter<Turno> = new EventEmitter<Turno>();
   public dataTurnos;
-  columnasTurnos: string[] = ['especialidad', 'estado' ,'fecha'];
+  columnasTurnos: string[] = ['especialidad', 'estado' ,'fecha','horario'];
   
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 

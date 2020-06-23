@@ -82,7 +82,7 @@
             <span class="parrafo" [matBadge]="turnosFinalizados.length" matBadgeOverlap="false">Turnos finalizados</span>
             <span class="parrafo" [matBadge]="turnosCancelados.length" matBadgeOverlap="false">Turnos cancelados</span>
         </mat-toolbar> 
-        <mat-toolbar>
+        <mat-toolbar class="detalle">
             <div class="botones" *ngIf='administrador'>
                 <!-- <button appElevation *ngIf="medicoAutorizar"  mat-raised-button color="primary" (click)="autorizar()">Autorizar</button> -->
                 <button appElevation mat-raised-button [defaultElevation]="0" [routerLink]="'/alta-admin'" color="accent">Cargar Admin</button>
