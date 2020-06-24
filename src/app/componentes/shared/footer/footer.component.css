@@ -26,6 +26,7 @@
     flex-direction: row;
     /* background-color: #babaeb; */
     background-color: transparent;
+    transition: 1s;
     opacity: 0;
     height: 50px;
     width: 100%; 
@@ -35,7 +36,7 @@
 .toolbar:hover{
     transition: 1s;
     background-color: #babaeb;
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 

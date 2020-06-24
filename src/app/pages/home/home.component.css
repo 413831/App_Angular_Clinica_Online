@@ -1,3 +1,9 @@
+@keyframes opacity {
+  0%   {opacity: 0;}
+  50%  {opacity: 0.5;}
+  100% {opacity: 1;}
+}
+
 .page
 {
     background-color: #F8F8FF;
@@ -5,14 +11,6 @@
     padding-top: 3px;
 }
 
-/* 
-img {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 10px;
-    max-width: 80rem;
-  } */
-  
 img:hover {
   box-shadow: 1px 1px 1px 1px rgba(0, 140, 186, 0.5);
 }
@@ -53,6 +51,14 @@ img:hover {
   display: flexbox;
   flex-wrap: wrap;
   background-color: #F8F8FF;
+  animation-name: opacity;
+  animation-duration: 2s;
+}
+
+.main-image{
+  background-color: #F0F8FF;
+  animation-name: opacity;
+  animation-duration: 1s;
 }
 
 mat-accordion {
