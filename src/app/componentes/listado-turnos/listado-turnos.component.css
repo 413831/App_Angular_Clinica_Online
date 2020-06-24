@@ -15,11 +15,10 @@ mat-header-cell{
 {
     display: flex;
     flex-direction: column;
-    margin-top: 25px;
+    margin-top: 18px;
     height: fit-content;
     width: 25rem;
     background-color: rgb(234, 234, 248);
-    padding-bottom: 18px;
 
 }
 

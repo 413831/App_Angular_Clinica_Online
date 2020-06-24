@@ -10,8 +10,9 @@ export class DisponibilidadPipe implements PipeTransform {
     let dias: string[] = [];
 
     value.forEach(dia => dias.push(Dia[dia].substring(0,3)));
-
-    return value;
+    
+    console.log(dias);
+    return dias;
   }
 
 }

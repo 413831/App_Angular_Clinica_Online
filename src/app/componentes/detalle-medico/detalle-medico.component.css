@@ -9,7 +9,7 @@
   background-color: rgb(234, 226, 243);
   justify-content: space-evenly;
   border-radius: 15px;
-  width: 700px;
+  width: 800px;
 }
   
 .img-container{
@@ -24,4 +24,8 @@
 mat-chip-list{
   padding: 5px;
   margin: 10px;
+}
+
+mat-chip{
+  height: fit-content;
 }

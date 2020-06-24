@@ -42,12 +42,11 @@ body{
     display: flex;
     justify-content: center;
     margin: 5px;
-    max-width: 145px;
+    max-width: 125px;
     max-height: 200px;        
     border-radius: 19px 19px 19px 19px;
     -moz-border-radius: 19px 19px 19px 19px;
     -webkit-border-radius: 19px 19px 19px 19px;
-    border: 3px solid #d6e2f0;
 }
 
 .panel{

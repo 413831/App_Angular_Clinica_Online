@@ -1,12 +1,11 @@
 .layout
 {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .column {
     display: flex;
     flex-direction: column;    
     width: 100%;
-    margin: auto;
   }

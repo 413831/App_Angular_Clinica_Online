@@ -7,12 +7,15 @@
     background-color: rgb(233, 233, 245); 
 }
 
+textarea{
+  height: 50px;
+}
 
 .example-form {
   display: flex;
-  flex-direction: column;    
+  flex-direction: column;  
+  
   width: 100%;
-  margin: auto;
 }
 
 .datos-personales
@@ -33,6 +36,8 @@
 {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  align-self: start;  
 }
 
 .form-field{
@@ -80,4 +85,13 @@ button{
   width: 100%;
   margin-left: 15px;
   margin-right: 15px;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.example-radio-button {
+  margin: 5px;
 }

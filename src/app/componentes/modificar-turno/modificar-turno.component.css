@@ -27,6 +27,11 @@
     /* add placeholder css here */
   }
 
+  textarea{
+    height: 80px;
+  }
+
+
 
   .turno-field .mat-input-element {
     color: black;

@@ -2,18 +2,17 @@
 <div class="titulos">
   <h1>Historia Clinica</h1>
 </div>
-<hr>
 <div class="layout">
     <form class="example-form datos-personales">
       
       <!-- Nombre -->
-      <mat-form-field appearance="fill" class=" historia-field">
+      <mat-form-field appearance="outline" class=" historia-field">
         <mat-label>Nombre del paciente</mat-label>
         <input  matInput type="text"  value="{{historia.paciente}}" disabled>
       </mat-form-field>
     
       <!-- Edad -->
-      <mat-form-field appearance="fill" class=" historia-field">
+      <mat-form-field appearance="outline" class=" historia-field">
         <mat-label>Ingrese su edad</mat-label>
         <input matInput type="number" [(ngModel)]="edad" name="edad" value="Ingrese su edad">
       </mat-form-field>
@@ -26,14 +25,14 @@
       <br>
 
       <!-- Altura -->
-      <mat-form-field appearance="fill" class="form-field">
+      <mat-form-field appearance="outline" class="form-field">
         <mat-label>Ingrese altura</mat-label>
         <input matInput class="right-align" type="number" [(ngModel)]="altura" name="altura" value="Ingrese altura" >
         <span matSuffix> cm</span>    
     </mat-form-field>
 
       <!-- Peso -->
-      <mat-form-field appearance="fill" class="form-field">
+      <mat-form-field appearance="outline" class="form-field">
         <mat-label>Ingrese peso</mat-label>
         <input matInput class="right-align" type="number" [(ngModel)]="peso" name="peso" value="Ingrese peso">
         <span matSuffix>kg</span>
@@ -44,19 +43,19 @@
     <form class="example-form datos-clinicos">
         
         <!-- Especialidad -->
-        <mat-form-field appearance="fill" class=" historia-field">
+        <mat-form-field appearance="outline" class=" historia-field">
           <mat-label>Especialidad</mat-label>
           <input  matInput type="text" value="{{turno.especialidad}}" disabled>
         </mat-form-field>
       
         <!-- Fecha -->
-        <mat-form-field appearance="fill" class=" historia-field">
+        <mat-form-field appearance="outline" class=" historia-field">
             <mat-label>Fecha</mat-label>
             <input  matInput type="text" value="{{turno.fecha | fecha}}" disabled>
         </mat-form-field>
   
         <!-- Detalle -->
-        <mat-form-field  class="">
+        <mat-form-field appearance="outline" class="historia-field">
             <mat-label>Detalles del turno</mat-label>
             <textarea matInput [(ngModel)]="turno.detalle" name="detalle"
              cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="3"
@@ -87,8 +86,8 @@
     </form>
 </div>
 <mat-toolbar>
-      <button class="opciones" mat-raised-button (click)="guardarHistoria()"> <h3>Guardar</h3></button>
-      <button class="opciones" mat-raised-button [routerLink]='["/menu"]'><h3>Volver</h3></button>
-      <button class="opciones" mat-raised-button (click)="agregarInfo()"><h3>Agregar dato</h3></button>
+      <button appElevation class="opciones" mat-raised-button (click)="guardarHistoria()"> <h3>Guardar</h3></button>
+      <button appElevation class="opciones" mat-raised-button [routerLink]='["/menu"]'><h3>Volver</h3></button>
+      <button appElevation class="opciones" mat-raised-button (click)="agregarInfo()"><h3>Agregar dato</h3></button>
 </mat-toolbar>
 </div>

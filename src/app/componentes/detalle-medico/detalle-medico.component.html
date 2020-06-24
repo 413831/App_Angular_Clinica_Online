@@ -13,29 +13,32 @@
     <mat-chip color="primary" [selectable]="false">
       <strong>Direccion: </strong>{{medico.direccion}}
     </mat-chip>
-  </mat-chip-list>
-
-  <mat-chip-list class="mat-chip-list-stacked" aria-label="Datos personales 2">
     <mat-chip color="primary" [selectable]="false">
       <strong>Telefono: </strong>{{medico.telefono}}
     </mat-chip>
+  </mat-chip-list>
+
+  <mat-chip-list class="mat-chip-list-stacked" aria-label="Datos personales 2">
     <mat-chip color="primary" [selectable]="false">
       <strong>Email: </strong>{{medico.email}}
     </mat-chip>
     <mat-chip color="primary" [selectable]="false">
-      <strong>Número de matrícula: </strong>{{medico.matricula}}
+      <strong>N° de matrícula: </strong>{{medico.matricula}}
     </mat-chip>
-  </mat-chip-list>
-
-  <mat-chip-list class="mat-chip-list-stacked" aria-label="Datos personales 2">
     <mat-chip color="primary" [selectable]="false">
       <strong>Consultorio: </strong>{{medico.consultorio}}
     </mat-chip>
     <mat-chip color="primary" [selectable]="false">
       <strong>Días de atención: </strong>{{medico.diasAtencion | disponibilidad}}
     </mat-chip>
+  </mat-chip-list>
+
+  <mat-chip-list class="mat-chip-list-stacked" aria-label="Datos personales 2">
     <mat-chip color="primary" [selectable]="false">
-      <strong>Especialidad: </strong>{{medico.especialidad | especialidades}}
+      <strong>Especialidades</strong>
+    </mat-chip>
+    <mat-chip color="primary" [selectable]="false" *ngFor="let especialidad of medico.especialidad">
+      {{especialidad}}
     </mat-chip>
   </mat-chip-list>
 </div>

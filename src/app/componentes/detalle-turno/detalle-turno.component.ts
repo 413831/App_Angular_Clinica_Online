@@ -101,7 +101,7 @@ export class DetalleTurnoComponent implements OnInit {
     let dialogConfig = new MatDialogConfig();
     dialogConfig.data = this.paciente;
     dialogConfig.width = '700px';
-    dialogConfig.height = '500px';
+    dialogConfig.height = '550px';
            
     const dialogRef = this.dialogPaciente.open(DetalleEncuestaComponent, dialogConfig);
 
