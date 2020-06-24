@@ -5,13 +5,13 @@
     padding-top: 3px;
 }
 
-
+/* 
 img {
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 10px;
     max-width: 80rem;
-  }
+  } */
   
 img:hover {
   box-shadow: 1px 1px 1px 1px rgba(0, 140, 186, 0.5);
@@ -26,11 +26,11 @@ img:hover {
 .example-ripple-container {
   cursor: pointer;
   text-align: center;
-
+  margin: 5px; 
   width: 260px;
   height: 260px;
   line-height: 260px;
-
+  background-color: #E6E6FA;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -45,5 +45,37 @@ img:hover {
 }
 
 .list{
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-options{
+  display: flexbox;
+  flex-wrap: wrap;
+  background-color: #F8F8FF;
+}
+
+mat-accordion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  background-color: #F8F8FF;
+}
+
+.img-row{
+  display: flex;
+  flex-direction: row;
+}
+
+
+mat-expansion-panel{
+  background-color: #F8F8FF;   
+  width: 350px;
+}
+
+
+.example-viewport {
+  height: 180px;
+  width: 300px;
 }
