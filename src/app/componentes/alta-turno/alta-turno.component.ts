@@ -101,7 +101,7 @@ export class AltaTurnoComponent implements OnInit {
     this.minDate.setDate(this.minDate.getDate() + 1);
 
     this.maxDate = new Date();
-    this.maxDate.setDate(this.maxDate.getDate() + 15);
+    this.maxDate.setDate(this.minDate.getDate() + 15);
 
     // Filtros segun datos del medico
     this.filtroFecha = (fecha: Date | null): boolean => 
