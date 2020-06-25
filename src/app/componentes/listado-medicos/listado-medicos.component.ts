@@ -19,7 +19,7 @@ export class ListadoMedicosComponent implements OnInit {
   @Input() listado: Medico[];
   @Input() pages: number;
   selection = new SelectionModel<Medico>(true, []);
-  columnasMedicos: string[] = ['nombre', 'afiliado','obraSocial'];
+  columnasMedicos: string[] = ['nombre', 'matricula','autorizado'];
   dataSource: MatTableDataSource<Medico>;
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;

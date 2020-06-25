@@ -31,14 +31,13 @@
 
             <mat-grid-tile *ngIf='administrador' [colspan]=2 [rowspan]=4 class="table">
                 <!-- Listado de medicos -->
-                <mat-grid-tile-header *ngIf="mostrarMedicos">Listado de medicos</mat-grid-tile-header>
-                <div *ngIf="mostrarMedicos" class="mat-elevation-z8 frame">
-                   
+                <div *ngIf="mostrarMedicos">
+                    <mat-grid-tile-header *ngIf="mostrarMedicos">Listado de medicos</mat-grid-tile-header>
+                    <app-listado-medicos class="tabla"></app-listado-medicos>
                 </div>
                 <!-- Listado de paciente -->
-                <div *ngIf="mostrarPacientes" class="mat-elevation-z8">
+                <div *ngIf="mostrarPacientes">
                 <mat-grid-tile-header *ngIf="mostrarPacientes">Listado de pacientes</mat-grid-tile-header>
-
                 <app-listado-pacientes class="tabla" [pages]=4></app-listado-pacientes>
             </div>
             </mat-grid-tile>
