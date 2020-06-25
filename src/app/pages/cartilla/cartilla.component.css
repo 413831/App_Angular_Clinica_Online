@@ -10,3 +10,44 @@
   font-weight: bold;
   font-size: larger;
 }
+
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.container{
+display: flex;
+flex-direction: column;
+}
+
+tr{
+transition: 0.1s;
+}
+
+th{
+font-size: medium;
+}
+
+.filter__form{
+width: 100%;
+display: flex;
+flex-wrap: wrap;
+}
+.filter__form .form-group{
+margin: 0 10px;
+}
+
+.primary{
+margin: auto;
+background: orange;
+color: white;
+}
+
+button{
+margin-left: 10px;
+margin-bottom: 10px;
+}

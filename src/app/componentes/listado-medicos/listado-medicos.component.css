@@ -1,40 +1,46 @@
-table {
-    width: 100%;
-  }
-  
-  th.mat-sort-header-sorted {
-    color: black;
-  }
+mat-table {
+  background-color: rgb(234, 234, 248);
+}
 
-.container{
+mat-paginator {
+  background-color: rgb(234, 234, 248);
+}
+
+mat-header-cell{
+  font-size: small;
+}
+
+
+.frame
+{
   display: flex;
   flex-direction: column;
+  margin-top: 18px;
+  /* height: fit-content; */
+  height: 300px;
+  width: 25rem;
+  background-color: rgb(234, 234, 248);
+
+}
+
+
+
+mat-row:hover{
+  background-color: lightsteelblue;
+  color: black;
+  cursor: pointer;
 }
 
 tr{
   transition: 0.1s;
 }
 
+mat-row:active{
+  background-color: rgb(118, 150, 192);
+  transition: 0.5s;
+  
+}
+
 th{
   font-size: medium;
-}
-
-.filter__form{
-  width: 100%;
- display: flex;
- flex-wrap: wrap;
-}
-.filter__form .form-group{
- margin: 0 10px;
-}
-
-.primary{
-  margin: auto;
-  background: orange;
-  color: white;
-}
-
-button{
-  margin-left: 10px;
-  margin-bottom: 10px;
 }

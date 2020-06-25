@@ -14,8 +14,8 @@ const EXCEL_EXT = '.xlsx';
   providedIn: 'root'
 })
 export class ArchivosService {
-  private static privados = ["imagen","autorizado","id","rol","direccion","email","telefono",
-                            "clave", "avatar", "horasAtencion"];
+  private static privados = ["imagen","dni","autorizado","id","rol","direccion",
+                            "email","telefono","clave", "avatar","consultorio","horasAtencion"];
 
   constructor() { }
 
@@ -51,12 +51,11 @@ export class ArchivosService {
   exportarPDF(json:any[],  nombreArchivo: string)
   {
     console.log(json);
-    const pdf = new jsPDF();
-
+    const pdf = new jsPDF()
     let values: any;
     let data = json;  
-    
     let header = Object.keys(data[0]).filter(key => !ArchivosService.privados.includes(key));
+
     // data.map( (elemento,i) => console.log(`Indice:${i} ${Object.values(elemento)}`));
     Turno.ParseNumeroDias(data);
 
@@ -71,7 +70,8 @@ export class ArchivosService {
     );
     // Obtengo los valores de los campos a imprimir
     values = data.map( (elemento) => Object.values(elemento));
-  
+    
+    pdf.text(nombreArchivo, 14, 20);
     autoTable(pdf,
     {
       theme: 'striped',
@@ -80,6 +80,8 @@ export class ArchivosService {
       margin: { top: 10 },
       head: [header],
       body: values,
+      styles: { overflow: 'ellipsize', cellWidth: 'wrap' },
+      columnStyles: { text: { cellWidth: 'auto' } },
     })
     
     console.log("Impresion PDF");
