@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { Turno, Estado } from 'src/app/clases/Turno';
 import { Usuario, Rol } from 'src/app/clases/Usuario';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -18,6 +18,7 @@ import { ListadoMedicosComponent } from 'src/app/componentes/listado-medicos/lis
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotificacionComponent } from 'src/app/componentes/notificacion/notificacion.component';
 import { DialogMedicoComponent } from 'src/app/componentes/dialog-medico/dialog-medico.component';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-menu',
@@ -51,6 +52,9 @@ export class MenuComponent implements OnInit {
   public mostrarPacientes: boolean = false;
   public mostrarMedicos: boolean = true;
 
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+
+
   constructor(public modificarDialog: MatDialog, public borrarDialog: MatDialog,
               private _snackBar: MatSnackBar,
               public altaTurno: MatDialog,
@@ -62,23 +66,24 @@ export class MenuComponent implements OnInit {
   { 
     this.usuario = JSON.parse(localStorage.getItem('usuario'));;
 
-    // Primero valido que no sea null luego instancio un objeto Usuario
-    if(this.usuario)
-    {
-      this.usuario = Object.assign(new Usuario, this.usuario);
-      this.obtenerPerfil(); 
-      if(this.usuario.rol != Rol.Administrador)
-      {
-        this.obtenerTurnos();
-        this.turnosAceptados = this.turnos.filter(turno => turno.estado == Estado.Aceptado);
-        this.turnosFinalizados = this.turnos.filter(turno => turno.estado == Estado.Atendido);
-        this.turnosCancelados = this.turnos.filter(turno => turno.estado == Estado.Cancelado);
-      }
-    }
+   
   }
 
   ngOnInit(): void 
   {
+     // Primero valido que no sea null luego instancio un objeto Usuario
+     if(this.usuario)
+     {
+       this.usuario = Object.assign(new Usuario, this.usuario);
+       this.obtenerPerfil(); 
+       if(this.usuario.rol != Rol.Administrador)
+       {
+         this.obtenerTurnos();
+         this.turnosAceptados = this.turnos.filter(turno => turno.estado == Estado.Aceptado);
+         this.turnosFinalizados = this.turnos.filter(turno => turno.estado == Estado.Atendido);
+         this.turnosCancelados = this.turnos.filter(turno => turno.estado == Estado.Cancelado);
+       }
+     }
   }
 
   obtenerPerfil()
@@ -89,10 +94,10 @@ export class MenuComponent implements OnInit {
         this.administrador = Object.assign(new Administrador,this.usuario);
         this.listadoMedicos = JSON.parse(localStorage.getItem('medicos'));
         this.dataMedicos = new MatTableDataSource(this.listadoMedicos);
-        this.dataMedicos = new MatTableDataSource(this.listadoMedicos);
-        this.listadoPacientes = JSON.parse(localStorage.getItem('pacientes'));
-        this.dataPacientes = new MatTableDataSource(this.listadoPacientes);       
-        
+        //this.dataMedicos.paginator = this.paginator;
+        // this.listadoPacientes = JSON.parse(localStorage.getItem('pacientes'));
+        // this.dataPacientes = new MatTableDataSource(this.listadoPacientes);       
+        // this.dataPacientes.paginator = this.paginator;
         break;
       case Rol.Medico:
         this.medico = Object.assign(new Medico,this.usuario);

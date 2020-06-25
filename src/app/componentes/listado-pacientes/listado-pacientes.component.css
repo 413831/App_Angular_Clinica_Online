@@ -1,0 +1,46 @@
+mat-table {
+    background-color: rgb(234, 234, 248);
+}
+
+mat-paginator {
+    background-color: rgb(234, 234, 248);
+}
+
+mat-header-cell{
+    font-size: small;
+  }
+  
+
+.frame
+{
+    display: flex;
+    flex-direction: column;
+    margin-top: 18px;
+    /* height: fit-content; */
+    height: 300px;
+    width: 25rem;
+    background-color: rgb(234, 234, 248);
+
+}
+
+
+
+mat-row:hover{
+    background-color: lightsteelblue;
+    color: black;
+    cursor: pointer;
+}
+
+tr{
+    transition: 0.1s;
+}
+
+mat-row:active{
+    background-color: rgb(118, 150, 192);
+    transition: 0.5s;
+    
+}
+
+th{
+    font-size: medium;
+}

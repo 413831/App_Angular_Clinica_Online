@@ -44,8 +44,7 @@
                         </mat-expansion-panel-header>
 
                         <p>La Clínica Señor Gago de los Soles, especialista en salud,​ cuenta
-                            actualmente con 6 consultorios en la actualidad,
-                            dos laboratorios, y una sala de espera general para su comodidad.
+                            actualmente con 6 consultorios y dos laboratorios especializados.
                             Está abierta al público de lunes a viernes en el horario de 8:00 a 19:00
                             , y los sábados en el horario de 8:00 a 14:00.
                             Para examenes de laboratorio no se requiere turno, 
@@ -55,12 +54,12 @@
                     <mat-expansion-panel>
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                Nuestros profesionales
+                                Nuestras especialidades
                             </mat-panel-title>
                         </mat-expansion-panel-header>
                         <cdk-virtual-scroll-viewport itemSize="20" minBufferPx="200" maxBufferPx="400"
                             class="example-viewport">
-                            <mat-list role="list" *cdkVirtualFor='let especialidad of especialidades'
+                            <mat-list dense role="list" *cdkVirtualFor='let especialidad of especialidades'
                                 class="example-item">
                                 <mat-list-item role="listitem">{{especialidad}}</mat-list-item>
                                 <mat-divider></mat-divider>

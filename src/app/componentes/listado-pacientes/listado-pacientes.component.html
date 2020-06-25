@@ -1,23 +1,25 @@
-<p class="titulos">Listado de pacientes</p>
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+<div class="mat-elevation-z8 frame">
+  <mat-table [dataSource]="dataSource">
 
-    <!-- Position Column -->
     <ng-container matColumnDef="nombre">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
-      <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let paciente"> {{paciente.nombre}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="afiliado">
+      <mat-header-cell *matHeaderCellDef> Nro Afiliado </mat-header-cell>
+      <mat-cell *matCellDef="let paciente"> {{paciente.numeroAfiliado}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="obraSocial">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Obra Social </th>
-        <td mat-cell *matCellDef="let element"> {{element.obraSocial}} </td>
-    </ng-container>
-    
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="numeroAfiliado">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nro. Afiliado </th>
-      <td mat-cell *matCellDef="let element"> {{element.numeroAfiliado}} </td>
+      <mat-header-cell *matHeaderCellDef> Obra Social </mat-header-cell>
+      <mat-cell *matCellDef="let paciente"> {{paciente.obraSocial}} </mat-cell>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row [appHoverButton] *matRowDef="let row; columns: displayedColumns;" (click)="seleccionar(row)"></tr>
-  </table>
+    <mat-header-row *matHeaderRowDef="columnasPacientes"></mat-header-row>
+    <mat-row class="example-element-row" *matRowDef="let row; columns: columnasPacientes;">
+    </mat-row>
+  </mat-table>
+  <mat-paginator [length]="100" [pageSize]='pages' showFirstLastButtons>
+  </mat-paginator>
+</div>

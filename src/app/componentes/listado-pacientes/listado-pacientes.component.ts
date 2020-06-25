@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { DialogPacienteComponent } from '../dialog-paciente/dialog-paciente.component';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-listado-pacientes',
@@ -13,11 +14,13 @@ import { DialogPacienteComponent } from '../dialog-paciente/dialog-paciente.comp
 })
 export class ListadoPacientesComponent implements OnInit {
   @Input() listado: Paciente[];
+  @Input() pages: number;
   selection = new SelectionModel<Paciente>(true, []);
-  displayedColumns: string[] = ['nombre', 'especialidad', 'disponibilidad'];
+  columnasPacientes: string[] = ['nombre', 'afiliado','obraSocial'];
   dataSource: MatTableDataSource<Paciente>;
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(public dialog: MatDialog) 
   {
@@ -29,6 +32,7 @@ export class ListadoPacientesComponent implements OnInit {
   ngOnInit(): void 
   {
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
   seleccionar(element: any)

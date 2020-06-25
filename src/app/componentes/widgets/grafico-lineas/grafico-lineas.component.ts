@@ -34,12 +34,13 @@ export class GraficoLineasComponent implements OnInit {
        this.sesiones = (JSON.parse(localStorage.getItem('sesiones'))
                             .filter(sesion => this.usuario.id == sesion.idUsuario)
                             .map(sesion => Object.assign(new Sesion, sesion)));
+       console.log(this.sesiones);
+       this.procesarDatos();
+       this.crearGrafico();
     }
   }
   
   ngOnInit(): void {
-    this.procesarDatos();
-    this.crearGrafico();
   }
 
   ordenarDias(diaA: Sesion, diaB: Sesion) 
@@ -68,13 +69,11 @@ export class GraficoLineasComponent implements OnInit {
      for (let index = 0; index < this.data.length ; index++) 
      {
        const element = this.data[index];
-       console.log(element);
        const diaSemana =  new Date(element.fechaInicio).getDay();
  
        // Al estar ordenado de manera descendente va a guardar el último logueo del día
        if(!this.dias.includes(diaSemana))
        {
-         console.log("In");
          this.dias.push(diaSemana);
          aux.push(new Date(element.fechaInicio));
        } 

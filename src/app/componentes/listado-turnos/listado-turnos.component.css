@@ -16,7 +16,8 @@ mat-header-cell{
     display: flex;
     flex-direction: column;
     margin-top: 18px;
-    height: fit-content;
+    /* height: fit-content; */
+    height: 300px;
     width: 25rem;
     background-color: rgb(234, 234, 248);
 
