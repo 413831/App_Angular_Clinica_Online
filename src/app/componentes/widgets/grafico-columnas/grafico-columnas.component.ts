@@ -81,7 +81,7 @@ export class GraficoColumnasComponent implements OnInit {
       
    guardarPDF(): void
    {
-     this.archivos.exportarPDF(this.data, "medicosporturno");
+     this.archivos.exportarPDF(this.series, "medicosporturno");
    }
 
    obtenerCategorias() 

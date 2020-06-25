@@ -70,10 +70,10 @@
             <div class="botones">
                 <button appElevation mat-raised-button [defaultElevation]="0" class="default"
                     (click)="modificar()">Modificar datos</button>
-                <button appElevation mat-raised-button *ngIf="paciente || medico" [defaultElevation]="0" class="default"
+                <!-- <button appElevation mat-raised-button *ngIf="paciente || medico" [defaultElevation]="0" class="default"
                     (click)="cargarTurno()">
                     Cargar Turno
-                </button>
+                </button> -->
                 <button appElevation mat-raised-button [defaultElevation]="0" (click)="verInformes()"
                     color="primary">Informes</button>
                 <button appElevation mat-raised-button [defaultElevation]="0" class="warning" (click)="borrar()">Baja de

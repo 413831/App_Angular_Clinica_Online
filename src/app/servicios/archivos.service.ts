@@ -15,7 +15,8 @@ const EXCEL_EXT = '.xlsx';
 })
 export class ArchivosService {
   private static privados = ["imagen","dni","autorizado","id","rol","direccion",
-                            "email","telefono","clave", "avatar","consultorio","horasAtencion"];
+                            "email","telefono","clave", "avatar","consultorio","horasAtencion",
+                            "modificado"];
 
   constructor() { }
 

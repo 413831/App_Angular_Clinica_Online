@@ -37,7 +37,7 @@ export class GraficoBarrasComponent implements OnInit {
 
    guardarPDF(): void
    {
-     this.archivos.exportarPDF(this.data, "turnospordia");
+     this.archivos.exportarPDF([this.data], "turnospordia");
    }
 
    procesarDatos() 
