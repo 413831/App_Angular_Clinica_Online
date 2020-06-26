@@ -58,13 +58,13 @@ Todos los graficos excepto el primero solo serán vistos por un administrador
 
 -----------------------
 TODO
-- Validar hora de alta de turno con hora actual del usuario
-- Verificar inicio de sesion con captcha
-- Implementar canActivate con Menu, Alta turno, Turnos +
+- Validar hora de alta de turno con hora actual del usuario -> OK
+- Implementar canActivate con Menu, Alta turno, Turnos -> OK
 - Validar cambio de estados de turno contra fecha
 - Al cambiar estado del turno a confirmado llevar a Alta Historia
 - Una vez cargado los datos de un turno en la historia no se debe poder cargar de nuevo
-- Modificacion de turno desde pantalla Turnos +
+- Modificacion de turno desde pantalla Turnos -> OK
 - Manejo de errores y logs en bases de datos
-- Agregar una scrollbar decente +
+- Agregar una scrollbar decente -> OK
+- Verificar inicio de sesion con captcha
 

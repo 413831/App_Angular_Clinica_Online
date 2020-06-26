@@ -77,8 +77,8 @@
   </mat-card-content>
   <mat-card-actions>
     <!-- Se habilita solamente si el usuario es paciente -->
-    <button *ngIf="usuario.rol == 3" mat-stroked-button (click)='pedirTurno()'>Pedir turno</button>
-    <button *ngIf="usuario.rol == 1" mat-stroked-button (click)='autorizar()'>Autorizar</button>
+    <button *ngIf="usuario && usuario.rol == 3" mat-stroked-button (click)='pedirTurno()'>Pedir turno</button>
+    <button *ngIf="usuario && usuario.rol == 1" mat-stroked-button (click)='autorizar()'>Autorizar</button>
     <button mat-stroked-button (click)='this.dialogRef.close()'>Volver</button>
   </mat-card-actions>
 </mat-card>

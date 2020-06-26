@@ -137,6 +137,12 @@ export class ModificarTurnoComponent implements OnInit {
           validate = true;
         }
         break;
+      case Estado.Rechazado : 
+          if(this.turno.estado == Estado.Pendiente && this.usuario.rol == Rol.Medico)
+          {
+            validate = true;
+          }
+          break;
       case Estado.Cancelado : 
         if(this.turno.estado == Estado.Aceptado && this.usuario.rol == Rol.Paciente)
         {
@@ -144,23 +150,17 @@ export class ModificarTurnoComponent implements OnInit {
         }
         break;
       case Estado.Atendido : 
-        if(this.turno.estado == Estado.Aceptado && this.usuario.rol == Rol.Medico)
+        if(this.turno.estado == Estado.Aceptado && this.usuario.rol == Rol.Medico &&
+            new Date(this.turno.fecha).getDate() == new Date().getDate())
         {
+          // La validación es funcional junto con la limitación de 15 días
+          console.log("Atendido");
           validate = true;
         }
         break;
-      case Estado.Rechazado : 
-        if(this.turno.estado == Estado.Pendiente && this.usuario.rol == Rol.Medico)
-        {
-          validate = true;
-        }
-        break;
-
     }
     return validate;
-  }
-
-  
+  }  
 
   get nombrePaciente() { return this.datosTurnos.get('nombrePaciente'); }
   get nombreMedico() { return this.datosTurnos.get('nombreMedico'); }

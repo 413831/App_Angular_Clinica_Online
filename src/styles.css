@@ -28,7 +28,6 @@ body {
 
 .footer {
     position: relative;
-    
     bottom: 0;
     justify-content: flex-end;  
     font-size: small;   

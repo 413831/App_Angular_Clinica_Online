@@ -10,7 +10,9 @@
     background-color: whitesmoke;    
 }
 
-
+mat-drawer-container{
+  margin-top: 3px;
+}
   
 .botones button{
   display: flex;
