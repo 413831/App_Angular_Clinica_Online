@@ -6,11 +6,34 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class DiasFaltantesPipe implements PipeTransform {
 
   transform(value: string, ...args: unknown[]): unknown {
-    let date = new Date(value);
+    let fechaTurno = new Date(value);
     let diaActual =  new Date();
-    let diasFaltantes = date.getDate() - diaActual.getDate();
+    let diasFaltantes;
 
-    return diasFaltantes > 0 ? diasFaltantes : 0;
+    if(fechaTurno.getMonth() == diaActual.getMonth())
+    {
+      diasFaltantes = fechaTurno.getDate() - diaActual.getDate();
+    }
+    else if(fechaTurno.getMonth() > diaActual.getMonth())
+    {
+      diasFaltantes = Math.abs((diaActual.getDate() - fechaTurno.getDate()) -
+                                this.getDaysInMonth(diaActual.getMonth(),diaActual.getFullYear()));
+    }
+    else
+    {
+      diasFaltantes = 0;
+    }
+
+    return diasFaltantes;
   }
+
+  
+  getDaysInMonth(month,year) {
+    // Here January is 1 based
+    //Day 0 is the last day in the previous month
+   return new Date(year, month, 0).getDate();
+  // Here January is 0 based
+  // return new Date(year, month+1, 0).getDate();
+  };
 
 }
