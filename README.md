@@ -90,7 +90,7 @@ Menu configurable de datos de contacto e información adicional
 
 Para observar una demo de la aplicación se puede ingresar al siguiente link y utilizar los perfiles pre-cargados de diferentes usuarios para explorar la funcionalidad de los diferentes roles en una experiencia de uso real.
 
-https://app-clinica-online.herokuapp.com/
+## https://app-clinica-online.herokuapp.com/
 
 :)
 
