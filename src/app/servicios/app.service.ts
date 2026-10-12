@@ -16,7 +16,7 @@ export class AppService extends MiservicioService{
   }
 
   sendToken(token){
-    return this.http.post<any>("/token_validate", {recaptcha: token})
+    return this.http.post<any>("/api/token_validate", {recaptcha: token})
   }
 
   ///////////////////////////////////Datos de sesiones///////////////////////////////////////////

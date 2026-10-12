@@ -1,0 +1,12 @@
+<header class="site-header">
+  <a class="brand" routerLink="/" aria-label="Clínica Online, inicio"><span class="brand-mark" aria-hidden="true">+</span>Clínica Online</a>
+  <nav aria-label="Navegación principal">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+    <a routerLink="/cartilla" routerLinkActive="active">Cartilla</a>
+    <a routerLink="/turnos" routerLinkActive="active">Turnos</a>
+    <a routerLink="/informes" routerLinkActive="active">Informes</a>
+  </nav>
+  <a class="access-link" routerLink="/acceso">Acceder</a>
+</header>
+<main><router-outlet /></main>
+<footer>Proyecto de portfolio · Datos demostrativos · Angular 21</footer>

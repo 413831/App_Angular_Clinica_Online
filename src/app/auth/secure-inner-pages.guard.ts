@@ -21,6 +21,7 @@ export class SecureInnerPagesGuard implements CanActivate {
     {
         window.alert("La sesión está iniciada");
         this.router.navigate(['menu'])
+        return false;
     }
     return true;
   }

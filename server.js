@@ -1,69 +1,49 @@
-
 const express = require('express');
-// Request para servicio captcha
-const request = require("request");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const nodemailer = require("nodemailer");
+const cors = require('cors');
+const bodyParser = require('body-parser');
 const path = require('path');
-const port = 8080;
 
-// Express application
+const port = process.env.PORT || 8080;
 const app = express();
 
-app.use(express.static(__dirname + '/angularapp'));
-
-// app.listen(process.env.PORT || 8080);
-
-app.get('/*',function(req,res){
-  res.sendFile(path.join(__dirname + '/angularapp/index.html'));
-});
-
-////////////////////////////////////// CODIGO PARA CAPTCHA////////////////////////////////////////
-
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post('/token_validate', (req, res)=>{
-      
-  let token = req.body.recaptcha;
-  const secretkey = '6Lf4PgEVAAAAAE35jCxVHpaHz1GiTnZgtvD6_m6s'; //the secret key from your google admin console;
-  
-  //token validation url is URL: https://www.google.com/recaptcha/api/siteverify 
-  // METHOD used is: POST
-  
-  const url =  `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}`
-   
-  //note that remoteip is the users ip address and it is optional
-  // in node req.connection.remoteAddress gives the users ip address
-  
-  if(token === null || token === undefined)
-  {
-    res.status(201).send({success: false, message: "Token is empty or invalid"})
-    return console.log("token empty");
+app.post('/api/token_validate', async (req, res) => {
+  try {
+    const token = req.body && req.body.recaptcha;
+    const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+
+    if (!secretKey) {
+      return res.status(500).json({ success: false, message: 'Missing RECAPTCHA_SECRET_KEY' });
+    }
+
+    if (!token) {
+      return res.status(400).json({ success: false, message: 'Token is empty or invalid' });
+    }
+
+    const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${encodeURIComponent(secretKey)}&response=${encodeURIComponent(token)}`;
+    const response = await fetch(verifyUrl, { method: 'POST' });
+    const data = await response.json();
+
+    if (!data.success) {
+      return res.status(400).json({ success: false, message: 'recaptcha failed', details: data['error-codes'] });
+    }
+
+    return res.json({ success: true, message: 'recaptcha passed' });
+  } catch (error) {
+    console.error('Error al validar recaptcha:', error);
+    return res.status(500).json({ success: false, message: 'Internal server error validating recaptcha' });
   }
-  
-  request(url, function(err, response, body)
-  {
-    //the body is the data that contains success message
-    body = JSON.parse(body);
-    
-    //check if the validation failed
-    if(body.success !== undefined && !data.success)
-    {
-         res.send({success: false, 'message': "recaptcha failed"});
-         return console.log("failed")
-     }
-    
-    //if passed response success message to client
-     res.send({"success": true, 'message': "recaptcha passed"});
-    
-  })
+});
 
-})
+app.use(express.static(path.join(__dirname, 'angularapp')));
 
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'angularapp', 'index.html'));
+});
 
-app.listen(process.env.PORT || 8080);
-
-
-console.log('Finalizo');
+app.listen(port, () => {
+  console.log(`Clinica Online backend corriendo en http://localhost:${port}`);
+});

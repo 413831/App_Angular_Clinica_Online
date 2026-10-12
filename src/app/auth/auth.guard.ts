@@ -19,13 +19,14 @@ export class AuthGuard implements CanActivate {
   {
     let usuario = localStorage.getItem('usuario');
 
-    if(!usuario) 
+    if(!usuario || usuario === 'null')
     {
       this._snackBar.openFromComponent(NotificacionComponent, {
         duration: 3 * 1000,
         data: "Acceso denegado. Debe iniciar sesión"
       });
       this.router.navigate(['login'])
+      return false;
     }
     return true;
   }
