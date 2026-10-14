@@ -1,147 +1,203 @@
-/* You can add global styles to this file, and also import other style files */
-html, body { height: 100%; }
-body { 
-    margin: 0; 
-    font-family: Roboto, "Helvetica Neue", sans-serif;    
-    background-color: #F8F8FF;   
+/* Global Design System - Clinica Online */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.page
-{
-    height: 90%;
-    min-height: min-content;
-    padding-top: 3px;
+body {
+  font-family: 'Inter', Roboto, "Helvetica Neue", sans-serif;
+  background-color: #f1f5f9;
+  color: #1e293b;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-
-.titulos{
-    margin-left: 22px;
-    font-weight: bold;
-    font-size: larger;
+/* App root flex layout */
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.parrafo{
-    margin: 20px;
+main {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
-
-
-.footer {
-    position: relative;
-    bottom: 0;
-    justify-content: flex-end;  
-    font-size: small;   
-    width: 100%; 
-    background-color: transparent;
-    opacity: 0;
-
+.page {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+  box-sizing: border-box;
+  flex: 1;
 }
 
-.footer::hover{
-    transition: 2s;
-    background-color: #d6e2f0;
-    opacity: 0.7;
+/* Typography */
+.titulos {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
+.titulos::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 24px;
+  background: linear-gradient(180deg, #4f46e5 0%, #38bdf8 100%);
+  border-radius: 4px;
+}
 
+.parrafo {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #475569;
+  margin: 0 0 20px 0;
+}
 
-.thumbnail
-{
-    display: flex;
-    justify-content: center;
-    margin: 5px;
-    max-width: 125px;
-    max-height: 200px;        
-    border-radius: 19px 19px 19px 19px;
-    -moz-border-radius: 19px 19px 19px 19px;
-    -webkit-border-radius: 19px 19px 19px 19px;
+/* Images & Thumbnails - Preserving Proportions */
+.thumbnail {
+  display: block;
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 3px solid #e2e8f0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  background-color: #f8fafc;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.thumbnail:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .image-cropper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 70px;
-    height: 70px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+  padding: 8px;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-.rounded-thumbnail
-{
-    display: flex;
-    justify-content: center;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
+.rounded-thumbnail {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
 }
 
-.panel{
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* background-color: #F8F8FF; */
-    background-color: transparent;
+.panel {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent;
 }
 
-.dialog{
-    display: flexbox;
-    align-content: center;
-    margin: auto;
-    padding: 0;
-    background-color: rgb(233, 233, 245);
+.dialog {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* remove scrollbar
-.menu::-webkit-scrollbar {
-     width: 0 !important 
-} */
+/* Global Loading Spinner / Skeleton State */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  gap: 16px;
+  min-height: 220px;
+}
 
-/* * > body::-webkit-scrollbar  {
-    display: none;
+.loading-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #64748b;
+  margin: 0;
+  letter-spacing: 0.2px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
 
-} */
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
 
-::-webkit-scrollbar:window-inactive {
-    overflow: hidden;
-    opacity: 0;
- }
+/* Material Design Table & Card enhancements */
+.mat-elevation-z4, .mat-elevation-z8 {
+  border-radius: 14px !important;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06) !important;
+  border: 1px solid #e2e8f0 !important;
+}
 
-/* width */
+table.mat-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #ffffff;
+}
+
+th.mat-header-cell {
+  background-color: #f8fafc;
+  color: #334155;
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 14px 16px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+td.mat-cell {
+  padding: 14px 16px;
+  color: #1e293b;
+  font-size: 0.88rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+tr.mat-row:hover {
+  background-color: #f8faff !important;
+  cursor: pointer;
+}
+
+/* Custom scrollbars */
 ::-webkit-scrollbar {
-    width: 10px;
-    overflow: auto;
-    overflow-y : auto;
+  width: 8px;
+  height: 8px;
 }
 
-
-/* Track */
 ::-webkit-scrollbar-track {
-    opacity: 0;
+  background: #f1f5f9;
 }
 
-::-webkit-scrollbar-track:hover {
-    box-shadow: inset 0 0 5px transparent; 
-    opacity: 0.5;
-    background-color: transparent;
-}
-
-::-webkit-scrollbar-track-piece {
-    opacity: 0.5;
-    background-color: transparent;
-}
-
-/* Handle */
 ::-webkit-scrollbar-thumb {
-    background-color: #babaeb;
+  background-color: #cbd5e1;
+  border-radius: 4px;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #9393f0;   
-    overflow: auto;
-    padding-right: 1px; 
+  background-color: #94a3b8;
 }

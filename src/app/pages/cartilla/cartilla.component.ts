@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Medico } from 'src/app/clases/Medico';
-import { MedicosService } from 'src/app/servicios/servicio-medicos.service';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -11,6 +10,8 @@ import { ListadoMedicosComponent } from 'src/app/componentes/listado-medicos/lis
 import { ArchivosService } from 'src/app/servicios/archivos.service';
 import { Turno, Dia } from 'src/app/clases/Turno';
 import { DialogMedicoComponent } from 'src/app/componentes/dialog-medico/dialog-medico.component';
+import { MockDataService } from 'src/app/servicios/mock-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cartilla',
@@ -22,165 +23,204 @@ export class CartillaComponent implements OnInit {
   @Output() enviarMedico: EventEmitter<any> = new EventEmitter<any>();
   @Output() enviarListado: EventEmitter<any> = new EventEmitter<any>();
   selection = new SelectionModel<Medico>(true, []);
-  displayedColumns: string[] = ['nombre', 'especialidad', 'diasAtencion'];
+  displayedColumns: string[] = ['avatar', 'nombre', 'especialidad', 'diasAtencion', 'consultorio', 'acciones'];
   dataSource: MatTableDataSource<Medico>;
-  filterValues = {};
-  filterSelectObj = {};
-  filterForm = new FormGroup(
-  {
-    nombre: new FormControl(),
-    especialidad: new FormControl(),
-    diasAtencion: new FormControl()
+  public isLoading: boolean = true;
+  filterValues: any = {};
+  filterSelectObj: any[] = [];
+  filterForm = new FormGroup({
+    nombre: new FormControl(''),
+    especialidad: new FormControl(''),
+    diasAtencion: new FormControl('')
   });
 
-  @ViewChild('content', {static: false}) content: MatTable<Medico>;
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
-  
-  constructor( public dialog: MatDialog, public listadoRef: MatDialogRef<ListadoMedicosComponent>,
-              private archivos: ArchivosService) 
-  {
-    // Object to create Filter for
+  @ViewChild('content', { static: false }) content: MatTable<Medico>;
+  @ViewChild(MatPaginator, { static: false }) set matPaginator(mp: MatPaginator) {
+    this.paginator = mp;
+    if (this.dataSource) {
+      this.dataSource.paginator = this.paginator;
+    }
+  }
+  @ViewChild(MatSort, { static: false }) set matSort(ms: MatSort) {
+    this.sort = ms;
+    if (this.dataSource) {
+      this.dataSource.sort = this.sort;
+    }
+  }
+  private paginator: MatPaginator;
+  private sort: MatSort;
+
+  constructor(
+    public dialog: MatDialog,
+    public listadoRef: MatDialogRef<ListadoMedicosComponent>,
+    private archivos: ArchivosService,
+    private router: Router
+  ) {
     this.filterSelectObj = [
       {
-        name: 'Apellido',
+        name: 'Profesional',
         columnProp: 'nombre',
-        options: []
-      }, {
+        placeholder: 'Buscar por nombre o apellido...',
+        icon: 'person_search'
+      },
+      {
         name: 'Especialidad',
         columnProp: 'especialidad',
-        options: Medico.especialidades
-      }, {
-        name: 'Dia',
+        placeholder: 'Seleccionar especialidad',
+        options: Medico.especialidades,
+        icon: 'medical_services'
+      },
+      {
+        name: 'Día de Atención',
         columnProp: 'diasAtencion',
-        options: Turno.dias.map(dia => Dia[dia])
-      }, 
-    ]
-
+        placeholder: 'Seleccionar día',
+        options: Turno.dias.map(dia => Dia[dia]),
+        icon: 'today'
+      }
+    ];
   }
-  
-  ngOnInit()
-  {    
-    //this.dataSource.filterPredicate = this.createFilter();
-    // Solamente se muestran los medicos autorizados
-    this.listado = (JSON.parse(localStorage.getItem('medicos')))
-                    .filter(medico => medico.autorizado);    
+
+  ngOnInit() {
+    this.cargarMedicos();
+  }
+
+  cargarMedicos() {
+    this.isLoading = true;
+    let medicos: Medico[] = [];
+    const raw = localStorage.getItem('medicos');
+
+    if (raw && raw !== 'null') {
+      try {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          medicos = parsed.filter(m => m.autorizado);
+        }
+      } catch (e) {
+        medicos = [];
+      }
+    }
+
+    if (medicos.length === 0) {
+      medicos = MockDataService.getMockMedicos().filter(m => m.autorizado);
+      localStorage.setItem('medicos', JSON.stringify(MockDataService.getMockMedicos()));
+    }
+
+    this.listado = medicos;
     this.dataSource = new MatTableDataSource(this.listado);
-    // Overrride default filter behaviour of Material Datatable
     this.dataSource.filterPredicate = this.createFilter();
-    this.dataSource.sort = this.sort;    
-    this.dataSource.paginator = this.paginator;
+
+    setTimeout(() => {
+      if (this.paginator) {
+        this.dataSource.paginator = this.paginator;
+      }
+      if (this.sort) {
+        this.dataSource.sort = this.sort;
+      }
+      this.isLoading = false;
+    }, 450);
   }
 
-  seleccionar(medico: Medico)
-  {
+  seleccionar(medico: Medico) {
     let dialogConfig = new MatDialogConfig();
     dialogConfig.data = medico;
-    dialogConfig.width = '400px';
-    dialogConfig.height = '500px';
-           
-    const dialogRef = this.dialog.open(DialogMedicoComponent, dialogConfig);
+    dialogConfig.width = '420px';
+    dialogConfig.maxWidth = '95vw';
 
-    dialogRef.afterClosed().subscribe(result => {
+    const dialogRef = this.dialog.open(DialogMedicoComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(() => {
       console.log('Dialogo medico cerrado.');
     });
     this.enviarMedico.emit(medico);
   }
 
-  filtrar(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  pedirTurno(medico: Medico, event: MouseEvent) {
+    event.stopPropagation();
+    this.router.navigate(['/turnos']);
   }
 
-  buscar(){
-    let nombre = this.nombre.value ?  this.nombre.value : "";
-    let especialidad = this.especialidad.value ?  this.especialidad.value : "";
-    let dia = this.diasAtencion.value ?  this.diasAtencion.value : "";
-
-    let filtro = {
-      nombre: nombre,
-      especialidad: especialidad,
-      dia: dia
+  resetFiltros() {
+    this.filterForm.reset({
+      nombre: '',
+      especialidad: '',
+      diasAtencion: ''
+    });
+    this.filterValues = {};
+    if (this.dataSource) {
+      this.dataSource.filter = '';
     }
-    console.log(filtro);
-    this.dataSource.filter = filtro.nombre;
-    this.dataSource.filter = filtro.especialidad;
   }
 
-  guardarExcel(): void
-  {
-    this.archivos.exportarExcel(this.dataSource.data, "cartilla");
+  guardarExcel(): void {
+    if (this.dataSource && this.dataSource.data) {
+      this.archivos.exportarExcel(this.dataSource.data, 'cartilla_medica');
+    }
   }
 
-  guardarPDF(): void
-  {
-    this.archivos.exportarPDF(this.dataSource.data, "cartilla");
+  guardarPDF(): void {
+    if (this.dataSource && this.dataSource.data) {
+      this.archivos.exportarPDF(this.dataSource.data, 'cartilla_medica');
+    }
   }
 
-  // Called on Filter change
-  filterChange(filter, event) {
-    //let filterValues = {}
-    console.log(event.target.value.trim().toLowerCase());
-    this.filterValues[filter.columnProp] = event.target.value.trim().toLowerCase()
-    this.dataSource.filter = JSON.stringify(this.filterValues)
+  filterChange(filter: any, event: any) {
+    const val = event.target ? event.target.value.trim().toLowerCase() : '';
+    this.filterValues[filter.columnProp] = val;
+    this.dataSource.filter = JSON.stringify(this.filterValues);
   }
 
-  autocompleteChange(filter, event)
-  {
-    console.log(event.option.value);
-    this.filterValues[filter.columnProp] = event.option.value
-    this.dataSource.filter = JSON.stringify(this.filterValues)
+  autocompleteChange(filter: any, event: any) {
+    this.filterValues[filter.columnProp] = event.option.value;
+    this.dataSource.filter = JSON.stringify(this.filterValues);
   }
 
-   // Custom filter method fot Angular Material Datatable
-   createFilter()
-  {
-    let filterFunction = function (data: any, filter: string): boolean 
-    {
-      let searchTerms = JSON.parse(filter);
-      //searchTerms = JSON.parse(filter);
+  createFilter() {
+    let filterFunction = function (data: any, filter: string): boolean {
+      if (!filter) return true;
+      let searchTerms: any = {};
+      try {
+        searchTerms = JSON.parse(filter);
+      } catch (e) {
+        return true;
+      }
+
       let isFilterSet = false;
-      console.log(searchTerms);
-      
-      for (const col in searchTerms) 
-      {
-        if (searchTerms[col].toString() !== '') 
-        {
+      for (const col in searchTerms) {
+        if (searchTerms[col] && searchTerms[col].toString() !== '') {
           isFilterSet = true;
-        }
-        else 
-        {
+        } else {
           delete searchTerms[col];
         }
       }
 
-      let nameSearch = () => {
-        let found = false;
-        if (isFilterSet) 
-        {
-          for (const col in searchTerms) 
-          {          
-            searchTerms[col].trim().split(",").forEach(word=> 
-            {
-              word = col == "diasAtencion" ? Dia[word] : word;
+      if (!isFilterSet) return true;
 
-              if (data[col].toString().toLowerCase().indexOf(word) != -1 && isFilterSet) 
-              {
-                found = true;
-              }
-            });
+      for (const col in searchTerms) {
+        const term = searchTerms[col].toString().toLowerCase().trim();
+        if (col === 'diasAtencion') {
+          const diasList = Array.isArray(data.diasAtencion)
+            ? data.diasAtencion.map((d: any) => (typeof d === 'number' ? Dia[d] : d).toLowerCase())
+            : [];
+          if (!diasList.some((d: string) => d.includes(term))) {
+            return false;
           }
-
-          return found;
+        } else if (col === 'especialidad') {
+          const espList = Array.isArray(data.especialidad)
+            ? data.especialidad.map((e: any) => e.toString().toLowerCase())
+            : [data.especialidad ? data.especialidad.toString().toLowerCase() : ''];
+          if (!espList.some((e: string) => e.includes(term))) {
+            return false;
+          }
         } else {
-          return true;
+          const val = (data[col] || '').toString().toLowerCase();
+          if (!val.includes(term)) {
+            return false;
+          }
         }
       }
-      return nameSearch()
-    }
-    return filterFunction
+      return true;
+    };
+    return filterFunction;
   }
-
 
   get diasAtencion() { return this.filterForm.get('diasAtencion'); }
   get nombre() { return this.filterForm.get('nombre'); }

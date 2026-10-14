@@ -1,13 +1,32 @@
-<h1><p class="titulos" >Registro de usuario</p></h1>
-<mat-tab-group mat-stretch-tabs class="container mat-elevation-z4" [style.background]="'#F8F8FF'">
-    <mat-tab label="Paciente" >
-      <div class="example-large-box mat-elevation-z4" >
-        <app-alta-paciente></app-alta-paciente>
-      </div>
-    </mat-tab>
-    <mat-tab label="Profesionales">
-        <div class="example-large-box mat-elevation-z4" >
+<div class="page registration-page">
+  <div class="registration-header">
+    <h1 class="titulos">Registro de Usuario</h1>
+    <p class="parrafo">
+      Seleccione el tipo de cuenta para comenzar. Los pacientes pueden autogestionar sus consultas y los profesionales enviar su solicitud de alta médica.
+    </p>
+  </div>
+
+  <div class="registration-card mat-elevation-z4">
+    <mat-tab-group mat-stretch-tabs animationDuration="200ms" class="registration-tabs">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="reg-tab-icon">person</mat-icon>
+          <span>Alta de Paciente</span>
+        </ng-template>
+        <div class="reg-tab-body">
+          <app-alta-paciente></app-alta-paciente>
+        </div>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="reg-tab-icon">medical_services</mat-icon>
+          <span>Alta de Profesional Médico</span>
+        </ng-template>
+        <div class="reg-tab-body">
           <app-alta-medico></app-alta-medico>
         </div>
       </mat-tab>
-  </mat-tab-group>
+    </mat-tab-group>
+  </div>
+</div>

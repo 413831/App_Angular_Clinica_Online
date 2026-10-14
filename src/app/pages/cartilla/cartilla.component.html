@@ -1,52 +1,141 @@
 <div class="page">
-    <h1><p class="titulos"> Cartilla médica</p></h1>
-    <p class="parrafo">Al seleccionar un profesional del listado podrá ver sus datos y gestionar un nuevo turno.</p>
-    <form [formGroup]="filterForm">
-        <mat-form-field *ngFor="let filter of filterSelectObj" style="margin-left: 15px;">    
-      
-          <mat-label>{{filter.name}}</mat-label>
-          <input type="text" matInput formControlName="{{filter.columnProp}}" [matAutocomplete]="auto"
-          (change)="filterChange(filter,$event)">
-      
-          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="autocompleteChange(filter,$event)">
-            <mat-option value=""></mat-option>
-            <mat-option  [value]="item" *ngFor="let item of filter.options">{{item}}</mat-option>
-          </mat-autocomplete>
-      
+  <div class="page-header">
+    <h1 class="titulos">Cartilla Médica</h1>
+    <p class="parrafo">
+      Consulte el cuerpo médico de la institución. Puede filtrar por profesional, especialidad o día de atención, descargar el listado oficial o solicitar un turno directamente.
+    </p>
+  </div>
+
+  <!-- Filters Card -->
+  <div class="filters-card mat-elevation-z4">
+    <form [formGroup]="filterForm" class="filters-form">
+      <div class="filter-inputs">
+        <mat-form-field appearance="outline" class="filter-field">
+          <mat-label>Buscar Profesional</mat-label>
+          <input matInput formControlName="nombre" placeholder="Ej: Dr. Antonio..." (input)="filterChange({columnProp: 'nombre'}, $event)">
+          <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
-        <button mat-flat-button class="primary" >Reset</button>
-      </form>
-      
-      <div>
-        <button mat-raised-button [appHoverButton] (click)="guardarPDF()">Descargar PDF</button>
-        <button mat-raised-button [appHoverButton] (click)="guardarExcel()">Descargar Excel</button>
+
+        <mat-form-field appearance="outline" class="filter-field">
+          <mat-label>Especialidad</mat-label>
+          <input matInput formControlName="especialidad" [matAutocomplete]="autoEsp" placeholder="Todas las especialidades" (input)="filterChange({columnProp: 'especialidad'}, $event)">
+          <mat-icon matSuffix>medical_services</mat-icon>
+          <mat-autocomplete #autoEsp="matAutocomplete" (optionSelected)="autocompleteChange({columnProp: 'especialidad'}, $event)">
+            <mat-option value="">Todas las especialidades</mat-option>
+            <mat-option *ngFor="let esp of filterSelectObj[1].options" [value]="esp">{{esp}}</mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="filter-field">
+          <mat-label>Día de Atención</mat-label>
+          <input matInput formControlName="diasAtencion" [matAutocomplete]="autoDia" placeholder="Todos los días" (input)="filterChange({columnProp: 'diasAtencion'}, $event)">
+          <mat-icon matSuffix>calendar_month</mat-icon>
+          <mat-autocomplete #autoDia="matAutocomplete" (optionSelected)="autocompleteChange({columnProp: 'diasAtencion'}, $event)">
+            <mat-option value="">Todos los días</mat-option>
+            <mat-option *ngFor="let dia of filterSelectObj[2].options" [value]="dia">{{dia}}</mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
       </div>
-      
-      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" #content>
-      
-          <!-- Position Column -->
-          <ng-container matColumnDef="nombre">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Profesional </th>
-            <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-          </ng-container>
-          
-          <!-- Symbol Column -->
-          <ng-container matColumnDef="especialidad">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Especialidad </th>
-            <td mat-cell *matCellDef="let element"> {{element.especialidad}} </td>
-          </ng-container>
-      
-          <ng-container matColumnDef="diasAtencion">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Dias de atención </th>
-              <td mat-cell *matCellDef="let element"> {{element.diasAtencion | dias}} </td>
-            </ng-container>
-      
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row [appHoverButton] *matRowDef="let row; columns: displayedColumns;" (click)="seleccionar(row)"></tr>
-        </table>
-        <mat-paginator [length]="100"
-        [pageSize]="5" showFirstLastButtons></mat-paginator>
 
+      <div class="filter-actions">
+        <button mat-stroked-button color="warn" type="button" (click)="resetFiltros()" class="reset-btn">
+          <mat-icon>restart_alt</mat-icon> Limpiar
+        </button>
+        <button mat-raised-button color="accent" type="button" (click)="guardarPDF()" class="export-btn">
+          <mat-icon>picture_as_pdf</mat-icon> Descargar PDF
+        </button>
+        <button mat-raised-button class="export-excel-btn" type="button" (click)="guardarExcel()">
+          <mat-icon>table_view</mat-icon> Descargar Excel
+        </button>
+      </div>
+    </form>
+  </div>
 
-    <br>
+  <!-- Loading Spinner -->
+  <div class="loading-container mat-elevation-z4" *ngIf="isLoading">
+    <mat-spinner diameter="50" color="primary"></mat-spinner>
+    <p class="loading-text">Cargando cartilla de profesionales y consultorios...</p>
+  </div>
+
+  <!-- Table Card -->
+  <div class="table-card mat-elevation-z4" *ngIf="!isLoading">
+    <div class="table-responsive">
+      <table mat-table [dataSource]="dataSource" matSort #content class="cartilla-table">
+        <!-- Avatar Column -->
+        <ng-container matColumnDef="avatar">
+          <th mat-header-cell *matHeaderCellDef class="th-avatar"> Foto </th>
+          <td mat-cell *matCellDef="let element" class="td-avatar">
+            <div class="doctor-avatar-wrapper">
+              <img [src]="element.avatar || 'assets/img/doctor.jpg'" alt="Foto médico" class="doctor-avatar" loading="lazy">
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Profesional Column -->
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Profesional </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="doctor-name-info">
+              <span class="doctor-name">{{element.nombre}}</span>
+              <span class="doctor-matricula" *ngIf="element.matricula">Mat. {{element.matricula}}</span>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Especialidad Column -->
+        <ng-container matColumnDef="especialidad">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Especialidad </th>
+          <td mat-cell *matCellDef="let element">
+            <span class="especialidad-badge">{{element.especialidad | especialidades}}</span>
+          </td>
+        </ng-container>
+
+        <!-- Dias de atención Column -->
+        <ng-container matColumnDef="diasAtencion">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Días de Atención </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="dias-wrapper">
+              <mat-icon class="schedule-icon">calendar_today</mat-icon>
+              <span>{{element.diasAtencion | dias}}</span>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Consultorio Column -->
+        <ng-container matColumnDef="consultorio">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Consultorio </th>
+          <td mat-cell *matCellDef="let element">
+            <span class="consultorio-pill">N° {{element.consultorio || '101'}}</span>
+          </td>
+        </ng-container>
+
+        <!-- Acciones Column -->
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef class="th-actions"> Acciones </th>
+          <td mat-cell *matCellDef="let element" class="td-actions">
+            <div class="actions-wrapper">
+              <button mat-button color="primary" class="detail-btn" (click)="seleccionar(element)" matTooltip="Ver ficha completa">
+                <mat-icon>info</mat-icon> Ficha
+              </button>
+              <button mat-raised-button color="primary" class="turn-btn" (click)="pedirTurno(element, $event)" matTooltip="Solicitar consulta">
+                <mat-icon>event_available</mat-icon> Turno
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="cartilla-row" (click)="seleccionar(row)"></tr>
+      </table>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="dataSource && dataSource.filteredData && dataSource.filteredData.length === 0">
+      <mat-icon class="empty-icon">search_off</mat-icon>
+      <h3>No se encontraron profesionales</h3>
+      <p>Intente modificar los filtros de búsqueda o presione "Limpiar".</p>
+    </div>
+
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons class="cartilla-paginator"></mat-paginator>
+  </div>
 </div>

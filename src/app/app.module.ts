@@ -49,6 +49,8 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 
@@ -215,6 +217,8 @@ import { DiasFaltantesPipe } from './pipes/dias-faltantes.pipe';
     MatSlideToggleModule,
     MatPaginatorModule,
     MatMenuModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
     RecaptchaModule,
     HighchartsChartModule,
     DragDropModule,

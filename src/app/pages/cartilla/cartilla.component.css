@@ -1,53 +1,225 @@
-.page{
-    background-color: #F8F8FF;
-    height: 90%;
-    padding-top: 3px;
-  }
-
-
-.titulos{
-  margin-left: 22px;
-  font-weight: bold;
-  font-size: larger;
+/* Cartilla Médica Styles */
+.page-header {
+  margin-bottom: 24px;
 }
 
-table {
+.filters-card {
+  background: #ffffff;
+  border-radius: 16px !important;
+  padding: 24px 20px;
+  margin-bottom: 24px;
+  border: 1px solid #e2e8f0;
+}
+
+.filters-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.filter-inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.filter-field {
   width: 100%;
 }
 
-th.mat-sort-header-sorted {
-  color: black;
+.filter-field mat-icon {
+  color: #64748b;
 }
 
-.container{
-display: flex;
-flex-direction: column;
+.filter-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding-top: 8px;
+  border-top: 1px solid #f1f5f9;
 }
 
-tr{
-transition: 0.1s;
+.filter-actions button {
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
 }
 
-th{
-font-size: medium;
+.export-excel-btn {
+  background-color: #059669 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 10px rgba(5, 150, 105, 0.25) !important;
 }
 
-.filter__form{
-width: 100%;
-display: flex;
-flex-wrap: wrap;
-}
-.filter__form .form-group{
-margin: 0 10px;
-}
-
-.primary{
-margin: auto;
-background: orange;
-color: white;
+/* Loading Card */
+.loading-container {
+  background: #ffffff;
+  border-radius: 16px !important;
+  margin-bottom: 24px;
+  border: 1px solid #e2e8f0;
 }
 
-button{
-margin-left: 10px;
-margin-bottom: 10px;
+/* Table Card */
+.table-card {
+  background: #ffffff;
+  border-radius: 16px !important;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 32px;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.cartilla-table {
+  width: 100%;
+}
+
+.th-avatar, .td-avatar {
+  width: 70px;
+  padding-left: 20px !important;
+}
+
+.doctor-avatar-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8fafc;
+}
+
+.doctor-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.doctor-name-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.doctor-name {
+  font-weight: 600;
+  color: #0f172a;
+  font-size: 0.95rem;
+}
+
+.doctor-matricula {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.especialidad-badge {
+  display: inline-block;
+  background: #e0e7ff;
+  color: #3730a3;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.dias-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #334155;
+  font-size: 0.88rem;
+}
+
+.schedule-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  color: #0284c7;
+}
+
+.consultorio-pill {
+  display: inline-block;
+  background: #f1f5f9;
+  color: #475569;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  border: 1px solid #cbd5e1;
+}
+
+.th-actions, .td-actions {
+  text-align: right;
+  padding-right: 20px !important;
+}
+
+.actions-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.actions-wrapper button {
+  border-radius: 8px !important;
+  font-size: 0.82rem !important;
+}
+
+.turn-btn {
+  background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%) !important;
+  color: #ffffff !important;
+}
+
+.cartilla-row {
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.cartilla-row:hover {
+  background-color: #f8fafc !important;
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+  text-align: center;
+  color: #64748b;
+}
+
+.empty-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  color: #94a3b8;
+  margin-bottom: 12px;
+}
+
+.empty-state h3 {
+  font-size: 1.15rem;
+  color: #1e293b;
+  margin: 0 0 6px 0;
+}
+
+.empty-state p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.cartilla-paginator {
+  background-color: #fafafa;
+  border-top: 1px solid #f1f5f9;
 }

@@ -42,12 +42,33 @@ export class InformesComponent implements OnInit {
    @ViewChild('container', {static: false}) content: any;
 
    constructor(private appService: AppService, private archivos: ArchivosService) {
-      this.usuario = JSON.parse(localStorage.getItem('usuario'));
+      const rawUser = localStorage.getItem('usuario');
+      if (rawUser && rawUser !== 'null') {
+         try {
+            this.usuario = Object.assign(new Usuario(), JSON.parse(rawUser));
+         } catch(e) {
+            this.usuario = null;
+         }
+      }
 
-      if (this.usuario) {
-         this.usuario = Object.assign(new Usuario, this.usuario);
-         this.sesiones = (JSON.parse(localStorage.getItem('sesiones'))
-                              .map(sesion => Object.assign(new Sesion, sesion)));
+      const rawSesiones = localStorage.getItem('sesiones');
+      if (rawSesiones && rawSesiones !== 'null') {
+         try {
+            this.sesiones = JSON.parse(rawSesiones).map((s: any) => Object.assign(new Sesion(), s));
+         } catch(e) {
+            this.sesiones = [];
+         }
+      } else {
+         // Generar sesiones de prueba para visualización de métricas
+         const uId = this.usuario ? this.usuario.id : '-adm1';
+         const uNom = this.usuario ? this.usuario.nombre : 'Admin General';
+         this.sesiones = [
+            Sesion.CrearSesion(uId, uNom, new Date(Date.now() - 86400000 * 4).toString()),
+            Sesion.CrearSesion(uId, uNom, new Date(Date.now() - 86400000 * 3).toString()),
+            Sesion.CrearSesion(uId, uNom, new Date(Date.now() - 86400000 * 2).toString()),
+            Sesion.CrearSesion(uId, uNom, new Date(Date.now() - 86400000 * 1).toString()),
+            Sesion.CrearSesion(uId, uNom, new Date().toString())
+         ];
       }
    }
 

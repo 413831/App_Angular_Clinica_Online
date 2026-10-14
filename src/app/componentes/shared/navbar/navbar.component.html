@@ -1,10 +1,53 @@
+<header class="app-header mat-elevation-z4">
+  <div class="header-container">
+    <div class="brand-section" [routerLink]="'/home'">
+      <div class="brand-icon">
+        <mat-icon>local_hospital</mat-icon>
+      </div>
+      <div class="brand-titles">
+        <span class="brand-name">Clínica Señor Gago</span>
+        <span class="brand-subtitle">Centro Médico y Especialidades</span>
+      </div>
+    </div>
 
-<nav mat-tab-nav-bar mat-stretch-tabs class="mat-elevation-z4">
-  <a mat-tab-link 
-     *ngFor="let link of links"
-     [routerLink]="link.path"
-     routerLinkActive #rla="routerLinkActive"
-     [active]="rla.isActive">
-    {{link.label}}
-  </a>
-</nav>
+    <nav class="nav-links">
+      <a 
+        *ngFor="let link of links" 
+        [routerLink]="link.path" 
+        routerLinkActive="active-nav-link" 
+        class="nav-link-item"
+        [title]="link.title">
+        <mat-icon class="nav-icon">{{link.icon}}</mat-icon>
+        <span class="nav-label">{{link.label}}</span>
+      </a>
+    </nav>
+
+    <div class="user-actions">
+      <!-- Usuario autenticado -->
+      <div *ngIf="usuario" class="user-logged-in">
+        <div class="user-info-badge" [routerLink]="'/menu'" matTooltip="Ir a mi panel">
+          <div class="user-avatar-circle">
+            <mat-icon>person</mat-icon>
+          </div>
+          <div class="user-text-details">
+            <span class="user-name">{{usuario.nombre}}</span>
+            <span class="user-role" *ngIf="usuario.rol">{{usuario.rol}}</span>
+          </div>
+        </div>
+        <button mat-icon-button color="warn" (click)="logout()" matTooltip="Cerrar sesión" class="logout-btn">
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
+      </div>
+
+      <!-- Invitado -->
+      <div *ngIf="!usuario" class="guest-actions">
+        <a mat-button [routerLink]="'/login'" class="login-action-btn">
+          <mat-icon class="btn-icon">login</mat-icon> Iniciar Sesión
+        </a>
+        <a mat-raised-button color="primary" [routerLink]="'/registro'" class="register-action-btn">
+          <mat-icon class="btn-icon">how_to_reg</mat-icon> Registrarse
+        </a>
+      </div>
+    </div>
+  </div>
+</header>

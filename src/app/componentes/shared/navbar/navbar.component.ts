@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 import { Usuario } from 'src/app/clases/Usuario';
+import { MiservicioService } from 'src/app/servicios/miservicio.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,21 +9,43 @@ import { Usuario } from 'src/app/clases/Usuario';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
- public links = [
-  { path: 'home', label: "Home", title: "Principal"},
-  { path: 'login', label: "Iniciar Sesión" , title: "Iniciar sesión"},
-  { path: 'cartilla', label: "Cartilla", title: "Listado de médicos"},
-  { path: 'turnos', label: "Turnos", title: "Turnos"},
-  { path: 'contacto', label: "Contacto", title: "Sobre nosotros"},
-  
- ];
+  public usuario: Usuario = null;
 
-  constructor() {
-    
-   }
+  public links = [
+    { path: 'home', label: 'Inicio', icon: 'home', title: 'Página Principal' },
+    { path: 'cartilla', label: 'Cartilla Médica', icon: 'medical_services', title: 'Listado de especialistas' },
+    { path: 'turnos', label: 'Turnos', icon: 'event', title: 'Gestión de Turnos' },
+    { path: 'contacto', label: 'Contacto', icon: 'support_agent', title: 'Sobre la Clínica' }
+  ];
+
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-  
+    this.checkUser();
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.checkUser();
+      }
+    });
   }
 
+  checkUser(): void {
+    const raw = localStorage.getItem('usuario');
+    if (raw && raw !== 'null') {
+      try {
+        this.usuario = JSON.parse(raw);
+      } catch (e) {
+        this.usuario = null;
+      }
+    } else {
+      this.usuario = null;
+    }
+  }
+
+  logout(): void {
+    MiservicioService.cerrarSesion();
+    this.usuario = null;
+    this.router.navigate(['/home']);
+  }
 }
+

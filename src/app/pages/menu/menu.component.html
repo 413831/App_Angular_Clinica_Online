@@ -1,88 +1,153 @@
 <div class="page">
-    <h1>
-        <p class="titulos">Menú de usuario</p>
-    </h1>
-    <div *ngIf='usuario'>
-        <mat-grid-list cols="6" rowHeight="90px">
-            <mat-grid-tile [colspan]=4 [rowspan]=4 class="detalle mat-elevation-z4">
-                <mat-grid-tile-header>Datos personales</mat-grid-tile-header>
+  <div class="menu-page-header">
+    <h1 class="titulos">Panel de Usuario</h1>
+    <p class="parrafo" *ngIf="usuario">
+      Gestión de datos de perfil, agenda de turnos y herramientas administrativas para <strong>{{usuario.nombre}}</strong> ({{usuario.rol}}).
+    </p>
+  </div>
 
-                <div *ngIf='paciente'>
-                    <app-detalle-paciente *ngIf='paciente' class="detalle" [imgPerfil]='imgPerfil'
-                        [paciente]='paciente'></app-detalle-paciente>
-                </div>
-                <div *ngIf='medico'>
-                    <app-detalle-medico class="detalle" [imgPerfil]='imgPerfil' [medico]='medico'></app-detalle-medico>
-                </div>
-                <div *ngIf='administrador'>
-                    <app-detalle-administrador class="detalle" [imgPerfil]='imgPerfil' [administrador]="administrador">
-                    </app-detalle-administrador>
-                </div>
-            </mat-grid-tile>
-
-            <mat-grid-tile class="tabla " *ngIf='paciente || medico' [colspan]=2 [rowspan]=4>
-                <mat-grid-tile-header>
-                    Turnos
-                </mat-grid-tile-header>
-                <app-listado-turnos class="tabla" [turnos]='turnos' [pages]=4 (seleccionar)='seleccionarTurno($event)'>
-                </app-listado-turnos>
-
-            </mat-grid-tile>
-
-            <mat-grid-tile *ngIf='administrador' [colspan]=2 [rowspan]=4 class="table">
-                <!-- Listado de medicos -->
-                <div *ngIf="mostrarMedicos">
-                    <mat-grid-tile-header *ngIf="mostrarMedicos">Listado de medicos</mat-grid-tile-header>
-                    <app-listado-medicos class="tabla"></app-listado-medicos>
-                </div>
-                <!-- Listado de paciente -->
-                <div *ngIf="mostrarPacientes">
-                    <mat-grid-tile-header *ngIf="mostrarPacientes">Listado de pacientes</mat-grid-tile-header>
-                    <app-listado-pacientes class="tabla" [pages]=4></app-listado-pacientes>
-                </div>
-            </mat-grid-tile>
-
-        </mat-grid-list>
-        <mat-toolbar class="toolbar-text">
-            <span class="parrafo" [matBadge]="turnosAceptados.length" matBadgeOverlap="false">Turnos aceptados</span>
-            <span class="parrafo" [matBadge]="turnosFinalizados.length" matBadgeOverlap="false">Turnos
-                finalizados</span>
-            <span class="parrafo" [matBadge]="turnosCancelados.length" matBadgeOverlap="false">Turnos cancelados</span>
-        </mat-toolbar>
-        <mat-toolbar class="detalle mat-elevation-z4">
-            <div class="botones" *ngIf='administrador'>
-                <!-- <button appElevation *ngIf="medicoAutorizar"  mat-raised-button color="primary" (click)="autorizar()">Autorizar</button> -->
-                <button appElevation mat-raised-button [defaultElevation]="0" [routerLink]="'/alta-admin'"
-                    color="accent">Cargar Admin</button>
-                <button appElevation mat-raised-button [defaultElevation]="0" (click)="listarMedicos()"
-                    color="default">Ver Medicos</button>
-                <button appElevation mat-raised-button [defaultElevation]="0" (click)="listarPacientes()"
-                    color="default">Ver Pacientes</button>
-            </div>
-            <div class="botones" *ngIf="turno">
-                <button appElevation mat-raised-button *ngIf="paciente && turno.estado == 'Atendido'"
-                    [defaultElevation]="0" color='primary' (click)="realizarEncuesta()">Realizar encuesta</button>
-                <button appElevation mat-raised-button *ngIf="medico && turno.estado == 'Atendido'" color='primary'
-                    (click)="editarHistoria()">Guardar historia</button>
-                <button appElevation mat-raised-button class="default" (click)="modificarTurno()">Detalles
-                    turno</button>
-            </div>
-            <div class="botones">
-                <button appElevation mat-raised-button [defaultElevation]="0" class="default"
-                    (click)="modificar()">Modificar datos</button>
-                <!-- <button appElevation mat-raised-button *ngIf="paciente || medico" [defaultElevation]="0" class="default"
-                    (click)="cargarTurno()">
-                    Cargar Turno
-                </button> -->
-                <button appElevation mat-raised-button [defaultElevation]="0" (click)="verInformes()"
-                    color="primary">Informes</button>
-                <button appElevation mat-raised-button [defaultElevation]="0" class="warning" (click)="borrar()">Baja de
-                    usuario</button>
-            </div>
-
-        </mat-toolbar>
+  <!-- Unauthenticated Banner -->
+  <div *ngIf="!usuario" class="unauth-panel-card mat-elevation-z4">
+    <mat-icon class="unauth-icon">account_circle</mat-icon>
+    <h2>Acceso al Panel de Control</h2>
+    <p>Para ingresar al panel de gestión, inicie sesión o utilice uno de los accesos directos de demostración:</p>
+    <div class="unauth-btns">
+      <a mat-raised-button color="primary" [routerLink]="'/login'">
+        <mat-icon>login</mat-icon> Iniciar Sesión / Elegir Perfil
+      </a>
+      <a mat-stroked-button [routerLink]="'/registro'">
+        <mat-icon>person_add</mat-icon> Registrarse
+      </a>
     </div>
-    <div *ngIf='!usuario'>
-        <p class="parrafo">Usted no ha iniciado sesión</p>
+  </div>
+
+  <!-- Authenticated User Content -->
+  <div *ngIf="usuario" class="menu-dashboard-grid">
+    <!-- Left Column: Profile Card & Actions -->
+    <div class="dashboard-col profile-col">
+      <div class="dashboard-card profile-card mat-elevation-z4">
+        <div class="card-top-header">
+          <mat-icon class="header-icon">badge</mat-icon>
+          <h3>Datos Personales</h3>
+        </div>
+
+        <div class="profile-component-wrapper">
+          <div *ngIf="paciente">
+            <app-detalle-paciente [imgPerfil]="imgPerfil" [paciente]="paciente"></app-detalle-paciente>
+          </div>
+          <div *ngIf="medico">
+            <app-detalle-medico [imgPerfil]="imgPerfil" [medico]="medico"></app-detalle-medico>
+          </div>
+          <div *ngIf="administrador">
+            <app-detalle-administrador [imgPerfil]="imgPerfil" [administrador]="administrador"></app-detalle-administrador>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="profile-actions-wrapper">
+          <div class="actions-group" *ngIf="administrador">
+            <button mat-raised-button color="accent" [routerLink]="'/alta-admin'" class="action-btn">
+              <mat-icon>add_moderator</mat-icon> Cargar Admin
+            </button>
+            <button mat-stroked-button (click)="listarMedicos()" class="action-btn">
+              <mat-icon>medical_services</mat-icon> Ver Médicos
+            </button>
+            <button mat-stroked-button (click)="listarPacientes()" class="action-btn">
+              <mat-icon>people</mat-icon> Ver Pacientes
+            </button>
+          </div>
+
+          <div class="actions-group main-actions">
+            <button mat-raised-button color="primary" (click)="verInformes()" class="action-btn">
+              <mat-icon>insights</mat-icon> Informes y Estadísticas
+            </button>
+            <button mat-stroked-button (click)="modificar()" class="action-btn">
+              <mat-icon>edit</mat-icon> Modificar Datos
+            </button>
+            <button mat-button color="warn" (click)="borrar()" class="action-btn delete-btn">
+              <mat-icon>delete_outline</mat-icon> Baja de Usuario
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Right Column: Turnos & Operational Views -->
+    <div class="dashboard-col turnos-col">
+      <!-- Status Counters -->
+      <div class="status-counters-card mat-elevation-z4" *ngIf="paciente || medico">
+        <div class="counter-pill accepted-pill">
+          <mat-icon>check_circle</mat-icon>
+          <div class="counter-text">
+            <span class="count">{{turnosAceptados.length}}</span>
+            <span class="label">Aceptados</span>
+          </div>
+        </div>
+        <div class="counter-pill completed-pill">
+          <mat-icon>task_alt</mat-icon>
+          <div class="counter-text">
+            <span class="count">{{turnosFinalizados.length}}</span>
+            <span class="label">Finalizados</span>
+          </div>
+        </div>
+        <div class="counter-pill cancelled-pill">
+          <mat-icon>cancel</mat-icon>
+          <div class="counter-text">
+            <span class="count">{{turnosCancelados.length}}</span>
+            <span class="label">Cancelados</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Turnos List -->
+      <div class="dashboard-card turnos-card mat-elevation-z4" *ngIf="paciente || medico">
+        <div class="card-top-header">
+          <mat-icon class="header-icon">event_note</mat-icon>
+          <h3>Agenda de Turnos</h3>
+        </div>
+
+        <div class="turnos-table-wrapper">
+          <app-listado-turnos [turnos]="turnos" [pages]="4" (seleccionar)="seleccionarTurno($event)">
+          </app-listado-turnos>
+        </div>
+
+        <!-- Selected Turno Operations -->
+        <div *ngIf="turno" class="selected-turno-actions">
+          <div class="selected-header">
+            <mat-icon class="info-icn">info</mat-icon>
+            <span>Turno Seleccionado: {{turno.especialidad}} &bull; {{turno.fecha | fecha}}</span>
+          </div>
+          <div class="turno-btns-row">
+            <button mat-raised-button color="primary" *ngIf="paciente && turno.estado == 'Atendido'" (click)="realizarEncuesta()">
+              <mat-icon>rate_review</mat-icon> Realizar Encuesta
+            </button>
+            <button mat-raised-button color="accent" *ngIf="medico && turno.estado == 'Atendido'" (click)="editarHistoria()">
+              <mat-icon>history_edu</mat-icon> Guardar Historia
+            </button>
+            <button mat-stroked-button (click)="modificarTurno()">
+              <mat-icon>open_in_new</mat-icon> Detalles del Turno
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Admin Directory Views -->
+      <div class="dashboard-card admin-card mat-elevation-z4" *ngIf="administrador">
+        <div class="card-top-header">
+          <mat-icon class="header-icon">manage_accounts</mat-icon>
+          <h3>Directorio Institucional</h3>
+        </div>
+
+        <div *ngIf="mostrarMedicos" class="admin-dir-section">
+          <h4 class="dir-title"><mat-icon>medical_services</mat-icon> Cuerpo Médico Autorizado</h4>
+          <app-listado-medicos></app-listado-medicos>
+        </div>
+
+        <div *ngIf="mostrarPacientes" class="admin-dir-section">
+          <h4 class="dir-title"><mat-icon>people</mat-icon> Padrón de Pacientes</h4>
+          <app-listado-pacientes [pages]="4"></app-listado-pacientes>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

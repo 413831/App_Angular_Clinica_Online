@@ -1,27 +1,172 @@
 <div class="page">
-  <h1><p class="titulos">Sobre nosotros</p></h1>
-  <mat-tab-group mat-stretch-tabs class=" mat-elevation-z5" headerPosition="below">
-    <mat-tab label="Contacto"> 
-    <ul>
-      <li>Teléfono: 4-111-111</li>
-      <li>Correo electrónico: lasalitadesalud@mail.com</li>
-      <li>Redes sociales: ...</li>
-    </ul>   
-    </mat-tab>
-    <mat-tab label="Ubicacion"> 
-      <p class="titulos">Dirección: Calle Siemprevivas 1234 </p> 
-      <agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng">
-        <agm-marker  [latitude]="lat" [longitude]="lng"></agm-marker>
-      </agm-map>  
-    </mat-tab>
-    <mat-tab label="Historia">
-      <div class="parrafo">
-    <p>La Clinica Señor Gago de los Soles ha surgido como una comunión de tres ideas fundamentales, el servicio, la salud y el profesionalismo.</p>  
-    <p>En el año 2001 el Señor Ernesto "Gago" de la Fuente, médico neurólogo consagrado en el Congreso XIV de la Organización Mundial de la Salud, reunió un equipo de 13 médicos</p>
-    <p>Junto con sus colegas creó el Instituto Gago para la Enfermedad de la Pierna Corta en la ciudad de La Plata donde recibió el Premio Delfín Azul por su labor</p>
-    <p>A finales del año 2009 se construye la clínica con multiples especialidades y un centro de investigación integrado con colaboración de la Universidad de Chubut.</p>
-  </div>  
-  </mat-tab>
-  </mat-tab-group>
-  <app-about></app-about>
+  <div class="contact-header">
+    <h1 class="titulos">Sobre Nosotros &amp; Contacto</h1>
+    <p class="parrafo">
+      Conozca más sobre nuestra trayectoria, infraestructura médica y vías de comunicación directa para pacientes y familias.
+    </p>
+  </div>
+
+  <!-- Contact Quick Cards -->
+  <div class="contact-cards-grid">
+    <div class="contact-info-card mat-elevation-z4">
+      <div class="card-icon-bubble blue-bubble">
+        <mat-icon>phone</mat-icon>
+      </div>
+      <div class="card-details">
+        <h4>Central Telefónica</h4>
+        <p class="main-contact">0800-444-GAGO (4246)</p>
+        <p class="sub-contact">Línea directa: (011) 4567-8900</p>
+      </div>
+    </div>
+
+    <div class="contact-info-card mat-elevation-z4">
+      <div class="card-icon-bubble purple-bubble">
+        <mat-icon>email</mat-icon>
+      </div>
+      <div class="card-details">
+        <h4>Atención Digital</h4>
+        <p class="main-contact">contacto&#64;clinicagago.com.ar</p>
+        <p class="sub-contact">Respuesta en menos de 24 hs</p>
+      </div>
+    </div>
+
+    <div class="contact-info-card mat-elevation-z4">
+      <div class="card-icon-bubble emerald-bubble">
+        <mat-icon>place</mat-icon>
+      </div>
+      <div class="card-details">
+        <h4>Sede y Guardia</h4>
+        <p class="main-contact">Calle Siemprevivas 1234, CABA</p>
+        <p class="sub-contact">Guardia de urgencias 24 hs</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detailed Tabs Section -->
+  <div class="contact-tabs-card mat-elevation-z4">
+    <mat-tab-group mat-stretch-tabs animationDuration="250ms">
+      <!-- Tab 1: Servicios Médicos -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="tab-label-icon">local_hospital</mat-icon>
+          <span>Servicios e Instalaciones</span>
+        </ng-template>
+        <div class="tab-content-area">
+          <div class="services-grid">
+            <div class="service-box">
+              <mat-icon class="srv-icon">emergency</mat-icon>
+              <h4>Guardia Médica 24hs</h4>
+              <p>Atención continua para emergencias clínicas, pediátricas y traumatológicas todos los días del año.</p>
+            </div>
+            <div class="service-box">
+              <mat-icon class="srv-icon">biotech</mat-icon>
+              <h4>Laboratorio Bioquímico</h4>
+              <p>Análisis clínicos automatizados sin necesidad de turno previo de lunes a viernes de 08:00 a 12:00 hs.</p>
+            </div>
+            <div class="service-box">
+              <mat-icon class="srv-icon">radiology</mat-icon>
+              <h4>Diagnóstico por Imágenes</h4>
+              <p>Rayos X digitales, ecografías Doppler y tomografías con tecnología de última generación.</p>
+            </div>
+            <div class="service-box">
+              <mat-icon class="srv-icon">meeting_room</mat-icon>
+              <h4>Consultorios Externos</h4>
+              <p>6 salas de consulta acondicionadas para la atención personalizada de todas las especialidades.</p>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+
+      <!-- Tab 2: Ubicación -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="tab-label-icon">map</mat-icon>
+          <span>Ubicación y Accesos</span>
+        </ng-template>
+        <div class="tab-content-area">
+          <div class="location-container">
+            <div class="location-details">
+              <h3>Cómo llegar a la Clínica</h3>
+              <p>Nuestra sede central se encuentra en un punto neurálgico de fácil acceso vehicular y transporte público.</p>
+              
+              <div class="transport-options">
+                <div class="transport-item">
+                  <mat-icon>subway</mat-icon>
+                  <div>
+                    <strong>Subterráneo:</strong>
+                    <span>Línea B - Estación Florida (a 2 cuadras)</span>
+                  </div>
+                </div>
+                <div class="transport-item">
+                  <mat-icon>directions_bus</mat-icon>
+                  <div>
+                    <strong>Líneas de colectivo:</strong>
+                    <span>5, 7, 24, 26, 115, 146, 180</span>
+                  </div>
+                </div>
+                <div class="transport-item">
+                  <mat-icon>local_parking</mat-icon>
+                  <div>
+                    <strong>Estacionamiento propio:</strong>
+                    <span>Exclusivo para pacientes y ambulancias sobre Calle Siemprevivas 1240</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="map-placeholder-card">
+              <mat-icon class="map-big-icon">location_on</mat-icon>
+              <div class="map-address-banner">
+                <strong>Clínica Señor Gago de los Soles</strong>
+                <span>Calle Siemprevivas 1234, CABA &bull; GPS: -34.6037, -58.3816</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+
+      <!-- Tab 3: Historia y Valores -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="tab-label-icon">history_edu</mat-icon>
+          <span>Nuestra Historia</span>
+        </ng-template>
+        <div class="tab-content-area">
+          <div class="history-content">
+            <p class="history-lead">
+              La <strong>Clínica Señor Gago de los Soles</strong> nació como la unión de tres pilares fundamentales: <em>vocación de servicio, rigor científico y calidez humana</em>.
+            </p>
+            <div class="timeline-block">
+              <div class="timeline-step">
+                <span class="step-year">2001</span>
+                <div class="step-desc">
+                  <strong>Fundación del Centro de Investigación:</strong>
+                  El Dr. Ernesto "Gago" de la Fuente, especialista consagrado en el Congreso Internacional de la Salud, reúne a un grupo pionero de 13 médicos para brindar atención integral.
+                </div>
+              </div>
+              <div class="timeline-step">
+                <span class="step-year">2009</span>
+                <div class="step-desc">
+                  <strong>Inauguración del Edificio Central:</strong>
+                  Se construye la sede moderna con 6 consultorios y laboratorios especializados en articulación académica universitaria.
+                </div>
+              </div>
+              <div class="timeline-step">
+                <span class="step-year">Hoy</span>
+                <div class="step-desc">
+                  <strong>Compromiso y Cuidado Continuo:</strong>
+                  Más de 50.000 pacientes atendidos y un sistema digital integral con turnos online e historias clínicas informatizadas.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <!-- Quality Accordion -->
+  <div class="about-accordion-wrapper">
+    <app-about></app-about>
+  </div>
 </div>

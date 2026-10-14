@@ -1,23 +1,33 @@
-.example-small-box, .example-large-box {
-    display: flex;
-    align-items: flex-start;
-    justify-content: left;
-    margin: 16px;
-    padding: 0 0 50px 0;
-    border-radius: 8px;
-  }
-  
-  
-  .example-large-box {
-    display: flex;
-    margin: auto;    
-    height: 750px;
-    width: max-content;
-  }
+.registration-page {
+  max-width: 900px;
+}
 
-  .container{
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    
+.registration-header {
+  margin-bottom: 24px;
+}
+
+.registration-card {
+  background: #ffffff;
+  border-radius: 20px !important;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.reg-tab-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.reg-tab-body {
+  padding: 32px 28px;
+  background-color: #ffffff;
+}
+
+@media (max-width: 600px) {
+  .reg-tab-body {
+    padding: 20px 14px;
   }
+}

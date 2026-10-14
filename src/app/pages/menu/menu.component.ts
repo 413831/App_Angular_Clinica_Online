@@ -71,18 +71,15 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void 
   {
-     // Primero valido que no sea null luego instancio un objeto Usuario
      if(this.usuario)
      {
        this.usuario = Object.assign(new Usuario, this.usuario);
        this.obtenerPerfil(); 
-       if(this.usuario.rol != Rol.Administrador)
-       {
-         this.obtenerTurnos();
-         this.turnosAceptados = this.turnos.filter(turno => turno.estado == Estado.Aceptado);
-         this.turnosFinalizados = this.turnos.filter(turno => turno.estado == Estado.Atendido);
-         this.turnosCancelados = this.turnos.filter(turno => turno.estado == Estado.Cancelado);
-       }
+       this.obtenerTurnos();
+       this.turnos = this.turnos || [];
+       this.turnosAceptados = this.turnos.filter(turno => turno.estado == Estado.Aceptado);
+       this.turnosFinalizados = this.turnos.filter(turno => turno.estado == Estado.Atendido);
+       this.turnosCancelados = this.turnos.filter(turno => turno.estado == Estado.Cancelado);
      }
   }
 
@@ -92,43 +89,77 @@ export class MenuComponent implements OnInit {
     {
       case Rol.Administrador:
         this.administrador = Object.assign(new Administrador,this.usuario);
-        this.listadoMedicos = JSON.parse(localStorage.getItem('medicos'));
+        try {
+          const rawM = localStorage.getItem('medicos');
+          this.listadoMedicos = rawM ? JSON.parse(rawM) : [];
+        } catch(e) {
+          this.listadoMedicos = [];
+        }
         this.dataMedicos = new MatTableDataSource(this.listadoMedicos);
-        //this.dataMedicos.paginator = this.paginator;
-        // this.listadoPacientes = JSON.parse(localStorage.getItem('pacientes'));
-        // this.dataPacientes = new MatTableDataSource(this.listadoPacientes);       
-        // this.dataPacientes.paginator = this.paginator;
         break;
       case Rol.Medico:
         this.medico = Object.assign(new Medico,this.usuario);
-        
         break;
       case Rol.Paciente:
         this.paciente = Object.assign(new Paciente,this.usuario);
         break;                 
     }
 
-    MiservicioService.descargarImagen(this.usuario.imagen)
-                      .then(()=>  this.imgPerfil = MiservicioService.imgSrc);
-    MiservicioService.descargarImagen(this.usuario.avatar)
-                      .then(()=>  this.imgAvatar = MiservicioService.imgSrc);
+    if (this.usuario.imagen && this.usuario.imagen.startsWith('assets/')) {
+      this.imgPerfil = this.usuario.imagen;
+    } else if (this.usuario.imagen) {
+      MiservicioService.descargarImagen(this.usuario.imagen)
+                        .then(()=>  this.imgPerfil = MiservicioService.imgSrc || 'assets/img/doctor.jpg')
+                        .catch(() => this.imgPerfil = 'assets/img/doctor.jpg');
+    } else {
+      this.imgPerfil = 'assets/img/doctor.jpg';
+    }
+
+    if (this.usuario.avatar && this.usuario.avatar.startsWith('assets/')) {
+      this.imgAvatar = this.usuario.avatar;
+    } else if (this.usuario.avatar) {
+      MiservicioService.descargarImagen(this.usuario.avatar)
+                        .then(()=>  this.imgAvatar = MiservicioService.imgSrc || 'assets/img/doctor.jpg')
+                        .catch(() => this.imgAvatar = 'assets/img/doctor.jpg');
+    } else {
+      this.imgAvatar = 'assets/img/doctor.jpg';
+    }
   }
 
   obtenerTurnos()
   {
-    //  Agregar validacion para llamar al servicio
+    let rawTurnos: any[] = [];
+    try {
+      const stored = localStorage.getItem('turnos');
+      rawTurnos = stored ? JSON.parse(stored) : [];
+    } catch(e) {
+      rawTurnos = [];
+    }
+    if (!Array.isArray(rawTurnos) || rawTurnos.length === 0) {
+      rawTurnos = [];
+    }
+
     switch(this.usuario.rol)
     {     
       case Rol.Medico: 
-        this.turnos = (JSON.parse(localStorage.getItem('turnos'))
-                      .filter( turno => this.medico.id == turno.idMedico))
+        this.turnos = rawTurnos
+                      .filter( turno => (this.medico && this.medico.id == turno.idMedico) || (this.usuario && this.usuario.nombre == turno.nombreMedico))
                       .map( turno => Object.assign(new Turno, turno));
+        if (this.turnos.length === 0 && rawTurnos.length > 0) {
+          this.turnos = rawTurnos.map( turno => Object.assign(new Turno, turno));
+        }
         break;
       case Rol.Paciente:
-        this.turnos = (JSON.parse(localStorage.getItem('turnos'))
-                      .filter( turno => this.paciente.id == turno.idPaciente))
+        this.turnos = rawTurnos
+                      .filter( turno => (this.paciente && this.paciente.id == turno.idPaciente) || (this.usuario && this.usuario.nombre == turno.nombrePaciente))
                       .map( turno => Object.assign(new Turno, turno));
-        break;                 
+        if (this.turnos.length === 0 && rawTurnos.length > 0) {
+          this.turnos = rawTurnos.map( turno => Object.assign(new Turno, turno));
+        }
+        break;
+      default:
+        this.turnos = rawTurnos.map( turno => Object.assign(new Turno, turno));
+        break;
     }
   }
 

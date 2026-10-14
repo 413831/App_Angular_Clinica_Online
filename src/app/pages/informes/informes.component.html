@@ -8,7 +8,7 @@
         <mat-tab label="Inicios de sesión del usuario" *ngIf="sesiones">
 
             <app-grafico-lineas [sesiones]="sesiones"></app-grafico-lineas>
-            <div class="parrafo botones" *ngIf="usuario.rol == 1">
+            <div class="parrafo botones" *ngIf="usuario && usuario.rol == 1">
                 <mat-label class="parrafo">
                     <h2>Sesiones de todos los usuarios: </h2>
                 </mat-label>

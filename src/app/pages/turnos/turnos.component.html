@@ -1,63 +1,100 @@
 <div class="page">
-  <div class="titulos">
-    <h1>Turnos</h1>
+  <div class="turnos-page-header">
+    <h1 class="titulos">Gestión de Turnos</h1>
+    <p class="parrafo" *ngIf="usuario">
+      Bienvenido/a <strong>{{usuario.nombre}}</strong>. Administre sus consultas médicas, verifique los estados y consulte los detalles específicos de cada atención.
+    </p>
   </div>
-  <div *ngIf="usuario" class="container">
-    
-    <div class="layout">
-      <div class="tabla">
-        <mat-form-field appearance="fill">
-          <mat-label>Buscar turno por valor</mat-label>
-          <input [(ngModel)]="valor" name="valor" (keyup)="filtrar($event)" matInput>
-          <mat-hint align="start"><strong>Seleccione un turno para poder ver el detalle</strong> </mat-hint>
-        </mat-form-field>
-        <app-listado-turnos [filtro]="filtro" [turnos]='turnos' [pages]=4 (seleccionar)='seleccionarTurno($event)'>
+
+  <!-- Unauthenticated Prompt -->
+  <div *ngIf="!usuario" class="unauth-card mat-elevation-z4">
+    <div class="unauth-icon-wrapper">
+      <mat-icon>calendar_month</mat-icon>
+    </div>
+    <h2>Acceso al Sistema de Turnos</h2>
+    <p class="unauth-desc">
+      Para visualizar y gestionar los turnos según su rol médico, inicie sesión o seleccione un perfil de prueba para explorar la experiencia completa:
+    </p>
+    <div class="unauth-actions">
+      <button mat-raised-button color="primary" class="demo-btn" (click)="loginDemo('paciente')">
+        <mat-icon>person</mat-icon> Ingresar como Paciente
+      </button>
+      <button mat-raised-button color="accent" class="demo-btn" (click)="loginDemo('medico')">
+        <mat-icon>medical_services</mat-icon> Ingresar como Médico
+      </button>
+      <button mat-stroked-button class="demo-btn" (click)="loginDemo('admin')">
+        <mat-icon>admin_panel_settings</mat-icon> Ingresar como Admin
+      </button>
+    </div>
+  </div>
+
+  <!-- Authenticated User Content -->
+  <div *ngIf="usuario" class="turnos-container">
+    <!-- Loading Spinner -->
+    <div class="loading-container mat-elevation-z4" *ngIf="isLoading">
+      <mat-spinner diameter="46" color="primary"></mat-spinner>
+      <p class="loading-text">Cargando agenda de turnos y consultas...</p>
+    </div>
+
+    <!-- Main Turnos Layout -->
+    <div class="turnos-layout" *ngIf="!isLoading">
+      <!-- Left Column: Table & Search -->
+      <div class="turnos-list-column mat-elevation-z4">
+        <div class="search-box">
+          <mat-form-field appearance="outline" class="search-field">
+            <mat-label>Filtrar turnos</mat-label>
+            <input [(ngModel)]="valor" name="valor" (keyup)="filtrar($event)" matInput placeholder="Buscar por paciente, médico, especialidad o estado...">
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+          <span class="search-hint">Haga clic en una fila para inspeccionar el turno en el panel lateral.</span>
+        </div>
+
+        <app-listado-turnos [filtro]="filtro" [turnos]="turnos" [pages]="5" (seleccionar)="seleccionarTurno($event)">
         </app-listado-turnos>
       </div>
 
-      <div class="example-boundary">
-        <div *ngIf="turno" class="cards" cdkDrag cdkDragLockAxis="y" cdkDragBoundary=".example-boundary">
-          <app-detalle-turno [turno]="turno" ></app-detalle-turno>
+      <!-- Right Column: Details & Helper -->
+      <div class="turnos-detail-column">
+        <div *ngIf="turno" class="detail-card-container">
+          <app-detalle-turno [turno]="turno"></app-detalle-turno>
         </div>
-        <div appElevation *ngIf="!turno" class="box">
 
-          <mat-list>
-            <div mat-subheader>
-              <h3>Los turnos pueden ser filtrados por los siguientes valores</h3>
-            </div>
+        <div *ngIf="!turno" class="helper-box mat-elevation-z4">
+          <div class="helper-header">
+            <mat-icon class="helper-icon">info</mat-icon>
+            <h3>Criterios de Búsqueda y Filtros</h3>
+          </div>
+          <p class="helper-intro">Puede filtrar y organizar las consultas médicas mediante los siguientes campos:</p>
 
+          <mat-list dense class="criteria-list">
             <mat-list-item>
-              <mat-icon mat-list-icon>label_outline</mat-icon>
-              <div mat-line>Nombre del paciente</div>
+              <mat-icon mat-list-icon class="bullet-icon">person</mat-icon>
+              <div mat-line class="crit-title">Nombre del Paciente</div>
+              <div mat-line class="crit-sub">Filtro por afiliado o titular</div>
             </mat-list-item>
             <mat-list-item>
-              <mat-icon mat-list-icon>label_outline</mat-icon>
-              <div mat-line>Nombre del medico</div>
+              <mat-icon mat-list-icon class="bullet-icon">medical_services</mat-icon>
+              <div mat-line class="crit-title">Profesional Médico</div>
+              <div mat-line class="crit-sub">Búsqueda por doctor asignado</div>
             </mat-list-item>
             <mat-list-item>
-              <mat-icon mat-list-icon>label_outline</mat-icon>
-              <div mat-line>Estado del turno</div>
+              <mat-icon mat-list-icon class="bullet-icon">verified</mat-icon>
+              <div mat-line class="crit-title">Estado del Turno</div>
+              <div mat-line class="crit-sub">Pendiente, Aceptado, Atendido o Cancelado</div>
             </mat-list-item>
             <mat-list-item>
-              <mat-icon mat-list-icon>label_outline</mat-icon>
-              <div mat-line>Especialidad del turno</div>
+              <mat-icon mat-list-icon class="bullet-icon">healing</mat-icon>
+              <div mat-line class="crit-title">Especialidad</div>
+              <div mat-line class="crit-sub">Cardiología, Pediatría, Traumatología, etc.</div>
             </mat-list-item>
             <mat-list-item>
-              <mat-icon mat-list-icon>label_outline</mat-icon>
-              <div mat-line>Consultorio de atención</div>
+              <mat-icon mat-list-icon class="bullet-icon">meeting_room</mat-icon>
+              <div mat-line class="crit-title">Consultorio</div>
+              <div mat-line class="crit-sub">Número de consultorio asignado</div>
             </mat-list-item>
-            <mat-list-item>
-              <mat-icon mat-list-icon>label_outline</mat-icon>
-              <div mat-line>Valor de dato específico de la consulta</div>
-            </mat-list-item>
-
           </mat-list>
-
         </div>
       </div>
     </div>
-  </div>
-  <div *ngIf="!usuario">
-    <p class="parrafo">Usted no ha iniciado sesión</p>
   </div>
 </div>
