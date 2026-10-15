@@ -15,7 +15,7 @@
   "main": "server.js",
   "private": true,
   "engines": {
-    "node": "20.x",
+    "node": "24.x",
     "npm": ">=8"
   },
   "dependencies": {
