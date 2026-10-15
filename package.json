@@ -7,7 +7,7 @@
     "server": "node server.js",
     "dev": "node --openssl-legacy-provider ./node_modules/@angular/cli/bin/ng serve",
     "build": "node --openssl-legacy-provider ./node_modules/@angular/cli/bin/ng build --configuration production",
-    "postinstall": "node -e \"const fs=require('fs'),p='./node_modules/@angular/cdk/platform/index.js';if(fs.existsSync('./node_modules/@angular/cdk/platform')&&!fs.existsSync(p)){fs.writeFileSync(p,'module.exports = require(\\\"../bundles/cdk-platform.umd.js\\\");');}\"",
+    "postinstall": "node scripts/postinstall.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
